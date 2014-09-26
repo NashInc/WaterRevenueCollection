@@ -1,0 +1,145 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default" })
+</p>
+<h2>Readings Done</h2>
+@(Html.Kendo().Grid<ReadingViewModel>()
+      .Name("readings")
+      .Columns(columns =>
+      {
+          columns.Bound(p => p.MeterId).Hidden(true);
+          columns.Bound(p => p.ReadingId).Hidden(true);
+          columns.Bound(p => p.ReadingValue);
+          columns.Bound(p => p.Latitude);
+          columns.Bound(p => p.Longitude);
+          columns.Bound(p => p.ReadingValue);
+          columns.Bound(p => p.DateCreated);
+          columns.Command(c => c.Custom("View Details").Click("showReadingDetails"));
+      })
+      .Pageable()
+      .Selectable(z => z.Enabled(true).Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
+      .Sortable()
+      .Scrollable()
+      .Filterable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Read(x => x.Action("GetReadingsForEmployee", "Employees", new { Model.EmployeeId }))
+          .Model(x => x.Id(z => z.ReadingId))
+          .Sort(z => z.Add(t => t.DateCreated))
+      ))
+<script type="text/javascript">
+    function showReadingDetails(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = '/Readings/Details/' + dataItem.ReadingId;
+    }
+</script>

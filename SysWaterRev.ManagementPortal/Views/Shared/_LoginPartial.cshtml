@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNet.Identity
+<li class="dropdown user user-menu">
+    @if (Request.IsAuthenticated)
+    {
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>@User.Identity.GetUserName()<i class="caret"></i></span>
+        </a>
+        <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header bg-light-blue">
+                <img src="~/Content/img/avatar3.png" class="img-circle" alt="User Image" />
+                <p>
+                    @User.Identity.Name
+                    <small>@User.Identity.GetUserName()</small>
+                </p>
+            </li>
+            <!-- Menu Body -->
+            <li class="user-body">
+                @*<div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                </div>*@
+            </li>
+            <li class="user-footer">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="pull-left">
+                        @Html.ActionLink("Manage", "Index", "Manage", null, new { title = "Manage Account", @class = "btn btn-default btn-flat fa fa-cog" })
+                    </div>
+                    <div class="pull-right">
+                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat"><span class="fa fa-sign-out">Log Off</span></a>
+                    </div>
+                }
+            </li>
+        </ul>
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Log in", "Login", "Account", null, new { id = "loginLink" })</li>
+        </ul>
+    }
+</li>

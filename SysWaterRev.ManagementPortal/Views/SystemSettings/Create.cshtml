@@ -1,0 +1,44 @@
+﻿@model SystemSettingsViewModel
+
+@{
+    ViewBag.Title = "Create System Settings";
+}
+
+<h2>Create Setting</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>System Setting</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChargeScheduleId, "Charge Schedule", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(Html.Kendo().DropDownList()
+              .Name("ChargeScheduleId")
+                      .HtmlAttributes(new { style = "width:300px" })
+                      .OptionLabel("Select Charge Schedule...")
+              .DataTextField("ChargeScheduleNameAndDate")
+                      .DataValueField("ChargeScheduleId")
+              .DataSource(source => source.Read(read => read.Action("GetSchedules", "SystemSettings")))
+                )
+                @Html.ValidationMessageFor(model => model.ChargeScheduleId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Set" class="btn btn-default btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", htmlAttributes: new { @class = "btn btn-default" }, routeValues: new { })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

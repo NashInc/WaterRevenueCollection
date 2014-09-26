@@ -1,0 +1,106 @@
+﻿@model ChargeViewModel
+
+@{
+    ViewBag.Title = "Create Charge";
+}
+@section ContentHeader
+{
+     <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Charge</a></li>
+        <li class="active">Create Charge</li>
+    </ol>
+</section>
+}
+<section class="content">
+    <div class="row">      
+    </div>
+    <div class="row">
+    <h2>Create Charge</h2>
+    @(Html.Kendo().Grid<ChargeViewModel>()
+          .Name("charges")
+          .Selectable(z => z.Enabled(true).Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
+          .Scrollable(z => z.Enabled(true))
+          .Sortable(z => z.AllowUnsort(true).Enabled(true).SortMode(GridSortMode.MultipleColumn))
+          .Columns(columns =>
+          {
+              columns.Bound(column => column.ChargeId).Hidden(true);
+              columns.Bound(column => column.StartRange);
+              columns.Bound(column => column.EndRange);
+              columns.Bound(column => column.UnitPrice);
+              columns.Bound(column => column.DateCreated);
+              columns.Bound(column => column.CreatedBy);
+              columns.Bound(column => column.ChargeScheduleName);
+          })
+          )
+
+    @using (Html.BeginForm(controllerName: "Charges", actionName: "Create", method: FormMethod.Post, htmlAttributes: new { id = "chargeForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Charge</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChargeScheduleId, "Charge Schedule", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="demo-section">
+                        <div class="col-md-10">
+                            <div class="demo-section">
+                                @(Html.Kendo().DropDownListFor(mode => Model.ChargeScheduleId)
+                                      .OptionLabel("Choose Schedule...")
+                                      .AutoBind(true)
+                                      .DataTextField("ChargeScheduleName")
+                                      .DataValueField("ChargeScheduleId")
+                                      .Enable(true)
+                                      .DataSource(dataSource => dataSource.Read("ReadChargeSchedules", "ChargeSchedules")))
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ChargeScheduleId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.ChargeScheduleId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartRange, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartRange, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartRange, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndRange, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndRange, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndRange, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitPrice, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", htmlAttributes: new { @class = "btn btn-default" }, routeValues: new { })
+    </div>
+        </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

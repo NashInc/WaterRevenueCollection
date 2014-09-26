@@ -1,0 +1,144 @@
+﻿@model ReadingViewModel
+
+@{
+    ViewBag.Title = "Create Reading";
+}
+
+<h2>Create Reading</h2>
+<style scoped>
+    .demo-section {
+        padding: 30px;
+        width: 460px;
+    }
+
+    .demo-section h2 {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    .demo-section label {
+        display: inline-block;
+        padding-right: 5px;
+        text-align: right;
+        width: 120px;
+    }
+
+    .demo-section .k-button { margin: 20px 0 0 125px; }
+
+    .k-readonly { color: gray; }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Reading</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @if (User.IsInRole(SimpleRevCollectionRoles.Administrators))
+        {
+            <div class="form-group">
+                Employees
+                <div class="col-md-10">
+                    @(Html.Kendo().DropDownList()
+                          .Name("Employees")
+                          .HtmlAttributes(new {style = "width:300px"})
+                          .OptionLabel("Select Employee...")
+                          .DataTextField("EmployeeName")
+                          .DataValueField("EmployeeId")
+                          .DataSource(source => source.Read(read => read.Action("GetCascadeEmployee", "Employees")))
+                          )
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            Customers
+            <div class="col-md-10">
+                @(Html.Kendo().DropDownList()
+                      .Name("Customers")
+                      .HtmlAttributes(new {style = "width:300px"})
+                      .OptionLabel("Select Customer...")
+                      .DataTextField("CustomerName")
+                      .DataValueField("CustomerId")
+                      .DataSource(source => source.Read(read => read.Action("GetCascadeCustomers", "Customers")))
+                      )
+            </div>
+        </div>
+        <div class="form-group">
+            Meters
+            <div class="col-md-10">
+                @(Html.Kendo().DropDownList()
+                      .Name("Meters")
+                      .HtmlAttributes(new {style = "width:300px"})
+                      .OptionLabel("Select Meter...")
+                      .DataTextField("MeterNumberAndSerial")
+                      .DataValueField("MeterId")
+                      .DataSource(source => source.Read(read => read.Action("GetCascadeMeters", "Meters")))
+                      )
+            </div>
+        </div>
+        <script>
+            function filterCustomers() {
+                return {
+                    Customers: $("#Customers").val()
+                };
+            }
+
+            function filterMeters() {
+                return {
+                    Meters: $("#Meters").val()
+                };
+            }
+
+            $(document).ready(function() {
+                var Customers = $("#Customers").data("kendoDropDownList"),
+                    Meters = $("#Meters").data("kendoDropDownList");
+                $("#get").click(function() {
+                    var customersInfo = "\Customers: { id: " + Customers.value() + ", name: " + Customers.text() + " }",
+                        metersInfo = "\Meters: { id: " + Meters.value() + ", name: " + Meters.text() + " }";
+
+                    alert("Order details:\n" + customersInfo + metersInfo);
+                });
+            });
+        </script>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Latitude, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Latitude, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Latitude, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Longitude, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Longitude, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Longitude, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReadingValue, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReadingValue, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ReadingValue, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

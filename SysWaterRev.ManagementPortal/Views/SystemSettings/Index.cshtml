@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SystemSettingsViewModel>
+
+@{
+    ViewBag.Title = "System Settings";
+}
+
+<h2>System Settings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",routeValues:new {},htmlAttributes:new {@class="btn btn-default btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentChargeScheduleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SetBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastEditDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentChargeScheduleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SetBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastEditedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastEditDate)
+        </td>
+        <td>
+            <div class="btn-group-xs">
+                @Html.ActionLink("Edit", "Edit", new { id = item.SystemSettingId },htmlAttributes: new {@class="btn btn-default btn-xs"})
+                @Html.ActionLink("Details", "Details", new { id = item.SystemSettingId }, htmlAttributes:new {@class="btn btn-default btn-xs"})
+                @Html.ActionLink("Delete", "Delete", new { id = item.SystemSettingId }, htmlAttributes:new {@class="btn btn-default btn-xs"})
+            </div>
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,73 @@
+﻿@model ChargeViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Charge</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartRange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartRange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndRange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndRange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.ChargeId}, new {@class="btn btn-default glyphicon-edit"}) |
+    @Html.ActionLink("Back to List", "Index",new {},new {@class="btn btn-default glyphicon-backward"}))
+</p>

@@ -1,0 +1,94 @@
+﻿@model MeterViewModel
+@{
+    ViewBag.Title = "Meter Details";
+}
+<h2>Meter Details</h2>
+<div>
+    <h4>Meter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MeterSerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeterSerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeterNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeterNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.MeterId}, htmlAttributes:new {@class="btn btn-default"})
+    @Html.ActionLink("Back to List", "Index",new {}, htmlAttributes: new { @class = "btn btn-default" })
+</p>
+@(Html.Kendo().Grid<ReadingViewModel>()
+      .Name("readings")
+      .Columns(columns =>
+      {
+          columns.Bound(p => p.MeterId).Hidden(true);
+          columns.Bound(p => p.ReadingId).Hidden(true);
+          columns.Bound(p => p.ReadingValue);
+          columns.Bound(p => p.Latitude);
+          columns.Bound(p => p.Longitude);
+          columns.Bound(p => p.CreatedBy);
+          columns.Bound(p => p.EmployeeFullName);
+          columns.Bound(p => p.DateCreated);
+          columns.Command(c => c.Custom("View Details").Click("showReadingDetails"));
+      })
+      .Pageable()
+      .Sortable()
+      .Scrollable()
+      .Filterable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+                      .Read(x => x.Action("GetReadingsForMeter", "Meters", new { meterId=Model.MeterId }))
+                      .Model(x=>x.Id(z=>z.MeterId))
+                      .Sort(z=>z.Add(t=>t.DateCreated))
+          )
+      )
+<script type="text/javascript">
+    function showReadingDetails(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location.href = '/Readings/Details/' + dataItem.ReadingId;
+    }
+</script>

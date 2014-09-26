@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SimpleRevCollection.Management.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AfricaTalkingAPIKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">2373b1268040e4563a933b75143cdbcf61f84928e21f2bc8c3f32fa0d19e0205</Value>
+    </Setting>
+    <Setting Name="AfricaTalkingUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mbuthiagrg@gmail.com</Value>
+    </Setting>
+    <Setting Name="SendGridHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtp.sendgrid.net</Value>
+    </Setting>
+    <Setting Name="SendGridPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="SendGridUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">azure_e478622f9753a5edc326639961c956bf@azure.com</Value>
+    </Setting>
+    <Setting Name="SendGridPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Ft34FXVJYYoaqiP</Value>
+    </Setting>
+    <Setting Name="EmailAccount" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">noreply@revcollection.co.ke</Value>
+    </Setting>
+    <Setting Name="SmsUrlString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.africastalking.com/version1/messaging</Value>
+    </Setting>
+    <Setting Name="VoiceUrlString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://voice.africastalking.com/call</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

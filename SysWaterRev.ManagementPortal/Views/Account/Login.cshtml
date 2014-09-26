@@ -1,0 +1,50 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "Log In";
+    Layout = null;
+    
+}
+<!DOCTYPE html>
+<html class="bg-black">
+<head>
+    <meta charset="UTF-8">
+    <title>Water Rev | Log in</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- bootstrap 3.0.2 -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/template")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+</head>
+<body class="bg-black">
+    <div class="form-box" id="login-box">
+        <div class="header">Sign In</div>
+        @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+         
+            <div class="body bg-gray">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Email"})
+                    @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.Password, new {@class = "form-control", @placeholder = "Password"})
+                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+            </div>
+            <div class="footer">
+                <button type="submit" class="btn bg-olive btn-block">Sign me in</button>
+                <p>@Html.ActionLink("Forgot your password?", "ForgotPassword", new {})</p>
+            </div>
+        }
+    </div>
+</body>
+</html>

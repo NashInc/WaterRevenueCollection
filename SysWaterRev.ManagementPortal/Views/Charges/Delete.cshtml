@@ -1,0 +1,95 @@
+﻿@model ChargeViewModel
+
+@{
+    ViewBag.Title = "Delete Charge";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Charge</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartRange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartRange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndRange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndRange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastEditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastEditDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargeScheduleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargeScheduleName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChargeScheduleEffectiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChargeScheduleEffectiveDate)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+
+    @Html.ActionLink("Back to List", "Index",controllerName:"Charges", routeValues:new {}, htmlAttributes:new {@class="btn btn-default"})
+</div>

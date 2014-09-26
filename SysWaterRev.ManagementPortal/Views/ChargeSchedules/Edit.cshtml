@@ -1,0 +1,69 @@
+﻿@model ChargeScheduleViewModel
+
+@{
+    ViewBag.Title = "Edit Charge Schedule";
+}
+@section ContentHeader
+{
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Charge Schedule
+            <small>Edit</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-money"></i> Charge Schedule</a></li>
+            <li class="active">Edit</li>
+        </ol>
+    </section>
+}
+<section class="content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ChargeScheduleId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChargeScheduleName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChargeScheduleName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChargeScheduleName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EffectiveDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Kendo().DatePickerFor(x => x.EffectiveDate).Start(CalendarView.Month).Min(DateTime.Now).Value(Model.EffectiveDate)
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+            <div>
+                @Html.ActionLink("Back to List",actionName: "Index", controllerName:"Customers",htmlAttributes:new {@class="btn btn-default fa fa-arrow-left"}, routeValues:new {})
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
