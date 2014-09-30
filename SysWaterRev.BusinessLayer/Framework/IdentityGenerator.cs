@@ -6,8 +6,8 @@ namespace SysWaterRev.BusinessLayer.Framework
     {
         public static Guid NewSequentialGuid()
         {
-            var uid = Guid.NewGuid().ToByteArray();
-            var binDate = BitConverter.GetBytes(DateTime.UtcNow.Ticks);
+            byte[] uid = Guid.NewGuid().ToByteArray();
+            byte[] binDate = BitConverter.GetBytes(DateTime.UtcNow.Ticks);
 
             var sequentialGuid = new byte[uid.Length];
 
@@ -20,7 +20,7 @@ namespace SysWaterRev.BusinessLayer.Framework
             sequentialGuid[6] = uid[6];
 
             // Verification - Set to 1100
-            sequentialGuid[7] = (byte)(0xc0 | (0xf & uid[7]));
+            sequentialGuid[7] = (byte) (0xc0 | (0xf & uid[7]));
 
             // Sequential part
             sequentialGuid[9] = binDate[0];
@@ -38,14 +38,14 @@ namespace SysWaterRev.BusinessLayer.Framework
         public static string GenerateCustomerNumber()
         {
             var rand = new Random();
-            var customerNumber = string.Format("CUST{0}", rand.Next(1000, 100000));
+            string customerNumber = string.Format("CUST{0}", rand.Next(1000, 100000));
             return customerNumber;
         }
 
         public static string GenerateEmployeeNumber()
         {
             var rand = new Random();
-            var employeeNumber = string.Format("EMP{0}", rand.Next(1000, 100000));
+            string employeeNumber = string.Format("EMP{0}", rand.Next(1000, 100000));
             return employeeNumber;
         }
     }

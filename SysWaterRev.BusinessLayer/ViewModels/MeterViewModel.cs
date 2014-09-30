@@ -6,6 +6,9 @@ namespace SysWaterRev.BusinessLayer.ViewModels
 {
     public class MeterViewModel : BaseViewModel
     {
+        private string customerName;
+        private string meterNumberWithOwner;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid MeterId { get; set; }
@@ -22,8 +25,6 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         [StringLength(maximumLength: 8, MinimumLength = 8, ErrorMessage = "Meter Number Must be 8 Characters")]
         public string MeterNumber { get; set; }
 
-        private string meterNumberWithOwner;
-
         public string MeterNumberWithOwner
         {
             get { return string.Format("{0} : {1}", CustomerName, MeterNumber); }
@@ -31,8 +32,6 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         }
 
         public Guid? CustomerId { get; set; }
-
-        private string customerName;
 
         [Display(Name = "Customer Name")]
         [DataType(DataType.Text)]

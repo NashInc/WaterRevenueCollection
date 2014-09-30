@@ -39,14 +39,8 @@ namespace SysWaterRev.API.Controllers
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
@@ -78,7 +72,7 @@ namespace SysWaterRev.API.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (user == null)
             {
@@ -167,8 +161,9 @@ namespace SysWaterRev.API.Controllers
             AuthenticationTicket ticket = AccessTokenFormat.Unprotect(model.ExternalAccessToken);
 
             if (ticket == null || ticket.Identity == null || (ticket.Properties != null
-                && ticket.Properties.ExpiresUtc.HasValue
-                && ticket.Properties.ExpiresUtc.Value < DateTimeOffset.UtcNow))
+                                                              && ticket.Properties.ExpiresUtc.HasValue
+                                                              &&
+                                                              ticket.Properties.ExpiresUtc.Value < DateTimeOffset.UtcNow))
             {
                 return BadRequest("External login failure.");
             }
@@ -260,7 +255,7 @@ namespace SysWaterRev.API.Controllers
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                   OAuthDefaults.AuthenticationType);
+                    OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -270,7 +265,7 @@ namespace SysWaterRev.API.Controllers
             else
             {
                 IEnumerable<Claim> claims = externalLogin.GetClaims();
-                ClaimsIdentity identity = new ClaimsIdentity(claims, OAuthDefaults.AuthenticationType);
+                var identity = new ClaimsIdentity(claims, OAuthDefaults.AuthenticationType);
                 Authentication.SignIn(identity);
             }
 
@@ -283,7 +278,7 @@ namespace SysWaterRev.API.Controllers
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
         {
             IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
-            List<ExternalLoginViewModel> logins = new List<ExternalLoginViewModel>();
+            var logins = new List<ExternalLoginViewModel>();
 
             string state;
 
@@ -297,7 +292,7 @@ namespace SysWaterRev.API.Controllers
                 state = null;
             }
 
-            foreach (var description in descriptions)
+            foreach (AuthenticationDescription description in descriptions)
             {
                 var login = new ExternalLoginViewModel
                 {
@@ -308,7 +303,7 @@ namespace SysWaterRev.API.Controllers
                         response_type = "token",
                         client_id = Startup.PublicClientId,
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
-                        state = state
+                        state
                     }),
                     State = state
                 };
@@ -328,7 +323,7 @@ namespace SysWaterRev.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -351,13 +346,13 @@ namespace SysWaterRev.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var info = await Authentication.GetExternalLoginInfoAsync();
+            ExternalLoginInfo info = await Authentication.GetExternalLoginInfoAsync();
             if (info == null)
             {
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)
@@ -471,20 +466,20 @@ namespace SysWaterRev.API.Controllers
 
         private static class RandomOAuthStateGenerator
         {
-            private static RandomNumberGenerator _random = new RNGCryptoServiceProvider();
+            private static readonly RandomNumberGenerator _random = new RNGCryptoServiceProvider();
 
             public static string Generate(int strengthInBits)
             {
                 const int bitsPerByte = 8;
 
-                if (strengthInBits % bitsPerByte != 0)
+                if (strengthInBits%bitsPerByte != 0)
                 {
                     throw new ArgumentException("strengthInBits must be evenly divisible by 8.", "strengthInBits");
                 }
 
-                int strengthInBytes = strengthInBits / bitsPerByte;
+                int strengthInBytes = strengthInBits/bitsPerByte;
 
-                byte[] data = new byte[strengthInBytes];
+                var data = new byte[strengthInBytes];
                 _random.GetBytes(data);
                 return HttpServerUtility.UrlTokenEncode(data);
             }

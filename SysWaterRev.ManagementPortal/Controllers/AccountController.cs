@@ -75,7 +75,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     return View("Lockout");
 
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
+                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, model.RememberMe});
 
                 case SignInStatus.Failure:
                 default:
@@ -86,14 +86,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> MobileLogin([Bind(Include = "Email,Password,RememberMe")]LoginViewModel model)
+        public async Task<ActionResult> MobileLogin([Bind(Include = "Email,Password,RememberMe")] LoginViewModel model)
         {
             var loginResult = new LoginResult();
-            var result =
+            SignInStatus result =
                 await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.HasFlag(SignInStatus.Success))
             {
-                var details = await UserManager.FindAsync(model.Email, model.Password);
+                ApplicationUser details = await UserManager.FindAsync(model.Email, model.Password);
                 //var role = (await UserManager.IsInRole(details.Id));
                 if (details != null && UserManager.IsInRole(details.Id, SimpleRevCollectionRoles.Employees))
                 {
@@ -129,7 +129,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 string code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
         }
 
         //
@@ -184,7 +184,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -313,7 +313,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider,
-                Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
         //
@@ -328,9 +328,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
             }
             IList<string> userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             List<SelectListItem> factorOptions =
-                userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
+                userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose}).ToList();
             return
-                View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+                View(new SendCodeViewModel {Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe});
         }
 
         //
@@ -351,7 +351,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 return View("Error");
             }
             return RedirectToAction("VerifyCode",
-                new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
+                new {Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe});
         }
 
         //
@@ -376,7 +376,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     return View("Lockout");
 
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = false});
 
                 case SignInStatus.Failure:
                 default:
@@ -384,7 +384,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation",
-                        new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                        new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
             }
         }
 
@@ -409,7 +409,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -443,6 +443,16 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public ActionResult ExternalLoginFailure()
         {
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                UserManager.Dispose();
+                SignInManager.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         #region Helpers
@@ -494,7 +504,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
                 if (UserId != null)
                 {
                     properties.Dictionary[XsrfKey] = UserId;
@@ -504,15 +514,5 @@ namespace SysWaterRev.ManagementPortal.Controllers
         }
 
         #endregion Helpers
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                UserManager.Dispose();
-                SignInManager.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

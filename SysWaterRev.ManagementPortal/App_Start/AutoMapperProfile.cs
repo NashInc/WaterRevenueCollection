@@ -19,14 +19,17 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.SystemSettingId, expr => expr.MapFrom(z => z.SystemSettingId))
                 .ForMember(x => x.DateCreated, expr => expr.MapFrom(z => z.DateCreated))
                 .ForMember(x => x.CreatedBy, expr => expr.MapFrom(z => z.CreatedBy))
-                .ForMember(x => x.CurrentChargeScheduleName, expr => expr.MapFrom(z => z.CurrentChargeSchedule.ChargeScheduleName))
+                .ForMember(x => x.CurrentChargeScheduleName,
+                    expr => expr.MapFrom(z => z.CurrentChargeSchedule.ChargeScheduleName))
                 .ForMember(x => x.ChargeScheduleCreatedBy, expr => expr.MapFrom(z => z.CurrentChargeSchedule.CreatedBy))
                 .ForMember(x => x.LastEditDate, expr => expr.MapFrom(z => z.LastEditDate))
                 .ForMember(x => x.LastEditedBy, expr => expr.MapFrom(z => z.LastEditedBy))
                 .ForMember(x => x.SetBy, expr => expr.MapFrom(z => z.SetBy))
                 .ForMember(x => x.ChargeScheduleId, expr => expr.MapFrom(z => z.ChargeScheduleId))
-                .ForMember(x => x.ChargeScheduleActivatedDate, expr => expr.MapFrom(z => z.CurrentChargeSchedule.DateActivated))
-                .ForMember(x => x.ChargeScheduleEffectiveDate, expr => expr.MapFrom(z => z.CurrentChargeSchedule.EffectiveDate))
+                .ForMember(x => x.ChargeScheduleActivatedDate,
+                    expr => expr.MapFrom(z => z.CurrentChargeSchedule.DateActivated))
+                .ForMember(x => x.ChargeScheduleEffectiveDate,
+                    expr => expr.MapFrom(z => z.CurrentChargeSchedule.EffectiveDate))
                 .ForMember(x => x.SystemSettingId, expr => expr.MapFrom(z => z.SystemSettingId));
             Mapper.CreateMap<Customer, CustomerViewModel>()
                 .ForMember(x => x.MetersOwned, expr => expr.MapFrom(z => z.Meters.Count))
@@ -67,7 +70,7 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.CreatedBy, expr => expr.MapFrom(z => z.CreatedBy))
                 .ForMember(x => x.DateCreated, expr => expr.MapFrom(z => z.DateCreated))
                 .ForMember(x => x.LastEditDate, expr => expr.MapFrom(z => z.LastEditDate))
-                 .ForMember(x => x.Identification, expr => expr.MapFrom(z => z.Identification))
+                .ForMember(x => x.Identification, expr => expr.MapFrom(z => z.Identification))
                 .ForMember(x => x.LastEditedBy, expr => expr.MapFrom(z => z.LastEditedBy));
             Mapper.CreateMap<Reading, ReadingViewModel>()
                 .ForMember(x => x.ReadingId, expr => expr.MapFrom(z => z.ReadingId))
@@ -97,10 +100,11 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.EmployeeFullName, expr => expr.Ignore())
                 .ForMember(x => x.CustomerId, expr => expr.Ignore())
                 .ForMember(x => x.PreviousReadingValue, expr => expr.MapFrom(z => z.PreviousReading.ReadingValue))
-                .ForMember(x => x.PreviousCorrectedReadingValue, expr => expr.MapFrom(z => z.PreviousReading.CorrectionValue))
+                .ForMember(x => x.PreviousCorrectedReadingValue,
+                    expr => expr.MapFrom(z => z.PreviousReading.CorrectionValue))
                 .ForMember(x => x.UnitsConsumedWithCorrection, expr => expr.Ignore())
-                  .ForMember(x => x.UnitsConsumedWithNoCorrection, expr => expr.Ignore())
-                  .ForMember(x => x.PreviousReadingId, expr => expr.MapFrom(z => z.PreviousReading.ReadingId))
+                .ForMember(x => x.UnitsConsumedWithNoCorrection, expr => expr.Ignore())
+                .ForMember(x => x.PreviousReadingId, expr => expr.MapFrom(z => z.PreviousReading.ReadingId))
                 .ForMember(x => x.UserName, expr => expr.Ignore());
             Mapper.CreateMap<Meter, MeterViewModel>()
                 .ForMember(x => x.FirstName, expr => expr.MapFrom(z => z.OwnerCustomer.FirstName))

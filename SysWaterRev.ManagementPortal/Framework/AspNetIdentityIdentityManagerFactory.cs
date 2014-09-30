@@ -1,8 +1,10 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SysWaterRev.BusinessLayer.Migrations;
 using SysWaterRev.BusinessLayer.Models;
 using Thinktecture.IdentityManager;
+using Thinktecture.IdentityManager.AspNetIdentity;
 
 namespace SysWaterRev.ManagementPortal.Framework
 {
@@ -17,11 +19,12 @@ namespace SysWaterRev.ManagementPortal.Framework
         {
             var db = new ApplicationDbContext();
             var userStore = new UserStore<ApplicationUser>(db);
-            var userMgr = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(userStore);
+            var userMgr = new UserManager<ApplicationUser>(userStore);
             var roleStore = new RoleStore<ApplicationRole>(db);
-            var roleMgr = new Microsoft.AspNet.Identity.RoleManager<ApplicationRole>(roleStore);
+            var roleMgr = new RoleManager<ApplicationRole>(roleStore);
 
-            var svc = new Thinktecture.IdentityManager.AspNetIdentity.AspNetIdentityManagerService<ApplicationUser, string, ApplicationRole, string>(userMgr, roleMgr);
+            var svc = new AspNetIdentityManagerService<ApplicationUser, string, ApplicationRole, string>(userMgr,
+                roleMgr);
 
             return new DisposableIdentityManagerService(svc, db);
 

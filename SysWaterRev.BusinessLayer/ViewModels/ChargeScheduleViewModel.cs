@@ -6,6 +6,8 @@ namespace SysWaterRev.BusinessLayer.ViewModels
 {
     public class ChargeScheduleViewModel : BaseViewModel
     {
+        private string chargeScheduleNameAndDate;
+
         [Key]
         public Guid ChargeScheduleId { get; set; }
 
@@ -39,15 +41,13 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         [Display(Name = "Effective Date")]
         public DateTime? EffectiveDate { get; set; }
 
-        private string chargeScheduleNameAndDate;
-
         [DisplayName("Schedule Name")]
         public string ChargeScheduleNameAndDate
         {
             get
             {
                 return chargeScheduleNameAndDate ??
-                       string.Format("{0} {1}", ChargeScheduleName, EffectiveDate.ToString());
+                       string.Format("{0} {1}", ChargeScheduleName, EffectiveDate);
             }
             set { chargeScheduleNameAndDate = value; }
         }

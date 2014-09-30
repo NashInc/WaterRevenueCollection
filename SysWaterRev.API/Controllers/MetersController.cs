@@ -16,6 +16,7 @@ namespace SysWaterRev.API.Controllers
     public class MetersController : ApiController
     {
         private readonly ApplicationDbContext db;
+
         public MetersController()
         {
             db = new ApplicationDbContext();
@@ -44,7 +45,7 @@ namespace SysWaterRev.API.Controllers
         [HttpGet]
         [Route("meters/search/{searchQuery}")]
         public async Task<IHttpActionResult> Search(string searchQuery)
-        {            
+        {
             var searchResult =
                 await db.Meters.Include(x => x.OwnerCustomer)
                     .Include(x => x.MeterReadings)

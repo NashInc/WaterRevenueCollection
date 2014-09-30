@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
@@ -36,16 +37,17 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpPost]
         public JsonResult GetReadingsForEmployee([DataSourceRequest] DataSourceRequest request, Guid? EmployeeId)
         {
-            var employeeWithMeters = db.Readings.Where(x => x.EmployeeId == EmployeeId).Select(x => new ReadingViewModel
-            {
-                ReadingId = x.ReadingId,
-                MeterId = x.MeterId,
-                Latitude = x.Latitude,
-                Longitude = x.Longitude,
-                IsConfirmed = x.IsConfirmed,
-                ReadingValue = x.ReadingValue,
-                DateCreated = x.DateCreated,
-            }).ToDataSourceResult(request);
+            DataSourceResult employeeWithMeters = db.Readings.Where(x => x.EmployeeId == EmployeeId)
+                .Select(x => new ReadingViewModel
+                {
+                    ReadingId = x.ReadingId,
+                    MeterId = x.MeterId,
+                    Latitude = x.Latitude,
+                    Longitude = x.Longitude,
+                    IsConfirmed = x.IsConfirmed,
+                    ReadingValue = x.ReadingValue,
+                    DateCreated = x.DateCreated,
+                }).ToDataSourceResult(request);
             return Json(employeeWithMeters, "application/json");
         }
 
@@ -53,7 +55,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var employeesViewModel =
+            List<EmployeeViewModel> employeesViewModel =
                 Map<List<Employee>, List<EmployeeViewModel>>(await db.Employees.ToListAsync());
             return View(employeesViewModel);
         }
@@ -66,19 +68,19 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var employee = await db.Employees.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
 
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            var employeeViewModel = Map<Employee, EmployeeViewModel>(employee);
+            EmployeeViewModel employeeViewModel = Map<Employee, EmployeeViewModel>(employee);
             return View(employeeViewModel);
         }
 
         public async Task<ActionResult> GetCascadeEmployee()
         {
-            var employeeViewModel
+            List<EmployeeViewModel> employeeViewModel
                 = Map<List<Employee>, List<EmployeeViewModel>>(await db.Employees.ToListAsync());
             return Json(employeeViewModel, "application/json", JsonRequestBehavior.AllowGet);
         }
@@ -122,9 +124,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     PhoneNumber = employee.PhoneNumber
                 }
             };
-            var userResult = await usermanager.CreateAsync(appUser);
+            IdentityResult userResult = await usermanager.CreateAsync(appUser);
             if (!userResult.Succeeded) return View(employee);
-            var addToRoleResult = await usermanager.AddToRolesAsync(appUser.Id, SelectedRoles);
+            IdentityResult addToRoleResult = await usermanager.AddToRolesAsync(appUser.Id, SelectedRoles);
             if (!addToRoleResult.Succeeded) return View(employee);
             TempData.Add("EmployeeId", appUser.EmployeeDetails.EmployeeId);
             return RedirectToAction("Index");
@@ -138,12 +140,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var employee = await db.Employees.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            var employeeViewModel = Map<Employee, EmployeeViewModel>(employee);
+            EmployeeViewModel employeeViewModel = Map<Employee, EmployeeViewModel>(employee);
             return View(employeeViewModel);
         }
 
@@ -158,7 +160,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     "EmployeeId,FirstName,MiddleName,Surname,PhoneNumber,EmailAddress,Identification,EmployeeNumber,EmployeeGender"
                 )] EmployeeViewModel employee)
         {
-            var employeeModel =
+            Employee employeeModel =
                 await
                     db.Employees
                         .FirstOrDefaultAsync(z => z.EmployeeId == employee.EmployeeId);
@@ -202,12 +204,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == id);
+            Employee employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            var employeeModel = Map<Employee, EmployeeViewModel>(employee);
+            EmployeeViewModel employeeModel = Map<Employee, EmployeeViewModel>(employee);
             return View(employeeModel);
         }
 
@@ -216,7 +218,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            var employee = await db.Employees.FindAsync(id);
+            Employee employee = await db.Employees.FindAsync(id);
             db.Employees.Remove(employee);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

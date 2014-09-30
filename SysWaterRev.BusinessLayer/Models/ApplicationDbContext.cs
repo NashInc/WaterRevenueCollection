@@ -6,6 +6,11 @@ namespace SysWaterRev.BusinessLayer.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+        }
+
         public ApplicationDbContext()
             : base("Name=DefaultConnection", false)
         {
@@ -28,11 +33,6 @@ namespace SysWaterRev.BusinessLayer.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        static ApplicationDbContext()
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
     }
 }

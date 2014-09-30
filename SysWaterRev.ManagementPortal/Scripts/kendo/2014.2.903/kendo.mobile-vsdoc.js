@@ -5,7 +5,6 @@ var kendo = {
     data: {}
 };
 
-
 if (!kendo) {
     kendo = {};
 }
@@ -13,9 +12,6 @@ if (!kendo) {
 kendo.Class = function() { };
 
 kendo.Class.prototype = {
-
-
-
     bind: function(event, callback) {
         /// <summary>
         /// Binds to a widget event.
@@ -31,7 +27,6 @@ kendo.Class.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoClass = function() {
@@ -53,29 +48,21 @@ $.fn.kendoClass = function(options) {
     /// </param>
 };
 
-
 kendo.Color = function() { };
 
 kendo.Color.prototype = {
-
-
-
-
     diff: function() {
         /// <summary>
         /// Computes the relative luminance between two colors.
         /// </summary>
         /// <returns type="Number">The relative luminance.</returns>
-
     },
-
 
     equals: function() {
         /// <summary>
         /// Compares two color objects for equality.
         /// </summary>
         /// <returns type="Boolean">returns true if the two colors are the same. Otherwise, false</returns>
-
     },
 
     bind: function(event, callback) {
@@ -93,7 +80,6 @@ kendo.Color.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoColor = function() {
@@ -115,14 +101,9 @@ $.fn.kendoColor = function(options) {
     /// </param>
 };
 
-
 kendo.Layout = function() { };
 
 kendo.Layout.prototype = {
-
-
-
-
     showIn: function(container,view,transitionClass) {
         /// <summary>
         /// Renders the View element in the element specified by the selector
@@ -130,7 +111,6 @@ kendo.Layout.prototype = {
         /// <param name="container" type="String" >The selector of the container in which the view element will be appended.</param>
         /// <param name="view" type="kendo.View" >The view instance that will be rendered.</param>
         /// <param name="transitionClass" type="string" >Optional. If provided, the new view will replace the current one with a replace effect.</param>
-
     },
 
     bind: function(event, callback) {
@@ -148,7 +128,6 @@ kendo.Layout.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoLayout = function() {
@@ -170,23 +149,16 @@ $.fn.kendoLayout = function(options) {
     /// </param>
 };
 
-
 kendo.Observable = function() { };
 
 kendo.Observable.prototype = {
-
-
-
-
     bind: function(eventName,handler) {
         /// <summary>
         /// Attaches a handler to an event.
         /// </summary>
         /// <param name="eventName" type="String" >The name of the event.</param>
         /// <param name="handler" type="Function" >A function to execute each time the event is triggered. That function should have a single parameter which will contain any event specific data.</param>
-
     },
-
 
     one: function(eventName,handler) {
         /// <summary>
@@ -194,9 +166,7 @@ kendo.Observable.prototype = {
         /// </summary>
         /// <param name="eventName" type="String" >The name of the event.</param>
         /// <param name="handler" type="Function" >A function to execute each time the event is triggered. That function should have a single parameter which will contain any event specific data.</param>
-
     },
-
 
     trigger: function(eventName,eventData) {
         /// <summary>
@@ -204,9 +174,7 @@ kendo.Observable.prototype = {
         /// </summary>
         /// <param name="eventName" type="String" >The name of the event to trigger.</param>
         /// <param name="eventData" type="Object" >Optional event data which will be passed as an argument to the event handlers.</param>
-
     },
-
 
     unbind: function(eventName,handler) {
         /// <summary>
@@ -214,12 +182,9 @@ kendo.Observable.prototype = {
         /// </summary>
         /// <param name="eventName" type="String" >The name of the event. If not specified all handlers of all events will be removed.</param>
         /// <param name="handler" type="Function" >The handler which should no longer be executed. If not specified all handlers listening to that event will be removed.</param>
-
     },
 
-
     self: null
-
 };
 
 $.fn.getKendoObservable = function() {
@@ -241,31 +206,22 @@ $.fn.kendoObservable = function(options) {
     /// </param>
 };
 
-
 kendo.Router = function() { };
 
 kendo.Router.prototype = {
-
-
-
-
     start: function() {
         /// <summary>
         /// Activates the router binding to the URL changes.
         /// </summary>
-
     },
-
 
     route: function(route,callback) {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="route" type="String" >The route definition.</param>
         /// <param name="callback" type="Function" >The callback to be executed when the route is matched.</param>
-
     },
-
 
     navigate: function(route,silent) {
         /// <summary>
@@ -273,9 +229,7 @@ kendo.Router.prototype = {
         /// </summary>
         /// <param name="route" type="String" >The route to navigate to.</param>
         /// <param name="silent" type="Boolean" >If set to true, the router callbacks will not be called.</param>
-
     },
-
 
     replace: function(route,silent) {
         /// <summary>
@@ -283,15 +237,12 @@ kendo.Router.prototype = {
         /// </summary>
         /// <param name="route" type="String" >The route to navigate to.</param>
         /// <param name="silent" type="Boolean" >If set to true, the router callbacks will not be called.</param>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Unbinds the router instance listeners from the URL fragment part changes.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -309,7 +260,6 @@ kendo.Router.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoRouter = function() {
@@ -341,21 +291,14 @@ $.fn.kendoRouter = function(options) {
     /// </param>
 };
 
-
 kendo.View = function() { };
 
 kendo.View.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Removes the View element from the DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     render: function(container) {
         /// <summary>
@@ -364,7 +307,6 @@ kendo.View.prototype = {
         /// </summary>
         /// <param name="container" type="jQuery" >(optional) the element in which the view element will be appended.</param>
         /// <returns type="jQuery">the view element.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -382,7 +324,6 @@ kendo.View.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoView = function() {
@@ -413,19 +354,13 @@ $.fn.kendoView = function(options) {
     /// </param>
 };
 
-
 kendo.data.Binder = function() { };
 
 kendo.data.Binder.prototype = {
-
-
-
-
     refresh: function() {
         /// <summary>
         /// Invoked by the Kendo UI MVVM framework when the bound view model value is changed. The binder should update the UI (HTML element or Kendo UI widget) to reflect the view model change.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -443,7 +378,6 @@ kendo.data.Binder.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoBinder = function() {
@@ -465,23 +399,16 @@ $.fn.kendoBinder = function(options) {
     /// </param>
 };
 
-
 kendo.data.DataSource = function() { };
 
 kendo.data.DataSource.prototype = {
-
-
-
-
     add: function(model) {
         /// <summary>
         /// Appends a data item to the data source.
         /// </summary>
         /// <param name="model" type="Object" >Either a kendo.data.Model instance or JavaScript object containing the data item field values.</param>
         /// <returns type="kendo.data.Model">the data item which is inserted.</returns>
-
     },
-
 
     aggregate: function(value) {
         /// <summary>
@@ -489,18 +416,14 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="value" type="Object" >The aggregate configuration. Accepts the same values as the aggregate option.</param>
         /// <returns type="Array">the current aggregate configuration.</returns>
-
     },
-
 
     aggregates: function() {
         /// <summary>
         /// Returns the aggregate results.
         /// </summary>
         /// <returns type="Object">the aggregate results. There is a key for every aggregated field.</returns>
-
     },
-
 
     at: function(index) {
         /// <summary>
@@ -508,18 +431,14 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="index" type="Number" >The zero-based index of the data item.</param>
         /// <returns type="kendo.data.ObservableObject">the data item at the specified index. Returns undefined if a data item is not found at the specified index.Returns a kendo.data.Model instance if the schema.model option is set.</returns>
-
     },
-
 
     cancelChanges: function(model) {
         /// <summary>
         /// Cancels any pending changes in the data source. Deleted data items are restored, new data items are removed and updated data items are restored to their initial state.
         /// </summary>
         /// <param name="model" type="kendo.data.Model" >The optional data item (model). If specified only the changes of this data item will be discarded. If omitted all changes will be discarded.</param>
-
     },
-
 
     data: function(value) {
         /// <summary>
@@ -530,18 +449,14 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="value" type="Object" >The data items which will replace the current ones in the data source. If omitted the current data items will be returned.</param>
         /// <returns type="kendo.data.ObservableArray">the data items of the data source. Returns empty array if the data source hasn't been populated with data items via the read, fetch or query methods.</returns>
-
     },
-
 
     fetch: function(callback) {
         /// <summary>
         /// Reads the data items from a remote service (if the transport option is set) or from a JavaScript array (if the data option is set).
         /// </summary>
         /// <param name="callback" type="Function" >The optional function which is executed when the remote request is finished.  The function context (available via the this keyword) will be set to the data source instance.</param>
-
     },
-
 
     filter: function(value) {
         /// <summary>
@@ -549,9 +464,7 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="value" type="Object" >The filter configuration. Accepts the same values as the filter option (check there fo more examples).</param>
         /// <returns type="Object">the current filter configuration.</returns>
-
     },
-
 
     get: function(id) {
         /// <summary>
@@ -559,9 +472,7 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="id" type="Object" >The id of the model to look for.</param>
         /// <returns type="kendo.data.Model">the model instance. Returns undefined if a model with the specified id is not found.</returns>
-
     },
-
 
     getByUid: function(uid) {
         /// <summary>
@@ -569,9 +480,7 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="uid" type="String" >The uid of the model to look for.</param>
         /// <returns type="kendo.data.ObservableObject">the model instance. Returns undefined if a model with the specified uid is not found.</returns>
-
     },
-
 
     group: function(value) {
         /// <summary>
@@ -579,18 +488,14 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="value" type="Object" >The grouping configuration. Accepts the same values as the group option.</param>
         /// <returns type="Array">the current grouping configuration.</returns>
-
     },
-
 
     hasChanges: function() {
         /// <summary>
         /// Cheks if the data itams have changed.
         /// </summary>
         /// <returns type="Boolean">returns true if the data items have changed. Otherwise, false.</returns>
-
     },
-
 
     indexOf: function(dataItem) {
         /// <summary>
@@ -598,9 +503,7 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="dataItem" type="kendo.data.ObservableObject" >The target data item.</param>
         /// <returns type="Number">the index of the specified data item. Returns -1 if the data item is not found.</returns>
-
     },
-
 
     insert: function(index,model) {
         /// <summary>
@@ -609,9 +512,7 @@ kendo.data.DataSource.prototype = {
         /// <param name="index" type="Number" >The zero-based index at which the data item will be inserted.</param>
         /// <param name="model" type="Object" >Either a kendo.data.Model instance or JavaScript object containing the field values.</param>
         /// <returns type="kendo.data.Model">the data item which is inserted.</returns>
-
     },
-
 
     page: function(page) {
         /// <summary>
@@ -619,9 +520,7 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="page" type="Number" >The new page.</param>
         /// <returns type="Number">the current page.</returns>
-
     },
-
 
     pageSize: function(size) {
         /// <summary>
@@ -629,27 +528,21 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="size" type="Number" >The new page size.</param>
         /// <returns type="Number">the current page size.</returns>
-
     },
-
 
     pushCreate: function(items) {
         /// <summary>
         /// Appends the specified data item(s) to the data source without marking them as "new". The data source will not sync data items appended via pushCreate.
         /// </summary>
         /// <param name="items" type="Object" >The data item or data items to append to the data source.</param>
-
     },
-
 
     pushDestroy: function(items) {
         /// <summary>
         /// Removes the specified data item(s) from the data source without marking them as "removed". The data source will not sync data items appended via pushDestroy.
         /// </summary>
         /// <param name="items" type="Object" >The data item or data items to remove from the data source.</param>
-
     },
-
 
     pushUpdate: function(items) {
         /// <summary>
@@ -657,36 +550,28 @@ kendo.data.DataSource.prototype = {
 /// If the data items are not found (using schema.model.id) they will be appended.
         /// </summary>
         /// <param name="items" type="Object" >The data item or data items to update.</param>
-
     },
-
 
     query: function(options) {
         /// <summary>
         /// Executes the specified query over the data items. Makes a HTTP request if bound to a remote service.
         /// </summary>
         /// <param name="options" type="" >The query options which should be applied.</param>
-
     },
-
 
     read: function(data) {
         /// <summary>
         /// Reads data items from a remote service (if the transport option is set) or from a JavaScript array (if the data option is set).
         /// </summary>
         /// <param name="data" type="Object" >Optional data to pass to the remote service.</param>
-
     },
-
 
     remove: function(model) {
         /// <summary>
         /// Removes the specified data item from the data source.
         /// </summary>
         /// <param name="model" type="kendo.data.Model" >The data item which should be removed.</param>
-
     },
-
 
     sort: function(value) {
         /// <summary>
@@ -694,42 +579,33 @@ kendo.data.DataSource.prototype = {
         /// </summary>
         /// <param name="value" type="Object" >The sort configuration. Accepts the same values as the sort option.</param>
         /// <returns type="Array">the current sort configuration.</returns>
-
     },
-
 
     sync: function() {
         /// <summary>
         /// Saves any data item changes.The sync method will request the remote service if:
         /// </summary>
-
     },
-
 
     total: function() {
         /// <summary>
         /// Gets the total number of data items. Uses schema.total if the transport.read option is set.
         /// </summary>
         /// <returns type="Number">the total number of data items. Returns the length of the array returned by the data method if schema.total or transport.read are not set.Returns 0 if the data source hasn't been populated with data items via the read, fetch or query methods.</returns>
-
     },
-
 
     totalPages: function() {
         /// <summary>
         /// Gets the number of available pages.
         /// </summary>
         /// <returns type="Number">the available pages.</returns>
-
     },
-
 
     view: function() {
         /// <summary>
         /// Returns the data items which correspond to the current page, filter, sort and group configuration.To ensure that data is available this method should be used within the change event handler or the fetch method.
         /// </summary>
         /// <returns type="kendo.data.ObservableArray">the data items. Returns groups if the data items are grouped (via the group option or the group method).</returns>
-
     },
 
     bind: function(event, callback) {
@@ -747,7 +623,6 @@ kendo.data.DataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoDataSource = function() {
@@ -763,7 +638,7 @@ $.fn.kendoDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;aggregate — Array 
+    /// &#10;aggregate — Array
     /// &#10;The aggregate(s) which are calculated when the data source populates with data. The supported aggregates are "average", "count", "max", "min" and "sum".
     /// &#10;
     /// &#10;autoSync — Boolean (default: false)
@@ -773,22 +648,22 @@ $.fn.kendoDataSource = function(options) {
     /// &#10;If set to true the data source will batch CRUD operation requests. For example updating two data items would cause one HTTP request instead of two. By default the data source
 /// &#10;makes a HTTP request for every CRUD operation.
     /// &#10;
-    /// &#10;data — Array|String 
+    /// &#10;data — Array|String
     /// &#10;The array of data items which the data source contains. The data source will wrap those items as kendo.data.ObservableObject or kendo.data.Model (if schema.model is set).Can be set to a string value if the schema.type option is set to "xml".
     /// &#10;
-    /// &#10;filter — Array|Object 
+    /// &#10;filter — Array|Object
     /// &#10;The filter(s) which is (are) applied over the data items. By default no filter is applied.
     /// &#10;
-    /// &#10;group — Array|Object 
+    /// &#10;group — Array|Object
     /// &#10;The grouping configuration of the data source. If set the data items will be grouped when the data source is populated. By default grouping is not applied.
     /// &#10;
-    /// &#10;page — Number 
+    /// &#10;page — Number
     /// &#10;The page of data which the data source will return when the view method is invoked or request from the remote service.
     /// &#10;
-    /// &#10;pageSize — Number 
+    /// &#10;pageSize — Number
     /// &#10;The number of data items per page.
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The configuration used to parse the remote service response.
     /// &#10;
     /// &#10;serverAggregates — Boolean (default: false)
@@ -806,14 +681,14 @@ $.fn.kendoDataSource = function(options) {
     /// &#10;serverSorting — Boolean (default: false)
     /// &#10;If set to true the data source will leave the data item sorting implementation to the remote service. By default the data source performs sorting client-side.By default the sort is sent to the server following jQuery's conventions.For example the sort { field: "age", dir: "desc" } is sent as:Use the parameterMap option to send the paging options in a different format.
     /// &#10;
-    /// &#10;sort — Array|Object 
+    /// &#10;sort — Array|Object
     /// &#10;The sort order which will be applied over the data items. By default the data items are not sorted.
     /// &#10;
-    /// &#10;transport — Object 
+    /// &#10;transport — Object
     /// &#10;The configuration used to load and save the data items. A data source is remote or local based on the way of it retrieves data items.Remote data sources load and save data items from and to a remote end-point (a.k.a. remote service or server). The transport option describes the remote service configuration - URL, HTTP verb, HTTP headers etc.
 /// &#10;The transport option can also be used to implement custom data loading and saving.Local data sources are bound to a JavaScript array via the data option.
     /// &#10;
-    /// &#10;type — String 
+    /// &#10;type — String
     /// &#10;If set the data source will use a predefined transport and/or schema.
 /// &#10;The supported values are "odata" which supports the OData v.2 protocol and "signalr".
     /// &#10;
@@ -823,23 +698,16 @@ $.fn.kendoDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.GanttDataSource = function() { };
 
 kendo.data.GanttDataSource.prototype = {
-
-
-
-
     taskAllChildren: function(task) {
         /// <summary>
         /// Returns a list of all child tasks. The search is recursive.
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The parent task. If this parameter is not specified, all gantt tasks will be returned.</param>
         /// <returns type="Array">the list of all child tasks.</returns>
-
     },
-
 
     taskChildren: function(task) {
         /// <summary>
@@ -847,9 +715,7 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The parent task. If this parameter is not specified, all root level tasks will be returned.</param>
         /// <returns type="Array">the list of all direct child tasks.</returns>
-
     },
-
 
     taskLevel: function(task) {
         /// <summary>
@@ -857,9 +723,7 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The reference task.</param>
         /// <returns type="Number">the level of the task in the hierarchy.</returns>
-
     },
-
 
     taskParent: function(task) {
         /// <summary>
@@ -867,9 +731,7 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The reference task.</param>
         /// <returns type="kendo.data.GanttTask">the parent task.</returns>
-
     },
-
 
     taskSiblings: function(task) {
         /// <summary>
@@ -877,9 +739,7 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The reference task.</param>
         /// <returns type="Array">the list of all tasks with the same parent as the parameter task. If the parameter task is a root level task, all root level tasks are returned.</returns>
-
     },
-
 
     taskTree: function(task) {
         /// <summary>
@@ -887,9 +747,7 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The reference task. If this parameter is specified, the result will be all child tasks of this task, ordered by their hierarchical index.</param>
         /// <returns type="Array">the list of all child gantt tasks, ordered by their hierarchical index (Depth-First).</returns>
-
     },
-
 
     update: function(task,taskInfo) {
         /// <summary>
@@ -897,7 +755,6 @@ kendo.data.GanttDataSource.prototype = {
         /// </summary>
         /// <param name="task" type="kendo.data.GanttTask" >The task to be updated.</param>
         /// <param name="taskInfo" type="Object" >The new values, which will be used to update the task.</param>
-
     },
 
     bind: function(event, callback) {
@@ -915,7 +772,6 @@ kendo.data.GanttDataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoGanttDataSource = function() {
@@ -931,7 +787,7 @@ $.fn.kendoGanttDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The schema configuration of the GanttDataSource.
     /// &#10;
     /// </summary>
@@ -940,13 +796,9 @@ $.fn.kendoGanttDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.GanttDependency = function() { };
 
 kendo.data.GanttDependency.prototype = {
-
-
-
     bind: function(event, callback) {
         /// <summary>
         /// Binds to a widget event.
@@ -962,7 +814,6 @@ kendo.data.GanttDependency.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoGanttDependency = function() {
@@ -978,16 +829,16 @@ $.fn.kendoGanttDependency = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;id — String|Number|Object 
+    /// &#10;id — String|Number|Object
     /// &#10;The mandatory unique identifier of the dependency.
     /// &#10;
-    /// &#10;predecessorId — String|Number|Object 
+    /// &#10;predecessorId — String|Number|Object
     /// &#10;The  mandatory 'id' of the predecessor task.
     /// &#10;
-    /// &#10;successorId — String|Number|Object 
+    /// &#10;successorId — String|Number|Object
     /// &#10;The  mandatory 'id' of the successor task.
     /// &#10;
-    /// &#10;type — String|Number|Object 
+    /// &#10;type — String|Number|Object
     /// &#10;The type of the dependency. The type is a value between 0 and 3, representing the four different dependency types: 0 - Finish-Finish, 1 - Finish-Start, 2 - Start-Finish, 3 - Start-Start.
     /// &#10;
     /// </summary>
@@ -996,23 +847,16 @@ $.fn.kendoGanttDependency = function(options) {
     /// </param>
 };
 
-
 kendo.data.GanttDependencyDataSource = function() { };
 
 kendo.data.GanttDependencyDataSource.prototype = {
-
-
-
-
     dependencies: function(id) {
         /// <summary>
         /// Returns a list of all dependencies for a certain task.
         /// </summary>
         /// <param name="id" type="Object" >The id of the gantt task, based on which the dependencies are filtered.</param>
         /// <returns type="Array">the list of all task dependencies.</returns>
-
     },
-
 
     predecessors: function(id) {
         /// <summary>
@@ -1020,9 +864,7 @@ kendo.data.GanttDependencyDataSource.prototype = {
         /// </summary>
         /// <param name="id" type="Object" >The id of the gantt task, based on which the dependencies are filtered.</param>
         /// <returns type="Array">the list of all task predecessors.</returns>
-
     },
-
 
     successors: function(id) {
         /// <summary>
@@ -1030,7 +872,6 @@ kendo.data.GanttDependencyDataSource.prototype = {
         /// </summary>
         /// <param name="id" type="Object" >The id of the gantt task, based on which the dependencies are filtered.</param>
         /// <returns type="Array">the list of all task successors.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1048,7 +889,6 @@ kendo.data.GanttDependencyDataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoGanttDependencyDataSource = function() {
@@ -1064,7 +904,7 @@ $.fn.kendoGanttDependencyDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The schema configuration of the GanttDependencyDataSource.
     /// &#10;
     /// </summary>
@@ -1073,29 +913,21 @@ $.fn.kendoGanttDependencyDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.GanttTask = function() { };
 
 kendo.data.GanttTask.prototype = {
-
-
-
-
     duration: function() {
         /// <summary>
         /// Returns the gantt task length in milliseconds.
         /// </summary>
         /// <returns type="Number">the length of the task.</returns>
-
     },
-
 
     isMilestone: function() {
         /// <summary>
         /// Checks whether the event has zero duration.
         /// </summary>
         /// <returns type="Boolean">return true if the task start is equal to the task end.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1113,7 +945,6 @@ kendo.data.GanttTask.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoGanttTask = function() {
@@ -1129,13 +960,13 @@ $.fn.kendoGanttTask = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;end — Date 
+    /// &#10;end — Date
     /// &#10;The date at which the gantt task ends. The end date is mandatory.
     /// &#10;
     /// &#10;expanded — Boolean (default: true)
     /// &#10;If set to true the task is expanded and it's child tasks are visible.
     /// &#10;
-    /// &#10;id — String|Number|Object 
+    /// &#10;id — String|Number|Object
     /// &#10;The mandatory unique identifier of the task.
     /// &#10;
     /// &#10;orderId — String|Number|Object (default: 0)
@@ -1147,7 +978,7 @@ $.fn.kendoGanttTask = function(options) {
     /// &#10;percentComplete — String|Number|Object (default: 0)
     /// &#10;The percentage of completion of the task. A value between 0 and 1, representing how much of a task is completed.
     /// &#10;
-    /// &#10;start — Date 
+    /// &#10;start — Date
     /// &#10;The date at which the gantt task starts. The start date is mandatory.
     /// &#10;
     /// &#10;summary — Boolean (default: true)
@@ -1162,13 +993,9 @@ $.fn.kendoGanttTask = function(options) {
     /// </param>
 };
 
-
 kendo.data.HierarchicalDataSource = function() { };
 
 kendo.data.HierarchicalDataSource.prototype = {
-
-
-
     bind: function(event, callback) {
         /// <summary>
         /// Binds to a widget event.
@@ -1184,7 +1011,6 @@ kendo.data.HierarchicalDataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoHierarchicalDataSource = function() {
@@ -1200,7 +1026,7 @@ $.fn.kendoHierarchicalDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The schema configuration. See the DataSource.schema configuration for all available options.
     /// &#10;
     /// </summary>
@@ -1209,21 +1035,14 @@ $.fn.kendoHierarchicalDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.Model = function() { };
 
 kendo.data.Model.prototype = {
-
-
-
-
     bind: function() {
         /// <summary>
         /// Attaches a handler to an event. Examples and more info can be found in the bind section of the kendo.Observable API reference.
         /// </summary>
-
     },
-
 
     editable: function(field) {
         /// <summary>
@@ -1231,18 +1050,14 @@ kendo.data.Model.prototype = {
         /// </summary>
         /// <param name="field" type="String" >The field to check.</param>
         /// <returns type="Boolean">true if the field is editable; false otherwise.</returns>
-
     },
-
 
     get: function() {
         /// <summary>
         /// Gets the value of the specified field. Inherited from kendo.data.ObservableObject. Examples and more info can be found in the get section of the
 /// ObservableObject API reference.
         /// </summary>
-
     },
-
 
     isNew: function() {
         /// <summary>
@@ -1250,27 +1065,21 @@ kendo.data.Model.prototype = {
 /// If the value of the field specified is equal to the default value (specified through the fields configuration) the model is considered as new.
         /// </summary>
         /// <returns type="Boolean">true if the model is new; false otherwise.</returns>
-
     },
-
 
     set: function() {
         /// <summary>
         /// Sets the value of the specified field. Inherited from kendo.data.ObservableObject. Examples and more info can be found in the set section of the
 /// ObservableObject API reference.
         /// </summary>
-
     },
-
 
     toJSON: function() {
         /// <summary>
         /// Creates a plain JavaScript object which contains all fields of the Model. Inherited from kendo.data.ObservableObject. Examples and more info can be found in the toJSON section of the
 /// ObservableObject API reference.
         /// </summary>
-
     },
-
 
     unbind: function(event, callback) {
         /// <summary>
@@ -1279,7 +1088,6 @@ kendo.data.Model.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoModel = function() {
@@ -1301,54 +1109,40 @@ $.fn.kendoModel = function(options) {
     /// </param>
 };
 
-
 kendo.data.Node = function() { };
 
 kendo.data.Node.prototype = {
-
-
-
-
     append: function(model) {
         /// <summary>
         /// Appends a new item to the children data source, and initializes it if necessary.
         /// </summary>
         /// <param name="model" type="Object" >The data for the new item</param>
-
     },
-
 
     level: function() {
         /// <summary>
         /// Gets the current nesting level of the node within the data source.
         /// </summary>
         /// <returns type="Number">the zero based level of the node.</returns>
-
     },
-
 
     load: function() {
         /// <summary>
         /// Loads the child nodes in the child data source, supplying the id of the Node to the request.
         /// </summary>
-
     },
-
 
     loaded: function() {
         /// <summary>
         /// Gets or sets the loaded flag of the Node. Setting the loaded flag to false allows reloading of child items.
         /// </summary>
-
     },
-
 
     parentNode: function() {
         /// <summary>
         /// Gets the parent node.
         /// </summary>
         /// <returns type="kendo.data.Node">the parent of the node; null if the node is a root node or doesn't have a parent.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1366,7 +1160,6 @@ kendo.data.Node.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoNode = function() {
@@ -1388,23 +1181,16 @@ $.fn.kendoNode = function(options) {
     /// </param>
 };
 
-
 kendo.data.ObservableArray = function() { };
 
 kendo.data.ObservableArray.prototype = {
-
-
-
-
     bind: function(eventName,handler) {
         /// <summary>
         /// Attaches an event handler for the specified event.
         /// </summary>
         /// <param name="eventName" type="String" >The name of the event.</param>
         /// <param name="handler" type="Function" >The function which will be invoked when the event is raised.</param>
-
     },
-
 
     join: function(separator) {
         /// <summary>
@@ -1412,27 +1198,21 @@ kendo.data.ObservableArray.prototype = {
 /// Array.prototype.join.
         /// </summary>
         /// <param name="separator" type="String" >Specifies the string to separate each item of the array. If omitted the array items are separated with a comma (,)</param>
-
     },
-
 
     parent: function() {
         /// <summary>
         /// Gets the parent of the array if such parent exists.
         /// </summary>
         /// <returns type="kendo.data.ObservableObject">the parent of the array; undefined if the array is not nested and doesn't have a parent.</returns>
-
     },
-
 
     pop: function() {
         /// <summary>
         /// Removes the last item from an array and returns that item. Equivalent of Array.prototype.pop.
         /// </summary>
         /// <returns type="Object">the item which was removed.</returns>
-
     },
-
 
     push: function() {
         /// <summary>
@@ -1440,9 +1220,7 @@ kendo.data.ObservableArray.prototype = {
 /// The new items are wrapped as ObservableObject if they are complex objects.
         /// </summary>
         /// <returns type="Number">the new length of the array.</returns>
-
     },
-
 
     slice: function(begin,end) {
         /// <summary>
@@ -1452,9 +1230,7 @@ kendo.data.ObservableArray.prototype = {
         /// </summary>
         /// <param name="begin" type="Number" >Zero-based index at which to begin extraction.</param>
         /// <param name="end" type="Number" >Zero-based index at which to end extraction. If end is omitted, slice extracts to the end of the sequence.</param>
-
     },
-
 
     splice: function(index,howMany) {
         /// <summary>
@@ -1464,35 +1240,27 @@ kendo.data.ObservableArray.prototype = {
         /// <param name="index" type="Number" >Index at which to start changing the array. If negative, will begin that many elements from the end.</param>
         /// <param name="howMany" type="Number" >An integer indicating the number of items to remove. If set to 0, no items are removed. In this case, you should specify at least one new item.</param>
         /// <returns type="Array">containing the removed items. The result of the splice method is not an instance of ObvservableArray.</returns>
-
     },
-
 
     shift: function() {
         /// <summary>
         /// Removes the first item from an ObvservableArray and returns that item. Equivalent of Array.prototype.shift.
         /// </summary>
         /// <returns type="Object">the item which was removed.</returns>
-
     },
-
 
     toJSON: function() {
         /// <summary>
         /// Returns a JavaScript Array which represents the contents of the ObservableArray.
         /// </summary>
-
     },
-
 
     unshift: function() {
         /// <summary>
         /// Adds one or more items to the beginning of an ObservableArray and returns the new length.  Equivalent of Array.prototype.unshift.
         /// </summary>
         /// <returns type="Number">the new length of the array.</returns>
-
     },
-
 
     unbind: function(event, callback) {
         /// <summary>
@@ -1501,7 +1269,6 @@ kendo.data.ObservableArray.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoObservableArray = function() {
@@ -1523,22 +1290,15 @@ $.fn.kendoObservableArray = function(options) {
     /// </param>
 };
 
-
 kendo.data.ObservableObject = function() { };
 
 kendo.data.ObservableObject.prototype = {
-
-
-
-
     bind: function() {
         /// <summary>
         /// Attaches a handler to an event. Examples and more info can be found in the bind section of the
 /// kendo.Observable API reference.
         /// </summary>
-
     },
-
 
     get: function(name) {
         /// <summary>
@@ -1546,18 +1306,14 @@ kendo.data.ObservableObject.prototype = {
         /// </summary>
         /// <param name="name" type="String" >The name of the field whose value is going to be returned.</param>
         /// <returns type="Object">the value of the specified field.</returns>
-
     },
-
 
     parent: function() {
         /// <summary>
         /// Gets the parent of the object if such parent exists.
         /// </summary>
         /// <returns type="kendo.data.ObservableObject">the parent of the object; undefined if the object is not nested and doesn't have a parent.</returns>
-
     },
-
 
     set: function(name,value) {
         /// <summary>
@@ -1565,18 +1321,14 @@ kendo.data.ObservableObject.prototype = {
         /// </summary>
         /// <param name="name" type="String" >The name of the field whose value is going to be returned.</param>
         /// <param name="value" type="Object" >The new value of the field.</param>
-
     },
-
 
     toJSON: function() {
         /// <summary>
         /// Creates a plain JavaScript object which contains all fields of the ObservableObject.
         /// </summary>
         /// <returns type="Object">which contains only the fields of the ObservableObject.</returns>
-
     },
-
 
     unbind: function(event, callback) {
         /// <summary>
@@ -1585,7 +1337,6 @@ kendo.data.ObservableObject.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoObservableObject = function() {
@@ -1607,22 +1358,15 @@ $.fn.kendoObservableObject = function(options) {
     /// </param>
 };
 
-
 kendo.data.PivotDataSource = function() { };
 
 kendo.data.PivotDataSource.prototype = {
-
-
-
-
     axes: function() {
         /// <summary>
         /// Get the parsed axes data
         /// </summary>
         /// <returns type="Object">the parsed axes data</returns>
-
     },
-
 
     catalog: function(name) {
         /// <summary>
@@ -1630,9 +1374,7 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="name" type="String" >The name of the catalog.</param>
         /// <returns type="String">the current catalog name.</returns>
-
     },
-
 
     columns: function(val) {
         /// <summary>
@@ -1640,9 +1382,7 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="val" type="Array" >The columns configuration. Accepts the same values as the columns option.</param>
         /// <returns type="Array">the current columns configuration.</returns>
-
     },
-
 
     cube: function(name) {
         /// <summary>
@@ -1650,9 +1390,7 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="name" type="String" >The name of the cube.</param>
         /// <returns type="String">the current cube name.</returns>
-
     },
-
 
     discover: function(options) {
         /// <summary>
@@ -1660,9 +1398,7 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="options" type="String" >The options of the discover request</param>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     measures: function(val) {
         /// <summary>
@@ -1670,18 +1406,14 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="val" type="Array" >The measures configuration. Accepts the same values as the measures option.</param>
         /// <returns type="Array">the current measures configuration.</returns>
-
     },
-
 
     measuresAxis: function() {
         /// <summary>
         /// Get the name of the axis on which measures are displayed.
         /// </summary>
         /// <returns type="String">the axis name.</returns>
-
     },
-
 
     rows: function(val) {
         /// <summary>
@@ -1689,36 +1421,28 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="val" type="Array" >The rows configuration. Accepts the same values as the row option.</param>
         /// <returns type="Array">the current rows configuration.</returns>
-
     },
-
 
     schemaCatalogs: function() {
         /// <summary>
         /// Request catalogs information.
         /// </summary>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     schemaCubes: function() {
         /// <summary>
         /// Request cubes schema information.
         /// </summary>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     schemaDimensions: function() {
         /// <summary>
         /// Request dimensions schema information.
         /// </summary>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     schemaHierarchies: function(dimensionName) {
         /// <summary>
@@ -1726,9 +1450,7 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="dimensionName" type="String" >The name of the dimensions which is 'owner' of the hierarchy.</param>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     schemaLevels: function(hierarchyName) {
         /// <summary>
@@ -1736,16 +1458,13 @@ kendo.data.PivotDataSource.prototype = {
         /// </summary>
         /// <param name="hierarchyName" type="String" >The name of the hierarchy which is 'owner' of the level.</param>
         /// <returns type="Object">Deferred object</returns>
-
     },
-
 
     schemaMeasures: function() {
         /// <summary>
         /// Request measures schema information.
         /// </summary>
         /// <returns type="Object">Deferred object</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1763,7 +1482,6 @@ kendo.data.PivotDataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoPivotDataSource = function() {
@@ -1779,19 +1497,19 @@ $.fn.kendoPivotDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;columns — Array 
+    /// &#10;columns — Array
     /// &#10;The configuration of columns axis members. An array of JavaScript objects or strings. A JavaScript objects are interpreted as column descriptors. Strings are interpreted as the hierarchal name of the member.
     /// &#10;
-    /// &#10;measures — Array 
+    /// &#10;measures — Array
     /// &#10;The configuration of measures. An string array which values are interpreted as the name of the measures to be loaded.
     /// &#10;
-    /// &#10;rows — Array 
+    /// &#10;rows — Array
     /// &#10;The configuration of rows axis members. An array of JavaScript objects or strings. A JavaScript objects are interpreted as rows descriptors. Strings are interpreted as the hierarchal name of the member.
     /// &#10;
-    /// &#10;transport — Object 
+    /// &#10;transport — Object
     /// &#10;The configuration used to load data items and discover schema information.
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The schema configuration of the PivotDataSource.
     /// &#10;
     /// </summary>
@@ -1800,14 +1518,9 @@ $.fn.kendoPivotDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.SchedulerDataSource = function() { };
 
 kendo.data.SchedulerDataSource.prototype = {
-
-
-
-
     expand: function(start,end) {
         /// <summary>
         /// Expands all recurring events in the data and returns a list of events for a specific period.
@@ -1815,7 +1528,6 @@ kendo.data.SchedulerDataSource.prototype = {
         /// <param name="start" type="Date" >The start date of the period.</param>
         /// <param name="end" type="Date" >The end date of the period.</param>
         /// <returns type="Array">the expanded list of scheduler events filtered by the specified start/end period.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1833,7 +1545,6 @@ kendo.data.SchedulerDataSource.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoSchedulerDataSource = function() {
@@ -1849,7 +1560,7 @@ $.fn.kendoSchedulerDataSource = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;schema — Object 
+    /// &#10;schema — Object
     /// &#10;The schema configuration of the SchedulerDataSource.
     /// &#10;
     /// </summary>
@@ -1858,14 +1569,9 @@ $.fn.kendoSchedulerDataSource = function(options) {
     /// </param>
 };
 
-
 kendo.data.SchedulerEvent = function() { };
 
 kendo.data.SchedulerEvent.prototype = {
-
-
-
-
     clone: function(options,updateUid) {
         /// <summary>
         /// Clones the scheduler event.
@@ -1873,18 +1579,14 @@ kendo.data.SchedulerEvent.prototype = {
         /// <param name="options" type="Object" >Additional options passed to the SchedulerEvent constructor.</param>
         /// <param name="updateUid" type="Boolean" >If you pass true the uid of the event will be updated.</param>
         /// <returns type="kendo.data.SchedulerEvent">the cloned scheduler event.</returns>
-
     },
-
 
     duration: function() {
         /// <summary>
         /// Returns the scheduler event length in milliseconds.
         /// </summary>
         /// <returns type="Number">the length of the event.</returns>
-
     },
-
 
     expand: function(start,end,timeZoneId) {
         /// <summary>
@@ -1894,63 +1596,49 @@ kendo.data.SchedulerEvent.prototype = {
         /// <param name="end" type="Date" >The end date of the occurrence period.</param>
         /// <param name="timeZoneId" type="String" >The time zone ID used to convert the recurrence rule dates.</param>
         /// <returns type="Array">list of occurrences.</returns>
-
     },
-
 
     update: function(eventInfo) {
         /// <summary>
         /// Updates the scheduler event.
         /// </summary>
         /// <param name="eventInfo" type="Object" >The new values, which will be used to update the event.</param>
-
     },
-
 
     isMultiDay: function() {
         /// <summary>
         /// Checks whether the event is equal to or longer then twenty four hours.
         /// </summary>
         /// <returns type="Boolean">return true if event is equal to or longer then 24 hours.</returns>
-
     },
-
 
     isException: function() {
         /// <summary>
         /// Checks whether the event is a recurrence exception.
         /// </summary>
         /// <returns type="Boolean">return true if event is a recurrence exception.</returns>
-
     },
-
 
     isOccurrence: function() {
         /// <summary>
         /// Checks whether the event is an occurrence part of a recurring series.
         /// </summary>
         /// <returns type="Boolean">return true if event is an occurrence.</returns>
-
     },
-
 
     isRecurring: function() {
         /// <summary>
         /// Checks whether the event is part of a recurring series.
         /// </summary>
         /// <returns type="Boolean">return true if event is recurring.</returns>
-
     },
-
 
     isRecurrenceHead: function() {
         /// <summary>
         /// Checks whether the event is the head of a recurring series.
         /// </summary>
         /// <returns type="Boolean">return true if event is a recurrence head.</returns>
-
     },
-
 
     toOccurrence: function(options) {
         /// <summary>
@@ -1958,7 +1646,6 @@ kendo.data.SchedulerEvent.prototype = {
         /// </summary>
         /// <param name="options" type="Object" >Additional options passed to the SchedulerEvent constructor.</param>
         /// <returns type="kendo.data.SchedulerEvent">the occurrence.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -1976,7 +1663,6 @@ kendo.data.SchedulerEvent.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoSchedulerEvent = function() {
@@ -1995,13 +1681,13 @@ $.fn.kendoSchedulerEvent = function(options) {
     /// &#10;description — String (default: "")
     /// &#10;The optional event description.
     /// &#10;
-    /// &#10;end — Date 
+    /// &#10;end — Date
     /// &#10;The date at which the scheduler event ends. The end date is mandatory.
     /// &#10;
     /// &#10;endTimezone — String (default: undefined)
     /// &#10;The timezone of the end date. If not specified the timezone will be used.The complete list of the supported timezones is available in the List of IANA time zones Wikipedia page.
     /// &#10;
-    /// &#10;id — String|Number|Object 
+    /// &#10;id — String|Number|Object
     /// &#10;The mandatory unique identifier of the event.
     /// &#10;
     /// &#10;isAllDay — Boolean (default: false)
@@ -2016,7 +1702,7 @@ $.fn.kendoSchedulerEvent = function(options) {
     /// &#10;recurrenceRule — String (default: undefined)
     /// &#10;The recurrence rule describing the recurring pattern of the event. The format follows the iCal specification.
     /// &#10;
-    /// &#10;start — Date 
+    /// &#10;start — Date
     /// &#10;The date at which the scheduler event starts. The start date is mandatory.
     /// &#10;
     /// &#10;startTimezone — String (default: undefined)
@@ -2031,30 +1717,21 @@ $.fn.kendoSchedulerEvent = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.Application = function() { };
 
 kendo.mobile.Application.prototype = {
-
-
-
-
     changeLoadingMessage: function(text) {
         /// <summary>
         /// Changes the loading message.
         /// </summary>
         /// <param name="text" type="String" >New text of the loading animation.</param>
-
     },
-
 
     hideLoading: function() {
         /// <summary>
         /// Hide the loading animation.
         /// </summary>
-
     },
-
 
     navigate: function(url,transition) {
         /// <summary>
@@ -2062,9 +1739,7 @@ kendo.mobile.Application.prototype = {
         /// </summary>
         /// <param name="url" type="String" >The id or url of the view.</param>
         /// <param name="transition" type="String" >Optional. The transition to apply when navigating. See View Transitions section for more information.</param>
-
     },
-
 
     replace: function(url,transition) {
         /// <summary>
@@ -2072,26 +1747,20 @@ kendo.mobile.Application.prototype = {
         /// </summary>
         /// <param name="url" type="String" >The id or url of the view.</param>
         /// <param name="transition" type="String" >Optional. The transition to apply when navigating. See View Transitions section for more information.</param>
-
     },
-
 
     scroller: function() {
         /// <summary>
         /// Get a reference to the current view's scroller widget instance.
         /// </summary>
         /// <returns type="kendo.mobile.ui.Scroller">the scroller widget instance.</returns>
-
     },
-
 
     showLoading: function() {
         /// <summary>
         /// Show the loading animation.
         /// </summary>
-
     },
-
 
     skin: function(skin) {
         /// <summary>
@@ -2099,16 +1768,13 @@ kendo.mobile.Application.prototype = {
         /// </summary>
         /// <param name="skin" type="String" >The skin name to switch to or empty string ("") to return to native.</param>
         /// <returns type="String">Current skin in effect.</returns>
-
     },
-
 
     view: function() {
         /// <summary>
         /// Get a reference to the current view.
         /// </summary>
         /// <returns type="kendo.mobile.ui.View">the view instance.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -2126,7 +1792,6 @@ kendo.mobile.Application.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileApplication = function() {
@@ -2149,10 +1814,10 @@ $.fn.kendoMobileApplication = function(options) {
     /// &#10;hideAddressBar — Boolean (default: true)
     /// &#10;Whether to hide the browser address bar. Supported only in iPhone and iPod. Doesn't affect standalone mode as there the address bar is always hidden.
     /// &#10;
-    /// &#10;initial — String 
+    /// &#10;initial — String
     /// &#10;The id of the initial mobile View to display.
     /// &#10;
-    /// &#10;layout — String 
+    /// &#10;layout — String
     /// &#10;The id of the default Application layout.
     /// &#10;
     /// &#10;loading — String (default: ")
@@ -2161,7 +1826,7 @@ $.fn.kendoMobileApplication = function(options) {
     /// &#10;modelScope — Object (default: "window")
     /// &#10;The view model scope. By default, the views will try to resolve their models from the global scope (window).
     /// &#10;
-    /// &#10;platform — String 
+    /// &#10;platform — String
     /// &#10;Which platform look to force on the application. Supported values are "ios" (meaning iOS 6 look), "ios7","android", "blackberry" and "wp".
 /// &#10;You can also set platform variants with it ("android-light" or "android-dark"), but keep in mind that it will still override the platform. If this is not desired, use the skin option.
     /// &#10;
@@ -2171,16 +1836,16 @@ $.fn.kendoMobileApplication = function(options) {
     /// &#10;root — String (default: "/")
     /// &#10;Applicable if pushState is used and the application is deployed to a path different than /. If the application start page is hosted on http://foo.com/myapp/, the root option should be set to /myapp/.
     /// &#10;
-    /// &#10;serverNavigation — Boolean 
+    /// &#10;serverNavigation — Boolean
     /// &#10;If set to true, the application will not use AJAX to load remote views.
     /// &#10;
-    /// &#10;skin — String 
+    /// &#10;skin — String
     /// &#10;The skin to apply to the application. Currently, Kendo UI Mobile ships with a flat skin in addition to the native looking ones. You can also set platform variants with it ("android-light" or "android-dark").
     /// &#10;
     /// &#10;statusBarStyle — String (default: "black")
     /// &#10;Set the status bar style meta tag in iOS used to control the styling of the status bar in a pinned to the Home Screen app. Available as of Q2 2013 SP.
     /// &#10;
-    /// &#10;transition — String 
+    /// &#10;transition — String
     /// &#10;The default View transition. For a list of supported transitions, check the Getting Started help topic.
     /// &#10;
     /// &#10;updateDocumentTitle — Boolean (default: true)
@@ -2190,7 +1855,7 @@ $.fn.kendoMobileApplication = function(options) {
     /// &#10;By default, the mobile application uses flexbox for the mobile views layout. The content element is made scrollable, either by initializing a mobile scroller or with the browser supported overflow: auto and -webkit-overflow-scrolling: touch CSS declarations.
 /// &#10;When the useNativeScrolling configuration option is set to true, the view header and footer are positioned using position: fixed CSS declaration. The view content vertical padding is adjusted to match the header and footer height; The default browser scroller is utilized for the content scrolling.For more information regarding native scrolling check this article.
     /// &#10;
-    /// &#10;webAppCapable — Boolean 
+    /// &#10;webAppCapable — Boolean
     /// &#10;Disables the default behavior of Kendo UI Mobile apps to be web app capable (open in a chromeless browser). Introduced in Q2 2013.
     /// &#10;
     /// </summary>
@@ -2199,29 +1864,20 @@ $.fn.kendoMobileApplication = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.ActionSheet = function() { };
 
 kendo.mobile.ui.ActionSheet.prototype = {
-
-
-
-
     close: function() {
         /// <summary>
         /// Close the ActionSheet.
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the ActionSheet for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     open: function(target,context) {
         /// <summary>
@@ -2229,7 +1885,6 @@ kendo.mobile.ui.ActionSheet.prototype = {
         /// </summary>
         /// <param name="target" type="jQuery" >(optional) The target element of the ActionSheet, available in the callback methods.Notice The target element is mandatory on tablets, as the ActionSheet widget positions itself relative to opening element when a tablet is detected.</param>
         /// <param name="context" type="Object" >(optional) The context of the ActionSheet, available in the callback methods.</param>
-
     },
 
     bind: function(event, callback) {
@@ -2247,7 +1902,6 @@ kendo.mobile.ui.ActionSheet.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileActionSheet = function() {
@@ -2266,7 +1920,7 @@ $.fn.kendoMobileActionSheet = function(options) {
     /// &#10;cancel — String (default: "Cancel")
     /// &#10;The text of the cancel button.
     /// &#10;
-    /// &#10;popup — Object 
+    /// &#10;popup — Object
     /// &#10;The popup configuration options (tablet only).
     /// &#10;
     /// &#10;type — String (default: auto)
@@ -2278,19 +1932,13 @@ $.fn.kendoMobileActionSheet = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.BackButton = function() { };
 
 kendo.mobile.ui.BackButton.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the BackButton for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -2308,7 +1956,6 @@ kendo.mobile.ui.BackButton.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileBackButton = function() {
@@ -2330,38 +1977,28 @@ $.fn.kendoMobileBackButton = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Button = function() { };
 
 kendo.mobile.ui.Button.prototype = {
-
-
-
-
     badge: function(value) {
         /// <summary>
         /// Introduced in Q1 2013 SP Sets a badge on the Button with the specified value. If invoked without parameters, returns the current badge value. Set the value to false to remove the badge.
         /// </summary>
         /// <param name="value" type="Object" >The target value to be set or false to be removed.</param>
         /// <returns type="String | kendo.mobile.ui.Button">the badge value if invoked without parameters, otherwise the Button object.</returns>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the Button for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     enable: function(enable) {
         /// <summary>
         /// Changes the enabled state of the widget.
         /// </summary>
         /// <param name="enable" type="Boolean" >Whether to enable or disable the widget.</param>
-
     },
 
     bind: function(event, callback) {
@@ -2379,7 +2016,6 @@ kendo.mobile.ui.Button.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileButton = function() {
@@ -2395,13 +2031,13 @@ $.fn.kendoMobileButton = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;badge — String 
+    /// &#10;badge — String
     /// &#10;The badge of the button.
     /// &#10;
     /// &#10;enable — Boolean (default: true)
     /// &#10;If set to false the widget will be disabled and will not allow the user to click it. The widget is enabled by default.
     /// &#10;
-    /// &#10;icon — String 
+    /// &#10;icon — String
     /// &#10;The icon of the button. It can be either one of the built-in icons, or a custom one.
     /// &#10;
     /// </summary>
@@ -2410,14 +2046,9 @@ $.fn.kendoMobileButton = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.ButtonGroup = function() { };
 
 kendo.mobile.ui.ButtonGroup.prototype = {
-
-
-
-
     badge: function(button,value) {
         /// <summary>
         /// Introduced in Q1 2013 SP Sets a badge on one of the ButtonGroup buttons with the specified value. If invoked without parameters, returns the button's current badge value. Set the value to false to remove the badge.
@@ -2425,42 +2056,33 @@ kendo.mobile.ui.ButtonGroup.prototype = {
         /// <param name="button" type="Object" >The target button specified either as a jQuery selector/object or as an button index.</param>
         /// <param name="value" type="Object" >The target value to be set or false to be removed.</param>
         /// <returns type="String|kendo.mobile.ui.Button">the badge value if invoked without parameters, otherwise the ButtonGroup object.</returns>
-
     },
-
 
     current: function() {
         /// <summary>
         /// Get the currently selected Button.
         /// </summary>
         /// <returns type="jQuery">the jQuery object representing the currently selected button.</returns>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the ButtonGroup for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     enable: function(enable) {
         /// <summary>
         /// Enables or disables the widget.
         /// </summary>
         /// <param name="enable" type="Boolean" >A boolean flag that indicates whether the widget should be enabled or disabled.</param>
-
     },
-
 
     select: function(li) {
         /// <summary>
         /// Select a Button.
         /// </summary>
         /// <param name="li" type="Object" >LI element or index of the Button.</param>
-
     },
 
     bind: function(event, callback) {
@@ -2478,7 +2100,6 @@ kendo.mobile.ui.ButtonGroup.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileButtonGroup = function() {
@@ -2497,7 +2118,7 @@ $.fn.kendoMobileButtonGroup = function(options) {
     /// &#10;enable — Boolean (default: true)
     /// &#10;Defines if the widget is initially enabled or disabled.
     /// &#10;
-    /// &#10;index — Number 
+    /// &#10;index — Number
     /// &#10;Defines the initially selected Button (zero based index).
     /// &#10;
     /// &#10;selectOn — String (default: default "down")
@@ -2510,19 +2131,13 @@ $.fn.kendoMobileButtonGroup = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.DetailButton = function() { };
 
 kendo.mobile.ui.DetailButton.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the DetailButton for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -2540,7 +2155,6 @@ kendo.mobile.ui.DetailButton.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileDetailButton = function() {
@@ -2562,35 +2176,25 @@ $.fn.kendoMobileDetailButton = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Drawer = function() { };
 
 kendo.mobile.ui.Drawer.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the Drawer for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     hide: function() {
         /// <summary>
         /// Hide the Drawer
         /// </summary>
-
     },
-
 
     show: function() {
         /// <summary>
         /// Show the Drawer
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -2608,7 +2212,6 @@ kendo.mobile.ui.Drawer.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileDrawer = function() {
@@ -2624,7 +2227,7 @@ $.fn.kendoMobileDrawer = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;container — jQuery 
+    /// &#10;container — jQuery
     /// &#10;Specifies the content element to shift when the drawer appears. Required if the drawer is used outside of a mobile application.
     /// &#10;
     /// &#10;position — String (default: 'left')
@@ -2633,14 +2236,14 @@ $.fn.kendoMobileDrawer = function(options) {
     /// &#10;swipeToOpen — Boolean (default: true)
     /// &#10;If set to false, swiping the view will not activate the drawer. In this case, the drawer will only be open by a designated button
     /// &#10;
-    /// &#10;swipeToOpenViews — Array 
+    /// &#10;swipeToOpenViews — Array
     /// &#10;A list of the view ids on which the drawer will appear when the view is swiped. If omitted, the swipe gesture will work on all views.
 /// &#10;The option has effect only if swipeToOpen is set to true.
     /// &#10;
-    /// &#10;title — String 
+    /// &#10;title — String
     /// &#10;The text to display in the Navbar title (if present).
     /// &#10;
-    /// &#10;views — Array 
+    /// &#10;views — Array
     /// &#10;A list of the view ids on which the drawer will appear. If omitted, the drawer will work on any view in the application.
     /// &#10;
     /// </summary>
@@ -2649,13 +2252,9 @@ $.fn.kendoMobileDrawer = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Layout = function() { };
 
 kendo.mobile.ui.Layout.prototype = {
-
-
-
     bind: function(event, callback) {
         /// <summary>
         /// Binds to a widget event.
@@ -2671,7 +2270,6 @@ kendo.mobile.ui.Layout.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileLayout = function() {
@@ -2690,7 +2288,7 @@ $.fn.kendoMobileLayout = function(options) {
     /// &#10;id — String (default: null)
     /// &#10;The id of the layout. Required
     /// &#10;
-    /// &#10;platform — String 
+    /// &#10;platform — String
     /// &#10;The specific platform this layout targets. By default, layouts are displayed
 /// &#10;on all platforms.
     /// &#10;
@@ -2700,49 +2298,36 @@ $.fn.kendoMobileLayout = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.ListView = function() { };
 
 kendo.mobile.ui.ListView.prototype = {
-
-
-
-
     append: function(dataItems) {
         /// <summary>
         /// Appends new items generated by rendering the given data items with the listview template to the bottom of the listview.
         /// </summary>
         /// <param name="dataItems" type="Array" ></param>
-
     },
-
 
     prepend: function(dataItems) {
         /// <summary>
         /// Prepends new items generated by rendering the given data items with the listview template to the top of the listview.
         /// </summary>
         /// <param name="dataItems" type="Array" ></param>
-
     },
-
 
     replace: function(dataItems) {
         /// <summary>
         /// Replaces the contents of the listview with the passed rendered data items.
         /// </summary>
         /// <param name="dataItems" type="Array" ></param>
-
     },
-
 
     remove: function(dataItems) {
         /// <summary>
         /// Removes the listview items which are rendered with the passed data items.
         /// </summary>
         /// <param name="dataItems" type="Array" ></param>
-
     },
-
 
     setDataItem: function(item,dataItem) {
         /// <summary>
@@ -2750,41 +2335,32 @@ kendo.mobile.ui.ListView.prototype = {
         /// </summary>
         /// <param name="item" type="jQuery" >The listview item to update</param>
         /// <param name="dataItem" type="kendo.data.Model" >The new dataItem</param>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the ListView for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     items: function() {
         /// <summary>
         /// Get the listview DOM element items
         /// </summary>
         /// <returns type="jQuery">The listview DOM element items</returns>
-
     },
-
 
     refresh: function() {
         /// <summary>
         /// Repaints the listview (works only in databound mode).
         /// </summary>
-
     },
-
 
     setDataSource: function(dataSource) {
         /// <summary>
         /// Sets the DataSource of an existing ListView and rebinds it.
         /// </summary>
         /// <param name="dataSource" type="kendo.data.DataSource" ></param>
-
     },
 
     bind: function(event, callback) {
@@ -2802,7 +2378,6 @@ kendo.mobile.ui.ListView.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileListView = function() {
@@ -2824,7 +2399,7 @@ $.fn.kendoMobileListView = function(options) {
     /// &#10;autoBind — Boolean (default: true)
     /// &#10;Indicates whether the listview will call read on the DataSource initially. If set to false, the listview will be bound after the DataSource instance fetch method is called.
     /// &#10;
-    /// &#10;dataSource — kendo.data.DataSource|Object 
+    /// &#10;dataSource — kendo.data.DataSource|Object
     /// &#10;Instance of DataSource or the data that the mobile ListView will be bound to.
     /// &#10;
     /// &#10;endlessScroll — Boolean (default: false)
@@ -2846,7 +2421,7 @@ $.fn.kendoMobileListView = function(options) {
     /// &#10;pullToRefresh — Boolean (default: false)
     /// &#10;If set to true, the listview will reload its data when the user pulls the view over the top limit.
     /// &#10;
-    /// &#10;pullParameters — Function 
+    /// &#10;pullParameters — Function
     /// &#10;A callback function used when the 'pullToRefresh' option is enabled. The result of the function will be send as additional parameters to the DataSource's next method.Notice: When the listview is in a virtual mode, the pull to refresh action removes the previously loaded items in the listview (instead of appending new records at the top).
 /// &#10;Previously loaded pages in the DataSource are also discarded.
     /// &#10;
@@ -2862,7 +2437,7 @@ $.fn.kendoMobileListView = function(options) {
     /// &#10;filterable — Boolean (default: false)
     /// &#10;Indicates whether the filter input must be visible or not.
     /// &#10;
-    /// &#10;filterable — Object 
+    /// &#10;filterable — Object
     /// &#10;Indicates whether the filter input must be visible or not.
     /// &#10;
     /// </summary>
@@ -2871,27 +2446,19 @@ $.fn.kendoMobileListView = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Loader = function() { };
 
 kendo.mobile.ui.Loader.prototype = {
-
-
-
-
     hide: function() {
         /// <summary>
         /// Hide the loading animation.
         /// </summary>
-
     },
-
 
     show: function() {
         /// <summary>
         /// Show the loading animation.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -2909,7 +2476,6 @@ kendo.mobile.ui.Loader.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileLoader = function() {
@@ -2931,36 +2497,26 @@ $.fn.kendoMobileLoader = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.ModalView = function() { };
 
 kendo.mobile.ui.ModalView.prototype = {
-
-
-
-
     close: function() {
         /// <summary>
         /// Close the ModalView
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the ModalView for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     open: function(target) {
         /// <summary>
         /// Open the ModalView
         /// </summary>
         /// <param name="target" type="jQuery" >(optional) The target of the ModalView</param>
-
     },
 
     bind: function(event, callback) {
@@ -2978,7 +2534,6 @@ kendo.mobile.ui.ModalView.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileModalView = function() {
@@ -2994,13 +2549,13 @@ $.fn.kendoMobileModalView = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;height — Number 
+    /// &#10;height — Number
     /// &#10;The height of the ModalView container in pixels. If not set, the element style is used.
     /// &#10;
     /// &#10;modal — Boolean (default: true)
     /// &#10;When set to false, the ModalView will close when the user taps outside of its element.
     /// &#10;
-    /// &#10;width — Number 
+    /// &#10;width — Number
     /// &#10;The width of the ModalView container in pixels. If not set, the element style is used.
     /// &#10;
     /// </summary>
@@ -3009,28 +2564,20 @@ $.fn.kendoMobileModalView = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.NavBar = function() { };
 
 kendo.mobile.ui.NavBar.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the NavBar for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     title: function(value) {
         /// <summary>
         /// Update the title element text. The title element is specified by setting the role data attribute to view-title.
         /// </summary>
         /// <param name="value" type="String" >The text of title</param>
-
     },
 
     bind: function(event, callback) {
@@ -3048,7 +2595,6 @@ kendo.mobile.ui.NavBar.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileNavBar = function() {
@@ -3070,29 +2616,20 @@ $.fn.kendoMobileNavBar = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Pane = function() { };
 
 kendo.mobile.ui.Pane.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the Pane for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     hideLoading: function() {
         /// <summary>
         /// Hide the loading animation.
         /// </summary>
-
     },
-
 
     navigate: function(url,transition) {
         /// <summary>
@@ -3100,9 +2637,7 @@ kendo.mobile.ui.Pane.prototype = {
         /// </summary>
         /// <param name="url" type="String" >The id or URL of the view.</param>
         /// <param name="transition" type="String" >The transition to apply when navigating. See View Transitions for more information.</param>
-
     },
-
 
     replace: function(url,transition) {
         /// <summary>
@@ -3110,32 +2645,25 @@ kendo.mobile.ui.Pane.prototype = {
         /// </summary>
         /// <param name="url" type="String" >The id or URL of the view.</param>
         /// <param name="transition" type="String" >The transition to apply when navigating. See View Transitions for more information.</param>
-
     },
-
 
     Example: function() {
         /// <summary>
-        /// 
+        ///
         /// </summary>
-
     },
-
 
     showLoading: function() {
         /// <summary>
         /// Show the loading animation.
         /// </summary>
-
     },
-
 
     view: function() {
         /// <summary>
         /// Get a reference to the current view.
         /// </summary>
         /// <returns type="kendo.mobile.ui.View">the view instance.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -3153,7 +2681,6 @@ kendo.mobile.ui.Pane.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobilePane = function() {
@@ -3172,19 +2699,19 @@ $.fn.kendoMobilePane = function(options) {
     /// &#10;collapsible — Boolean (default: false)
     /// &#10;Applicable when the pane is inside a SplitView. If set to true, the pane will be hidden when the device is in portrait position. The expandPanes SplitView method displays the hidden panes.The id of the initial mobile View to display.
     /// &#10;
-    /// &#10;initial — String 
+    /// &#10;initial — String
     /// &#10;The id of the initial mobile View to display.
     /// &#10;
-    /// &#10;layout — String 
+    /// &#10;layout — String
     /// &#10;The id of the default Pane Layout.
     /// &#10;
     /// &#10;loading — String (default: "Loading...")
     /// &#10;The text displayed in the loading popup. Setting this value to false will disable the loading popup.
     /// &#10;
-    /// &#10;portraitWidth — Number 
+    /// &#10;portraitWidth — Number
     /// &#10;Sets the pane width in pixels when the device is in portrait position.
     /// &#10;
-    /// &#10;transition — String 
+    /// &#10;transition — String
     /// &#10;The default View transition.
     /// &#10;
     /// </summary>
@@ -3193,36 +2720,26 @@ $.fn.kendoMobilePane = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.PopOver = function() { };
 
 kendo.mobile.ui.PopOver.prototype = {
-
-
-
-
     close: function() {
         /// <summary>
         /// Close the popover.
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the PopOver for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     open: function(target) {
         /// <summary>
         /// Open the PopOver.
         /// </summary>
         /// <param name="target" type="jQuery" >The target of the Popover, to which the visual arrow will point to. This parameter is required for a tablet OS.</param>
-
     },
 
     bind: function(event, callback) {
@@ -3240,7 +2757,6 @@ kendo.mobile.ui.PopOver.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobilePopOver = function() {
@@ -3256,10 +2772,10 @@ $.fn.kendoMobilePopOver = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;pane — Object 
+    /// &#10;pane — Object
     /// &#10;The pane configuration options.
     /// &#10;
-    /// &#10;popup — Object 
+    /// &#10;popup — Object
     /// &#10;The popup configuration options.
     /// &#10;
     /// </summary>
@@ -3268,54 +2784,39 @@ $.fn.kendoMobilePopOver = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.ScrollView = function() { };
 
 kendo.mobile.ui.ScrollView.prototype = {
-
-
-
-
     content: function(content) {
         /// <summary>
         /// Update the ScrollView HTML content.
         /// </summary>
         /// <param name="content" type="Object" >The new ScrollView content.</param>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the ScrollView for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     next: function() {
         /// <summary>
         /// Switches to the next page with animation.
         /// </summary>
-
     },
-
 
     prev: function() {
         /// <summary>
         /// Switches to the previous page with animation.
         /// </summary>
-
     },
-
 
     refresh: function() {
         /// <summary>
         /// Redraw the mobile ScrollView pager. Called automatically on device orientation change event.
         /// </summary>
-
     },
-
 
     scrollTo: function(page,instant) {
         /// <summary>
@@ -3323,18 +2824,14 @@ kendo.mobile.ui.ScrollView.prototype = {
         /// </summary>
         /// <param name="page" type="Number" >The page to scroll to.</param>
         /// <param name="instant" type="Boolean" >If set to true, the ScrollView will jump instantly to the given page without any animation effects.</param>
-
     },
-
 
     setDataSource: function(dataSource) {
         /// <summary>
         /// Sets the DataSource of an existing ScrollView and rebinds it.
         /// </summary>
         /// <param name="dataSource" type="kendo.data.DataSource" ></param>
-
     },
-
 
     value: function(dataItem) {
         /// <summary>
@@ -3342,7 +2839,6 @@ kendo.mobile.ui.ScrollView.prototype = {
         /// </summary>
         /// <param name="dataItem" type="Object" >The dataItem to set.</param>
         /// <returns type="Object">The currently displayed dataItem.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -3360,7 +2856,6 @@ kendo.mobile.ui.ScrollView.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileScrollView = function() {
@@ -3385,7 +2880,7 @@ $.fn.kendoMobileScrollView = function(options) {
     /// &#10;contentHeight — Number|String (default: "auto")
     /// &#10;The height of the ScrollView content. Supports 100% if the ScrollView is embedded in a stretched view and the ScrollView element is an immediate child of the view element.
     /// &#10;
-    /// &#10;dataSource — kendo.data.DataSource|Object 
+    /// &#10;dataSource — kendo.data.DataSource|Object
     /// &#10;Instance of DataSource that the mobile ScrollView will be bound to. If DataSource is set, the widget will operate in data bound mode.
     /// &#10;
     /// &#10;duration — Number (default: 400)
@@ -3418,80 +2913,59 @@ $.fn.kendoMobileScrollView = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Scroller = function() { };
 
 kendo.mobile.ui.Scroller.prototype = {
-
-
-
-
     animatedScrollTo: function(x,y) {
         /// <summary>
         /// Scrolls the scroll container to the specified location with animation. The arguments should be negative numbers.
         /// </summary>
         /// <param name="x" type="Number" >The horizontal offset in pixels to scroll to.</param>
         /// <param name="y" type="Number" >The vertical offset in pixels to scroll to.</param>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the Scroller for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     disable: function() {
         /// <summary>
         /// Disables the scrolling of the element.
         /// </summary>
-
     },
-
 
     enable: function() {
         /// <summary>
         /// Enables the scrolling of the element after it has been disabled by calling disable.
         /// </summary>
-
     },
-
 
     height: function() {
         /// <summary>
         /// Returns the viewport height of the scrollable element.
         /// </summary>
         /// <returns type="Number">the viewport height in pixels.</returns>
-
     },
-
 
     pullHandled: function() {
         /// <summary>
         /// Indicate that the pull event is handled (i.e. data from the server has been retrieved).
         /// </summary>
-
     },
-
 
     reset: function() {
         /// <summary>
         /// Scrolls the container to the top.
         /// </summary>
-
     },
-
 
     scrollHeight: function() {
         /// <summary>
         /// Returns the height in pixels of the scroller content.
         /// </summary>
-
     },
-
 
     scrollTo: function(x,y) {
         /// <summary>
@@ -3499,23 +2973,18 @@ kendo.mobile.ui.Scroller.prototype = {
         /// </summary>
         /// <param name="x" type="Number" >The horizontal offset in pixels to scroll to.</param>
         /// <param name="y" type="Number" >The vertical offset in pixels to scroll to.</param>
-
     },
-
 
     scrollWidth: function() {
         /// <summary>
         /// Returns the width in pixels of the scroller content.
         /// </summary>
-
     },
-
 
     zoomOut: function() {
         /// <summary>
         /// Zooms the scroller out to the minimum zoom level possible.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -3533,7 +3002,6 @@ kendo.mobile.ui.Scroller.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileScroller = function() {
@@ -3588,35 +3056,25 @@ $.fn.kendoMobileScroller = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.SplitView = function() { };
 
 kendo.mobile.ui.SplitView.prototype = {
-
-
-
-
     destroy: function() {
         /// <summary>
         /// Prepares the SplitView for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     expandPanes: function() {
         /// <summary>
         /// Displays the collapsible panes; has effect only when the device is in portrait orientation.
         /// </summary>
-
     },
-
 
     collapsePanes: function() {
         /// <summary>
         /// Collapses back the collapsible panes (displayed previously with expandPanes); has effect only when the device is in portrait orientation.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -3634,7 +3092,6 @@ kendo.mobile.ui.SplitView.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileSplitView = function() {
@@ -3659,54 +3116,40 @@ $.fn.kendoMobileSplitView = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Switch = function() { };
 
 kendo.mobile.ui.Switch.prototype = {
-
-
-
-
     check: function(check) {
         /// <summary>
         /// Get/Set the checked state of the widget.
         /// </summary>
         /// <param name="check" type="Boolean" >Whether to turn the widget on or off.</param>
         /// <returns type="Boolean">The checked state of the widget.</returns>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the Switch for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     enable: function(enable) {
         /// <summary>
         /// Changes the enabled state of the widget.
         /// </summary>
         /// <param name="enable" type="Boolean" >Whether to enable or disable the widget.</param>
-
     },
-
 
     refresh: function() {
         /// <summary>
         /// Forces the Switch to recalculate its dimensions. Useful when major changes in the interface happen dynamically, like for instance changing the skin.
         /// </summary>
-
     },
-
 
     toggle: function() {
         /// <summary>
         /// Toggle the checked state of the widget.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -3724,7 +3167,6 @@ kendo.mobile.ui.Switch.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileSwitch = function() {
@@ -3758,14 +3200,9 @@ $.fn.kendoMobileSwitch = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.TabStrip = function() { };
 
 kendo.mobile.ui.TabStrip.prototype = {
-
-
-
-
     badge: function(tab,value) {
         /// <summary>
         /// Introduced in Q1 2013 SP Sets a badge on one of the tabs with the specified value. If invoked without second parameter, returns the tab's current badge value. Set the value to false to remove the badge.
@@ -3773,50 +3210,39 @@ kendo.mobile.ui.TabStrip.prototype = {
         /// <param name="tab" type="Object" >The target tab specified either as a jQuery selector/object or as an item index.</param>
         /// <param name="value" type="Object" >The target value to be set or false to be removed.</param>
         /// <returns type="String|kendo.mobile.ui.TabStrip">Returns the badge value if invoked without parameters, otherwise returns the TabStrip object.</returns>
-
     },
-
 
     currentItem: function() {
         /// <summary>
         /// Get the currently selected tab DOM element.
         /// </summary>
         /// <returns type="jQuery">the currently selected tab DOM element.</returns>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the TabStrip for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     switchTo: function(url) {
         /// <summary>
         /// Set the mobile TabStrip active tab to the tab with the specified URL. This method doesn't change the current View. To change the View, use Application's navigate method instead.
         /// </summary>
         /// <param name="url" type="Object" >The URL or zero based index of the tab.</param>
-
     },
-
 
     switchByFullUrl: function(url) {
         /// <summary>
         /// Set the mobile TabStrip active tab to the tab with the specified full URL. This method doesn't change the current View. To change the View, use Application's navigate method instead.
         /// </summary>
         /// <param name="url" type="String" >The URL of the tab.</param>
-
     },
-
 
     clear: function() {
         /// <summary>
         /// Clear the currently selected tab.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -3834,7 +3260,6 @@ kendo.mobile.ui.TabStrip.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileTabStrip = function() {
@@ -3859,36 +3284,26 @@ $.fn.kendoMobileTabStrip = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.View = function() { };
 
 kendo.mobile.ui.View.prototype = {
-
-
-
-
     contentElement: function() {
         /// <summary>
         /// Retrieves the current content holder of the View - this is the content element if the View is stretched or the scroll container otherwise.
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the View for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     enable: function(enable) {
         /// <summary>
         /// Enables or disables the user interaction with the view and its contents.
         /// </summary>
         /// <param name="enable" type="Boolean" >Omitting the parameter or passing true enables the view. Passing false disables the view.</param>
-
     },
 
     bind: function(event, callback) {
@@ -3906,7 +3321,6 @@ kendo.mobile.ui.View.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileView = function() {
@@ -3935,7 +3349,7 @@ $.fn.kendoMobileView = function(options) {
     /// &#10;If set to true, the view will stretch its child contents to occupy the entire view, while disabling kinetic scrolling.
 /// &#10;Useful if the view contains an image or a map.
     /// &#10;
-    /// &#10;title — String 
+    /// &#10;title — String
     /// &#10;The text to display in the NavBar title (if present) and the browser title.
     /// &#10;
     /// &#10;useNativeScrolling — Boolean (default: false)
@@ -3951,19 +3365,13 @@ $.fn.kendoMobileView = function(options) {
     /// </param>
 };
 
-
 kendo.mobile.ui.Widget = function() { };
 
 kendo.mobile.ui.Widget.prototype = {
-
-
-
-
     view: function() {
         /// <summary>
         /// Returns the kendo.mobile.ui.View which contains the widget. If the widget is contained in a splitview, modalview, or drawer, the respective widget instance is returned.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -3981,7 +3389,6 @@ kendo.mobile.ui.Widget.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoMobileWidget = function() {
@@ -4003,19 +3410,13 @@ $.fn.kendoMobileWidget = function(options) {
     /// </param>
 };
 
-
 kendo.ui.Draggable = function() { };
 
 kendo.ui.Draggable.prototype = {
-
-
-
-
     cancelHold: function() {
         /// <summary>
         /// Has effect only when holdToDrag is set to true. Cancels the activated state of the widget, caused by pressing and holding.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -4033,7 +3434,6 @@ kendo.ui.Draggable.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoDraggable = function() {
@@ -4052,7 +3452,7 @@ $.fn.kendoDraggable = function(options) {
     /// &#10;axis — String (default: null)
     /// &#10;Constrains the hint movement to either the horizontal (x) or vertical (y) axis. Can be set to either "x" or "y".
     /// &#10;
-    /// &#10;container — jQuery 
+    /// &#10;container — jQuery
     /// &#10;If set, the hint movement is constrained to the container boundaries.
     /// &#10;
     /// &#10;cursorOffset — Object (default: null)
@@ -4065,7 +3465,7 @@ $.fn.kendoDraggable = function(options) {
     /// &#10;group — String (default: "default")
     /// &#10;Used to group sets of draggable and drop targets. A draggable with the same group value as a drop target will be accepted by the drop target.
     /// &#10;
-    /// &#10;hint — Function|jQuery 
+    /// &#10;hint — Function|jQuery
     /// &#10;Provides a way for customization of the drag indicator. If a function is supplied, it receives one argument - the draggable element's jQuery object.
     /// &#10;
     /// &#10;holdToDrag — Boolean (default: false)
@@ -4077,19 +3477,13 @@ $.fn.kendoDraggable = function(options) {
     /// </param>
 };
 
-
 kendo.ui.DropTarget = function() { };
 
 kendo.ui.DropTarget.prototype = {
-
-
-
-
     destroyGroup: function() {
         /// <summary>
         /// Destroys all DropTarget instances from the group with the given name.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -4107,7 +3501,6 @@ kendo.ui.DropTarget.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoDropTarget = function() {
@@ -4132,13 +3525,9 @@ $.fn.kendoDropTarget = function(options) {
     /// </param>
 };
 
-
 kendo.ui.DropTargetArea = function() { };
 
 kendo.ui.DropTargetArea.prototype = {
-
-
-
     bind: function(event, callback) {
         /// <summary>
         /// Binds to a widget event.
@@ -4154,7 +3543,6 @@ kendo.ui.DropTargetArea.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoDropTargetArea = function() {
@@ -4182,27 +3570,19 @@ $.fn.kendoDropTargetArea = function(options) {
     /// </param>
 };
 
-
 kendo.ui.Touch = function() { };
 
 kendo.ui.Touch.prototype = {
-
-
-
-
     cancel: function() {
         /// <summary>
         /// Cancels the current touch event sequence. Calling cancel in a touchstart or dragmove will disable subsequent move or tap/end/hold event handlers from being called.
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the Touch for safe removal from DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
 
     bind: function(event, callback) {
@@ -4220,7 +3600,6 @@ kendo.ui.Touch.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoTouch = function() {
@@ -4236,7 +3615,7 @@ $.fn.kendoTouch = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;filter — String 
+    /// &#10;filter — String
     /// &#10;jQuery selector that specifies child elements that are touchable if a widget is attached to a container.
     /// &#10;
     /// &#10;surface — jQuery (default: null)
@@ -4270,39 +3649,28 @@ $.fn.kendoTouch = function(options) {
     /// </param>
 };
 
-
 kendo.ui.Validator = function() { };
 
 kendo.ui.Validator.prototype = {
-
-
-
-
     errors: function() {
         /// <summary>
         /// Get the error messages if any.
         /// </summary>
         /// <returns type="Array">Messages for the failed validation rules.</returns>
-
     },
-
 
     hideMessages: function() {
         /// <summary>
         /// Hides the validation messages.
         /// </summary>
-
     },
-
 
     validate: function() {
         /// <summary>
         /// Validates the input element(s) against the declared validation rules.
         /// </summary>
         /// <returns type="Boolean">true if all validation rules passed successfully.Note that if a HTML form element is set as validation container, the form submits will be automatically prevented if validation fails.</returns>
-
     },
-
 
     validateInput: function(input) {
         /// <summary>
@@ -4310,7 +3678,6 @@ kendo.ui.Validator.prototype = {
         /// </summary>
         /// <param name="input" type="Object" >Input element to be validated.</param>
         /// <returns type="Boolean">true if all validation rules passed successfully.</returns>
-
     },
 
     bind: function(event, callback) {
@@ -4328,7 +3695,6 @@ kendo.ui.Validator.prototype = {
         /// <param name="event" type="String">The event name</param>
         /// <param name="callback" type="Function">The callback to be removed.</param>
     }
-
 };
 
 $.fn.getKendoValidator = function() {
@@ -4344,17 +3710,17 @@ $.fn.kendoValidator = function(options) {
 
     /// &#10;Accepts an object with the following configuration options:
     /// &#10;
-    /// &#10;errorTemplate — String 
+    /// &#10;errorTemplate — String
     /// &#10;The template which renders the validation message.
     /// &#10;
-    /// &#10;messages — Object 
+    /// &#10;messages — Object
     /// &#10;Set of messages (either strings or functions) which will be shown when given validation rule fails.
 /// &#10;By setting already existing key the appropriate built-in message will be overridden.
     /// &#10;
-    /// &#10;rules — Object 
+    /// &#10;rules — Object
     /// &#10;Set of custom validation rules. Those rules will extend the built-in ones.
     /// &#10;
-    /// &#10;validateOnBlur — Boolean 
+    /// &#10;validateOnBlur — Boolean
     /// &#10;Determines if validation will be triggered when element loses focus. Default value is true.
     /// &#10;
     /// </summary>
@@ -4363,68 +3729,50 @@ $.fn.kendoValidator = function(options) {
     /// </param>
 };
 
-
 kendo.ui.Widget = function() { };
 
 kendo.ui.Widget.prototype = {
-
-
-
-
     bind: function() {
         /// <summary>
         /// Attaches a handler to an event. Examples and more info can be found in the bind section of the kendo.Observable API reference.
         /// </summary>
-
     },
-
 
     destroy: function() {
         /// <summary>
         /// Prepares the widget for safe removal from the DOM. Detaches all event handlers and removes jQuery.data attributes to avoid memory leaks. Calls destroy method of any child Kendo widgets.
         /// </summary>
-
     },
-
 
     one: function() {
         /// <summary>
         /// Attaches a handler to an event. The handler is executed only once. Examples and more info can be found in the one section of the
 /// kendo.Observable API reference.
         /// </summary>
-
     },
-
 
     setOptions: function(newOptions) {
         /// <summary>
         /// Allows changing the widget configuration after initialization. Depending on the widget, some properties may not be changed, e.g. ones that influence the widget's HTML output (such as Grid scrollability or columns).
         /// </summary>
         /// <param name="newOptions" type="Object" >The options to be changed or added.</param>
-
     },
-
 
     trigger: function() {
         /// <summary>
         /// Executes all handlers attached to the given event. More info can be found in the trigger section of the
 /// kendo.Observable API reference.
         /// </summary>
-
     },
-
 
     unbind: function() {
         /// <summary>
         /// Remove a previously attached event handler. More info can be found in the unbind section of the
 /// kendo.Observable API reference.
         /// </summary>
-
     },
 
-
     self: null
-
 };
 
 $.fn.getKendoWidget = function() {
@@ -4445,4 +3793,3 @@ $.fn.kendoWidget = function(options) {
     /// The widget configuration options
     /// </param>
 };
-

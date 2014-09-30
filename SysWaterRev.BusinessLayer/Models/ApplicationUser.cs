@@ -7,10 +7,17 @@ namespace SysWaterRev.BusinessLayer.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public bool IsActive { get; set; }
+
+        public virtual Customer CustomerDetails { get; set; }
+
+        public virtual Employee EmployeeDetails { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            ClaimsIdentity userIdentity =
+                await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
         }
@@ -18,14 +25,8 @@ namespace SysWaterRev.BusinessLayer.Models
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager,
             string authenticationType)
         {
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            ClaimsIdentity userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             return userIdentity;
         }
-
-        public bool IsActive { get; set; }
-
-        public virtual Customer CustomerDetails { get; set; }
-
-        public virtual Employee EmployeeDetails { get; set; }
     }
 }

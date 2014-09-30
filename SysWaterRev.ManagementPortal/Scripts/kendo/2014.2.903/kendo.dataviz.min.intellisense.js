@@ -1,5 +1,3 @@
-
-
 intellisense.annotate(kendo, {
     Class: function() {
         /// <signature>
@@ -13,7 +11,6 @@ var original = kendo.Class;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -33,19 +30,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Color: function() {
@@ -96,19 +89,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Layout: function() {
@@ -153,19 +142,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Observable: function() {
@@ -216,21 +201,15 @@ intellisense.annotate(instance, {
         /// <param name="handler" type="Function" >The handler which should no longer be executed. If not specified all handlers listening to that event will be removed.</param>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Router: function() {
@@ -255,7 +234,7 @@ intellisense.annotate(instance, {
     route: function(route,callback) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="route" type="String" >The route definition.</param>
         /// <param name="callback" type="Function" >The callback to be executed when the route is matched.</param>
@@ -306,19 +285,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     View: function() {
@@ -370,19 +345,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Binder: function() {
@@ -424,19 +395,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     DataSource: function() {
@@ -704,19 +671,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDataSource: function() {
@@ -814,19 +777,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependency: function() {
@@ -841,7 +800,6 @@ var original = kendo.data.GanttDependency;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -861,19 +819,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependencyDataSource: function() {
@@ -935,19 +889,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttTask: function() {
@@ -998,19 +948,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     HierarchicalDataSource: function() {
@@ -1025,7 +971,6 @@ var original = kendo.data.HierarchicalDataSource;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1045,19 +990,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Model: function() {
@@ -1122,7 +1063,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1132,19 +1072,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Node: function() {
@@ -1217,19 +1153,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableArray: function() {
@@ -1333,7 +1265,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1343,19 +1274,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableObject: function() {
@@ -1413,7 +1340,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1423,19 +1349,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     PivotDataSource: function() {
@@ -1590,19 +1512,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerDataSource: function() {
@@ -1647,19 +1565,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerEvent: function() {
@@ -1780,19 +1694,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Circle: function() {
@@ -1836,19 +1746,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Connection: function() {
@@ -1958,19 +1864,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Connector: function() {
@@ -2014,19 +1916,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Group: function() {
@@ -2093,19 +1991,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Image: function() {
@@ -2149,19 +2043,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Line: function() {
@@ -2205,19 +2095,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Point: function() {
@@ -2232,7 +2118,6 @@ var original = kendo.dataviz.diagram.Point;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2252,19 +2137,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Rect: function() {
@@ -2279,7 +2160,6 @@ var original = kendo.dataviz.diagram.Rect;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2299,19 +2179,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Rectangle: function() {
@@ -2355,19 +2231,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Shape: function() {
@@ -2456,19 +2328,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     TextBlock: function() {
@@ -2521,19 +2389,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Arc: function() {
@@ -2627,19 +2491,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Circle: function() {
@@ -2733,19 +2593,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Element: function() {
@@ -2806,19 +2662,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     FillOptions: function() {
@@ -2833,7 +2685,6 @@ var original = kendo.dataviz.drawing.FillOptions;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2853,19 +2704,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Group: function() {
@@ -2940,19 +2787,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Image: function() {
@@ -3034,19 +2877,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     MultiPath: function() {
@@ -3169,19 +3008,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     OptionsStore: function() {
@@ -3234,19 +3069,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Path: function() {
@@ -3369,19 +3200,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Segment: function() {
@@ -3443,19 +3270,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     StrokeOptions: function() {
@@ -3470,7 +3293,6 @@ var original = kendo.dataviz.drawing.StrokeOptions;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -3490,19 +3312,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Surface: function() {
@@ -3517,7 +3335,6 @@ var original = kendo.dataviz.drawing.Surface;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -3537,19 +3354,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Text: function() {
@@ -3652,19 +3465,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Arc: function() {
@@ -3823,19 +3632,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Circle: function() {
@@ -3940,19 +3745,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Matrix: function() {
@@ -4042,19 +3843,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Point: function() {
@@ -4257,19 +4054,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Rect: function() {
@@ -4423,19 +4216,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Size: function() {
@@ -4521,19 +4310,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Transformation: function() {
@@ -4634,19 +4419,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.ui, {
     Barcode: function() {
@@ -4722,19 +4503,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoBarcode = function() {
     this.data("kendoBarcode", new kendo.dataviz.ui.Barcode());
@@ -4765,7 +4542,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;The background of the barcode area.
 /// &#10;Any valid CSS color string will work here, including hex and rgb.
         /// &#10;
-        /// &#10;border — Object 
+        /// &#10;border — Object
         /// &#10;The border of the barcode area.
         /// &#10;
         /// &#10;checksum — Boolean (default: false)
@@ -4778,16 +4555,16 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;height — Number (default: 100)
         /// &#10;The height of the barcode in pixels.  By default the height is 100.
         /// &#10;
-        /// &#10;padding — Object 
+        /// &#10;padding — Object
         /// &#10;The padding of the barcode.
         /// &#10;
-        /// &#10;text — Object 
+        /// &#10;text — Object
         /// &#10;Can be set to a JavaScript object which represents the text configuration.
         /// &#10;
         /// &#10;type — String (default: "code39")
         /// &#10;The symbology (encoding) the barcode will use.The supported values are:
         /// &#10;
-        /// &#10;value — String 
+        /// &#10;value — String
         /// &#10;The initial value of the Barcode
         /// &#10;
         /// &#10;width — Number (default: 300)
@@ -4899,19 +4676,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoChart = function() {
     this.data("kendoChart", new kendo.dataviz.ui.Chart());
@@ -4938,65 +4711,65 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;The default options for all chart axes. Accepts the options supported by categoryAxis, valueAxis, xAxis and yAxis.
         /// &#10;
-        /// &#10;categoryAxis — Array|Object 
+        /// &#10;categoryAxis — Array|Object
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options. Represents the entire visible area of the chart.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the chart which is used to display the series. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;legend — Object 
+        /// &#10;legend — Object
         /// &#10;The chart legend configuration options.
         /// &#10;
-        /// &#10;panes — Array 
+        /// &#10;panes — Array
         /// &#10;The chart panes configuration.Panes are used to split the chart in two or more parts. The panes are ordered from top to bottom.Each axis can be associated with a pane by setting its pane option to the name of the desired pane.
 /// &#10;Axis that don't have specified pane are placed in the top (default) pane.Series are moved to the desired pane by associating them with an axis.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. The plot area is the area which displays the series.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Chart will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;The configuration of the chart series.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;The default options for all series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;The chart theme.The supported values are:
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;title — Object 
+        /// &#10;title — Object
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The chart series tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
         /// &#10;If set to true the chart will play animations when displaying the series. By default animations are enabled.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
-        /// &#10;xAxis — Array 
+        /// &#10;xAxis — Array
         /// &#10;The X-axis configuration options of the scatter chart X-axis. Supports all valueAxis options.
         /// &#10;
-        /// &#10;yAxis — Array 
+        /// &#10;yAxis — Array
         /// &#10;The y axis configuration options of the scatter chart. Supports all valueAxis options.
         /// &#10;
         /// </summary>
@@ -5283,7 +5056,7 @@ intellisense.annotate(instance, {
     boundingBox: function(items) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="items" type="Array" >The items (shapes and connections) to include in the bounding box. Defaults to all items if not specified.</param>
         /// <returns type="kendo.dataviz.diagram.Rect">The bounding rectangle of the specified items. If nothing is specified the bounding box of the all diagram will be returned.</returns>
@@ -5355,19 +5128,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDiagram = function() {
     this.data("kendoDiagram", new kendo.dataviz.ui.Diagram());
@@ -5409,34 +5178,34 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;editable — Boolean (default: true)
         /// &#10;Specifies the shape editable.
         /// &#10;
-        /// &#10;editable — Object 
+        /// &#10;editable — Object
         /// &#10;Specifies the shape editable.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;See the dataSource field.
         /// &#10;
-        /// &#10;layout — Object 
+        /// &#10;layout — Object
         /// &#10;The layout of a diagram consists in arranging the shapes (sometimes also the connections) in some fashion in order to achieve an aesthetically pleasing experience to the user. It aims at giving a more direct insight in the information contained within the diagram and its relational structure.On a technical level, layout consists of a multitude of algorithms and optimizations:and various ad-hoc calculations which depend on the type of layout. The criteria on which an algorithm is based vary but the common denominator is:Kendo diagram includes three of the most used layout algorithms which should cover most of your layout needs - tree layout, force-directed layout and layered layout. Please, check the type property for more details regarding each type.The generic way to apply a layout is by calling the layout() method on the diagram. The method has a single parameter options. It is an object, which can contain parameters which are specific to the layout as well as parameters customizing the global grid layout. Parameters which apply to other layout algorithms can be included but are overlooked if not applicable to the chose layout type. This means that you can define a set of parameters which cover all possible layout types and simply pass it in the method whatever the layout define in the first parameter.
         /// &#10;
         /// &#10;template — String|Function (default: "")
         /// &#10;The template which renders the content of the shape when bound to a dataSource. The names you can use in the template correspond to the properties used in the dataSource. See the dataSource topic below for a concrete example.
         /// &#10;
-        /// &#10;connectionDefaults — Object 
+        /// &#10;connectionDefaults — Object
         /// &#10;Defines the connections configuration.
         /// &#10;
-        /// &#10;connections — Array 
+        /// &#10;connections — Array
         /// &#10;Defines the connections configuration.
         /// &#10;
         /// &#10;selectable — Boolean (default: true)
         /// &#10;Defines the selectable options.
         /// &#10;
-        /// &#10;selectable — Object 
+        /// &#10;selectable — Object
         /// &#10;Defines the selectable options.
         /// &#10;
-        /// &#10;shapeDefaults — Object 
+        /// &#10;shapeDefaults — Object
         /// &#10;Defines the shape options.
         /// &#10;
-        /// &#10;shapes — Array 
+        /// &#10;shapes — Array
         /// &#10;Defines the shape options.
         /// &#10;
         /// </summary>
@@ -5528,19 +5297,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoLinearGauge = function() {
     this.data("kendoLinearGauge", new kendo.dataviz.ui.LinearGauge());
@@ -5563,18 +5328,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.LinearGauge widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;gaugeArea — Object 
+        /// &#10;gaugeArea — Object
         /// &#10;The gauge area configuration options.
 /// &#10;This is the entire visible area of the gauge.
         /// &#10;
-        /// &#10;pointer — Object 
+        /// &#10;pointer — Object
         /// &#10;The pointer configuration options.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Gauge will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;scale — Object 
+        /// &#10;scale — Object
         /// &#10;Configures the scale.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
@@ -5758,19 +5523,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMap = function() {
     this.data("kendoMap", new kendo.dataviz.ui.Map());
@@ -5793,23 +5554,23 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.Map widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;center — Array|kendo.dataviz.map.Location 
+        /// &#10;center — Array|kendo.dataviz.map.Location
         /// &#10;The map center. Coordinates are listed as [Latitude, Longitude].
         /// &#10;
-        /// &#10;controls — Object 
+        /// &#10;controls — Object
         /// &#10;The configuration of built-in map controls.
         /// &#10;
-        /// &#10;layerDefaults — Object 
+        /// &#10;layerDefaults — Object
         /// &#10;The default configuration for map layers by type.
         /// &#10;
-        /// &#10;layers — Array 
+        /// &#10;layers — Array
         /// &#10;The configuration of the map layers.
 /// &#10;The layer type is determined by the value of the type field.
         /// &#10;
-        /// &#10;markerDefaults — Object 
+        /// &#10;markerDefaults — Object
         /// &#10;The default options for all markers.
         /// &#10;
-        /// &#10;markers — Array 
+        /// &#10;markers — Array
         /// &#10;Static markers to display on the map.
         /// &#10;
         /// &#10;minZoom — Number (default: 1)
@@ -5931,19 +5692,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoQRCode = function() {
     this.data("kendoQRCode", new kendo.dataviz.ui.QRCode());
@@ -5969,7 +5726,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;background — String (default: "#fff")
         /// &#10;The background color of the QR code. Accepts a valid CSS color string, including hex and rgb.
         /// &#10;
-        /// &#10;border — Object 
+        /// &#10;border — Object
         /// &#10;The border of the QR code.
         /// &#10;
         /// &#10;color — String (default: "#000")
@@ -5988,12 +5745,12 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the QRCode will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;size — Number|String 
+        /// &#10;size — Number|String
         /// &#10;Specifies the size of a QR code in pixels (i.e. "200px"). Numeric values are treated as pixels.
 /// &#10;If no size is specified, it will be determined from the element width and height.
 /// &#10;In case the element has width or height of zero, a default value of 200 pixels will be used.
         /// &#10;
-        /// &#10;value — Number|String 
+        /// &#10;value — Number|String
         /// &#10;The value of the QRCode.
         /// &#10;
         /// </summary>
@@ -6085,19 +5842,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoRadialGauge = function() {
     this.data("kendoRadialGauge", new kendo.dataviz.ui.RadialGauge());
@@ -6120,18 +5873,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.RadialGauge widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;gaugeArea — Object 
+        /// &#10;gaugeArea — Object
         /// &#10;The gauge area configuration options.
 /// &#10;This is the entire visible area of the gauge.
         /// &#10;
-        /// &#10;pointer — Object 
+        /// &#10;pointer — Object
         /// &#10;The pointer configuration options.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Gauge will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;scale — Object 
+        /// &#10;scale — Object
         /// &#10;Configures the scale.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
@@ -6228,19 +5981,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoSparkline = function() {
     this.data("kendoSparkline", new kendo.dataviz.ui.Sparkline());
@@ -6263,49 +6012,49 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.Sparkline widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;Default options for all chart axes.
         /// &#10;
-        /// &#10;categoryAxis — Array 
+        /// &#10;categoryAxis — Array
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options.
 /// &#10;This is the entire visible area of the chart.
         /// &#10;
-        /// &#10;data — Array 
+        /// &#10;data — Array
         /// &#10;The data for the default sparkline series.Will be discareded if series are supplied.
         /// &#10;
-        /// &#10;dataSource — Object 
+        /// &#10;dataSource — Object
         /// &#10;DataSource configuration or instance.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the chart will call read on the data source initially.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. This is the area containing the plotted series.
         /// &#10;
         /// &#10;pointWidth — Number (default: 5)
         /// &#10;The width to allocate for each data point.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Sparkline will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;Array of series definitions.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.Each series type has a different set of options.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;Default values for each series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;Sets Chart theme. Available themes: default, blueOpal, black.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The data point tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: false)
@@ -6314,7 +6063,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;type — String (default: "line")
         /// &#10;The default series type.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
         /// </summary>
@@ -6415,19 +6164,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoStockChart = function() {
     this.data("kendoStockChart", new kendo.dataviz.ui.StockChart());
@@ -6454,62 +6199,62 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;The field containing the point date.
 /// &#10;It is used as a default categoryField for all series.The data item field value must be either:
         /// &#10;
-        /// &#10;navigator — Object 
+        /// &#10;navigator — Object
         /// &#10;The data navigator configuration options.
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;Default options for all chart axes.
         /// &#10;
-        /// &#10;categoryAxis — Array 
+        /// &#10;categoryAxis — Array
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options.
 /// &#10;This is the entire visible area of the chart.
         /// &#10;
-        /// &#10;dataSource — Object 
+        /// &#10;dataSource — Object
         /// &#10;DataSource configuration or instance.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the chart will call read on the data source initially.
         /// &#10;
-        /// &#10;legend — Object 
+        /// &#10;legend — Object
         /// &#10;The chart legend configuration options.
         /// &#10;
-        /// &#10;panes — Array 
+        /// &#10;panes — Array
         /// &#10;The chart panes configuration.Panes are used to split the chart in two or more parts. The panes are ordered from top to bottom.Each axis can be associated with a pane by setting its pane option to the name of the desired pane.
 /// &#10;Axis that don't have specified pane are placed in the top (default) pane.Series are moved to the desired pane by associating them with an axis.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. This is the area containing the plotted series.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Chart will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;Array of series definitions.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.Each series type has a different set of options.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;Default values for each series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;Sets Chart theme. Available themes: default, blueOpal, black.
         /// &#10;
-        /// &#10;title — Object 
+        /// &#10;title — Object
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The data point tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
         /// &#10;A value indicating if transition animations should be played.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
         /// </summary>
@@ -6533,7 +6278,6 @@ var original = kendo.dataviz.ui.TreeMap;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -6553,19 +6297,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTreeMap = function() {
     this.data("kendoTreeMap", new kendo.dataviz.ui.TreeMap());
@@ -6588,7 +6328,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.TreeMap widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource
         /// &#10;The data source of the treeMap which is used to display the tiles and titles. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.HierarchicalDataSource
 /// &#10;instance.If the HierarchicalDataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.HierarchicalDataSource instance using that value as data source configuration.If the HierarchicalDataSource option is an existing kendo.data.HierarchicalDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -6611,10 +6351,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;textField — String (default: "text")
         /// &#10;The data item field which contains the tile title.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template which renders the treeMap tile content.The fields which can be used in the template are:
         /// &#10;
-        /// &#10;colors — Array 
+        /// &#10;colors — Array
         /// &#10;The default colors for the treemap tiles. When all colors are used, new colors are pulled from the start again.
         /// &#10;
         /// </summary>
@@ -6665,19 +6405,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileWidget = function() {
     this.data("kendoMobileWidget", new kendo.mobile.ui.Widget());
@@ -6748,19 +6484,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDraggable = function() {
     this.data("kendoDraggable", new kendo.ui.Draggable());
@@ -6786,7 +6518,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;axis — String (default: null)
         /// &#10;Constrains the hint movement to either the horizontal (x) or vertical (y) axis. Can be set to either "x" or "y".
         /// &#10;
-        /// &#10;container — jQuery 
+        /// &#10;container — jQuery
         /// &#10;If set, the hint movement is constrained to the container boundaries.
         /// &#10;
         /// &#10;cursorOffset — Object (default: null)
@@ -6799,7 +6531,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;group — String (default: "default")
         /// &#10;Used to group sets of draggable and drop targets. A draggable with the same group value as a drop target will be accepted by the drop target.
         /// &#10;
-        /// &#10;hint — Function|jQuery 
+        /// &#10;hint — Function|jQuery
         /// &#10;Provides a way for customization of the drag indicator. If a function is supplied, it receives one argument - the draggable element's jQuery object.
         /// &#10;
         /// &#10;holdToDrag — Boolean (default: false)
@@ -6853,19 +6585,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTarget = function() {
     this.data("kendoDropTarget", new kendo.ui.DropTarget());
@@ -6912,7 +6640,6 @@ var original = kendo.ui.DropTargetArea;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -6932,19 +6659,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTargetArea = function() {
     this.data("kendoDropTargetArea", new kendo.ui.DropTargetArea());
@@ -7046,19 +6769,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoValidator = function() {
     this.data("kendoValidator", new kendo.ui.Validator());
@@ -7081,17 +6800,17 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Validator widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;errorTemplate — String 
+        /// &#10;errorTemplate — String
         /// &#10;The template which renders the validation message.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Set of messages (either strings or functions) which will be shown when given validation rule fails.
 /// &#10;By setting already existing key the appropriate built-in message will be overridden.
         /// &#10;
-        /// &#10;rules — Object 
+        /// &#10;rules — Object
         /// &#10;Set of custom validation rules. Those rules will extend the built-in ones.
         /// &#10;
-        /// &#10;validateOnBlur — Boolean 
+        /// &#10;validateOnBlur — Boolean
         /// &#10;Determines if validation will be triggered when element loses focus. Default value is true.
         /// &#10;
         /// </summary>
@@ -7161,21 +6880,15 @@ intellisense.annotate(instance, {
         /// </summary>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoWidget = function() {
     this.data("kendoWidget", new kendo.ui.Widget());

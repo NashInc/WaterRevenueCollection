@@ -28,8 +28,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var metersViewModel =
-                Map<List<Meter>, List<MeterViewModel>>(await db.Meters.Include(m => m.OwnerCustomer).Include(m => m.MeterReadings).ToListAsync());
+            List<MeterViewModel> metersViewModel =
+                Map<List<Meter>, List<MeterViewModel>>(
+                    await db.Meters.Include(m => m.OwnerCustomer).Include(m => m.MeterReadings).ToListAsync());
             return View(metersViewModel);
         }
 
@@ -41,41 +42,42 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var meter = await db.Meters.FindAsync(id);
+            Meter meter = await db.Meters.FindAsync(id);
 
             if (meter == null)
             {
                 return HttpNotFound();
             }
-            var meterViewModel = Map<Meter, MeterViewModel>(meter);
+            MeterViewModel meterViewModel = Map<Meter, MeterViewModel>(meter);
             return View(meterViewModel);
         }
 
-        public JsonResult GetReadingsForMeter([DataSourceRequest]DataSourceRequest request, Guid? meterId)
+        public JsonResult GetReadingsForMeter([DataSourceRequest] DataSourceRequest request, Guid? meterId)
         {
-            var readingsWithEmployee = db.Readings.Where(x => x.MeterId == meterId).Select(x => new ReadingViewModel
-            {
-                MeterId = x.MeterId,
-                Latitude = x.Latitude,
-                Longitude = x.Longitude,
-                ReadingId = x.ReadingId,
-                IsConfirmed = x.IsConfirmed,
-                ReadingValue = x.ReadingValue,
-                DateCreated = x.DateCreated,
-                CreatedBy = x.CreatedBy,
-                EmployeeId = x.EmployeeId,
-                EmployeeNumber = x.ReadBy.EmployeeNumber,
-                EmployeeFirstName = x.ReadBy.FirstName,
-                EmployeeMiddleName = x.ReadBy.MiddleName,
-                EmployeeSurname = x.ReadBy.Surname,
-            }).ToDataSourceResult(request);
+            DataSourceResult readingsWithEmployee = db.Readings.Where(x => x.MeterId == meterId)
+                .Select(x => new ReadingViewModel
+                {
+                    MeterId = x.MeterId,
+                    Latitude = x.Latitude,
+                    Longitude = x.Longitude,
+                    ReadingId = x.ReadingId,
+                    IsConfirmed = x.IsConfirmed,
+                    ReadingValue = x.ReadingValue,
+                    DateCreated = x.DateCreated,
+                    CreatedBy = x.CreatedBy,
+                    EmployeeId = x.EmployeeId,
+                    EmployeeNumber = x.ReadBy.EmployeeNumber,
+                    EmployeeFirstName = x.ReadBy.FirstName,
+                    EmployeeMiddleName = x.ReadBy.MiddleName,
+                    EmployeeSurname = x.ReadBy.Surname,
+                }).ToDataSourceResult(request);
             return Json(readingsWithEmployee, "application/json", JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> GetCascadeMeters(Guid? CustomerId)
         {
             if (CustomerId == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var meterViewModel =
+            List<MeterViewModel> meterViewModel =
                 Map<List<Meter>, List<MeterViewModel>>(
                     await db.Meters.Where(x => x.CustomerId == CustomerId).ToListAsync());
             return Json(meterViewModel, JsonRequestBehavior.AllowGet);
@@ -96,7 +98,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> Create(
             [Bind(Include = "MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
         {
-            var customer = await db.Customers.FindAsync(meter.CustomerId);
+            Customer customer = await db.Customers.FindAsync(meter.CustomerId);
             if (customer != null)
             {
                 try
@@ -105,7 +107,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     meter.CreatedBy = User.Identity.Name;
                     meter.DateCreated = DateTime.Now;
                     meter.MeterId = IdentityGenerator.NewSequentialGuid();
-                    var meterModel = Map<MeterViewModel, Meter>(meter);
+                    Meter meterModel = Map<MeterViewModel, Meter>(meter);
                     db.Meters.Add(meterModel);
                     await db.SaveChangesAsync();
                     TempData.Add("MeterId", meterModel.MeterId);
@@ -128,8 +130,8 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var meter = await db.Meters.FindAsync(id);
-            var meterViewModel = Map<Meter, MeterViewModel>(meter);
+            Meter meter = await db.Meters.FindAsync(id);
+            MeterViewModel meterViewModel = Map<Meter, MeterViewModel>(meter);
             if (meter == null && meterViewModel == null)
             {
                 return HttpNotFound();
@@ -145,10 +147,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> Edit(
             [Bind(Include = "MeterId,MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
         {
-            var existingMeter = await db.Meters.FindAsync(meter.MeterId);
+            Meter existingMeter = await db.Meters.FindAsync(meter.MeterId);
             if (existingMeter != null)
             {
-                var existingCustomer = await db.Customers.FindAsync(meter.CustomerId);
+                Customer existingCustomer = await db.Customers.FindAsync(meter.CustomerId);
                 if (existingCustomer != null)
                 {
                     existingMeter.CustomerId = existingCustomer.CustomerId;

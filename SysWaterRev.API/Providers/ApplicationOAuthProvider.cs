@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using SysWaterRev.BusinessLayer.Models;
 
 namespace SysWaterRev.API.Providers
 {
@@ -28,8 +29,8 @@ namespace SysWaterRev.API.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-            var user = await userManager.FindAsync(context.UserName, context.Password);
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] {"*"});
+            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {
@@ -37,29 +38,30 @@ namespace SysWaterRev.API.Providers
                 return;
             }
 
-            var oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-               OAuthDefaults.AuthenticationType);
-            var cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
+            ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
+                OAuthDefaults.AuthenticationType);
+            ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
 
-            var properties = CreateProperties(user.UserName);
+            AuthenticationProperties properties = CreateProperties(user.UserName);
             var ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
-            foreach (var identityUserRole in (await userManager.GetRolesAsync(user.Id)).ToList())
+            foreach (string identityUserRole in (await userManager.GetRolesAsync(user.Id)).ToList())
             {
                 identity.AddClaim(new Claim("role", identityUserRole));
             }
             context.Validated(identity);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
             context.Request.Context.Authentication.SignIn(oAuthIdentity);
-            var result = await context.Request.Context.Authentication.AuthenticateAsync(oAuthIdentity.AuthenticationType);
+            AuthenticateResult result =
+                await context.Request.Context.Authentication.AuthenticateAsync(oAuthIdentity.AuthenticationType);
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
-            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            foreach (var property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
@@ -97,7 +99,7 @@ namespace SysWaterRev.API.Providers
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "userName", userName }
+                {"userName", userName}
             };
             return new AuthenticationProperties(data);
         }

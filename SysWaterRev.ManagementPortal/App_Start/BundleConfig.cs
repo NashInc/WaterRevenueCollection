@@ -48,15 +48,15 @@ namespace SysWaterRev.ManagementPortal
 
             bundles.Add(new ScriptBundle("~/bundles/template").Include(
                 "~/Scripts/icheck.js",
-                "~/Scripts/app.js",                
+                "~/Scripts/app.js",
                 "~/Scripts/demo.js"
                 ));
 
-            //CSS Bundles         
+            //CSS Bundles
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/font-awesome.css",
-                "~/Content/ionicons.css",                                     
+                "~/Content/ionicons.css",
                 "~/Content/Site.css"
                 ));
 

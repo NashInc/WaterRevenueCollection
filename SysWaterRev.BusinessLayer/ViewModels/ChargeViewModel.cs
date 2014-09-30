@@ -17,14 +17,16 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         [Required]
         [Display(Name = "End Range")]
         [DataType(DataType.Text)]
-        [Remote(action: "ChargeEndRangeValidation", controller: "Charges", AdditionalFields = "ChargeScheduleId,StartRange", HttpMethod = "POST")]
+        [Remote(action: "ChargeEndRangeValidation", controller: "Charges",
+            AdditionalFields = "ChargeScheduleId,StartRange", HttpMethod = "POST")]
         public double EndRange { get; set; }
 
         [Required]
         [Display(Name = "Unit Price")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "KES {0:#,###0.00}")]
-        [Remote("ChargeUnitValidation", "Charges", AdditionalFields = "ChargeScheduleId,StartRange,EndRange", HttpMethod = "POST")]
+        [Remote("ChargeUnitValidation", "Charges", AdditionalFields = "ChargeScheduleId,StartRange,EndRange",
+            HttpMethod = "POST")]
         public string UnitPrice { get; set; }
 
         [Display(Name = "Is Active")]

@@ -7,6 +7,8 @@ namespace SysWaterRev.BusinessLayer.ViewModels
 {
     public class ReadingViewModel : BaseViewModel
     {
+        private string employeeFullName;
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ReadingId { get; set; }
@@ -56,7 +58,11 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         [DataType(DataType.Text)]
         public string EmployeeFullName
         {
-            get { return employeeFullName ?? string.Format("{0} {1} {2}", EmployeeFirstName, EmployeeMiddleName, EmployeeSurname); }
+            get
+            {
+                return employeeFullName ??
+                       string.Format("{0} {1} {2}", EmployeeFirstName, EmployeeMiddleName, EmployeeSurname);
+            }
             set { employeeFullName = value; }
         }
 
@@ -65,8 +71,6 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         public string EmployeeMiddleName { get; set; }
 
         public string EmployeeSurname { get; set; }
-
-        private string employeeFullName;
 
         [Display(Name = "Employee.No")]
         [DataType(DataType.Text)]

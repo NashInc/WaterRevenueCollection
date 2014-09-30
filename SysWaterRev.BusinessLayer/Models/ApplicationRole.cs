@@ -5,7 +5,6 @@ namespace SysWaterRev.BusinessLayer.Models
     public class ApplicationRole : IdentityRole
     {
         public ApplicationRole()
-            : base()
         {
         }
 

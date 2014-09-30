@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
@@ -22,22 +23,22 @@ namespace SysWaterRev.ManagementPortal.Controllers
         private readonly ApplicationDbContext db;
         private ApplicationUserManager userManager;
 
+        public CustomersController()
+        {
+            db = new ApplicationDbContext();
+        }
+
         public ApplicationUserManager UserManager
         {
             get { return userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
             set { userManager = value; }
         }
 
-        public CustomersController()
-        {
-            db = new ApplicationDbContext();
-        }
-
         // GET: Customers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var customerViewModels = Map<List<Customer>, List<
+            List<CustomerViewModel> customerViewModels = Map<List<Customer>, List<
                 CustomerViewModel>>(await db.Customers.ToListAsync());
             return View(customerViewModels);
         }
@@ -50,7 +51,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var customerViewModel = await ComputeTotalUnits(id);
+            CustomerViewModel customerViewModel = await ComputeTotalUnits(id);
             if (customerViewModel == null)
             {
                 return HttpNotFound();
@@ -74,19 +75,23 @@ namespace SysWaterRev.ManagementPortal.Controllers
         private async Task<CustomerViewModel> ComputeTotalUnits(Guid? id)
         {
             CustomerViewModel customerViewModel;
-            var customer = await db.Customers.Include(x => x.Meters).Include(x => x.Meters.Select(z => z.MeterReadings)).FirstOrDefaultAsync(y => y.CustomerId == id);
+            Customer customer =
+                await
+                    db.Customers.Include(x => x.Meters)
+                        .Include(x => x.Meters.Select(z => z.MeterReadings))
+                        .FirstOrDefaultAsync(y => y.CustomerId == id);
             if (customer != null)
             {
                 customerViewModel = Map<Customer, CustomerViewModel>(customer);
-                var metersForCustomer = customer.Meters;
-                foreach (var meter in metersForCustomer)
+                ICollection<Meter> metersForCustomer = customer.Meters;
+                foreach (Meter meter in metersForCustomer)
                 {
-                    var totalReadings = 0.0d;
-                    var totalConfirmedReadings = 0.0d;
-                    var totalCorrectedReadings = 0.0d;
-                    var totalCorrectedAndConfirmed = 0.0d;
-                    var readingsForMeter = meter.MeterReadings;
-                    foreach (var reading in readingsForMeter)
+                    double totalReadings = 0.0d;
+                    double totalConfirmedReadings = 0.0d;
+                    double totalCorrectedReadings = 0.0d;
+                    double totalCorrectedAndConfirmed = 0.0d;
+                    ICollection<Reading> readingsForMeter = meter.MeterReadings;
+                    foreach (Reading reading in readingsForMeter)
                     {
                         totalReadings += reading.ReadingValue;
                         if (reading.IsConfirmed != null && reading.IsConfirmed.Value)
@@ -115,22 +120,23 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<JsonResult> GetCascadeCustomers()
         {
-            var customersViewModel = Map<List<Customer>, List<
+            List<CustomerViewModel> customersViewModel = Map<List<Customer>, List<
                 CustomerViewModel>>(await db.Customers.ToListAsync());
             return Json(customersViewModel, "application/json", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult GetMetersForCustomer([DataSourceRequest]DataSourceRequest request, Guid? CustomerId)
+        public JsonResult GetMetersForCustomer([DataSourceRequest] DataSourceRequest request, Guid? CustomerId)
         {
-            var customerWithMeters = db.Meters.Where(x => x.CustomerId == CustomerId).Select(x => new MeterViewModel
-            {
-                MeterId = x.MeterId,
-                MeterNumber = x.MeterNumber,
-                MeterSerialNumber = x.MeterSerialNumber,
-                ReadingsForMeter = x.MeterReadings.Count,
-                DateCreated = x.DateCreated
-            }).ToDataSourceResult(request);
+            DataSourceResult customerWithMeters = db.Meters.Where(x => x.CustomerId == CustomerId)
+                .Select(x => new MeterViewModel
+                {
+                    MeterId = x.MeterId,
+                    MeterNumber = x.MeterNumber,
+                    MeterSerialNumber = x.MeterSerialNumber,
+                    ReadingsForMeter = x.MeterReadings.Count,
+                    DateCreated = x.DateCreated
+                }).ToDataSourceResult(request);
             return Json(customerWithMeters, "application/json");
         }
 
@@ -147,7 +153,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> Create(
             [Bind(
                 Include =
-                    "FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")]CustomerViewModel customer)
+                    "FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")] CustomerViewModel customer)
         {
             var appUser = new ApplicationUser
             {
@@ -170,10 +176,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     MiddleName = customer.MiddleName
                 }
             };
-            var createResult = await UserManager.CreateAsync(appUser);
+            IdentityResult createResult = await UserManager.CreateAsync(appUser);
             if (createResult.Succeeded)
             {
-                var addToRoleResult =
+                IdentityResult addToRoleResult =
                     await UserManager.AddToRoleAsync(appUser.Id, SimpleRevCollectionRoles.Customers);
                 if (addToRoleResult.Succeeded)
                 {
@@ -195,12 +201,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var customer = await db.Customers.FindAsync(id);
+            Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
             }
-            var customerViewModel = Map<Customer, CustomerViewModel>(customer);
+            CustomerViewModel customerViewModel = Map<Customer, CustomerViewModel>(customer);
             return View(customerViewModel);
         }
 
@@ -213,9 +219,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
             [Bind(
                 Include =
                     "CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber"
-                )]CustomerViewModel customer)
+                )] CustomerViewModel customer)
         {
-            var customerModel = await db.Customers.FindAsync(customer.CustomerId);
+            Customer customerModel = await db.Customers.FindAsync(customer.CustomerId);
             if (customerModel != null)
             {
                 customerModel.FirstName = customer.FirstName;
@@ -242,7 +248,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var customer = await db.Customers.FindAsync(id);
+            Customer customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -266,7 +272,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             if (disposing)
             {
                 db.Dispose();
-                this.UserManager.Dispose();
+                UserManager.Dispose();
             }
             base.Dispose(disposing);
         }

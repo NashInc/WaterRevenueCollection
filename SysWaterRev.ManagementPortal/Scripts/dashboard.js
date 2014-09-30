@@ -23,24 +23,23 @@ $(function() {
         handle: ".handle",
         forcePlaceholderSize: true,
         zIndex: 999999
-    }).disableSelection();
-    ;
+    }).disableSelection();;
     $('.daterange').daterangepicker(
-            {
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                    'Last 7 Days': [moment().subtract('days', 6), moment()],
-                    'Last 30 Days': [moment().subtract('days', 29), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-                },
-                startDate: moment().subtract('days', 29),
-                endDate: moment()
+        {
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                'Last 7 Days': [moment().subtract('days', 6), moment()],
+                'Last 30 Days': [moment().subtract('days', 29), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
             },
-    function(start, end) {
-        alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-    });
+            startDate: moment().subtract('days', 29),
+            endDate: moment()
+        },
+        function(start, end) {
+            alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
 
     /* jQueryKnob */
     $(".knob").knob();
@@ -73,11 +72,13 @@ $(function() {
             }
         },
         series: {
-            regions: [{
+            regions: [
+                {
                     values: visitorsData,
                     scale: ["#92c1dc", "#ebf4f9"],
                     normalizeFunction: 'polynomial'
-                }]
+                }
+            ]
         },
         onRegionLabelShow: function(e, el, code) {
             if (typeof visitorsData[code] != "undefined")
@@ -109,7 +110,7 @@ $(function() {
         fillColor: "#ebf4f9",
         height: '50',
         width: '80'
-    });    
+    });
 
     //The Calender
     $("#calendar").datepicker();
@@ -125,16 +126,16 @@ $(function() {
         element: 'revenue-chart',
         resize: true,
         data: [
-            {y: '2011 Q1', item1: 2666, item2: 2666},
-            {y: '2011 Q2', item1: 2778, item2: 2294},
-            {y: '2011 Q3', item1: 4912, item2: 1969},
-            {y: '2011 Q4', item1: 3767, item2: 3597},
-            {y: '2012 Q1', item1: 6810, item2: 1914},
-            {y: '2012 Q2', item1: 5670, item2: 4293},
-            {y: '2012 Q3', item1: 4820, item2: 3795},
-            {y: '2012 Q4', item1: 15073, item2: 5967},
-            {y: '2013 Q1', item1: 10687, item2: 4460},
-            {y: '2013 Q2', item1: 8432, item2: 5713}
+            { y: '2011 Q1', item1: 2666, item2: 2666 },
+            { y: '2011 Q2', item1: 2778, item2: 2294 },
+            { y: '2011 Q3', item1: 4912, item2: 1969 },
+            { y: '2011 Q4', item1: 3767, item2: 3597 },
+            { y: '2012 Q1', item1: 6810, item2: 1914 },
+            { y: '2012 Q2', item1: 5670, item2: 4293 },
+            { y: '2012 Q3', item1: 4820, item2: 3795 },
+            { y: '2012 Q4', item1: 15073, item2: 5967 },
+            { y: '2013 Q1', item1: 10687, item2: 4460 },
+            { y: '2013 Q2', item1: 8432, item2: 5713 }
         ],
         xkey: 'y',
         ykeys: ['item1', 'item2'],
@@ -146,16 +147,16 @@ $(function() {
         element: 'line-chart',
         resize: true,
         data: [
-            {y: '2011 Q1', item1: 2666},
-            {y: '2011 Q2', item1: 2778},
-            {y: '2011 Q3', item1: 4912},
-            {y: '2011 Q4', item1: 3767},
-            {y: '2012 Q1', item1: 6810},
-            {y: '2012 Q2', item1: 5670},
-            {y: '2012 Q3', item1: 4820},
-            {y: '2012 Q4', item1: 15073},
-            {y: '2013 Q1', item1: 10687},
-            {y: '2013 Q2', item1: 8432}
+            { y: '2011 Q1', item1: 2666 },
+            { y: '2011 Q2', item1: 2778 },
+            { y: '2011 Q3', item1: 4912 },
+            { y: '2011 Q4', item1: 3767 },
+            { y: '2012 Q1', item1: 6810 },
+            { y: '2012 Q2', item1: 5670 },
+            { y: '2012 Q3', item1: 4820 },
+            { y: '2012 Q4', item1: 15073 },
+            { y: '2013 Q1', item1: 10687 },
+            { y: '2013 Q2', item1: 8432 }
         ],
         xkey: 'y',
         ykeys: ['item1'],
@@ -178,9 +179,9 @@ $(function() {
         resize: true,
         colors: ["#3c8dbc", "#f56954", "#00a65a"],
         data: [
-            {label: "Download Sales", value: 12},
-            {label: "In-Store Sales", value: 30},
-            {label: "Mail-Order Sales", value: 20}
+            { label: "Download Sales", value: 12 },
+            { label: "In-Store Sales", value: 30 },
+            { label: "Mail-Order Sales", value: 20 }
         ],
         hideHover: 'auto'
     });
@@ -209,7 +210,6 @@ $(function() {
         donut.redraw();
     });
 
-
     /* BOX REFRESH PLUGIN EXAMPLE (usage with morris charts) */
     $("#loading-example").boxRefresh({
         source: "ajax/dashboard-boxrefresh-demo.php",
@@ -218,13 +218,13 @@ $(function() {
                 element: 'bar-chart',
                 resize: true,
                 data: [
-                    {y: '2006', a: 100, b: 90},
-                    {y: '2007', a: 75, b: 65},
-                    {y: '2008', a: 50, b: 40},
-                    {y: '2009', a: 75, b: 65},
-                    {y: '2010', a: 50, b: 40},
-                    {y: '2011', a: 75, b: 65},
-                    {y: '2012', a: 100, b: 90}
+                    { y: '2006', a: 100, b: 90 },
+                    { y: '2007', a: 75, b: 65 },
+                    { y: '2008', a: 50, b: 40 },
+                    { y: '2009', a: 75, b: 65 },
+                    { y: '2010', a: 50, b: 40 },
+                    { y: '2011', a: 75, b: 65 },
+                    { y: '2012', a: 100, b: 90 }
                 ],
                 barColors: ['#00a65a', '#f56954'],
                 xkey: 'y',
@@ -244,5 +244,4 @@ $(function() {
             //console.log("The element has been unchecked")
         }
     });
-
 });

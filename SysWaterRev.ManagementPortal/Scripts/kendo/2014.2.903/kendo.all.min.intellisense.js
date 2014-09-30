@@ -1,5 +1,3 @@
-
-
 intellisense.annotate(kendo, {
     Class: function() {
         /// <signature>
@@ -13,7 +11,6 @@ var original = kendo.Class;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -33,19 +30,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Color: function() {
@@ -96,19 +89,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Layout: function() {
@@ -153,19 +142,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Observable: function() {
@@ -216,21 +201,15 @@ intellisense.annotate(instance, {
         /// <param name="handler" type="Function" >The handler which should no longer be executed. If not specified all handlers listening to that event will be removed.</param>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Router: function() {
@@ -255,7 +234,7 @@ intellisense.annotate(instance, {
     route: function(route,callback) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="route" type="String" >The route definition.</param>
         /// <param name="callback" type="Function" >The callback to be executed when the route is matched.</param>
@@ -306,19 +285,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     View: function() {
@@ -370,19 +345,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Binder: function() {
@@ -424,19 +395,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     DataSource: function() {
@@ -704,19 +671,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDataSource: function() {
@@ -814,19 +777,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependency: function() {
@@ -841,7 +800,6 @@ var original = kendo.data.GanttDependency;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -861,19 +819,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependencyDataSource: function() {
@@ -935,19 +889,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttTask: function() {
@@ -998,19 +948,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     HierarchicalDataSource: function() {
@@ -1025,7 +971,6 @@ var original = kendo.data.HierarchicalDataSource;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1045,19 +990,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Model: function() {
@@ -1122,7 +1063,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1132,19 +1072,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Node: function() {
@@ -1217,19 +1153,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableArray: function() {
@@ -1333,7 +1265,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1343,19 +1274,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableObject: function() {
@@ -1413,7 +1340,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1423,19 +1349,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     PivotDataSource: function() {
@@ -1590,19 +1512,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerDataSource: function() {
@@ -1647,19 +1565,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerEvent: function() {
@@ -1780,19 +1694,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Circle: function() {
@@ -1836,19 +1746,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Connection: function() {
@@ -1958,19 +1864,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Connector: function() {
@@ -2014,19 +1916,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Group: function() {
@@ -2093,19 +1991,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Image: function() {
@@ -2149,19 +2043,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Line: function() {
@@ -2205,19 +2095,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Point: function() {
@@ -2232,7 +2118,6 @@ var original = kendo.dataviz.diagram.Point;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2252,19 +2137,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Rect: function() {
@@ -2279,7 +2160,6 @@ var original = kendo.dataviz.diagram.Rect;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2299,19 +2179,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Rectangle: function() {
@@ -2355,19 +2231,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     Shape: function() {
@@ -2456,19 +2328,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.diagram, {
     TextBlock: function() {
@@ -2521,19 +2389,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Arc: function() {
@@ -2627,19 +2491,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Circle: function() {
@@ -2733,19 +2593,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Element: function() {
@@ -2806,19 +2662,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     FillOptions: function() {
@@ -2833,7 +2685,6 @@ var original = kendo.dataviz.drawing.FillOptions;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2853,19 +2704,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Group: function() {
@@ -2940,19 +2787,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Image: function() {
@@ -3034,19 +2877,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     MultiPath: function() {
@@ -3169,19 +3008,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     OptionsStore: function() {
@@ -3234,19 +3069,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Path: function() {
@@ -3369,19 +3200,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Segment: function() {
@@ -3443,19 +3270,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     StrokeOptions: function() {
@@ -3470,7 +3293,6 @@ var original = kendo.dataviz.drawing.StrokeOptions;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -3490,19 +3312,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Surface: function() {
@@ -3517,7 +3335,6 @@ var original = kendo.dataviz.drawing.Surface;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -3537,19 +3354,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.drawing, {
     Text: function() {
@@ -3652,19 +3465,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Arc: function() {
@@ -3823,19 +3632,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Circle: function() {
@@ -3940,19 +3745,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Matrix: function() {
@@ -4042,19 +3843,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Point: function() {
@@ -4257,19 +4054,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Rect: function() {
@@ -4423,19 +4216,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Size: function() {
@@ -4521,19 +4310,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.geometry, {
     Transformation: function() {
@@ -4634,19 +4419,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.dataviz.ui, {
     Barcode: function() {
@@ -4722,19 +4503,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoBarcode = function() {
     this.data("kendoBarcode", new kendo.dataviz.ui.Barcode());
@@ -4765,7 +4542,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;The background of the barcode area.
 /// &#10;Any valid CSS color string will work here, including hex and rgb.
         /// &#10;
-        /// &#10;border — Object 
+        /// &#10;border — Object
         /// &#10;The border of the barcode area.
         /// &#10;
         /// &#10;checksum — Boolean (default: false)
@@ -4778,16 +4555,16 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;height — Number (default: 100)
         /// &#10;The height of the barcode in pixels.  By default the height is 100.
         /// &#10;
-        /// &#10;padding — Object 
+        /// &#10;padding — Object
         /// &#10;The padding of the barcode.
         /// &#10;
-        /// &#10;text — Object 
+        /// &#10;text — Object
         /// &#10;Can be set to a JavaScript object which represents the text configuration.
         /// &#10;
         /// &#10;type — String (default: "code39")
         /// &#10;The symbology (encoding) the barcode will use.The supported values are:
         /// &#10;
-        /// &#10;value — String 
+        /// &#10;value — String
         /// &#10;The initial value of the Barcode
         /// &#10;
         /// &#10;width — Number (default: 300)
@@ -4899,19 +4676,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoChart = function() {
     this.data("kendoChart", new kendo.dataviz.ui.Chart());
@@ -4938,65 +4711,65 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;The default options for all chart axes. Accepts the options supported by categoryAxis, valueAxis, xAxis and yAxis.
         /// &#10;
-        /// &#10;categoryAxis — Array|Object 
+        /// &#10;categoryAxis — Array|Object
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options. Represents the entire visible area of the chart.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the chart which is used to display the series. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;legend — Object 
+        /// &#10;legend — Object
         /// &#10;The chart legend configuration options.
         /// &#10;
-        /// &#10;panes — Array 
+        /// &#10;panes — Array
         /// &#10;The chart panes configuration.Panes are used to split the chart in two or more parts. The panes are ordered from top to bottom.Each axis can be associated with a pane by setting its pane option to the name of the desired pane.
 /// &#10;Axis that don't have specified pane are placed in the top (default) pane.Series are moved to the desired pane by associating them with an axis.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. The plot area is the area which displays the series.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Chart will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;The configuration of the chart series.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;The default options for all series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;The chart theme.The supported values are:
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;title — Object 
+        /// &#10;title — Object
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The chart series tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
         /// &#10;If set to true the chart will play animations when displaying the series. By default animations are enabled.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
-        /// &#10;xAxis — Array 
+        /// &#10;xAxis — Array
         /// &#10;The X-axis configuration options of the scatter chart X-axis. Supports all valueAxis options.
         /// &#10;
-        /// &#10;yAxis — Array 
+        /// &#10;yAxis — Array
         /// &#10;The y axis configuration options of the scatter chart. Supports all valueAxis options.
         /// &#10;
         /// </summary>
@@ -5283,7 +5056,7 @@ intellisense.annotate(instance, {
     boundingBox: function(items) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="items" type="Array" >The items (shapes and connections) to include in the bounding box. Defaults to all items if not specified.</param>
         /// <returns type="kendo.dataviz.diagram.Rect">The bounding rectangle of the specified items. If nothing is specified the bounding box of the all diagram will be returned.</returns>
@@ -5355,19 +5128,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDiagram = function() {
     this.data("kendoDiagram", new kendo.dataviz.ui.Diagram());
@@ -5409,34 +5178,34 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;editable — Boolean (default: true)
         /// &#10;Specifies the shape editable.
         /// &#10;
-        /// &#10;editable — Object 
+        /// &#10;editable — Object
         /// &#10;Specifies the shape editable.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;See the dataSource field.
         /// &#10;
-        /// &#10;layout — Object 
+        /// &#10;layout — Object
         /// &#10;The layout of a diagram consists in arranging the shapes (sometimes also the connections) in some fashion in order to achieve an aesthetically pleasing experience to the user. It aims at giving a more direct insight in the information contained within the diagram and its relational structure.On a technical level, layout consists of a multitude of algorithms and optimizations:and various ad-hoc calculations which depend on the type of layout. The criteria on which an algorithm is based vary but the common denominator is:Kendo diagram includes three of the most used layout algorithms which should cover most of your layout needs - tree layout, force-directed layout and layered layout. Please, check the type property for more details regarding each type.The generic way to apply a layout is by calling the layout() method on the diagram. The method has a single parameter options. It is an object, which can contain parameters which are specific to the layout as well as parameters customizing the global grid layout. Parameters which apply to other layout algorithms can be included but are overlooked if not applicable to the chose layout type. This means that you can define a set of parameters which cover all possible layout types and simply pass it in the method whatever the layout define in the first parameter.
         /// &#10;
         /// &#10;template — String|Function (default: "")
         /// &#10;The template which renders the content of the shape when bound to a dataSource. The names you can use in the template correspond to the properties used in the dataSource. See the dataSource topic below for a concrete example.
         /// &#10;
-        /// &#10;connectionDefaults — Object 
+        /// &#10;connectionDefaults — Object
         /// &#10;Defines the connections configuration.
         /// &#10;
-        /// &#10;connections — Array 
+        /// &#10;connections — Array
         /// &#10;Defines the connections configuration.
         /// &#10;
         /// &#10;selectable — Boolean (default: true)
         /// &#10;Defines the selectable options.
         /// &#10;
-        /// &#10;selectable — Object 
+        /// &#10;selectable — Object
         /// &#10;Defines the selectable options.
         /// &#10;
-        /// &#10;shapeDefaults — Object 
+        /// &#10;shapeDefaults — Object
         /// &#10;Defines the shape options.
         /// &#10;
-        /// &#10;shapes — Array 
+        /// &#10;shapes — Array
         /// &#10;Defines the shape options.
         /// &#10;
         /// </summary>
@@ -5528,19 +5297,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoLinearGauge = function() {
     this.data("kendoLinearGauge", new kendo.dataviz.ui.LinearGauge());
@@ -5563,18 +5328,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.LinearGauge widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;gaugeArea — Object 
+        /// &#10;gaugeArea — Object
         /// &#10;The gauge area configuration options.
 /// &#10;This is the entire visible area of the gauge.
         /// &#10;
-        /// &#10;pointer — Object 
+        /// &#10;pointer — Object
         /// &#10;The pointer configuration options.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Gauge will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;scale — Object 
+        /// &#10;scale — Object
         /// &#10;Configures the scale.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
@@ -5758,19 +5523,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMap = function() {
     this.data("kendoMap", new kendo.dataviz.ui.Map());
@@ -5793,23 +5554,23 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.Map widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;center — Array|kendo.dataviz.map.Location 
+        /// &#10;center — Array|kendo.dataviz.map.Location
         /// &#10;The map center. Coordinates are listed as [Latitude, Longitude].
         /// &#10;
-        /// &#10;controls — Object 
+        /// &#10;controls — Object
         /// &#10;The configuration of built-in map controls.
         /// &#10;
-        /// &#10;layerDefaults — Object 
+        /// &#10;layerDefaults — Object
         /// &#10;The default configuration for map layers by type.
         /// &#10;
-        /// &#10;layers — Array 
+        /// &#10;layers — Array
         /// &#10;The configuration of the map layers.
 /// &#10;The layer type is determined by the value of the type field.
         /// &#10;
-        /// &#10;markerDefaults — Object 
+        /// &#10;markerDefaults — Object
         /// &#10;The default options for all markers.
         /// &#10;
-        /// &#10;markers — Array 
+        /// &#10;markers — Array
         /// &#10;Static markers to display on the map.
         /// &#10;
         /// &#10;minZoom — Number (default: 1)
@@ -5931,19 +5692,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoQRCode = function() {
     this.data("kendoQRCode", new kendo.dataviz.ui.QRCode());
@@ -5969,7 +5726,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;background — String (default: "#fff")
         /// &#10;The background color of the QR code. Accepts a valid CSS color string, including hex and rgb.
         /// &#10;
-        /// &#10;border — Object 
+        /// &#10;border — Object
         /// &#10;The border of the QR code.
         /// &#10;
         /// &#10;color — String (default: "#000")
@@ -5988,12 +5745,12 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the QRCode will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;size — Number|String 
+        /// &#10;size — Number|String
         /// &#10;Specifies the size of a QR code in pixels (i.e. "200px"). Numeric values are treated as pixels.
 /// &#10;If no size is specified, it will be determined from the element width and height.
 /// &#10;In case the element has width or height of zero, a default value of 200 pixels will be used.
         /// &#10;
-        /// &#10;value — Number|String 
+        /// &#10;value — Number|String
         /// &#10;The value of the QRCode.
         /// &#10;
         /// </summary>
@@ -6085,19 +5842,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoRadialGauge = function() {
     this.data("kendoRadialGauge", new kendo.dataviz.ui.RadialGauge());
@@ -6120,18 +5873,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.RadialGauge widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;gaugeArea — Object 
+        /// &#10;gaugeArea — Object
         /// &#10;The gauge area configuration options.
 /// &#10;This is the entire visible area of the gauge.
         /// &#10;
-        /// &#10;pointer — Object 
+        /// &#10;pointer — Object
         /// &#10;The pointer configuration options.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Gauge will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;scale — Object 
+        /// &#10;scale — Object
         /// &#10;Configures the scale.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
@@ -6228,19 +5981,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoSparkline = function() {
     this.data("kendoSparkline", new kendo.dataviz.ui.Sparkline());
@@ -6263,49 +6012,49 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.Sparkline widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;Default options for all chart axes.
         /// &#10;
-        /// &#10;categoryAxis — Array 
+        /// &#10;categoryAxis — Array
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options.
 /// &#10;This is the entire visible area of the chart.
         /// &#10;
-        /// &#10;data — Array 
+        /// &#10;data — Array
         /// &#10;The data for the default sparkline series.Will be discareded if series are supplied.
         /// &#10;
-        /// &#10;dataSource — Object 
+        /// &#10;dataSource — Object
         /// &#10;DataSource configuration or instance.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the chart will call read on the data source initially.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. This is the area containing the plotted series.
         /// &#10;
         /// &#10;pointWidth — Number (default: 5)
         /// &#10;The width to allocate for each data point.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Sparkline will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;Array of series definitions.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.Each series type has a different set of options.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;Default values for each series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;Sets Chart theme. Available themes: default, blueOpal, black.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The data point tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: false)
@@ -6314,7 +6063,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;type — String (default: "line")
         /// &#10;The default series type.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
         /// </summary>
@@ -6415,19 +6164,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoStockChart = function() {
     this.data("kendoStockChart", new kendo.dataviz.ui.StockChart());
@@ -6454,62 +6199,62 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;The field containing the point date.
 /// &#10;It is used as a default categoryField for all series.The data item field value must be either:
         /// &#10;
-        /// &#10;navigator — Object 
+        /// &#10;navigator — Object
         /// &#10;The data navigator configuration options.
         /// &#10;
-        /// &#10;axisDefaults — Object 
+        /// &#10;axisDefaults — Object
         /// &#10;Default options for all chart axes.
         /// &#10;
-        /// &#10;categoryAxis — Array 
+        /// &#10;categoryAxis — Array
         /// &#10;The category axis configuration options.
         /// &#10;
-        /// &#10;chartArea — Object 
+        /// &#10;chartArea — Object
         /// &#10;The chart area configuration options.
 /// &#10;This is the entire visible area of the chart.
         /// &#10;
-        /// &#10;dataSource — Object 
+        /// &#10;dataSource — Object
         /// &#10;DataSource configuration or instance.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the chart will call read on the data source initially.
         /// &#10;
-        /// &#10;legend — Object 
+        /// &#10;legend — Object
         /// &#10;The chart legend configuration options.
         /// &#10;
-        /// &#10;panes — Array 
+        /// &#10;panes — Array
         /// &#10;The chart panes configuration.Panes are used to split the chart in two or more parts. The panes are ordered from top to bottom.Each axis can be associated with a pane by setting its pane option to the name of the desired pane.
 /// &#10;Axis that don't have specified pane are placed in the top (default) pane.Series are moved to the desired pane by associating them with an axis.
         /// &#10;
-        /// &#10;plotArea — Object 
+        /// &#10;plotArea — Object
         /// &#10;The plot area configuration options. This is the area containing the plotted series.
         /// &#10;
-        /// &#10;renderAs — String 
+        /// &#10;renderAs — String
         /// &#10;Sets the preferred rendering engine.
 /// &#10;If it is not supported by the browser, the Chart will switch to the first available mode.The supported values are:
         /// &#10;
-        /// &#10;series — Array 
+        /// &#10;series — Array
         /// &#10;Array of series definitions.The series type is determined by the value of the type field.
 /// &#10;If a type value is missing, the type is assumed to be the one specified in seriesDefaults.Each series type has a different set of options.
         /// &#10;
-        /// &#10;seriesColors — Array 
+        /// &#10;seriesColors — Array
         /// &#10;The default colors for the chart's series. When all colors are used, new colors are pulled from the start again.
         /// &#10;
-        /// &#10;seriesDefaults — Object 
+        /// &#10;seriesDefaults — Object
         /// &#10;Default values for each series.
         /// &#10;
-        /// &#10;theme — String 
+        /// &#10;theme — String
         /// &#10;Sets Chart theme. Available themes: default, blueOpal, black.
         /// &#10;
-        /// &#10;title — Object 
+        /// &#10;title — Object
         /// &#10;The chart title configuration options or text.
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;The data point tooltip configuration options.
         /// &#10;
         /// &#10;transitions — Boolean (default: true)
         /// &#10;A value indicating if transition animations should be played.
         /// &#10;
-        /// &#10;valueAxis — Array 
+        /// &#10;valueAxis — Array
         /// &#10;The value axis configuration options.
         /// &#10;
         /// </summary>
@@ -6533,7 +6278,6 @@ var original = kendo.dataviz.ui.TreeMap;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -6553,19 +6297,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTreeMap = function() {
     this.data("kendoTreeMap", new kendo.dataviz.ui.TreeMap());
@@ -6588,7 +6328,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.dataviz.ui.TreeMap widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource
         /// &#10;The data source of the treeMap which is used to display the tiles and titles. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.HierarchicalDataSource
 /// &#10;instance.If the HierarchicalDataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.HierarchicalDataSource instance using that value as data source configuration.If the HierarchicalDataSource option is an existing kendo.data.HierarchicalDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -6611,10 +6351,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;textField — String (default: "text")
         /// &#10;The data item field which contains the tile title.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template which renders the treeMap tile content.The fields which can be used in the template are:
         /// &#10;
-        /// &#10;colors — Array 
+        /// &#10;colors — Array
         /// &#10;The default colors for the treemap tiles. When all colors are used, new colors are pulled from the start again.
         /// &#10;
         /// </summary>
@@ -6723,19 +6463,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.mobile.ui, {
     ActionSheet: function() {
@@ -6793,19 +6529,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileActionSheet = function() {
     this.data("kendoMobileActionSheet", new kendo.mobile.ui.ActionSheet());
@@ -6831,7 +6563,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;cancel — String (default: "Cancel")
         /// &#10;The text of the cancel button.
         /// &#10;
-        /// &#10;popup — Object 
+        /// &#10;popup — Object
         /// &#10;The popup configuration options (tablet only).
         /// &#10;
         /// &#10;type — String (default: auto)
@@ -6885,19 +6617,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileBackButton = function() {
     this.data("kendoMobileBackButton", new kendo.mobile.ui.BackButton());
@@ -6985,19 +6713,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileButton = function() {
     this.data("kendoMobileButton", new kendo.mobile.ui.Button());
@@ -7020,13 +6744,13 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.Button widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;badge — String 
+        /// &#10;badge — String
         /// &#10;The badge of the button.
         /// &#10;
         /// &#10;enable — Boolean (default: true)
         /// &#10;If set to false the widget will be disabled and will not allow the user to click it. The widget is enabled by default.
         /// &#10;
-        /// &#10;icon — String 
+        /// &#10;icon — String
         /// &#10;The icon of the button. It can be either one of the built-in icons, or a custom one.
         /// &#10;
         /// </summary>
@@ -7111,19 +6835,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileButtonGroup = function() {
     this.data("kendoMobileButtonGroup", new kendo.mobile.ui.ButtonGroup());
@@ -7149,7 +6869,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;enable — Boolean (default: true)
         /// &#10;Defines if the widget is initially enabled or disabled.
         /// &#10;
-        /// &#10;index — Number 
+        /// &#10;index — Number
         /// &#10;Defines the initially selected Button (zero based index).
         /// &#10;
         /// &#10;selectOn — String (default: default "down")
@@ -7204,19 +6924,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileDetailButton = function() {
     this.data("kendoMobileDetailButton", new kendo.mobile.ui.DetailButton());
@@ -7301,19 +7017,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileDrawer = function() {
     this.data("kendoMobileDrawer", new kendo.mobile.ui.Drawer());
@@ -7336,7 +7048,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.Drawer widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;container — jQuery 
+        /// &#10;container — jQuery
         /// &#10;Specifies the content element to shift when the drawer appears. Required if the drawer is used outside of a mobile application.
         /// &#10;
         /// &#10;position — String (default: 'left')
@@ -7345,14 +7057,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;swipeToOpen — Boolean (default: true)
         /// &#10;If set to false, swiping the view will not activate the drawer. In this case, the drawer will only be open by a designated button
         /// &#10;
-        /// &#10;swipeToOpenViews — Array 
+        /// &#10;swipeToOpenViews — Array
         /// &#10;A list of the view ids on which the drawer will appear when the view is swiped. If omitted, the swipe gesture will work on all views.
 /// &#10;The option has effect only if swipeToOpen is set to true.
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The text to display in the Navbar title (if present).
         /// &#10;
-        /// &#10;views — Array 
+        /// &#10;views — Array
         /// &#10;A list of the view ids on which the drawer will appear. If omitted, the drawer will work on any view in the application.
         /// &#10;
         /// </summary>
@@ -7376,7 +7088,6 @@ var original = kendo.mobile.ui.Layout;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -7396,19 +7107,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileLayout = function() {
     this.data("kendoMobileLayout", new kendo.mobile.ui.Layout());
@@ -7434,7 +7141,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;id — String (default: null)
         /// &#10;The id of the layout. Required
         /// &#10;
-        /// &#10;platform — String 
+        /// &#10;platform — String
         /// &#10;The specific platform this layout targets. By default, layouts are displayed
 /// &#10;on all platforms.
         /// &#10;
@@ -7550,19 +7257,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileListView = function() {
     this.data("kendoMobileListView", new kendo.mobile.ui.ListView());
@@ -7591,7 +7294,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the listview will call read on the DataSource initially. If set to false, the listview will be bound after the DataSource instance fetch method is called.
         /// &#10;
-        /// &#10;dataSource — kendo.data.DataSource|Object 
+        /// &#10;dataSource — kendo.data.DataSource|Object
         /// &#10;Instance of DataSource or the data that the mobile ListView will be bound to.
         /// &#10;
         /// &#10;endlessScroll — Boolean (default: false)
@@ -7613,7 +7316,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;pullToRefresh — Boolean (default: false)
         /// &#10;If set to true, the listview will reload its data when the user pulls the view over the top limit.
         /// &#10;
-        /// &#10;pullParameters — Function 
+        /// &#10;pullParameters — Function
         /// &#10;A callback function used when the 'pullToRefresh' option is enabled. The result of the function will be send as additional parameters to the DataSource's next method.Notice: When the listview is in a virtual mode, the pull to refresh action removes the previously loaded items in the listview (instead of appending new records at the top).
 /// &#10;Previously loaded pages in the DataSource are also discarded.
         /// &#10;
@@ -7629,7 +7332,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;filterable — Boolean (default: false)
         /// &#10;Indicates whether the filter input must be visible or not.
         /// &#10;
-        /// &#10;filterable — Object 
+        /// &#10;filterable — Object
         /// &#10;Indicates whether the filter input must be visible or not.
         /// &#10;
         /// </summary>
@@ -7687,19 +7390,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileLoader = function() {
     this.data("kendoMobileLoader", new kendo.mobile.ui.Loader());
@@ -7785,19 +7484,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileModalView = function() {
     this.data("kendoMobileModalView", new kendo.mobile.ui.ModalView());
@@ -7820,13 +7515,13 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.ModalView widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;height — Number 
+        /// &#10;height — Number
         /// &#10;The height of the ModalView container in pixels. If not set, the element style is used.
         /// &#10;
         /// &#10;modal — Boolean (default: true)
         /// &#10;When set to false, the ModalView will close when the user taps outside of its element.
         /// &#10;
-        /// &#10;width — Number 
+        /// &#10;width — Number
         /// &#10;The width of the ModalView container in pixels. If not set, the element style is used.
         /// &#10;
         /// </summary>
@@ -7885,19 +7580,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileNavBar = function() {
     this.data("kendoMobileNavBar", new kendo.mobile.ui.NavBar());
@@ -7976,7 +7667,7 @@ intellisense.annotate(instance, {
     Example: function() {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// </signature>
     },
@@ -8015,19 +7706,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobilePane = function() {
     this.data("kendoMobilePane", new kendo.mobile.ui.Pane());
@@ -8053,19 +7740,19 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;collapsible — Boolean (default: false)
         /// &#10;Applicable when the pane is inside a SplitView. If set to true, the pane will be hidden when the device is in portrait position. The expandPanes SplitView method displays the hidden panes.The id of the initial mobile View to display.
         /// &#10;
-        /// &#10;initial — String 
+        /// &#10;initial — String
         /// &#10;The id of the initial mobile View to display.
         /// &#10;
-        /// &#10;layout — String 
+        /// &#10;layout — String
         /// &#10;The id of the default Pane Layout.
         /// &#10;
         /// &#10;loading — String (default: "Loading...")
         /// &#10;The text displayed in the loading popup. Setting this value to false will disable the loading popup.
         /// &#10;
-        /// &#10;portraitWidth — Number 
+        /// &#10;portraitWidth — Number
         /// &#10;Sets the pane width in pixels when the device is in portrait position.
         /// &#10;
-        /// &#10;transition — String 
+        /// &#10;transition — String
         /// &#10;The default View transition.
         /// &#10;
         /// </summary>
@@ -8131,19 +7818,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobilePopOver = function() {
     this.data("kendoMobilePopOver", new kendo.mobile.ui.PopOver());
@@ -8166,10 +7849,10 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.PopOver widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;pane — Object 
+        /// &#10;pane — Object
         /// &#10;The pane configuration options.
         /// &#10;
-        /// &#10;popup — Object 
+        /// &#10;popup — Object
         /// &#10;The popup configuration options.
         /// &#10;
         /// </summary>
@@ -8275,19 +7958,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileScrollView = function() {
     this.data("kendoMobileScrollView", new kendo.mobile.ui.ScrollView());
@@ -8319,7 +7998,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;contentHeight — Number|String (default: "auto")
         /// &#10;The height of the ScrollView content. Supports 100% if the ScrollView is embedded in a stretched view and the ScrollView element is an immediate child of the view element.
         /// &#10;
-        /// &#10;dataSource — kendo.data.DataSource|Object 
+        /// &#10;dataSource — kendo.data.DataSource|Object
         /// &#10;Instance of DataSource that the mobile ScrollView will be bound to. If DataSource is set, the widget will operate in data bound mode.
         /// &#10;
         /// &#10;duration — Number (default: 400)
@@ -8469,19 +8148,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileScroller = function() {
     this.data("kendoMobileScroller", new kendo.mobile.ui.Scroller());
@@ -8599,19 +8274,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileSplitView = function() {
     this.data("kendoMobileSplitView", new kendo.mobile.ui.SplitView());
@@ -8716,19 +8387,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileSwitch = function() {
     this.data("kendoMobileSwitch", new kendo.mobile.ui.Switch());
@@ -8852,19 +8519,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileTabStrip = function() {
     this.data("kendoMobileTabStrip", new kendo.mobile.ui.TabStrip());
@@ -8953,19 +8616,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileView = function() {
     this.data("kendoMobileView", new kendo.mobile.ui.View());
@@ -9001,7 +8660,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to true, the view will stretch its child contents to occupy the entire view, while disabling kinetic scrolling.
 /// &#10;Useful if the view contains an image or a map.
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The text to display in the NavBar title (if present) and the browser title.
         /// &#10;
         /// &#10;useNativeScrolling — Boolean (default: false)
@@ -9059,19 +8718,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileWidget = function() {
     this.data("kendoMobileWidget", new kendo.mobile.ui.Widget());
@@ -9101,7 +8756,6 @@ intellisense.annotate(jQuery.fn, {
         /// </signature>
     }
 });
-
 
 intellisense.annotate(kendo.ui, {
     AutoComplete: function() {
@@ -9230,19 +8884,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoAutoComplete = function() {
     this.data("kendoAutoComplete", new kendo.ui.AutoComplete());
@@ -9265,10 +8915,10 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.AutoComplete widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the suggestion popup. Setting the animation option to false will disable the opening and closing animations. As a result the suggestion popup will open and close instantly.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used to display suggestions for the current value. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -9306,10 +8956,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;suggest — Boolean (default: false)
         /// &#10;If set to true the widget will automatically use the first suggestion as its value.
         /// &#10;
-        /// &#10;headerTemplate — String|Function 
+        /// &#10;headerTemplate — String|Function
         /// &#10;Specifies a static HTML content, which will be rendered as a header of the popup element.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template used to render the suggestions. By default the widget displays only the text of the suggestion (configured via dataTextField).
         /// &#10;
         /// &#10;valuePrimitive — Boolean (default: false)
@@ -9364,19 +9014,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoButton = function() {
     this.data("kendoButton", new kendo.ui.Button());
@@ -9402,15 +9048,15 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;enable — Boolean (default: true)
         /// &#10;Indicates whether the Button should be enabled or disabled. By default, it is enabled, unless a disabled="disabled" attribute is detected.
         /// &#10;
-        /// &#10;icon — String 
+        /// &#10;icon — String
         /// &#10;Defines a name of an existing icon in the Kendo UI theme sprite. The icon will be applied as background image of a span element inside the Button.
 /// &#10;The span element can be added automatically by the widget, or an existing element can be used, if it has a k-icon CSS class applied.
 /// &#10;For a list of available icon names, please refer to the Icons demo.
         /// &#10;
-        /// &#10;imageUrl — String 
+        /// &#10;imageUrl — String
         /// &#10;Defines a URL, which will be used for an img element inside the Button. The URL can be relative or absolute. In case it is relative, it will be evaluated with relation to the web page URL.The img element can be added automatically by the widget, or an existing element can be used, if it has a k-image CSS class applied.
         /// &#10;
-        /// &#10;spriteCssClass — String 
+        /// &#10;spriteCssClass — String
         /// &#10;Defines a CSS class (or multiple classes separated by spaces), which will be used for applying a background image to a span element inside the Button.
 /// &#10;In case you want to use an icon from the Kendo UI theme sprite background image, it is easier to use the icon property.The span element can be added automatically by the widget, or an existing element can be used, if it has a k-sprite CSS class applied.
         /// &#10;
@@ -9543,19 +9189,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoCalendar = function() {
     this.data("kendoCalendar", new kendo.ui.Calendar());
@@ -9581,14 +9223,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;culture — String (default: "en-US")
         /// &#10;Specifies the culture info used by the widget.
         /// &#10;
-        /// &#10;dates — Array 
+        /// &#10;dates — Array
         /// &#10;Specifies a list of dates, which will be passed to the month template.
         /// &#10;
-        /// &#10;depth — String 
+        /// &#10;depth — String
         /// &#10;Specifies the navigation depth. The following
 /// &#10;settings are available for the depth value:
         /// &#10;
-        /// &#10;footer — String|Function 
+        /// &#10;footer — String|Function
         /// &#10;The template which renders the footer. If false, the footer will not be rendered.
         /// &#10;
         /// &#10;format — String (default: "MM/dd/yyyy")
@@ -9600,7 +9242,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;min — Date (default: Date(1900, 0, 1))
         /// &#10;Specifies the minimum date, which the calendar can show.
         /// &#10;
-        /// &#10;month — Object 
+        /// &#10;month — Object
         /// &#10;Templates for the cells rendered in "month" view.
         /// &#10;
         /// &#10;start — String (default: "month")
@@ -9677,19 +9319,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoColorPalette = function() {
     this.data("kendoColorPalette", new kendo.ui.ColorPalette());
@@ -9722,7 +9360,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;tileSize — Number (default: 14)
         /// &#10;The size of a color cell.
         /// &#10;
-        /// &#10;tileSize — Object 
+        /// &#10;tileSize — Object
         /// &#10;The size of a color cell.
         /// &#10;
         /// &#10;value — String (default: null)
@@ -9820,19 +9458,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoColorPicker = function() {
     this.data("kendoColorPicker", new kendo.ui.ColorPicker());
@@ -9858,7 +9492,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;buttons — Boolean (default: true)
         /// &#10;Specifies whether the widget should display the Apply / Cancel buttons.Applicable only for the HSV selector, when a pallete is not specified.
         /// &#10;
-        /// &#10;columns — Number 
+        /// &#10;columns — Number
         /// &#10;The number of columns to show in the color dropdown when a pallete is specified.
 /// &#10;This is automatically initialized for the "basic" and "websafe" palettes.
 /// &#10;If you use a custom palette then you can set this to some value that makes sense for your colors.
@@ -9866,10 +9500,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;tileSize — Number (default: 14)
         /// &#10;The size of a color cell.
         /// &#10;
-        /// &#10;tileSize — Object 
+        /// &#10;tileSize — Object
         /// &#10;The size of a color cell.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Allows localization of the strings that are used in the widget.
         /// &#10;
         /// &#10;palette — String|Array (default: null)
@@ -10053,19 +9687,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoComboBox = function() {
     this.data("kendoComboBox", new kendo.ui.ComboBox());
@@ -10088,21 +9718,21 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.ComboBox widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the suggestion popup. Setting the animation option to false will disable the opening and closing animations. As a result the suggestion popup will open and close instantly.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Controls whether to bind the widget to the data source on initialization.
         /// &#10;
-        /// &#10;cascadeFrom — String 
+        /// &#10;cascadeFrom — String
         /// &#10;Use it to set the Id of the parent ComboBox widget.
 /// &#10;Help topic showing how cascading functionality works
         /// &#10;
-        /// &#10;cascadeFromField — String 
+        /// &#10;cascadeFromField — String
         /// &#10;Defines the field to be used to filter the data source. If not defiend the parent's dataValueField option will be used.
 /// &#10;Help topic showing how cascading functionality works
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used to display a list of values. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -10143,10 +9773,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;suggest — Boolean (default: false)
         /// &#10;If set to true the widget will automatically use the first suggestion as its value.
         /// &#10;
-        /// &#10;headerTemplate — String|Function 
+        /// &#10;headerTemplate — String|Function
         /// &#10;Specifies a static HTML content, which will be rendered as a header of the popup element.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template used to render the items. By default the widget displays only the text of the data item (configured via dataTextField).
         /// &#10;
         /// &#10;text — String (default: "")
@@ -10275,19 +9905,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoContextMenu = function() {
     this.data("kendoContextMenu", new kendo.ui.ContextMenu());
@@ -10313,14 +9939,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;alignToAnchor — Boolean (default: false)
         /// &#10;Specifies that ContextMenu should be shown aligned to the target or the filter element if specified.
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of Animation objects, used to change default animations. A value of false will disable all animations in the widget.Available animations for the ContextMenu are listed below.  Each animation has a reverse options which is used for the close effect by default, but can be over-ridden
 /// &#10;by setting the close animation. Each animation also has a direction which can be set off the animation (i.e. slideIn:Down).
         /// &#10;
         /// &#10;closeOnClick — Boolean (default: true)
         /// &#10;Specifies that sub menus should close after item selection (provided they won't navigate).
         /// &#10;
-        /// &#10;dataSource — Object|Array 
+        /// &#10;dataSource — Object|Array
         /// &#10;The data source of the widget which is used to render its items. Can be a JSON object/Array that contains an item or an Array of items to be rendered.
 /// &#10;Refer to the example below for a list of the supported properties.
         /// &#10;
@@ -10328,7 +9954,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Specifies ContextMenu sub menu opening direction. Can be "top", "bottom", "left", "right".
 /// &#10;The example below will initialize the sub menus to open to the left.
         /// &#10;
-        /// &#10;filter — String 
+        /// &#10;filter — String
         /// &#10;Specifies ContextMenu filter selector - the ContextMenu will only be shown on items that satisfy the provided selector.
         /// &#10;
         /// &#10;hoverDelay — Number (default: 100)
@@ -10337,12 +9963,12 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;orientation — String (default: "vertical")
         /// &#10;Root menu orientation. Could be horizontal or vertical.
         /// &#10;
-        /// &#10;popupCollision — String 
+        /// &#10;popupCollision — String
         /// &#10;Specifies how ContextMenu should adjust to screen boundaries. By default the strategy is "fit" for a sub menu with a horizontal parent or the root menu,
 /// &#10;meaning it will move to fit in screen boundaries in all directions, and "fit flip" for a sub menu with vertical parent, meaning it will fit vertically and flip over
 /// &#10;its parent horizontally. You can also switch off the screen boundary detection completely if you set the popupCollision to false.
         /// &#10;
-        /// &#10;showOn — String 
+        /// &#10;showOn — String
         /// &#10;Specifies the event or events on which ContextMenu should open. By default ContextMenu will show on contextmenu event on desktop and hold event on touch devices.
 /// &#10;Could be any pointer/mouse/touch event, also several, separated by spaces.
         /// &#10;
@@ -10462,19 +10088,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDatePicker = function() {
     this.data("kendoDatePicker", new kendo.ui.DatePicker());
@@ -10497,7 +10119,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.DatePicker widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the calendar popup. Setting the animation option to false will disable the opening and closing animations. As a result the calendar popup will open and close instantly.
         /// &#10;
         /// &#10;ARIATemplate — String (default: "Current focused date is #=kendo.toString(data.current, 'D'#"))
@@ -10506,14 +10128,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;culture — String (default: "en-US")
         /// &#10;Specifies the culture info used by the widget.
         /// &#10;
-        /// &#10;dates — Array 
+        /// &#10;dates — Array
         /// &#10;Specifies a list of dates, which will be passed to the month template.
         /// &#10;
-        /// &#10;depth — String 
+        /// &#10;depth — String
         /// &#10;Specifies the navigation depth. The following
 /// &#10;settings are available for the depth value:
         /// &#10;
-        /// &#10;footer — String|Function 
+        /// &#10;footer — String|Function
         /// &#10;The template which renders the footer of the calendar. If false, the footer will not be rendered.
         /// &#10;
         /// &#10;format — String (default: "MM/dd/yyyy")
@@ -10525,10 +10147,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;min — Date (default: Date(1900, 0, 1))
         /// &#10;Specifies the minimum date that the calendar can show.
         /// &#10;
-        /// &#10;month — Object 
+        /// &#10;month — Object
         /// &#10;Templates for the cells rendered in the calendar "month" view.
         /// &#10;
-        /// &#10;parseFormats — Array 
+        /// &#10;parseFormats — Array
         /// &#10;Specifies a lis of date formats used to parse the value set with value() method or by direct user input. If not set the value of the format will be used.
 /// &#10; Note that format option is always used parsing process.
         /// &#10;
@@ -10620,7 +10242,7 @@ intellisense.annotate(instance, {
     setOptions: function(options) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="options" type="Object" >The new configuration options.</param>
         /// </signature>
@@ -10662,19 +10284,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDateTimePicker = function() {
     this.data("kendoDateTimePicker", new kendo.ui.DateTimePicker());
@@ -10697,7 +10315,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.DateTimePicker widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the popups. Setting the animation option to false will disable the opening and closing animations. As a result the popup will open and close instantly.
         /// &#10;
         /// &#10;ARIATemplate — String (default: "Current focused date is #=kendo.toString(data.current, 'G'#"))
@@ -10706,14 +10324,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;culture — String (default: "en-US")
         /// &#10;Specifies the culture info used by the widget.
         /// &#10;
-        /// &#10;dates — Array 
+        /// &#10;dates — Array
         /// &#10;Specifies a list of dates, which will be passed to the month template of the DateView. All dates, which match the date portion of the selected date will be used to re-bind the TimeView.
         /// &#10;
-        /// &#10;depth — String 
+        /// &#10;depth — String
         /// &#10;Specifies the navigation depth of the calendar. The following
 /// &#10;settings are available for the depth value:
         /// &#10;
-        /// &#10;footer — String 
+        /// &#10;footer — String
         /// &#10;The template which renders the footer of the calendar. If false, the footer will not be rendered.
         /// &#10;
         /// &#10;format — String (default: "MM/dd/yyyy h:mm tt")
@@ -10728,10 +10346,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;min — Date (default: Date(1900, 0, 1))
         /// &#10;Specifies the minimum date that the calendar can show.
         /// &#10;
-        /// &#10;month — Object 
+        /// &#10;month — Object
         /// &#10;Templates for the cells rendered in the calendar "month" view.
         /// &#10;
-        /// &#10;parseFormats — Array 
+        /// &#10;parseFormats — Array
         /// &#10;Specifies the formats, which are used to parse the value set with value() method or by direct input. If not set the value of the options.format and options.timeFormat will be used. Note that value of the format option is always used.
         /// &#10;
         /// &#10;start — String (default: "month")
@@ -10792,19 +10410,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDraggable = function() {
     this.data("kendoDraggable", new kendo.ui.Draggable());
@@ -10830,7 +10444,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;axis — String (default: null)
         /// &#10;Constrains the hint movement to either the horizontal (x) or vertical (y) axis. Can be set to either "x" or "y".
         /// &#10;
-        /// &#10;container — jQuery 
+        /// &#10;container — jQuery
         /// &#10;If set, the hint movement is constrained to the container boundaries.
         /// &#10;
         /// &#10;cursorOffset — Object (default: null)
@@ -10843,7 +10457,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;group — String (default: "default")
         /// &#10;Used to group sets of draggable and drop targets. A draggable with the same group value as a drop target will be accepted by the drop target.
         /// &#10;
-        /// &#10;hint — Function|jQuery 
+        /// &#10;hint — Function|jQuery
         /// &#10;Provides a way for customization of the drag indicator. If a function is supplied, it receives one argument - the draggable element's jQuery object.
         /// &#10;
         /// &#10;holdToDrag — Boolean (default: false)
@@ -11001,19 +10615,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropDownList = function() {
     this.data("kendoDropDownList", new kendo.ui.DropDownList());
@@ -11036,21 +10646,21 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.DropDownList widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the suggestion popup. Setting the animation option to false will disable the opening and closing animations. As a result the suggestion popup will open and close instantly.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Controls whether to bind the widget to the data source on initialization.
         /// &#10;
-        /// &#10;cascadeFrom — String 
+        /// &#10;cascadeFrom — String
         /// &#10;Use it to set the Id of the parent dropdownlist widget.
 /// &#10;Help topic showing how cascading functionality works
         /// &#10;
-        /// &#10;cascadeFromField — String 
+        /// &#10;cascadeFromField — String
         /// &#10;Defines the field to be used to filter the data source. If not defiend the parent's dataValueField option will be used.
 /// &#10;Help topic showing how cascading functionality works
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used to display a list of values. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -11086,13 +10696,13 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Define the text of the default empty item. If the value is an object, then the widget will use it a valid data item.
 /// &#10; Note that the optionLabel will not be available if the widget is empty.
         /// &#10;
-        /// &#10;headerTemplate — String|Function 
+        /// &#10;headerTemplate — String|Function
         /// &#10;Specifies a static HTML content, which will be rendered as a header of the popup element.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template used to render the items. By default the widget displays only the text of the data item (configured via dataTextField).
         /// &#10;
-        /// &#10;valueTemplate — String|Function 
+        /// &#10;valueTemplate — String|Function
         /// &#10;The valueTemplate used to render the selected value. By default the widget displays only the text of the data item (configured via dataTextField).
         /// &#10;
         /// &#10;text — String (default: "")
@@ -11152,19 +10762,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTarget = function() {
     this.data("kendoDropTarget", new kendo.ui.DropTarget());
@@ -11211,7 +10817,6 @@ var original = kendo.ui.DropTargetArea;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -11231,19 +10836,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTargetArea = function() {
     this.data("kendoDropTargetArea", new kendo.ui.DropTargetArea());
@@ -11425,19 +11026,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoEditor = function() {
     this.data("kendoEditor", new kendo.ui.Editor());
@@ -11460,7 +11057,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Editor widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;domain — String 
+        /// &#10;domain — String
         /// &#10;Relaxes the same-origin policy when using the iframe-based editor.
 /// &#10;This is done automatically for all cases except when the policy is relaxed by document.domain = document.domain.
 /// &#10;In that case, this property must be used to allow the editor to function properly across browsers.
@@ -11469,25 +11066,25 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;encoded — Boolean (default: true)
         /// &#10;Indicates whether the Editor should submit encoded HTML tags. By default, the submitted value is encoded.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Defines the text of the labels that are shown within the editor. Used primarily for localization.
         /// &#10;
-        /// &#10;serialization — Object 
+        /// &#10;serialization — Object
         /// &#10;Allows setting of serialization options.
         /// &#10;
-        /// &#10;stylesheets — Array 
+        /// &#10;stylesheets — Array
         /// &#10;Allows custom stylesheets to be included within the editing area. This setting is applicable only when the Editor is initialized from a textarea
 /// &#10;and a contenteditable iframe is generated.
         /// &#10;
-        /// &#10;tools — Array 
+        /// &#10;tools — Array
         /// &#10;A collection of tools that are used to interact with the Editor.
 /// &#10;Tools may be switched on by specifying their name.
 /// &#10;Custom tools and tools that require configuration are defined as objects.The available editor commands are:
         /// &#10;
-        /// &#10;imageBrowser — Object 
+        /// &#10;imageBrowser — Object
         /// &#10;Configuration for image browser dialog.
         /// &#10;
-        /// &#10;fileBrowser — Object 
+        /// &#10;fileBrowser — Object
         /// &#10;Configuration for file browser dialog.
         /// &#10;
         /// </summary>
@@ -11568,19 +11165,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoFlatColorPicker = function() {
     this.data("kendoFlatColorPicker", new kendo.ui.FlatColorPicker());
@@ -11622,7 +11215,7 @@ intellisense.annotate(jQuery.fn, {
 /// &#10;the input field, whenever a valid color can be parsed.  If you pass
 /// &#10;false for this, the widget will update only when ENTER is pressed.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Allows customization of "Apply" / "Cancel" labels.
         /// &#10;
         /// </summary>
@@ -11753,19 +11346,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoGantt = function() {
     this.data("kendoGantt", new kendo.ui.Gantt());
@@ -11792,15 +11381,15 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;columns — Array 
+        /// &#10;columns — Array
         /// &#10;The configuration of the gantt columns. An array of JavaScript objects or strings. A JavaScript objects are interpreted as column configurations. Strings are interpreted as the
 /// &#10;field to which the column is bound. The gantt will create a column for every item of the array.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.GanttDataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.GanttDataSource
         /// &#10;The data source of the widget which contains the tasks. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.GanttDataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.GanttDataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.GanttDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;dependencies — Object|Array|kendo.data.GanttDependencyDataSource 
+        /// &#10;dependencies — Object|Array|kendo.data.GanttDependencyDataSource
         /// &#10;The data source of the widget which contains the dependencies. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.GanttDependencyDataSource
 /// &#10;instance.If the dependencies option is set to a JavaScript object or array the widget will initialize a new kendo.data.GanttDependencyDataSource instance using that value as data source configuration.If the dependencies option is an existing kendo.data.GanttDependencyDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -11810,10 +11399,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;navigatable — Boolean (default: false)
         /// &#10;If set to true the user could navigate the widget using the keyboard. By default keyboard navigation is disabled.
         /// &#10;
-        /// &#10;workDayStart — Date 
+        /// &#10;workDayStart — Date
         /// &#10;Sets the start of the work day.
         /// &#10;
-        /// &#10;workDayEnd — Date 
+        /// &#10;workDayEnd — Date
         /// &#10;Sets the end of the work day.
         /// &#10;
         /// &#10;workWeekStart — Number (default: 1)
@@ -11834,7 +11423,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;listWidth — String|Number (default: "30%")
         /// &#10;The width of the task list. Numeric values are treated as pixels.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;The configuration of the gantt messages. Use this option to customize or localize the gantt messages.
         /// &#10;
         /// &#10;selectable — Boolean (default: true)
@@ -11846,7 +11435,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;showWorkHours — Boolean (default: true)
         /// &#10;If set to false, the day view will show all hours of the day. By default the view displays only business hours.
         /// &#10;
-        /// &#10;views — Array 
+        /// &#10;views — Array
         /// &#10;The views displayed by the gantt and their configuration. The array items can be either objects specifying the view configuration or strings representing the view types (assuming default configuration).
 /// &#10;By default the Kendo UI Gantt widget displays all three ("day", "week", and "month") views.
         /// &#10;
@@ -12096,19 +11685,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoGrid = function() {
     this.data("kendoGrid", new kendo.ui.Grid());
@@ -12131,7 +11716,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Grid widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;altRowTemplate — String|Function 
+        /// &#10;altRowTemplate — String|Function
         /// &#10;The template which renders the alternating table rows. Be default the grid renders a table row () for every data source item.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
@@ -12141,7 +11726,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;columnResizeHandleWidth — Number (default: 3)
         /// &#10;Defines the width of the column resize handle in pixels. Apply a larger value for easier grasping.
         /// &#10;
-        /// &#10;columns — Array 
+        /// &#10;columns — Array
         /// &#10;The configuration of the grid columns. An array of JavaScript objects or strings. A JavaScript objects are interpreted as column configurations. Strings are interpreted as the
 /// &#10;field to which the column is bound. The grid will create a column for every item of the array.
         /// &#10;
@@ -12149,39 +11734,39 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to true the grid will display the column menu when the user clicks the chevron icon in the column headers. The column menu allows the user to show and hide columns, filter and sort (if filtering and sorting are enabled).
 /// &#10;By default the column menu is not enabled.Can be set to a JavaScript object which represents the column menu configuration.
         /// &#10;
-        /// &#10;columnMenu — Object 
+        /// &#10;columnMenu — Object
         /// &#10;If set to true the grid will display the column menu when the user clicks the chevron icon in the column headers. The column menu allows the user to show and hide columns, filter and sort (if filtering and sorting are enabled).
 /// &#10;By default the column menu is not enabled.Can be set to a JavaScript object which represents the column menu configuration.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used render table rows. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;detailTemplate — String|Function 
+        /// &#10;detailTemplate — String|Function
         /// &#10;The template which renders the detail rows.
         /// &#10;
         /// &#10;editable — Boolean (default: false)
         /// &#10;If set to true the user would be able to edit the data to which the grid is bound to. By default editing is disabled.Can be set to a string ("inline", "incell" or "popup") to specify the editing mode. The default editing mode is "incell".Can be set to a JavaScript object which represents the editing configuration.
         /// &#10;
-        /// &#10;editable — Object 
+        /// &#10;editable — Object
         /// &#10;If set to true the user would be able to edit the data to which the grid is bound to. By default editing is disabled.Can be set to a string ("inline", "incell" or "popup") to specify the editing mode. The default editing mode is "incell".Can be set to a JavaScript object which represents the editing configuration.
         /// &#10;
         /// &#10;filterable — Boolean (default: false)
         /// &#10;If set to true the user can filter the data source using the grid filter menu. Filtering is disabled by default.Can be set to a JavaScript object which represents the filter menu configuration.
         /// &#10;
-        /// &#10;filterable — Object 
+        /// &#10;filterable — Object
         /// &#10;If set to true the user can filter the data source using the grid filter menu. Filtering is disabled by default.Can be set to a JavaScript object which represents the filter menu configuration.
         /// &#10;
         /// &#10;groupable — Boolean (default: false)
         /// &#10;If set to true the user could group the grid by dragging the column header cells. By default grouping is disabled.Can be set to a JavaScript object which represents the grouping configuration.
         /// &#10;
-        /// &#10;groupable — Object 
+        /// &#10;groupable — Object
         /// &#10;If set to true the user could group the grid by dragging the column header cells. By default grouping is disabled.Can be set to a JavaScript object which represents the grouping configuration.
         /// &#10;
-        /// &#10;height — Number|String 
+        /// &#10;height — Number|String
         /// &#10;The height of the grid. Numeric values are treated as pixels.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Defines the text of the command buttons that are shown within the Grid. Used primarily for localization.
         /// &#10;
         /// &#10;mobile — Boolean|String (default: false)
@@ -12194,7 +11779,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;pageable — Boolean (default: false)
         /// &#10;If set to true the grid will display a pager. By default paging is disabled.Can be set to a JavaScript object which represents the pager configuration.
         /// &#10;
-        /// &#10;pageable — Object 
+        /// &#10;pageable — Object
         /// &#10;If set to true the grid will display a pager. By default paging is disabled.Can be set to a JavaScript object which represents the pager configuration.
         /// &#10;
         /// &#10;reorderable — Boolean (default: false)
@@ -12203,13 +11788,13 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;resizable — Boolean (default: false)
         /// &#10;If set to true the user could resize the columns by dragging the edges of their header cells. By default resizing is disabled.
         /// &#10;
-        /// &#10;rowTemplate — String|Function 
+        /// &#10;rowTemplate — String|Function
         /// &#10;The template which renders rows. Be default renders a table row () for every data source item.
         /// &#10;
         /// &#10;scrollable — Boolean (default: true)
         /// &#10;If set to true the grid will display a scrollbar when the total row height (or width) exceeds the grid height (or width). By default scrolling is enabled.Can be set to a JavaScript object which represents the scrolling configuration.
         /// &#10;
-        /// &#10;scrollable — Object 
+        /// &#10;scrollable — Object
         /// &#10;If set to true the grid will display a scrollbar when the total row height (or width) exceeds the grid height (or width). By default scrolling is enabled.Can be set to a JavaScript object which represents the scrolling configuration.
         /// &#10;
         /// &#10;selectable — Boolean|String (default: false)
@@ -12218,14 +11803,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;sortable — Boolean (default: false)
         /// &#10;If set to true the user could sort the grid by clicking the column header cells. By default sorting is disabled.Can be set to a JavaScript object which represents the sorting configuration.
         /// &#10;
-        /// &#10;sortable — Object 
+        /// &#10;sortable — Object
         /// &#10;If set to true the user could sort the grid by clicking the column header cells. By default sorting is disabled.Can be set to a JavaScript object which represents the sorting configuration.
         /// &#10;
-        /// &#10;toolbar — String|Function 
+        /// &#10;toolbar — String|Function
         /// &#10;If a String value is assigned to the toolbar configuration option, it will be treated as a single string template for the whole Grid toolbar,
 /// &#10;and the string value will be passed as an argument to a kendo.template() function.If a Function value is assigned (it may be a kendo.template() function call or a generic function reference), then the return value of the function will be used to render the Grid toolbar contents.If an Array value is assigned, it will be treated as the list of commands displayed in the grid toolbar. Commands can be custom or built-in ("cancel", "create", "save").The "cancel" built-in command reverts any data changes done by the end user.The "create" command adds an empty data item to the grid.The "save" command persists any data changes done by the end user.
         /// &#10;
-        /// &#10;toolbar — Array 
+        /// &#10;toolbar — Array
         /// &#10;If a String value is assigned to the toolbar configuration option, it will be treated as a single string template for the whole Grid toolbar,
 /// &#10;and the string value will be passed as an argument to a kendo.template() function.If a Function value is assigned (it may be a kendo.template() function call or a generic function reference), then the return value of the function will be used to render the Grid toolbar contents.If an Array value is assigned, it will be treated as the list of commands displayed in the grid toolbar. Commands can be custom or built-in ("cancel", "create", "save").The "cancel" built-in command reverts any data changes done by the end user.The "create" command adds an empty data item to the grid.The "save" command persists any data changes done by the end user.
         /// &#10;
@@ -12345,19 +11930,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoListView = function() {
     this.data("kendoListView", new kendo.ui.ListView());
@@ -12384,11 +11965,11 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used render table rows. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;editTemplate — Function 
+        /// &#10;editTemplate — Function
         /// &#10;Specifies ListView item template in edit mode.
         /// &#10;
         /// &#10;navigatable — Boolean (default: false)
@@ -12397,10 +11978,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;selectable — Boolean|String (default: false)
         /// &#10;Indicates whether selection is enabled/disabled. Possible values:
         /// &#10;
-        /// &#10;template — Function 
+        /// &#10;template — Function
         /// &#10;Specifies ListView item template.
         /// &#10;
-        /// &#10;altTemplate — Function 
+        /// &#10;altTemplate — Function
         /// &#10;Template to be used for rendering the alternate items in the listview.
         /// &#10;
         /// </summary>
@@ -12476,19 +12057,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMaskedTextBox = function() {
     this.data("kendoMaskedTextBox", new kendo.ui.MaskedTextBox());
@@ -12523,7 +12100,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;promptChar — String (default: "_")
         /// &#10;Specifies the character used to represent the absence of user input in the widget
         /// &#10;
-        /// &#10;rules — Object 
+        /// &#10;rules — Object
         /// &#10;Defines an object of custom mask rules.
         /// &#10;
         /// &#10;value — String (default: "")
@@ -12645,19 +12222,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMenu = function() {
     this.data("kendoMenu", new kendo.ui.Menu());
@@ -12680,14 +12253,14 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Menu widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of Animation objects, used to change default animations. A value of false will disable all animations in the widget.Available animations for the Menu are listed below.  Each animation has a reverse options which is used for the close effect by default, but can be over-ridden
 /// &#10;by setting the close animation.  Each animation also has a direction which can be set off the animation (i.e. slideIn:Down).
         /// &#10;
         /// &#10;closeOnClick — Boolean (default: true)
         /// &#10;Specifies that sub menus should close after item selection (provided they won't navigate).
         /// &#10;
-        /// &#10;dataSource — Object|Array 
+        /// &#10;dataSource — Object|Array
         /// &#10;The data source of the widget which is used to render its items. Can be a JSON object/Array that contains an item or an Array of items to be rendered.
 /// &#10;Refer to the example below for a list of the supported properties.
         /// &#10;
@@ -12705,7 +12278,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;orientation — String (default: "horizontal")
         /// &#10;Root menu orientation. Could be horizontal or vertical.
         /// &#10;
-        /// &#10;popupCollision — String 
+        /// &#10;popupCollision — String
         /// &#10;Specifies how Menu should adjust to screen boundaries. By default the strategy is "fit" for a sub menu with a horizontal parent,
 /// &#10;meaning it will move to fit in screen boundaries in all directions, and "fit flip" for a sub menu with vertical parent, meaning it will fit vertically and flip over
 /// &#10;its parent horizontally. You can also switch off the screen boundary detection completely if you set the popupCollision to false.
@@ -12843,19 +12416,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMultiSelect = function() {
     this.data("kendoMultiSelect", new kendo.ui.MultiSelect());
@@ -12878,7 +12447,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.MultiSelect widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the suggestion popup. Setting the animation option to false will disable the opening and closing animations. As a result the suggestion popup will open and close instantly.
         /// &#10;
         /// &#10;autoBind — Boolean (default: true)
@@ -12887,7 +12456,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;autoClose — Boolean (default: true)
         /// &#10;Controls whether to close the widget suggestion list on item selection.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.DataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.DataSource
         /// &#10;The data source of the widget which is used to display a list of values. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.DataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.DataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.DataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -12925,13 +12494,13 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;placeholder — String (default: "")
         /// &#10;The hint displayed by the widget when it is empty. Not set by default.
         /// &#10;
-        /// &#10;headerTemplate — String|Function 
+        /// &#10;headerTemplate — String|Function
         /// &#10;Specifies a static HTML content, which will be rendered as a header of the popup element.
         /// &#10;
-        /// &#10;itemTemplate — String|Function 
+        /// &#10;itemTemplate — String|Function
         /// &#10;The template used to render the items in the popup list.
         /// &#10;
-        /// &#10;tagTemplate — String 
+        /// &#10;tagTemplate — String
         /// &#10;The template used to render the tags.
         /// &#10;
         /// &#10;value — Array (default: [])
@@ -13032,19 +12601,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoNotification = function() {
     this.data("kendoNotification", new kendo.ui.Notification());
@@ -13070,7 +12635,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;allowHideAfter — Number (default: 0)
         /// &#10;Indicates the period in milliseconds after which a notification can be dismissed (hidden) by the user.
         /// &#10;
-        /// &#10;animation — Object|Boolean 
+        /// &#10;animation — Object|Boolean
         /// &#10;Defines custom show and hide animations via an Kendo UI Animation object. Setting the value to false disables animations.
         /// &#10;
         /// &#10;appendTo — String|jQuery (default: null)
@@ -13088,7 +12653,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;hideOnClick — Boolean (default: true)
         /// &#10;Determines whether notifications can be hidden by clicking anywhere on their content.
         /// &#10;
-        /// &#10;position — Object 
+        /// &#10;position — Object
         /// &#10;This setting applies to popup notifications only, i.e. in cases when appendTo is not set.
 /// &#10;It determines the position of the first notification on the screen, as well as whether the notifications will move together with the page content during scrolling.
 /// &#10;top takes precedence over bottom and left takes precedence over right.
@@ -13097,7 +12662,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Determines the direction in which multiple notification will stack (arrange) with regard to the first one. Possible values are "up", "right", "down", "left" and "default".
 /// &#10;The "default" setting takes into consideration the applied position settings and is evaluated to "up" or "down".
         /// &#10;
-        /// &#10;templates — Array 
+        /// &#10;templates — Array
         /// &#10;Describes the HTML markup of the different notification types as Kendo UI template strings. The built-in types are "info", "success", "warning" and "error".This documentation section assumes that you are familiar with Kendo UI templates.
         /// &#10;
         /// &#10;width — Number|String (default: null)
@@ -13210,19 +12775,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoNumericTextBox = function() {
     this.data("kendoNumericTextBox", new kendo.ui.NumericTextBox());
@@ -13358,19 +12919,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoPager = function() {
     this.data("kendoPager", new kendo.ui.Pager());
@@ -13399,13 +12956,13 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;buttonCount — Number (default: 10)
         /// &#10;Defines the number of buttons displayed in the numeric pager.
         /// &#10;
-        /// &#10;dataSource — Object|kendo.data.DataSource 
+        /// &#10;dataSource — Object|kendo.data.DataSource
         /// &#10;Instance of kendo DataSource. See the kendo.data.DataSource.This option is mandatory because the Pager is tightly connected with DataSource. The pager is UI widget for managing paging over the DataSource. The Pager gets values like page size or total count of items from DataSource.
         /// &#10;
-        /// &#10;selectTemplate — String 
+        /// &#10;selectTemplate — String
         /// &#10;The template for selected page number link.
         /// &#10;
-        /// &#10;linkTemplate — String 
+        /// &#10;linkTemplate — String
         /// &#10;The template for page number links.
         /// &#10;
         /// &#10;info — Boolean (default: true)
@@ -13426,7 +12983,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;refresh — Boolean (default: false)
         /// &#10;Defines if a refresh button will be displayed. Click on that button will call DataSource read() method to get actual data.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Defines texts shown within the pager. Use this option to customize or localize the pager messages.
         /// &#10;
         /// </summary>
@@ -13568,19 +13125,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoPanelBar = function() {
     this.data("kendoPanelBar", new kendo.ui.PanelBar());
@@ -13603,18 +13156,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.PanelBar widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Boolean 
+        /// &#10;animation — Boolean
         /// &#10;A collection of visual animations used when PanelBar items are expand or collapsed through
 /// &#10;user interactions. Setting this option to false will disable all animations.
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of visual animations used when PanelBar items are expand or collapsed through
 /// &#10;user interactions. Setting this option to false will disable all animations.
         /// &#10;
-        /// &#10;contentUrls — Array 
+        /// &#10;contentUrls — Array
         /// &#10;Sets an array with the URLs from which the PanelBar items content to be loaded from. If only specific items should be loaded via Ajax, then you should set the URLs to the corresponding positions in the array and set the other elements to null.
         /// &#10;
-        /// &#10;dataSource — Object|Array 
+        /// &#10;dataSource — Object|Array
         /// &#10;The data source of the widget which is used to render its items. Can be a JSON object/Array that contains an item or an Array of items to be rendered.
 /// &#10;Refer to the example below for a list of the supported properties.
         /// &#10;
@@ -13685,19 +13238,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoPivotConfigurator = function() {
     this.data("kendoPivotConfigurator", new kendo.ui.PivotConfigurator());
@@ -13720,14 +13269,14 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.PivotConfigurator widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;dataSource — Object|kendo.data.PivotDataSource 
+        /// &#10;dataSource — Object|kendo.data.PivotDataSource
         /// &#10;The data source of the widget which is used to display values. Can be a JavaScript object which represents a valid data source configuration or an existing kendo.data.PivotDataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object the widget will initialize a new kendo.data.PivotDataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.PivotDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
         /// &#10;filterable — Boolean (default: false)
         /// &#10;If set to true the user will be able to filter by using the field menu.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;The text messages displayed in the fields sections.
         /// &#10;
         /// </summary>
@@ -13812,19 +13361,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoPivotGrid = function() {
     this.data("kendoPivotGrid", new kendo.ui.PivotGrid());
@@ -13847,7 +13392,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.PivotGrid widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;dataSource — Object|kendo.data.PivotDataSource 
+        /// &#10;dataSource — Object|kendo.data.PivotDataSource
         /// &#10;The data source of the widget which is used to display values. Can be a JavaScript object which represents a valid data source configuration or an existing kendo.data.PivotDataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object the widget will initialize a new kendo.data.PivotDataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.PivotDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
@@ -13861,23 +13406,23 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;filterable — Boolean (default: false)
         /// &#10;If set to true the user will be able to filter by using the field menu.
         /// &#10;
-        /// &#10;columnWidth — Number 
+        /// &#10;columnWidth — Number
         /// &#10;The width of the table columns. Value is treated as pixels.
         /// &#10;
-        /// &#10;height — Number|String 
+        /// &#10;height — Number|String
         /// &#10;The height of the pivotgrid. Numeric values are treated as pixels.
         /// &#10;
-        /// &#10;columnHeaderTemplate — String|Function 
+        /// &#10;columnHeaderTemplate — String|Function
         /// &#10;The template which renders the content of the column header cell. By default it renders the caption of the tuple member.The fields which can be used in the template are:For information about the tuple structure check this link.
         /// &#10;
-        /// &#10;dataCellTemplate — String|Function 
+        /// &#10;dataCellTemplate — String|Function
         /// &#10;The template which renders the content of the data cell. By default renders the formatted value (fmtValue) of the data item.The fields which can be used in the template are:For information about the tuple structure check this link.
 /// &#10;About the data item structure review this help topic.
         /// &#10;
-        /// &#10;rowHeaderTemplate — String|Function 
+        /// &#10;rowHeaderTemplate — String|Function
         /// &#10;The template which renders the content of the row header cell. By default it renders the caption of the tuple member.The fields which can be used in the template are:For information about the tuple structure check this link.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;The text messages displayed in the fields sections.
         /// &#10;
         /// </summary>
@@ -13938,19 +13483,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoProgressBar = function() {
     this.data("kendoProgressBar", new kendo.ui.ProgressBar());
@@ -13973,7 +13514,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.ProgressBar widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the progress animation. Currently only the duration of the animation could be set.
         /// &#10;
         /// &#10;chunkCount — Number (default: 5)
@@ -14000,7 +13541,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;type — String (default: "value")
         /// &#10;Specifies the type of the ProgressBar. The supported types are value, percent and chunk.
         /// &#10;
-        /// &#10;value — Number 
+        /// &#10;value — Number
         /// &#10;The underlying value of the ProgressBar.
         /// &#10;
         /// </summary>
@@ -14078,19 +13619,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoRangeSlider = function() {
     this.data("kendoRangeSlider", new kendo.ui.RangeSlider());
@@ -14128,10 +13665,10 @@ intellisense.annotate(jQuery.fn, {
 /// &#10;The orientation of a RangeSlider; "horizontal" or
 /// &#10;"vertical".
         /// &#10;
-        /// &#10;selectionEnd — Number 
+        /// &#10;selectionEnd — Number
         /// &#10;The selection end value of the RangeSlider.
         /// &#10;
-        /// &#10;selectionStart — Number 
+        /// &#10;selectionStart — Number
         /// &#10;The selection start value of the RangeSlider.
         /// &#10;
         /// &#10;smallStep — Number (default: 1)
@@ -14142,7 +13679,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;tickPlacement — String (default: "both")
         /// &#10;Denotes the location of the tick marks in the RangeSlider. The available options are:
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;Configuration of the RangeSlider tooltip.
         /// &#10;
         /// </summary>
@@ -14311,19 +13848,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoScheduler = function() {
     this.data("kendoScheduler", new kendo.ui.Scheduler());
@@ -14346,7 +13879,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Scheduler widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;allDayEventTemplate — String|Function 
+        /// &#10;allDayEventTemplate — String|Function
         /// &#10;The template used to render the "all day" scheduler events.The fields which can be used in the template are:
         /// &#10;
         /// &#10;allDaySlot — Boolean (default: true)
@@ -14356,20 +13889,20 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;currentTimeMarker — Boolean 
+        /// &#10;currentTimeMarker — Boolean
         /// &#10;If set to false the "current time" marker of the scheduler would not be displayed.
         /// &#10;
-        /// &#10;currentTimeMarker — Object 
+        /// &#10;currentTimeMarker — Object
         /// &#10;If set to false the "current time" marker of the scheduler would not be displayed.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.SchedulerDataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.SchedulerDataSource
         /// &#10;The data source of the widget which contains the scheduler events. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.SchedulerDataSource
 /// &#10;instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.SchedulerDataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.SchedulerDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
-        /// &#10;date — Date 
+        /// &#10;date — Date
         /// &#10;The current date of the scheduler. Used to determine the period which is displayed by the widget.
         /// &#10;
-        /// &#10;dateHeaderTemplate — String|Function 
+        /// &#10;dateHeaderTemplate — String|Function
         /// &#10;The template used to render the date header cells.By default the scheduler renders the date using a custom date format - "ddd M/dd".
 /// &#10;The "ddd" specifier, a.k.a abbreviated name of the week day, will be localized using the current Kendo UI culture.
 /// &#10;If the developer wants to control the day and month order then one needs to define a custom template.The fields which can be used in the template are:
@@ -14377,37 +13910,37 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;editable — Boolean (default: true)
         /// &#10;If set to true the user would be able to create new scheduler events and modify or delete existing ones.
         /// &#10;
-        /// &#10;editable — Object 
+        /// &#10;editable — Object
         /// &#10;If set to true the user would be able to create new scheduler events and modify or delete existing ones.
         /// &#10;
-        /// &#10;endTime — Date 
+        /// &#10;endTime — Date
         /// &#10;The end time of the week and day views. The scheduler will display events ending before the endTime.
         /// &#10;
-        /// &#10;eventTemplate — String|Function 
+        /// &#10;eventTemplate — String|Function
         /// &#10;The template used to render the scheduler events.The fields which can be used in the template are:
         /// &#10;
-        /// &#10;footer — Boolean 
+        /// &#10;footer — Boolean
         /// &#10;If set to false the footer of the scheduler would not be displayed.
         /// &#10;
-        /// &#10;footer — Object 
+        /// &#10;footer — Object
         /// &#10;If set to false the footer of the scheduler would not be displayed.
         /// &#10;
-        /// &#10;group — Object 
+        /// &#10;group — Object
         /// &#10;The configuration of the scheduler resource(s) grouping.
         /// &#10;
-        /// &#10;height — Number|String 
+        /// &#10;height — Number|String
         /// &#10;The height of the widget. Numeric values are treated as pixels.
         /// &#10;
         /// &#10;majorTick — Number (default: 60)
         /// &#10;The number of minutes represented by a major tick.
         /// &#10;
-        /// &#10;majorTimeHeaderTemplate — String|Function 
+        /// &#10;majorTimeHeaderTemplate — String|Function
         /// &#10;The template used to render the major ticks.By default the scheduler renders the time using the current culture time format.The fields which can be used in the template are:
         /// &#10;
         /// &#10;max — Date (default: 31/12/2099)
         /// &#10;Constraints the maximum date which can be selected via the scheduler navigation.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;The configuration of the scheduler messages. Use this option to customize or localize the scheduler messages.
         /// &#10;
         /// &#10;min — Date (default: 1/1/1900)
@@ -14416,13 +13949,13 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;minorTickCount — Number (default: 2)
         /// &#10;The number of time slots to display per major tick.
         /// &#10;
-        /// &#10;minorTimeHeaderTemplate — String|Function 
+        /// &#10;minorTimeHeaderTemplate — String|Function
         /// &#10;The template used to render the minor ticks.By default the scheduler renders a "&nbsp;".The fields which can be used in the template are:
         /// &#10;
         /// &#10;mobile — Boolean|String (default: false)
         /// &#10;If set to true and the scheduler is viewed on mobile browser it will use adaptive rendering.Can be set to a string phone or tablet which will force the widget to use adaptive rendering regardless of browser type.
         /// &#10;
-        /// &#10;resources — Array 
+        /// &#10;resources — Array
         /// &#10;The configuration of the scheduler resource(s). A scheduler resource is optional metadata that can be associated
 /// &#10;with a scheduler event.
         /// &#10;
@@ -14435,25 +13968,25 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;snap — Boolean (default: true)
         /// &#10;If set to true the scheduler will snap events to the nearest slot during dragging (resizing or moving). Set it to false to allow free moving and resizing of events.
         /// &#10;
-        /// &#10;startTime — Date 
+        /// &#10;startTime — Date
         /// &#10;The start time of the week and day views. The scheduler will display events starting after the startTime.
         /// &#10;
-        /// &#10;timezone — String 
+        /// &#10;timezone — String
         /// &#10;The timezone which the scheduler will use to display the scheduler appointment dates. By default the current system timezone is used. This is an acceptable default when the
 /// &#10;scheduler widget is bound to local array of events. It is advisable to specify a timezone if the scheduler is bound to a remote service.
 /// &#10;That way all users would see the same dates and times no matter their configured system timezone.The complete list of the supported timezones is available in the List of IANA time zones Wikipedia page.
         /// &#10;
-        /// &#10;views — Array 
+        /// &#10;views — Array
         /// &#10;The views displayed by the scheduler and their configuration. The array items can be either objects specifying the view configuration or strings representing the view types (assuming default configuration).
 /// &#10;By default the Kendo UI Scheduler widget displays "day" and "week" view.
         /// &#10;
-        /// &#10;width — Number|String 
+        /// &#10;width — Number|String
         /// &#10;The width of the widget. Numeric values are treated as pixels.
         /// &#10;
-        /// &#10;workDayStart — Date 
+        /// &#10;workDayStart — Date
         /// &#10;Sets the start of the work day when the  "Show business hours" button is clicked.
         /// &#10;
-        /// &#10;workDayEnd — Date 
+        /// &#10;workDayEnd — Date
         /// &#10;Sets the end of the work day when the  "Show business hours" button is clicked.
         /// &#10;
         /// &#10;workWeekStart — Number (default: 1)
@@ -14535,19 +14068,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoSlider = function() {
     this.data("kendoSlider", new kendo.ui.Slider());
@@ -14601,10 +14130,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;tickPlacement — String (default: "both")
         /// &#10;Denotes the location of the tick marks in the Slider. The available options are:
         /// &#10;
-        /// &#10;tooltip — Object 
+        /// &#10;tooltip — Object
         /// &#10;Configuration of the Slider tooltip.
         /// &#10;
-        /// &#10;value — Number 
+        /// &#10;value — Number
         /// &#10;The underlying value of the Slider.
         /// &#10;
         /// </summary>
@@ -14665,19 +14194,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoSortable = function() {
     this.data("kendoSortable", new kendo.ui.Sortable());
@@ -14712,7 +14237,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;cursor — String (default: "auto")
         /// &#10;The cursor that will be shown while user drags sortable item.
         /// &#10;
-        /// &#10;cursorOffset — Object 
+        /// &#10;cursorOffset — Object
         /// &#10;If set, specifies the offset of the hint relative to the mouse cursor/finger.
 /// &#10;By default, the hint is initially positioned on top of the draggable source offset. The option accepts an object with two keys: top and left.
         /// &#10;
@@ -14725,7 +14250,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;handler — String (default: null)
         /// &#10;Selector that determines which element will be used as a draggable handler. If a handler is defined, the user will be able to move the Sortable items only if the cursor/finger is positioned onto the handler element.
         /// &#10;
-        /// &#10;hint — Function|String|jQuery 
+        /// &#10;hint — Function|String|jQuery
         /// &#10;Provides a way for customization of the sortable item hint. If a function is supplied, it receives one argument - the draggable element's jQuery object.
 /// &#10;If hint function is not provided the widget will clone dragged item and use it as a hint.
         /// &#10;
@@ -14736,7 +14261,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;ignore — String (default: null)
         /// &#10;Selector that determines which elements inside the sorted item's container will be ignored. Useful if the sortable item contains input elements.
         /// &#10;
-        /// &#10;placeholder — Function|String|jQuery 
+        /// &#10;placeholder — Function|String|jQuery
         /// &#10;Provides a way for customization of the sortable item placeholder. If a function is supplied, it receives one argument - the draggable element's jQuery object.
 /// &#10;If placeholder function is not provided the widget will clone dragged item, remove its ID attribute, set its visibility to hidden and use it as a placeholder.
         /// &#10;
@@ -14894,19 +14419,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoSplitter = function() {
     this.data("kendoSplitter", new kendo.ui.Splitter());
@@ -14932,7 +14453,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;orientation — String (default: "horizontal")
         /// &#10;Specifies the orientation of the widget. Supported values are "horizontal" and "vertical".
         /// &#10;
-        /// &#10;panes — Array 
+        /// &#10;panes — Array
         /// &#10;An array of pane definitions.
         /// &#10;
         /// </summary>
@@ -15102,19 +14623,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTabStrip = function() {
     this.data("kendoTabStrip", new kendo.ui.TabStrip());
@@ -15137,18 +14654,18 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.TabStrip widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Boolean 
+        /// &#10;animation — Boolean
         /// &#10;A collection of visual animations used when TabStrip tab are selected through
 /// &#10;user interactions. Setting this option to false will disable all animations.
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of visual animations used when TabStrip tab are selected through
 /// &#10;user interactions. Setting this option to false will disable all animations.
         /// &#10;
         /// &#10;collapsible — Boolean (default: false)
         /// &#10;Specifies whether the TabStrip should be able to collapse completely when clicking an expanded tab.
         /// &#10;
-        /// &#10;contentUrls — Array 
+        /// &#10;contentUrls — Array
         /// &#10;Sets an array with the URLs from which the tabs content to be loaded from. If only specific tabs should be loaded via Ajax, then you should set the URLs to the corresponding positions in the array and set the other elements to null.
         /// &#10;
         /// &#10;dataContentField — String (default: "")
@@ -15290,19 +14807,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTimePicker = function() {
     this.data("kendoTimePicker", new kendo.ui.TimePicker());
@@ -15325,13 +14838,13 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.TimePicker widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;Configures the opening and closing animations of the popup. Setting the animation option to false will disable the opening and closing animations. As a result the popup will open and close instantly.
         /// &#10;
         /// &#10;culture — String (default: "en-US")
         /// &#10;Specifies the culture info used by the widget.
         /// &#10;
-        /// &#10;dates — Array 
+        /// &#10;dates — Array
         /// &#10;Specifies a list of dates, which are shown in the time drop-down list. If not set, the TimePicker will auto-generate the available times.
         /// &#10;
         /// &#10;format — String (default: "h:mm tt")
@@ -15346,7 +14859,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;min — Date (default: "00:00")
         /// &#10;Specifies the start value in the popup list.
         /// &#10;
-        /// &#10;parseFormats — Array 
+        /// &#10;parseFormats — Array
         /// &#10;Specifies the formats, which are used to parse the value set with the value method or by direct input. If not set the value of the options.format will be used. Note that value of the format option is always used.
         /// &#10;
         /// &#10;value — Date (default: null)
@@ -15433,19 +14946,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoToolBar = function() {
     this.data("kendoToolBar", new kendo.ui.ToolBar());
@@ -15471,7 +14980,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;resizable — Boolean (default: true)
         /// &#10;If resizable is set to true the widget will detect changes in the viewport width and hides the overflowing controls in the command overflow popup.
         /// &#10;
-        /// &#10;items — Array 
+        /// &#10;items — Array
         /// &#10;A JavaScript array that contains the ToolBar's commands configuration.
         /// &#10;
         /// </summary>
@@ -15545,19 +15054,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTooltip = function() {
     this.data("kendoTooltip", new kendo.ui.Tooltip());
@@ -15583,25 +15088,25 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;autoHide — Boolean (default: true)
         /// &#10;Specifies if the tooltip will be hidden when mouse leaves the target element. If set to false a close button will be shown within tooltip. If set to false, showAfter is specified and the showOn is set to "mouseenter" the Tooltip will be displayed after the given timeout even if the element is no longer hovered.
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of {Animation} objects, used to change default animations. A value of false
 /// &#10;will disable all animations in the widget.
         /// &#10;
-        /// &#10;content — String|Function 
+        /// &#10;content — String|Function
         /// &#10;The text or a function which result will be shown within the tooltip.
 /// &#10;By default the tooltip will display the target element title attribute content.
         /// &#10;
-        /// &#10;content — Object 
+        /// &#10;content — Object
         /// &#10;The text or a function which result will be shown within the tooltip.
 /// &#10;By default the tooltip will display the target element title attribute content.
         /// &#10;
         /// &#10;callout — Boolean (default: true)
         /// &#10;Specifies if the tooltip callout will be displayed.
         /// &#10;
-        /// &#10;filter — String 
+        /// &#10;filter — String
         /// &#10;Specifies a selector for elements, within the container, for which the tooltip will be displayed.
         /// &#10;
-        /// &#10;iframe — Boolean 
+        /// &#10;iframe — Boolean
         /// &#10;Explicitly states whether content iframe should be created.
         /// &#10;
         /// &#10;height — Number (default: Infinity)
@@ -15674,19 +15179,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTouch = function() {
     this.data("kendoTouch", new kendo.ui.Touch());
@@ -15709,7 +15210,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Touch widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;filter — String 
+        /// &#10;filter — String
         /// &#10;jQuery selector that specifies child elements that are touchable if a widget is attached to a container.
         /// &#10;
         /// &#10;surface — jQuery (default: null)
@@ -15957,19 +15458,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTreeView = function() {
     this.data("kendoTreeView", new kendo.ui.TreeView());
@@ -15992,11 +15489,11 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.TreeView widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;animation — Boolean 
+        /// &#10;animation — Boolean
         /// &#10;A collection of visual animations used when items are expanded or collapsed through user interaction.
 /// &#10;Setting this option to false will disable all animations.
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of visual animations used when items are expanded or collapsed through user interaction.
 /// &#10;Setting this option to false will disable all animations.
         /// &#10;
@@ -16004,16 +15501,16 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to false the widget will not bind to the data source during initialization. In this case data binding will occur when the change event of the
 /// &#10;data source is fired. By default the widget will bind to the data source specified in the configuration.
         /// &#10;
-        /// &#10;checkboxes — Boolean 
+        /// &#10;checkboxes — Boolean
         /// &#10;If true or an object, renders checkboxes beside each node.
         /// &#10;
-        /// &#10;checkboxes — Object 
+        /// &#10;checkboxes — Object
         /// &#10;If true or an object, renders checkboxes beside each node.
         /// &#10;
         /// &#10;dataImageUrlField — String (default: null)
         /// &#10;Sets the field of the data item that provides the image URL of the treeview nodes.
         /// &#10;
-        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource 
+        /// &#10;dataSource — Object|Array|kendo.data.HierarchicalDataSource
         /// &#10;The data source of the widget which is used render nodes. Can be a JavaScript object which represents a valid data source configuration, a JavaScript array or an existing kendo.data.HierarchicalDataSource instance.If the dataSource option is set to a JavaScript object or array the widget will initialize a new kendo.data.HierarchicalDataSource instance using that value as data source configuration.If the dataSource option is an existing kendo.data.HierarchicalDataSource instance the widget will use that instance and will not initialize a new one.
         /// &#10;
         /// &#10;dataSpriteCssClassField — String (default: null)
@@ -16035,10 +15532,10 @@ intellisense.annotate(jQuery.fn, {
 /// &#10;Setting this to false causes all child dataSources to be loaded at initialization time.
 /// &#10;Note: when initializing the widget from an array (rather than from a HierarchicalDataSource instance), this option defaults to false, rather than true.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;The text messages displayed in the widget. Use it to customize or localize the messages.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;Template for rendering each node.
         /// &#10;
         /// </summary>
@@ -16112,19 +15609,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoUpload = function() {
     this.data("kendoUpload", new kendo.ui.Upload());
@@ -16147,7 +15640,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Upload widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;async — Object 
+        /// &#10;async — Object
         /// &#10;Configures the ability to upload a file(s) in an asynchronous manner. Please refer to the
 /// &#10;async mode help topic
 /// &#10;for more details.
@@ -16156,10 +15649,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;Enables (true) or disables (false) an Upload. A disabled
 /// &#10;Upload may be re-enabled via enable().
         /// &#10;
-        /// &#10;files — Array 
+        /// &#10;files — Array
         /// &#10;List of files to be initially rendered in the Upload widget files list.
         /// &#10;
-        /// &#10;localization — Object 
+        /// &#10;localization — Object
         /// &#10;Sets the strings rendered by the Upload.
         /// &#10;
         /// &#10;multiple — Boolean (default: true)
@@ -16172,7 +15665,7 @@ intellisense.annotate(jQuery.fn, {
 /// &#10;for uploading a file(s). Disabling a file listing may be useful you wish to customize the UI; use the
 /// &#10;client-side events to build your own UI.
         /// &#10;
-        /// &#10;template — String|Function 
+        /// &#10;template — String|Function
         /// &#10;The template used to render the files in the list
         /// &#10;
         /// </summary>
@@ -16248,19 +15741,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoValidator = function() {
     this.data("kendoValidator", new kendo.ui.Validator());
@@ -16283,17 +15772,17 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Validator widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;errorTemplate — String 
+        /// &#10;errorTemplate — String
         /// &#10;The template which renders the validation message.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Set of messages (either strings or functions) which will be shown when given validation rule fails.
 /// &#10;By setting already existing key the appropriate built-in message will be overridden.
         /// &#10;
-        /// &#10;rules — Object 
+        /// &#10;rules — Object
         /// &#10;Set of custom validation rules. Those rules will extend the built-in ones.
         /// &#10;
-        /// &#10;validateOnBlur — Boolean 
+        /// &#10;validateOnBlur — Boolean
         /// &#10;Determines if validation will be triggered when element loses focus. Default value is true.
         /// &#10;
         /// </summary>
@@ -16363,21 +15852,15 @@ intellisense.annotate(instance, {
         /// </summary>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoWidget = function() {
     this.data("kendoWidget", new kendo.ui.Widget());
@@ -16563,19 +16046,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoWindow = function() {
     this.data("kendoWindow", new kendo.ui.Window());
@@ -16602,7 +16081,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;The buttons for interacting with the window. Predefined array values are "Close", "Refresh", "Minimize",
 /// &#10;and "Maximize".
         /// &#10;
-        /// &#10;animation — Object 
+        /// &#10;animation — Object
         /// &#10;A collection of {Animation} objects, used to change default animations. A value of false
 /// &#10;will disable all animations in the widget.
         /// &#10;
@@ -16613,12 +16092,12 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;autoFocus — Boolean (default: true)
         /// &#10;Determines whether the Window will be focused automatically when opened. The property also influences the focus behavior when the Window is clicked when already opened.
         /// &#10;
-        /// &#10;content — String 
+        /// &#10;content — String
         /// &#10;Specifies a URL or request options that the window should load its content from.Note: For URLs starting with a protocol (e.g. http://),
 /// &#10;a container iframe element is automatically created. This behavior may change in future
 /// &#10;versions, so it is advisable to always use the iframe configuration option.
         /// &#10;
-        /// &#10;content — Object 
+        /// &#10;content — Object
         /// &#10;Specifies a URL or request options that the window should load its content from.Note: For URLs starting with a protocol (e.g. http://),
 /// &#10;a container iframe element is automatically created. This behavior may change in future
 /// &#10;versions, so it is advisable to always use the iframe configuration option.
@@ -16626,7 +16105,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;draggable — Boolean (default: true)
         /// &#10;Enables (true) or disables (false) the ability for users to move/drag the widget.
         /// &#10;
-        /// &#10;iframe — Boolean 
+        /// &#10;iframe — Boolean
         /// &#10;Explicitly states whether content iframe should be created.
         /// &#10;
         /// &#10;maxHeight — Number (default: Infinity)
@@ -16647,7 +16126,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;pinned — Boolean (default: false)
         /// &#10;Specifies whether the window should be pinned, i.e. it will not move together with the page content during scrolling.
         /// &#10;
-        /// &#10;position — Object 
+        /// &#10;position — Object
         /// &#10;A collection of one or two members, which define the initial Window's top and/or left position on the page.
         /// &#10;
         /// &#10;resizable — Boolean (default: true)
@@ -16659,10 +16138,10 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;visible — Boolean (default: true)
         /// &#10;Specifies whether the window will be initially visible.
         /// &#10;
-        /// &#10;width — Number|String 
+        /// &#10;width — Number|String
         /// &#10;Specifies width of the window.
         /// &#10;
-        /// &#10;height — Number|String 
+        /// &#10;height — Number|String
         /// &#10;Specifies height of the window.
         /// &#10;
         /// </summary>

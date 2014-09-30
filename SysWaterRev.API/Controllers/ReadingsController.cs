@@ -15,7 +15,6 @@ using SysWaterRev.BusinessLayer.ViewModels;
 
 namespace SysWaterRev.API.Controllers
 {
-   
     [HostAuthentication(OAuthDefaults.AuthenticationType)]
     public class ReadingsController : ApiController
     {
@@ -120,8 +119,8 @@ namespace SysWaterRev.API.Controllers
                     IsConfirmed = false,
                 };
                 var previousReading = await db.Readings.OrderByDescending(x => x.DateCreated).FirstOrDefaultAsync();
-              
-                if(previousReading!=null)
+
+                if (previousReading != null)
                 {
                     if (readingModel.ReadingValue >= previousReading.ReadingValue)
                     {
@@ -130,9 +129,9 @@ namespace SysWaterRev.API.Controllers
                     else
                     {
                         return Conflict();
-                    }      
+                    }
                 }
-              
+
                 try
                 {
                     db.Readings.Add(readingModel);

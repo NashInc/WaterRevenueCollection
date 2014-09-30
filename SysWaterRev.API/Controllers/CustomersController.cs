@@ -29,7 +29,7 @@ namespace SysWaterRev.API.Controllers
         }
 
         // GET: api/Customers/5
-        [ResponseType(typeof(Customer))]
+        [ResponseType(typeof (Customer))]
         public async Task<IHttpActionResult> GetCustomer(Guid id)
         {
             Customer customer = await db.Customers.FindAsync(id);
@@ -42,7 +42,7 @@ namespace SysWaterRev.API.Controllers
         }
 
         // PUT: api/Customers/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof (void))]
         public async Task<IHttpActionResult> PutCustomer(Guid id, Customer customer)
         {
             if (!ModelState.IsValid)
@@ -67,17 +67,14 @@ namespace SysWaterRev.API.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Customers
-        [ResponseType(typeof(Customer))]
+        [ResponseType(typeof (Customer))]
         public async Task<IHttpActionResult> PostCustomer(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -97,17 +94,14 @@ namespace SysWaterRev.API.Controllers
                 {
                     return Conflict();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("DefaultApi", new {id = customer.CustomerId}, customer);
         }
 
         // DELETE: api/Customers/5
-        [ResponseType(typeof(Customer))]
+        [ResponseType(typeof (Customer))]
         public async Task<IHttpActionResult> DeleteCustomer(Guid id)
         {
             Customer customer = await db.Customers.FindAsync(id);

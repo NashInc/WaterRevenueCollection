@@ -1,5 +1,3 @@
-
-
 intellisense.annotate(kendo, {
     Class: function() {
         /// <signature>
@@ -13,7 +11,6 @@ var original = kendo.Class;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -33,19 +30,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Color: function() {
@@ -96,19 +89,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Layout: function() {
@@ -153,19 +142,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Observable: function() {
@@ -216,21 +201,15 @@ intellisense.annotate(instance, {
         /// <param name="handler" type="Function" >The handler which should no longer be executed. If not specified all handlers listening to that event will be removed.</param>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     Router: function() {
@@ -255,7 +234,7 @@ intellisense.annotate(instance, {
     route: function(route,callback) {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="route" type="String" >The route definition.</param>
         /// <param name="callback" type="Function" >The callback to be executed when the route is matched.</param>
@@ -306,19 +285,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo, {
     View: function() {
@@ -370,19 +345,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Binder: function() {
@@ -424,19 +395,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     DataSource: function() {
@@ -704,19 +671,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDataSource: function() {
@@ -814,19 +777,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependency: function() {
@@ -841,7 +800,6 @@ var original = kendo.data.GanttDependency;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -861,19 +819,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttDependencyDataSource: function() {
@@ -935,19 +889,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     GanttTask: function() {
@@ -998,19 +948,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     HierarchicalDataSource: function() {
@@ -1025,7 +971,6 @@ var original = kendo.data.HierarchicalDataSource;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1045,19 +990,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Model: function() {
@@ -1122,7 +1063,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1132,19 +1072,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     Node: function() {
@@ -1217,19 +1153,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableArray: function() {
@@ -1333,7 +1265,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1343,19 +1274,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     ObservableObject: function() {
@@ -1413,7 +1340,6 @@ intellisense.annotate(instance, {
         /// </signature>
     },
 
-
     unbind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -1423,19 +1349,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     PivotDataSource: function() {
@@ -1590,19 +1512,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerDataSource: function() {
@@ -1647,19 +1565,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.data, {
     SchedulerEvent: function() {
@@ -1780,19 +1694,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.mobile, {
     Application: function() {
@@ -1892,19 +1802,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 intellisense.annotate(kendo.mobile.ui, {
     ActionSheet: function() {
@@ -1962,19 +1868,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileActionSheet = function() {
     this.data("kendoMobileActionSheet", new kendo.mobile.ui.ActionSheet());
@@ -2000,7 +1902,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;cancel — String (default: "Cancel")
         /// &#10;The text of the cancel button.
         /// &#10;
-        /// &#10;popup — Object 
+        /// &#10;popup — Object
         /// &#10;The popup configuration options (tablet only).
         /// &#10;
         /// &#10;type — String (default: auto)
@@ -2054,19 +1956,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileBackButton = function() {
     this.data("kendoMobileBackButton", new kendo.mobile.ui.BackButton());
@@ -2154,19 +2052,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileButton = function() {
     this.data("kendoMobileButton", new kendo.mobile.ui.Button());
@@ -2189,13 +2083,13 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.Button widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;badge — String 
+        /// &#10;badge — String
         /// &#10;The badge of the button.
         /// &#10;
         /// &#10;enable — Boolean (default: true)
         /// &#10;If set to false the widget will be disabled and will not allow the user to click it. The widget is enabled by default.
         /// &#10;
-        /// &#10;icon — String 
+        /// &#10;icon — String
         /// &#10;The icon of the button. It can be either one of the built-in icons, or a custom one.
         /// &#10;
         /// </summary>
@@ -2280,19 +2174,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileButtonGroup = function() {
     this.data("kendoMobileButtonGroup", new kendo.mobile.ui.ButtonGroup());
@@ -2318,7 +2208,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;enable — Boolean (default: true)
         /// &#10;Defines if the widget is initially enabled or disabled.
         /// &#10;
-        /// &#10;index — Number 
+        /// &#10;index — Number
         /// &#10;Defines the initially selected Button (zero based index).
         /// &#10;
         /// &#10;selectOn — String (default: default "down")
@@ -2373,19 +2263,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileDetailButton = function() {
     this.data("kendoMobileDetailButton", new kendo.mobile.ui.DetailButton());
@@ -2470,19 +2356,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileDrawer = function() {
     this.data("kendoMobileDrawer", new kendo.mobile.ui.Drawer());
@@ -2505,7 +2387,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.Drawer widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;container — jQuery 
+        /// &#10;container — jQuery
         /// &#10;Specifies the content element to shift when the drawer appears. Required if the drawer is used outside of a mobile application.
         /// &#10;
         /// &#10;position — String (default: 'left')
@@ -2514,14 +2396,14 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;swipeToOpen — Boolean (default: true)
         /// &#10;If set to false, swiping the view will not activate the drawer. In this case, the drawer will only be open by a designated button
         /// &#10;
-        /// &#10;swipeToOpenViews — Array 
+        /// &#10;swipeToOpenViews — Array
         /// &#10;A list of the view ids on which the drawer will appear when the view is swiped. If omitted, the swipe gesture will work on all views.
 /// &#10;The option has effect only if swipeToOpen is set to true.
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The text to display in the Navbar title (if present).
         /// &#10;
-        /// &#10;views — Array 
+        /// &#10;views — Array
         /// &#10;A list of the view ids on which the drawer will appear. If omitted, the drawer will work on any view in the application.
         /// &#10;
         /// </summary>
@@ -2545,7 +2427,6 @@ var original = kendo.mobile.ui.Layout;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -2565,19 +2446,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileLayout = function() {
     this.data("kendoMobileLayout", new kendo.mobile.ui.Layout());
@@ -2603,7 +2480,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;id — String (default: null)
         /// &#10;The id of the layout. Required
         /// &#10;
-        /// &#10;platform — String 
+        /// &#10;platform — String
         /// &#10;The specific platform this layout targets. By default, layouts are displayed
 /// &#10;on all platforms.
         /// &#10;
@@ -2719,19 +2596,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileListView = function() {
     this.data("kendoMobileListView", new kendo.mobile.ui.ListView());
@@ -2760,7 +2633,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;autoBind — Boolean (default: true)
         /// &#10;Indicates whether the listview will call read on the DataSource initially. If set to false, the listview will be bound after the DataSource instance fetch method is called.
         /// &#10;
-        /// &#10;dataSource — kendo.data.DataSource|Object 
+        /// &#10;dataSource — kendo.data.DataSource|Object
         /// &#10;Instance of DataSource or the data that the mobile ListView will be bound to.
         /// &#10;
         /// &#10;endlessScroll — Boolean (default: false)
@@ -2782,7 +2655,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;pullToRefresh — Boolean (default: false)
         /// &#10;If set to true, the listview will reload its data when the user pulls the view over the top limit.
         /// &#10;
-        /// &#10;pullParameters — Function 
+        /// &#10;pullParameters — Function
         /// &#10;A callback function used when the 'pullToRefresh' option is enabled. The result of the function will be send as additional parameters to the DataSource's next method.Notice: When the listview is in a virtual mode, the pull to refresh action removes the previously loaded items in the listview (instead of appending new records at the top).
 /// &#10;Previously loaded pages in the DataSource are also discarded.
         /// &#10;
@@ -2798,7 +2671,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;filterable — Boolean (default: false)
         /// &#10;Indicates whether the filter input must be visible or not.
         /// &#10;
-        /// &#10;filterable — Object 
+        /// &#10;filterable — Object
         /// &#10;Indicates whether the filter input must be visible or not.
         /// &#10;
         /// </summary>
@@ -2856,19 +2729,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileLoader = function() {
     this.data("kendoMobileLoader", new kendo.mobile.ui.Loader());
@@ -2954,19 +2823,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileModalView = function() {
     this.data("kendoMobileModalView", new kendo.mobile.ui.ModalView());
@@ -2989,13 +2854,13 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.ModalView widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;height — Number 
+        /// &#10;height — Number
         /// &#10;The height of the ModalView container in pixels. If not set, the element style is used.
         /// &#10;
         /// &#10;modal — Boolean (default: true)
         /// &#10;When set to false, the ModalView will close when the user taps outside of its element.
         /// &#10;
-        /// &#10;width — Number 
+        /// &#10;width — Number
         /// &#10;The width of the ModalView container in pixels. If not set, the element style is used.
         /// &#10;
         /// </summary>
@@ -3054,19 +2919,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileNavBar = function() {
     this.data("kendoMobileNavBar", new kendo.mobile.ui.NavBar());
@@ -3145,7 +3006,7 @@ intellisense.annotate(instance, {
     Example: function() {
         /// <signature>
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// </signature>
     },
@@ -3184,19 +3045,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobilePane = function() {
     this.data("kendoMobilePane", new kendo.mobile.ui.Pane());
@@ -3222,19 +3079,19 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;collapsible — Boolean (default: false)
         /// &#10;Applicable when the pane is inside a SplitView. If set to true, the pane will be hidden when the device is in portrait position. The expandPanes SplitView method displays the hidden panes.The id of the initial mobile View to display.
         /// &#10;
-        /// &#10;initial — String 
+        /// &#10;initial — String
         /// &#10;The id of the initial mobile View to display.
         /// &#10;
-        /// &#10;layout — String 
+        /// &#10;layout — String
         /// &#10;The id of the default Pane Layout.
         /// &#10;
         /// &#10;loading — String (default: "Loading...")
         /// &#10;The text displayed in the loading popup. Setting this value to false will disable the loading popup.
         /// &#10;
-        /// &#10;portraitWidth — Number 
+        /// &#10;portraitWidth — Number
         /// &#10;Sets the pane width in pixels when the device is in portrait position.
         /// &#10;
-        /// &#10;transition — String 
+        /// &#10;transition — String
         /// &#10;The default View transition.
         /// &#10;
         /// </summary>
@@ -3300,19 +3157,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobilePopOver = function() {
     this.data("kendoMobilePopOver", new kendo.mobile.ui.PopOver());
@@ -3335,10 +3188,10 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.mobile.ui.PopOver widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;pane — Object 
+        /// &#10;pane — Object
         /// &#10;The pane configuration options.
         /// &#10;
-        /// &#10;popup — Object 
+        /// &#10;popup — Object
         /// &#10;The popup configuration options.
         /// &#10;
         /// </summary>
@@ -3444,19 +3297,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileScrollView = function() {
     this.data("kendoMobileScrollView", new kendo.mobile.ui.ScrollView());
@@ -3488,7 +3337,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;contentHeight — Number|String (default: "auto")
         /// &#10;The height of the ScrollView content. Supports 100% if the ScrollView is embedded in a stretched view and the ScrollView element is an immediate child of the view element.
         /// &#10;
-        /// &#10;dataSource — kendo.data.DataSource|Object 
+        /// &#10;dataSource — kendo.data.DataSource|Object
         /// &#10;Instance of DataSource that the mobile ScrollView will be bound to. If DataSource is set, the widget will operate in data bound mode.
         /// &#10;
         /// &#10;duration — Number (default: 400)
@@ -3638,19 +3487,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileScroller = function() {
     this.data("kendoMobileScroller", new kendo.mobile.ui.Scroller());
@@ -3768,19 +3613,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileSplitView = function() {
     this.data("kendoMobileSplitView", new kendo.mobile.ui.SplitView());
@@ -3885,19 +3726,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileSwitch = function() {
     this.data("kendoMobileSwitch", new kendo.mobile.ui.Switch());
@@ -4021,19 +3858,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileTabStrip = function() {
     this.data("kendoMobileTabStrip", new kendo.mobile.ui.TabStrip());
@@ -4122,19 +3955,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileView = function() {
     this.data("kendoMobileView", new kendo.mobile.ui.View());
@@ -4170,7 +3999,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;If set to true, the view will stretch its child contents to occupy the entire view, while disabling kinetic scrolling.
 /// &#10;Useful if the view contains an image or a map.
         /// &#10;
-        /// &#10;title — String 
+        /// &#10;title — String
         /// &#10;The text to display in the NavBar title (if present) and the browser title.
         /// &#10;
         /// &#10;useNativeScrolling — Boolean (default: false)
@@ -4228,19 +4057,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoMobileWidget = function() {
     this.data("kendoMobileWidget", new kendo.mobile.ui.Widget());
@@ -4311,19 +4136,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDraggable = function() {
     this.data("kendoDraggable", new kendo.ui.Draggable());
@@ -4349,7 +4170,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;axis — String (default: null)
         /// &#10;Constrains the hint movement to either the horizontal (x) or vertical (y) axis. Can be set to either "x" or "y".
         /// &#10;
-        /// &#10;container — jQuery 
+        /// &#10;container — jQuery
         /// &#10;If set, the hint movement is constrained to the container boundaries.
         /// &#10;
         /// &#10;cursorOffset — Object (default: null)
@@ -4362,7 +4183,7 @@ intellisense.annotate(jQuery.fn, {
         /// &#10;group — String (default: "default")
         /// &#10;Used to group sets of draggable and drop targets. A draggable with the same group value as a drop target will be accepted by the drop target.
         /// &#10;
-        /// &#10;hint — Function|jQuery 
+        /// &#10;hint — Function|jQuery
         /// &#10;Provides a way for customization of the drag indicator. If a function is supplied, it receives one argument - the draggable element's jQuery object.
         /// &#10;
         /// &#10;holdToDrag — Boolean (default: false)
@@ -4416,19 +4237,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTarget = function() {
     this.data("kendoDropTarget", new kendo.ui.DropTarget());
@@ -4475,7 +4292,6 @@ var original = kendo.ui.DropTargetArea;
 var wrapper = function() {
 var instance = new original();
 intellisense.annotate(instance, {
-
     bind: function(event, callback) {
         /// <signature>
         /// <summary>
@@ -4495,19 +4311,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoDropTargetArea = function() {
     this.data("kendoDropTargetArea", new kendo.ui.DropTargetArea());
@@ -4591,19 +4403,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoTouch = function() {
     this.data("kendoTouch", new kendo.ui.Touch());
@@ -4626,7 +4434,7 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Touch widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;filter — String 
+        /// &#10;filter — String
         /// &#10;jQuery selector that specifies child elements that are touchable if a widget is attached to a container.
         /// &#10;
         /// &#10;surface — jQuery (default: null)
@@ -4727,19 +4535,15 @@ intellisense.annotate(instance, {
         /// <param name="callback" type="Function">The callback to be removed.</param>
         /// </signature>
     }
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoValidator = function() {
     this.data("kendoValidator", new kendo.ui.Validator());
@@ -4762,17 +4566,17 @@ intellisense.annotate(jQuery.fn, {
         /// Instantiates a kendo.ui.Validator widget based the DOM elements that match the selector.
         /// &#10;Accepts an object with the following configuration options:
         /// &#10;
-        /// &#10;errorTemplate — String 
+        /// &#10;errorTemplate — String
         /// &#10;The template which renders the validation message.
         /// &#10;
-        /// &#10;messages — Object 
+        /// &#10;messages — Object
         /// &#10;Set of messages (either strings or functions) which will be shown when given validation rule fails.
 /// &#10;By setting already existing key the appropriate built-in message will be overridden.
         /// &#10;
-        /// &#10;rules — Object 
+        /// &#10;rules — Object
         /// &#10;Set of custom validation rules. Those rules will extend the built-in ones.
         /// &#10;
-        /// &#10;validateOnBlur — Boolean 
+        /// &#10;validateOnBlur — Boolean
         /// &#10;Determines if validation will be triggered when element loses focus. Default value is true.
         /// &#10;
         /// </summary>
@@ -4842,21 +4646,15 @@ intellisense.annotate(instance, {
         /// </summary>
         /// </signature>
     }
-
-
-
 });
 
 return instance;
-
 };
 
 intellisense.redirectDefinition(wrapper, original);
 
 return wrapper;
-
 })();
-
 
 jQuery.fn.kendoWidget = function() {
     this.data("kendoWidget", new kendo.ui.Widget());

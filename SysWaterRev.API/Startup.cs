@@ -3,7 +3,8 @@ using Microsoft.Owin.Cors;
 using Owin;
 using SysWaterRev.API;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup(typeof (Startup))]
+
 namespace SysWaterRev.API
 {
     public partial class Startup

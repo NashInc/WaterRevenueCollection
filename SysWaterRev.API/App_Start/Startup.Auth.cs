@@ -28,7 +28,6 @@ namespace SysWaterRev.API
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalBearer);
-            app.UseCors(CorsOptions.AllowAll);
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions());
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions());
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());

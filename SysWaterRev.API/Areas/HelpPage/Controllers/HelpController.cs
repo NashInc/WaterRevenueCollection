@@ -7,7 +7,7 @@ using SysWaterRev.API.Areas.HelpPage.Models;
 namespace SysWaterRev.API.Areas.HelpPage.Controllers
 {
     /// <summary>
-    /// The controller that will handle requests for the help page.
+    ///     The controller that will handle requests for the help page.
     /// </summary>
     public class HelpController : Controller
     {

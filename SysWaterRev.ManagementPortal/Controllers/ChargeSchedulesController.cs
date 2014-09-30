@@ -28,14 +28,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var chargesSchedulesViewModel =
+            List<ChargeScheduleViewModel> chargesSchedulesViewModel =
                 Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(await db.ChargeSchedules.ToListAsync());
             return View(chargesSchedulesViewModel);
         }
 
         public async Task<ActionResult> ReadChargeSchedules()
         {
-            var chargeSchedule =
+            List<ChargeScheduleViewModel> chargeSchedule =
                 Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(await db.ChargeSchedules.ToListAsync());
             return Json(chargeSchedule, JsonRequestBehavior.AllowGet);
         }
@@ -44,7 +44,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ActivateChargeSchedule(Guid? ChargeScheduleId)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 chargeSchedule.IsActive = true;
@@ -54,27 +54,29 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 db.Entry(chargeSchedule).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 //  TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
-                return RedirectToAction("Details", "ChargeSchedules", new { id = ChargeScheduleId });
+                return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
             }
-            return RedirectToAction("Details", "ChargeSchedules", new { id = ChargeScheduleId });
+            return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
         }
 
         [HttpPost]
         public JsonResult GetChargesForSchedule([DataSourceRequest] DataSourceRequest request, Guid? ChargeScheduleId)
         {
-            var chargesViewModel = db.Charges.Include(x => x.ChargeSchedule).Where(x => x.ChargeScheduleId == ChargeScheduleId).Select(x => new ChargeViewModel
-            {
-                CreatedBy = x.CreatedBy,
-                UnitPrice = x.UnitPrice.ToString(),
-                StartRange = x.StartRange,
-                EndRange = x.EndRange,
-                DateCreated = x.DateCreated,
-                ChargeScheduleId = x.ChargeScheduleId,
-                ChargeId = x.ChargeId,
-                LastEditDate = x.LastEditDate,
-                LastEditedBy = x.LastEditedBy,
-                ChargeScheduleName = x.ChargeSchedule.ChargeScheduleName
-            }).ToDataSourceResult(request);
+            DataSourceResult chargesViewModel = db.Charges.Include(x => x.ChargeSchedule)
+                .Where(x => x.ChargeScheduleId == ChargeScheduleId)
+                .Select(x => new ChargeViewModel
+                {
+                    CreatedBy = x.CreatedBy,
+                    UnitPrice = x.UnitPrice.ToString(),
+                    StartRange = x.StartRange,
+                    EndRange = x.EndRange,
+                    DateCreated = x.DateCreated,
+                    ChargeScheduleId = x.ChargeScheduleId,
+                    ChargeId = x.ChargeId,
+                    LastEditDate = x.LastEditDate,
+                    LastEditedBy = x.LastEditedBy,
+                    ChargeScheduleName = x.ChargeSchedule.ChargeScheduleName
+                }).ToDataSourceResult(request);
             return Json(chargesViewModel, "application/json");
         }
 
@@ -86,8 +88,8 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
-            var chargeScheduleViewModel =
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            ChargeScheduleViewModel chargeScheduleViewModel =
                 Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             if (chargeScheduleViewModel == null)
             {
@@ -117,7 +119,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             try
             {
                 chargeScheduleModel.ChargeScheduleId = IdentityGenerator.NewSequentialGuid();
-                var chargeSchedule = Map<ChargeScheduleViewModel, ChargeSchedule>(chargeScheduleModel);
+                ChargeSchedule chargeSchedule = Map<ChargeScheduleViewModel, ChargeSchedule>(chargeScheduleModel);
                 db.ChargeSchedules.Add(chargeSchedule);
                 await db.SaveChangesAsync();
                 TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
@@ -138,12 +140,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
             if (chargeSchedule == null)
             {
                 return HttpNotFound();
             }
-            var chargeScheduleViewModel =
+            ChargeScheduleViewModel chargeScheduleViewModel =
                 Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             return View(chargeScheduleViewModel);
         }
@@ -157,7 +159,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             [Bind(Include = "ChargeScheduleId,ChargeScheduleName,Description,EffectiveDate")] ChargeScheduleViewModel
                 chargeSchedule)
         {
-            var dbChargeSchedule = await db.ChargeSchedules.FindAsync(chargeSchedule.ChargeScheduleId);
+            ChargeSchedule dbChargeSchedule = await db.ChargeSchedules.FindAsync(chargeSchedule.ChargeScheduleId);
             if (dbChargeSchedule != null)
             {
                 dbChargeSchedule.ChargeScheduleName = chargeSchedule.ChargeScheduleName;
@@ -190,14 +192,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
 
             if (chargeSchedule == null)
             {
                 return HttpNotFound();
             }
-            var chargeScheduleViewModel =
-               Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
+            ChargeScheduleViewModel chargeScheduleViewModel =
+                Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             return View(chargeScheduleViewModel);
         }
 
@@ -206,10 +208,19 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
             db.ChargeSchedules.Remove(chargeSchedule);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         #region ChargeActions
@@ -217,7 +228,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> AddChargesToSchedule(Guid? ChargeScheduleId)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 ViewBag.ChargeScheduleId = chargeSchedule.ChargeScheduleId;
@@ -232,7 +243,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> AddChargesToSchedule(
             [Bind(Include = "StartRange,EndRange,ChargeScheduleId,UnitPrice")] ChargeViewModel chargeVm)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(chargeVm.ChargeScheduleId);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(chargeVm.ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 try
@@ -249,7 +260,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     };
                     db.Charges.Add(charge);
                     await db.SaveChangesAsync();
-                    return RedirectToAction("AddChargesToSchedule", "ChargeSchedules", new { charge.ChargeScheduleId });
+                    return RedirectToAction("AddChargesToSchedule", "ChargeSchedules", new {charge.ChargeScheduleId});
                 }
                 catch (Exception ex)
                 {
@@ -264,11 +275,11 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<JsonResult> ChargeStartRangeValidation(string StartRange, Guid? ChargeScheduleId)
         {
             int startRange;
-            var startResult = int.TryParse(StartRange, out startRange);
+            bool startResult = int.TryParse(StartRange, out startRange);
             if (startResult && (ChargeScheduleId != null))
             {
-                var previousCharge =
-                   await db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
+                Charge previousCharge =
+                    await db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                         .OrderByDescending(x => x.DateCreated)
                         .FirstOrDefaultAsync();
                 if (previousCharge != null)
@@ -277,29 +288,30 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     {
                         return Json(true, "application/json");
                     }
-                    var errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
+                    string errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
                         startRange, previousCharge.EndRange);
                     return Json(errorMessage, "application/json");
                 }
                 return Json(true, "application/json");
             }
-            var dataErrorMessage = string.Format("Please Select a Schedule and Enter a Start Range");
+            string dataErrorMessage = string.Format("Please Select a Schedule and Enter a Start Range");
             return Json(dataErrorMessage, "application/json");
         }
 
         [HttpPost]
-        public async Task<JsonResult> ChargeEndRangeValidation(string EndRange, string StartRange, Guid? ChargeScheduleId)
+        public async Task<JsonResult> ChargeEndRangeValidation(string EndRange, string StartRange,
+            Guid? ChargeScheduleId)
         {
             int startRange;
             int endRange;
-            var startResult = int.TryParse(StartRange, out startRange);
-            var endResult = int.TryParse(EndRange, out endRange);
+            bool startResult = int.TryParse(StartRange, out startRange);
+            bool endResult = int.TryParse(EndRange, out endRange);
 
             if (startResult && endResult && (ChargeScheduleId != null))
             {
                 if (endRange > startRange)
                 {
-                    var previousCharge =
+                    Charge previousCharge =
                         await
                             db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                                 .OrderByDescending(x => x.DateCreated)
@@ -310,16 +322,17 @@ namespace SysWaterRev.ManagementPortal.Controllers
                         {
                             return Json(true, "application/json");
                         }
-                        var errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
+                        string errorMessage = string.Format(
+                            "Start Range {0} is less than previous charge End Range {1}",
                             startRange, previousCharge.EndRange);
                         return Json(errorMessage, "application/json");
                     }
                     return Json(true, "application/json");
                 }
-                var rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+                string rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
                 return Json(rangeError, "application/json");
             }
-            var errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+            string errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
             return Json(errorValues, "application/json");
         }
 
@@ -330,15 +343,15 @@ namespace SysWaterRev.ManagementPortal.Controllers
             int startRange;
             int endRange;
             decimal unitPrice;
-            var startResult = int.TryParse(StartRange, out startRange);
-            var endResult = int.TryParse(EndRange, out endRange);
-            var unitPriceResult = decimal.TryParse(UnitPrice, out unitPrice);
+            bool startResult = int.TryParse(StartRange, out startRange);
+            bool endResult = int.TryParse(EndRange, out endRange);
+            bool unitPriceResult = decimal.TryParse(UnitPrice, out unitPrice);
 
             if (startResult && endResult && unitPriceResult && (ChargeScheduleId != null))
             {
                 if (endRange > startRange)
                 {
-                    var previousCharge =
+                    Charge previousCharge =
                         await
                             db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                                 .OrderByDescending(x => x.DateCreated)
@@ -351,28 +364,29 @@ namespace SysWaterRev.ManagementPortal.Controllers
                             {
                                 return Json(true, "application/json");
                             }
-                            var unitPriceErrorMessage =
+                            string unitPriceErrorMessage =
                                 string.Format("Unit Price {0} is not larger than Previous Previous Unit Price {1}",
                                     unitPrice, previousCharge.UnitPrice);
                             return Json(unitPriceErrorMessage, "application/json");
                         }
-                        var errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
+                        string errorMessage = string.Format(
+                            "Start Range {0} is less than previous charge End Range {1}",
                             startRange, previousCharge.EndRange);
                         return Json(errorMessage, "application/json");
                     }
                     return Json(true, "application/json");
                 }
-                var rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+                string rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
                 return Json(rangeError, "application/json");
             }
-            var errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+            string errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
             return Json(errorValues, "application/json");
         }
 
         [HttpPost]
         public async Task<JsonResult> ChargeScheduleValidation(Guid? ChargeScheduleId)
         {
-            var previousCharge =
+            Charge previousCharge =
                 await
                     db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                         .OrderByDescending(x => x.DateCreated)
@@ -385,14 +399,5 @@ namespace SysWaterRev.ManagementPortal.Controllers
         }
 
         #endregion ChargeActions
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

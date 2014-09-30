@@ -37,7 +37,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var charge = await db.Charges.FindAsync(id);            
+            var charge = await db.Charges.FindAsync(id);
             if (charge == null)
             {
                 return HttpNotFound();

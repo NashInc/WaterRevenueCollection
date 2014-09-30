@@ -19,7 +19,6 @@
         factory(jQuery);
     }
 }(function ($) {
-
     /**
      * Kontrol library
      */
@@ -142,7 +141,6 @@
 
             // routing value
             if (this.$.is('fieldset')) {
-
                 // fieldset = array of integer
                 this.v = {};
                 this.i = this.$.find('input');
@@ -162,7 +160,6 @@
                 });
                 this.$.find('legend').remove();
             } else {
-
                 // input = integer
                 this.i = this.$;
                 this.v = this.o.parse(this.$.val());
@@ -173,7 +170,6 @@
                         s.val(s._validate(s.o.parse(s.$.val())));
                     }
                 );
-
             }
 
             !this.o.displayInput && this.$.hide();
@@ -297,7 +293,6 @@
         }
 
         this._draw = function () {
-
             // canvas pre-rendering
             var d = true;
 
@@ -430,7 +425,6 @@
         };
 
         this._configure = function () {
-
             // Hooks
             if (this.o.draw) this.dH = this.o.draw;
             if (this.o.change) this.cH = this.o.change;
@@ -486,7 +480,6 @@
         };
     };
 
-
     /**
      * k.Dial
      */
@@ -512,7 +505,6 @@
 
         this.val = function (v, triggerRelease) {
             if (null != v) {
-
                 // reverse format
                 v = this.o.parse(v);
 
@@ -543,7 +535,6 @@
             }
 
             if (this.angleArc != this.PI2 && (a < 0) && (a > -0.5)) {
-
                 // if isset angleArc option, set to min if .5 under min
                 a = 0;
             } else if (a < 0) {
@@ -558,7 +549,6 @@
         };
 
         this.listen = function () {
-
             // bind MouseWheel
             var s = this, mwTimerStop,
                 mwTimerRelease,
@@ -798,5 +788,4 @@
             }
         ).parent();
     };
-
 }));

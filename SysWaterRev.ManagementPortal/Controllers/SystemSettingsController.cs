@@ -26,8 +26,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var systemSettings = await db.SystemSettings.Include(s => s.CurrentChargeSchedule).ToListAsync();
-            var systemViewModel = Map<List<SystemSetting>, List<SystemSettingsViewModel>>(systemSettings);
+            List<SystemSetting> systemSettings =
+                await db.SystemSettings.Include(s => s.CurrentChargeSchedule).ToListAsync();
+            List<SystemSettingsViewModel> systemViewModel =
+                Map<List<SystemSetting>, List<SystemSettingsViewModel>>(systemSettings);
             return View(systemViewModel);
         }
 
@@ -38,19 +40,21 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var systemSetting = await db.SystemSettings.FindAsync(id);
+            SystemSetting systemSetting = await db.SystemSettings.FindAsync(id);
             if (systemSetting == null)
             {
                 return HttpNotFound();
             }
-            var systemSettingViewModel = Map<SystemSetting, SystemSettingsViewModel>(systemSetting);
+            SystemSettingsViewModel systemSettingViewModel = Map<SystemSetting, SystemSettingsViewModel>(systemSetting);
             return View(systemSettingViewModel);
         }
 
         public async Task<JsonResult> GetSchedules()
         {
-            var schedules = await db.ChargeSchedules.Include(x => x.Charges).Where(z => z.IsActive).ToListAsync();
-            var schedulesViewModel = Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(schedules);
+            List<ChargeSchedule> schedules =
+                await db.ChargeSchedules.Include(x => x.Charges).Where(z => z.IsActive).ToListAsync();
+            List<ChargeScheduleViewModel> schedulesViewModel =
+                Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(schedules);
             return Json(schedulesViewModel, "application/json", JsonRequestBehavior.AllowGet);
         }
 
@@ -65,9 +69,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ChargeScheduleId")] SystemSettingsViewModel systemSettingModel)
+        public async Task<ActionResult> Create(
+            [Bind(Include = "ChargeScheduleId")] SystemSettingsViewModel systemSettingModel)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(systemSettingModel.ChargeScheduleId);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(systemSettingModel.ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 try
@@ -101,12 +106,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var systemSetting = await db.SystemSettings.FindAsync(id);
+            SystemSetting systemSetting = await db.SystemSettings.FindAsync(id);
             if (systemSetting == null)
             {
                 return HttpNotFound();
             }
-            var systemSettingViewModel = Map<SystemSetting, SystemSettingsViewModel>(systemSetting);
+            SystemSettingsViewModel systemSettingViewModel = Map<SystemSetting, SystemSettingsViewModel>(systemSetting);
             return View(systemSettingViewModel);
         }
 
@@ -115,12 +120,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "SystemSettingId,ChargeScheduleId")] SystemSettingsViewModel systemSettingViewModel)
+        public async Task<ActionResult> Edit(
+            [Bind(Include = "SystemSettingId,ChargeScheduleId")] SystemSettingsViewModel systemSettingViewModel)
         {
-            var chargeSchedule = await db.ChargeSchedules.FindAsync(systemSettingViewModel.ChargeScheduleId);
+            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(systemSettingViewModel.ChargeScheduleId);
             if (chargeSchedule != null)
             {
-                var systemSetting = await db.SystemSettings.FindAsync(systemSettingViewModel.SystemSettingId);
+                SystemSetting systemSetting = await db.SystemSettings.FindAsync(systemSettingViewModel.SystemSettingId);
                 if (systemSetting != null)
                 {
                     try

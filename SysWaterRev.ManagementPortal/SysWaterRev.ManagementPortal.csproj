@@ -221,12 +221,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApplicationUserManager.cs" />
     <Compile Include="App_Start\AutoMapperProfile.cs" />
     <Compile Include="App_Start\AutoMapperWebConfiguration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Services\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -574,6 +577,7 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\syswaterev %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\syswaterev.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
