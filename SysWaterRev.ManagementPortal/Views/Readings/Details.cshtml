@@ -20,233 +20,243 @@
 <section class="content">
     <div class="row"></div>
     <div class="row">
-            <div class="col-md-6">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Reader Details</div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EmployeeFullName)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.EmployeeFullName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EmployeeNumber)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.EmployeeNumber)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">GPS Location Details</div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Latitude)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Latitude)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Longitude)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Longitude)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Accuracy)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Accuracy)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Speed)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Speed)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Altitude)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Altitude)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AltitudeAccuracy)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.AltitudeAccuracy)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Heading)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Heading)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="panel-footer"></div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Reading Details</div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReadingValue)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ReadingValue)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PreviousReadingValue)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.PreviousReadingValue)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UnitsConsumedWithNoCorrection)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.UnitsConsumedWithNoCorrection)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.IsConfirmed)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.IsConfirmed)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ConfirmedBy)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ConfirmedBy)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CorrectionValue)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CorrectionValue)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PreviousCorrectedReadingValue)
+                            </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UnitsConsumedWithCorrection)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.UnitsConsumedWithCorrection)
+                            </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.PreviousCorrectedReadingValue)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CorrectedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CorrectedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DateCreated)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DateCreated)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LastEditedBy)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LastEditedBy)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LastEditDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LastEditDate)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="panel-footer">
+                        @if (Model.PreviousReadingId != null)
+                        {
+                            <div class="alert alert-success">
+                                @Html.ActionLink("Previous Reading", "Details", "Readings", new { id = Model.PreviousReadingId }, new { @class = "btn btn-default glyphicon-backward" })
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <span>There are No Previous Readings in this Sequence</span>
+                            </div>
+                        }
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Reader Details</div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.EmployeeFullName)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.EmployeeFullName)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.EmployeeNumber)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.EmployeeNumber)
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="panel-footer"></div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">GPS Location Details</div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Latitude)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Latitude)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Longitude)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Longitude)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Accuracy)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Accuracy)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Speed)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Speed)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Altitude)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Altitude)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.AltitudeAccuracy)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.AltitudeAccuracy)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Heading)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.Heading)
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="panel-footer"></div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Reading Details</div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.ReadingValue)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.ReadingValue)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.PreviousReadingValue)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.PreviousReadingValue)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.UnitsConsumedWithNoCorrection)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.UnitsConsumedWithNoCorrection)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.IsConfirmed)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.IsConfirmed)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.ConfirmedBy)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.ConfirmedBy)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.CorrectionValue)
-                                </dt>
+                    <div class="col-md-6">
 
-                                <dd>
-                                    @Html.DisplayFor(model => model.CorrectionValue)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.PreviousCorrectedReadingValue)
-                                </dt>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.UnitsConsumedWithCorrection)
-                                </dt>
-                                <dd>
-                                    @Html.DisplayFor(model => model.UnitsConsumedWithCorrection)
-                                </dd>
-                                <dd>
-                                    @Html.DisplayFor(model => model.PreviousCorrectedReadingValue)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.CorrectedBy)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.CorrectedBy)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.DateCreated)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.DateCreated)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.CreatedBy)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.CreatedBy)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.LastEditedBy)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.LastEditedBy)
-                                </dd>
-
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.LastEditDate)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.LastEditDate)
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="panel-footer">
-                            @if (Model.PreviousReadingId != null)
+                        @if (isConfirmed == false)
+                        {
+                            using (Html.BeginForm("ConfirmReading", "Readings", FormMethod.Post))
                             {
-                                <div class="alert alert-success">
-                                    @Html.ActionLink("Previous Reading", "Details", "Readings", new { id = Model.PreviousReadingId }, new { @class = "btn btn-default glyphicon-backward" })
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="alert alert-warning">
-                                    <span>There are No Previous Readings in this Sequence</span>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-actions no-color">
+                                @Html.AntiForgeryToken();
 
-                            @if (isConfirmed == false)
-                            {
-                                using (Html.BeginForm("ConfirmReading", "Readings", FormMethod.Post))
-                                {
-                                    @Html.AntiForgeryToken();
-
-                                @Html.HiddenFor(model => model.ReadingId)
-                                <input type="submit" value="Confirm Reading" class="btn btn-default btn-success" />
-                                }
-                                @Html.ActionLink("Correct", "Correction", "Readings", new { id = Model.ReadingId }, new { @class = "btn btn-default btn-warning" })
+                            @Html.HiddenFor(model => model.ReadingId)
+                            <input type="submit" value="Confirm Reading" class="btn btn-default btn-success" />
                             }
-                            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default", @value = "Back To List" })
-                        </div>
+                            @Html.ActionLink("Correct", "Correction", "Readings", new { id = Model.ReadingId }, new { @class = "btn btn-default btn-warning" })
+                        }
+                        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-default", @value = "Back To List" })
                     </div>
                 </div>
             </div>
-            @*Check on this map. its breaks when zooming in and out. It doesnt keep the point on where it is supposed to be placed. Considering using Google Maps instead.*@
-            <div class="col-md-6">
-                <div class="row" style="padding-left: 5px">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Reading Location Map</div>
-                        <div class="panel-body">
-                            @(Html.Kendo().Map()
+        </div>
+        @*Check on this map. its breaks when zooming in and out. It doesnt keep the point on where it is supposed to be placed. Considering using Google Maps instead.*@
+        <div class="col-md-6">
+            <div class="row" style="padding-left: 5px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Reading Location Map</div>
+                    <div class="panel-body">
+                        @(Html.Kendo().Map()
                           .Name("map")
                           .Center(Model.Latitude, Model.Longitude)
                           .Zoom(14)
                           .Pannable(true)
                           .Zoomable(true)
                           .Wraparound(true)
-                          .Layers(layers => layers.Add()
-                              .Type(MapLayerType.Bing).Key("Aiqg9nb49TEfGuZRGfRs3e0fc0xAVnygvXArDkbI6bfYDXxpdKK-yzml5gFMaQyW").ImagerySet(MapLayersImagerySet.Road)
-                              .UrlTemplateId("http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
-                              .Subdomains("a", "b", "c")
-                              .Attribution("&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>"))
+                          .Layers(layers =>
+                          {
+                              //layers.Add()
+                              //    .Type(MapLayerType.Tile)
+                              //    .UrlTemplateId("http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
+                              //    .Subdomains("a", "b", "c")
+                              //    .Attribution("&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>");
+                              layers.Add()
+                                  .Type(MapLayerType.Bing)
+                                  .Key("Aiqg9nb49TEfGuZRGfRs3e0fc0xAVnygvXArDkbI6bfYDXxpdKK-yzml5gFMaQyW")
+                                  .Shape(MapMarkersShape.PinTarget)
+                                  .ImagerySet(MapLayersImagerySet.Road)
+                                  .AutoBind(true);
+                          })
                           .Markers(markers => markers.Add()
                               .Location(Model.Latitude, Model.Longitude)
-                              .Shape(MapMarkersShape.PinTarget)
-                              .Tooltip(tooltip => tooltip.Content(Model.EmployeeFullName))))
-                        </div>
-                        <div class="panel-footer"></div>
+                              .Shape(MapMarkersShape.Pin)
+                              .Tooltip(tooltip => tooltip.Content(Model.EmployeeFullName)))                            
+                        )
                     </div>
+                    <div class="panel-footer"></div>
                 </div>
             </div>
+        </div>
     </div>
 </section>

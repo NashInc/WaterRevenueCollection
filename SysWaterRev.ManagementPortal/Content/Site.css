@@ -158,7 +158,7 @@ h6,
 
 /* All images should be responsive */
 
-img { max-width: 100% !important; }
+ /*img { max-width: 100% !important; }*/ 
 
 .sort-highlight {
     background: #f4f4f4;
@@ -1795,7 +1795,7 @@ body > .header .logo .icon { margin-right: 10px; }
 .box > .overlay.dark { background: rgba(0, 0, 0, 0.5); }
 
 .box > .loading-img {
-    background: transparent url('../img/ajax-loader1.gif') 50% 50% no-repeat;
+    background: transparent url('../Content/img/ajax-loader1.gif') 50% 50% no-repeat;
     z-index: 1020;
 }
 
@@ -2367,7 +2367,7 @@ Component: timeline
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
-    background: url(../img/blur-background09.jpg) repeat center center fixed;
+    background: url(../Content/img/blur-background09.jpg) repeat center center fixed;
     background-size: cover;
 }
 
