@@ -236,18 +236,20 @@ namespace SysWaterRev.ManagementPortal.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
-
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                 var callbackurl = Url.Action("resetpassword", "account", new { userid = user.Id, code = code }, protocol: Request.Url.Scheme);
-                 await UserManager.SendEmailAsync(user.Id, "reset password", "please reset your password by clicking <a href=\"" + callbackurl + "\">here</a>");
-                 return RedirectToAction("forgotpasswordconfirmation", "account");
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackurl = Url.Action("resetpassword", "account", new {userid = user.Id, code = code},
+                    protocol: Request.Url.Scheme);
+                await
+                    UserManager.SendEmailAsync(user.Id, "reset password",
+                        "please reset your password by clicking <a href=\"" + callbackurl + "\">here</a>");
+                return RedirectToAction("forgotpasswordconfirmation", "account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -281,13 +283,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return View(model);
             }
-            ApplicationUser user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            IdentityResult result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
