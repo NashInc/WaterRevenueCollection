@@ -7,13 +7,13 @@ namespace SysWaterRev.BusinessLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class UpdatingMigrationAfterCodeReboot : IMigrationMetadata
+    public sealed partial class DatabaseReboot : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatingMigrationAfterCodeReboot));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DatabaseReboot));
         
         string IMigrationMetadata.Id
         {
-            get { return "201409260724042_UpdatingMigrationAfterCodeReboot"; }
+            get { return "201410011534327_DatabaseReboot"; }
         }
         
         string IMigrationMetadata.Source

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -97,39 +99,42 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(
-                Include =
-                    "EmployeeId,FirstName,MiddleName,Surname,PhoneNumber,EmailAddress,Identification,EmployeeNumber,EmployeeGender"
-                )] EmployeeViewModel employee, params string[] SelectedRoles)
+        public  ActionResult Create(EmployeeViewModel employee, params string[] selectedRoles)
         {
-            var appUser = new ApplicationUser
+            try
             {
-                IsActive = false,
-                UserName = employee.EmailAddress,
-                PhoneNumber = employee.PhoneNumber,
-                Email = employee.EmailAddress,
-                EmployeeDetails = new Employee
+                var appUser = new ApplicationUser
                 {
-                    CreatedBy = User.Identity.Name,
-                    EmployeeId = IdentityGenerator.NewSequentialGuid(),
-                    EmployeeNumber = IdentityGenerator.GenerateEmployeeNumber(),
-                    DateCreated = DateTime.Now,
-                    EmailAddress = employee.EmailAddress,
-                    FirstName = employee.FirstName,
-                    Identification = employee.Identification,
-                    MiddleName = employee.MiddleName,
-                    Surname = employee.Surname,
-                    EmployeeGender = employee.EmployeeGender,
-                    PhoneNumber = employee.PhoneNumber
-                }
-            };
-            IdentityResult userResult = await usermanager.CreateAsync(appUser);
-            if (!userResult.Succeeded) return View(employee);
-            IdentityResult addToRoleResult = await usermanager.AddToRolesAsync(appUser.Id, SelectedRoles);
-            if (!addToRoleResult.Succeeded) return View(employee);
-            TempData.Add("EmployeeId", appUser.EmployeeDetails.EmployeeId);
-            return RedirectToAction("Index");
+                    IsActive = true,
+                    UserName = employee.EmailAddress,
+                    PhoneNumber = employee.PhoneNumber,
+                    Email = employee.EmailAddress,
+                    EmployeeDetails = new Employee
+                    {
+                        CreatedBy = User.Identity.Name,
+                        EmployeeId = IdentityGenerator.NewSequentialGuid(),
+                        EmployeeNumber = IdentityGenerator.GenerateEmployeeNumber(),
+                        DateCreated = DateTime.Now,
+                        EmailAddress = employee.EmailAddress,
+                        FirstName = employee.FirstName,
+                        Identification = employee.Identification,
+                        MiddleName = employee.MiddleName,
+                        Surname = employee.Surname,
+                        EmployeeGender = employee.EmployeeGender,
+                        PhoneNumber = employee.PhoneNumber
+                    }
+                };
+                var userResult = UserManager.Create(appUser);
+                if (!userResult.Succeeded) return View(employee);
+                var addToRoleResult = UserManager.AddToRoles(appUser.Id, selectedRoles);
+                if (!addToRoleResult.Succeeded) return View(employee);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("*", ex);
+                return View(employee);
+            }
         }
 
         // GET: Employees/Edit/5
@@ -140,12 +145,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = await db.Employees.FindAsync(id);
-            if (employee == null)
+            var applicationUser = await db.Users.Include(x=>x.EmployeeDetails).FirstOrDefaultAsync(x => x.EmployeeDetails.EmployeeId == id);
+            if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            EmployeeViewModel employeeViewModel = Map<Employee, EmployeeViewModel>(employee);
+            var employeeViewModel = Map<Employee, EmployeeViewModel>(applicationUser.EmployeeDetails);
             return View(employeeViewModel);
         }
 
@@ -154,46 +159,35 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(
-                Include =
-                    "EmployeeId,FirstName,MiddleName,Surname,PhoneNumber,EmailAddress,Identification,EmployeeNumber,EmployeeGender"
-                )] EmployeeViewModel employee)
+        public async Task<ActionResult> Edit(EmployeeViewModel employee)
         {
-            Employee employeeModel =
+            var applicationUser =
                 await
-                    db.Employees
-                        .FirstOrDefaultAsync(z => z.EmployeeId == employee.EmployeeId);
-            if (employeeModel != null)
+                    db.Users.Include(x => x.EmployeeDetails)
+                        .FirstOrDefaultAsync(x => x.EmployeeDetails.EmployeeId == employee.EmployeeId);
+            if (applicationUser != null)
             {
-                if (employeeModel.EmployeeId == employee.EmployeeId)
-                {
-                    employeeModel.FirstName = employee.FirstName;
-                    employeeModel.MiddleName = employee.MiddleName;
-                    employeeModel.Surname = employee.Surname;
-                    employeeModel.PhoneNumber = employee.PhoneNumber;
-                    employeeModel.EmailAddress = employee.EmailAddress;
-                    employeeModel.Identification = employee.Identification;
-                    employeeModel.EmployeeGender = employee.EmployeeGender;
-                    employeeModel.EmployeeNumber = employee.EmployeeNumber;
-                    employeeModel.LastEditDate = DateTime.Now;
-                    employeeModel.LastEditedBy = User.Identity.Name;
-                    try
-                    {
-                        db.Entry(employeeModel).State = EntityState.Modified;
-                        await db.SaveChangesAsync();
-                        TempData.Add("EmployeeId", employeeModel.EmployeeId);
-                        return RedirectToAction("Index");
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("*", ex);
-                        return View(employee);
-                    }
-                }
-                return HttpNotFound();
+                //Employee Detail Edits
+                applicationUser.EmployeeDetails.FirstName = employee.FirstName;
+                applicationUser.EmployeeDetails.MiddleName = employee.MiddleName;
+                applicationUser.EmployeeDetails.Surname = employee.Surname;
+                applicationUser.EmployeeDetails.EmailAddress = employee.EmailAddress;
+                applicationUser.EmployeeDetails.EmployeeGender = employee.EmployeeGender;
+                applicationUser.EmployeeDetails.EmployeeNumber = employee.EmployeeNumber;                   
+                applicationUser.EmployeeDetails.Identification = employee.Identification;
+                //User Detail Edits
+                applicationUser.Email = employee.EmailAddress;
+                applicationUser.UserName = employee.EmailAddress;
+                applicationUser.PhoneNumber = employee.PhoneNumber;
+                //base
+                applicationUser.EmployeeDetails.LastEditDate = DateTime.Now;
+                applicationUser.EmployeeDetails.LastEditedBy = User.Identity.Name;
+                //Save the mods
+                db.Entry(applicationUser).State=EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            return HttpNotFound();
+            return HttpNotFound("Entity with the State ID Could not be found!");
         }
 
         // GET: Employees/Delete/5
@@ -204,12 +198,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == id);
+            var employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == id);
             if (employee == null)
             {
                 return HttpNotFound();
             }
-            EmployeeViewModel employeeModel = Map<Employee, EmployeeViewModel>(employee);
+            var employeeModel = Map<Employee, EmployeeViewModel>(employee);
             return View(employeeModel);
         }
 

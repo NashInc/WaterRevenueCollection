@@ -1,8 +1,9 @@
-﻿using System.Data.Entity.Migrations;
 using SysWaterRev.BusinessLayer.Models;
 
 namespace SysWaterRev.BusinessLayer.Migrations
 {
+    using System.Data.Entity.Migrations;
+
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()

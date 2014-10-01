@@ -1,8 +1,9 @@
 namespace SysWaterRev.BusinessLayer.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
-
-    public partial class UpdatingMigrationAfterCodeReboot : DbMigration
+    
+    public partial class DatabaseReboot : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +25,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => t.ChargeId)
                 .ForeignKey("dbo.ChargeSchedules", t => t.ChargeScheduleId, cascadeDelete: true)
                 .Index(t => t.ChargeScheduleId);
-
+            
             CreateTable(
                 "dbo.ChargeSchedules",
                 c => new
@@ -43,7 +44,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.ChargeScheduleId);
-
+            
             CreateTable(
                 "dbo.Customers",
                 c => new
@@ -64,7 +65,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.CustomerId);
-
+            
             CreateTable(
                 "dbo.Meters",
                 c => new
@@ -82,7 +83,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => t.MeterId)
                 .ForeignKey("dbo.Customers", t => t.CustomerId)
                 .Index(t => t.CustomerId);
-
+            
             CreateTable(
                 "dbo.Readings",
                 c => new
@@ -117,7 +118,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .Index(t => t.EmployeeId)
                 .Index(t => t.MeterId)
                 .Index(t => t.PreviousReading_ReadingId);
-
+            
             CreateTable(
                 "dbo.Employees",
                 c => new
@@ -138,7 +139,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.EmployeeId);
-
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -150,7 +151,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-
+            
             CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
@@ -163,7 +164,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-
+            
             CreateTable(
                 "dbo.SystemSettings",
                 c => new
@@ -180,7 +181,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => t.SystemSettingId)
                 .ForeignKey("dbo.ChargeSchedules", t => t.ChargeScheduleId, cascadeDelete: true)
                 .Index(t => t.ChargeScheduleId);
-
+            
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -207,7 +208,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
                 .Index(t => t.CustomerDetails_CustomerId)
                 .Index(t => t.EmployeeDetails_EmployeeId);
-
+            
             CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
@@ -220,7 +221,7 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-
+            
             CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
@@ -232,8 +233,9 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");

@@ -27,11 +27,6 @@ namespace SysWaterRev.ManagementPortal.Framework
                 roleMgr);
 
             return new DisposableIdentityManagerService(svc, db);
-
-            //var db = new CustomDbContext("CustomAspId");
-            //var store = new CustomUserStore(db);
-            //var mgr = new CustomUserManager(store);
-            //return new Thinktecture.IdentityManager.AspNetIdentity.UserManager<CustomUser, int, CustomUserLogin, CustomUserRole, CustomUserClaim>(mgr, db);
         }
     }
 }

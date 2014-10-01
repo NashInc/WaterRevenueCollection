@@ -89,9 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\IdentityGenerator.cs" />
-    <Compile Include="Migrations\201409260724042_UpdatingMigrationAfterCodeReboot.cs" />
-    <Compile Include="Migrations\201409260724042_UpdatingMigrationAfterCodeReboot.Designer.cs">
-      <DependentUpon>201409260724042_UpdatingMigrationAfterCodeReboot.cs</DependentUpon>
+    <Compile Include="Migrations\201410011534327_DatabaseReboot.cs" />
+    <Compile Include="Migrations\201410011534327_DatabaseReboot.Designer.cs">
+      <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
@@ -129,8 +129,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409260724042_UpdatingMigrationAfterCodeReboot.resx">
-      <DependentUpon>201409260724042_UpdatingMigrationAfterCodeReboot.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410011534327_DatabaseReboot.resx">
+      <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

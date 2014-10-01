@@ -1,15 +1,14 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using SysWaterRev.BusinessLayer.Migrations;
 
 namespace SysWaterRev.BusinessLayer.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        static ApplicationDbContext()
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
-        }
+        //static ApplicationDbContext()
+        //{
+        //    Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+        //}
 
         public ApplicationDbContext()
             : base("Name=DefaultConnection", false)

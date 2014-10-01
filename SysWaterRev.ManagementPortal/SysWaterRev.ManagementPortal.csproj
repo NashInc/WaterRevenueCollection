@@ -577,7 +577,6 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\syswaterev %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\syswaterev.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

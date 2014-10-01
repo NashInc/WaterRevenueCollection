@@ -1,9 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using SysWaterRev.BusinessLayer.Models;
 
 namespace SysWaterRev.BusinessLayer.ViewModels
 {
+    [Bind(Include = "EmployeeId,FirstName,MiddleName,Surname,PhoneNumber,EmailAddress,Identification,EmployeeNumber,EmployeeGender")]
     public class EmployeeViewModel : BaseViewModel
     {
         [Key]
