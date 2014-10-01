@@ -10,7 +10,6 @@ namespace SysWaterRev.ManagementPortal.Services
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
             var emailMessage = new MailMessage(Settings.Default.EmailAccount, message.Destination, message.Subject,
                 message.Body);
             var smtpClient = new SmtpClient();

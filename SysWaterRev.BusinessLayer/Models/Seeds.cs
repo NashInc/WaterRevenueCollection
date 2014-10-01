@@ -51,7 +51,7 @@ namespace SysWaterRev.BusinessLayer.Models
                     {
                         CreatedBy = "Auto",
                         DateCreated = DateTime.Now,
-                        EmailAddress = "mbuthiagrg@gmail.com",
+                        EmailAddress = name,
                         EmployeeGender = Gender.Male,
                         EmployeeNumber = "ADMIN123",
                         FirstName = "George",
