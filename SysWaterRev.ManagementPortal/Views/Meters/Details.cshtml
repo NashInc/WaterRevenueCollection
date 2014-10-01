@@ -2,65 +2,80 @@
 @{
     ViewBag.Title = "Meter Details";
 }
-<h2>Meter Details</h2>
-<div>
-    <h4>Meter</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MeterSerialNumber)
-        </dt>
+@section ContentHeader{
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Meters
+            <small>Details</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-group"></i>Meters</a></li>
+            <li class="active">Meter Details</li>
+        </ol>
+    </section>
+}
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MeterSerialNumber)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MeterSerialNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.MeterSerialNumber)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MeterNumber)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MeterNumber)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MeterNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.MeterNumber)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.DateCreated)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastEditedBy)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastEditedBy)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastEditedBy)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LastEditedBy)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastEditDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastEditDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastEditDate)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new {id = Model.MeterId}, htmlAttributes:new {@class="btn btn-default"})
-    @Html.ActionLink("Back to List", "Index",new {}, htmlAttributes: new { @class = "btn btn-default" })
-</p>
-@(Html.Kendo().Grid<ReadingViewModel>()
+                <dd>
+                    @Html.DisplayFor(model => model.LastEditDate)
+                </dd>
+            </dl>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MeterId }, htmlAttributes: new { @class = "btn btn-default" })
+                @Html.ActionLink("Back to List", "Index", new { }, htmlAttributes: new { @class = "btn btn-default" })
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @(Html.Kendo().Grid<ReadingViewModel>()
       .Name("readings")
       .Columns(columns =>
       {
@@ -80,11 +95,17 @@
       .Filterable()
       .DataSource(dataSource => dataSource
           .Ajax()
-                      .Read(x => x.Action("GetReadingsForMeter", "Meters", new { meterId=Model.MeterId }))
-                      .Model(x=>x.Id(z=>z.MeterId))
-                      .Sort(z=>z.Add(t=>t.DateCreated))
+                      .Read(x => x.Action("GetReadingsForMeter", "Meters", new { meterId = Model.MeterId }))
+                      .Model(x => x.Id(z => z.MeterId))
+                      .Sort(z => z.Add(t => t.DateCreated))
           )
-      )
+            )
+        </div>
+    </div>
+</section>
+
+
+
 <script type="text/javascript">
     function showReadingDetails(e) {
         e.preventDefault();

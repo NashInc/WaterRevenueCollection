@@ -3,57 +3,75 @@
 @{
     ViewBag.Title = "Create Meter";
 }
-
-<h2>Create Meter</h2>
-
-@using (Html.BeginForm())
+@section ContentHeader
 {
-    @Html.AntiForgeryToken()
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Meters
+            <small>Create</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-th-large"></i>Meters</a></li>
+            <li class="active">Create</li>
+        </ol>
+    </section>
+}
+<section class="content">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Meter</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustomerId, "Owner Customer", new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @(Html.Kendo().DropDownList()
+            <div class="form-horizontal">
+                <h4>Meter</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerId, "Owner Customer", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @(Html.Kendo().DropDownList()
                       .Name("CustomerId")
-                      .HtmlAttributes(new {style = "width:300px"})
+                      .HtmlAttributes(new { style = "width:300px" })
                       .OptionLabel("Select Customer...")
               .DataTextField("FullNameAndNumber")
                       .DataValueField("CustomerId")
                       .DataSource(source => source.Read(read => read.Action("GetCascadeCustomers", "Customers")))
-                      )
-                @Html.ValidationMessageFor(model => model.CustomerId, "", new {@class = "text-danger"})
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.MeterSerialNumber, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MeterSerialNumber, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.MeterSerialNumber, "", new {@class = "text-danger"})
-            </div>
-        </div>
+                        )
+                        @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MeterSerialNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MeterSerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MeterSerialNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MeterNumber, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MeterNumber, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.MeterNumber, "", new {@class = "text-danger"})
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MeterNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MeterNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MeterNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default btn-success" />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default btn-success" />
-            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index", new { }, htmlAttributes: new { @class = "btn btn-default glyphicon-backward" })
         </div>
     </div>
-}
+</section>
 
-<div>
-    @Html.ActionLink("Back to List", "Index",new {}, htmlAttributes:new {@class="btn btn-default glyphicon-backward"})
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
