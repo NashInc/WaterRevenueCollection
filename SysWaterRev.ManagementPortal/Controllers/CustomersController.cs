@@ -180,7 +180,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             if (createResult.Succeeded)
             {
                 IdentityResult addToRoleResult =
-                    await UserManager.AddToRoleAsync(appUser.Id, SimpleRevCollectionRoles.Customers);
+                    await UserManager.AddToRoleAsync(appUser.Id, SysWaterRevRoles.Customers);
                 if (addToRoleResult.Succeeded)
                 {
                     TempData.Add("CustomerId", appUser.CustomerDetails.CustomerId);

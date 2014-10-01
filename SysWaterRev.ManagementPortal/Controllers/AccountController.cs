@@ -95,14 +95,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 ApplicationUser details = await UserManager.FindAsync(model.Email, model.Password);
                 //var role = (await UserManager.IsInRole(details.Id));
-                if (details != null && UserManager.IsInRole(details.Id, SimpleRevCollectionRoles.Employees))
+                if (details != null && UserManager.IsInRole(details.Id, SysWaterRevRoles.Employees))
                 {
                     loginResult.IsLoggedIn = true;
                     loginResult.ErrorMessage = string.Empty;
                     loginResult.FirstName = details.EmployeeDetails.FirstName;
                     loginResult.Surname = details.EmployeeDetails.Surname;
                     loginResult.MiddleName = details.EmployeeDetails.MiddleName;
-                    loginResult.Role = SimpleRevCollectionRoles.Employees;
+                    loginResult.Role = SysWaterRevRoles.Employees;
                     loginResult.Gender = details.CustomerDetails.UserGender.ToString();
                     loginResult.UserName = details.UserName;
                     loginResult.EmployeeNumber = details.EmployeeDetails.EmployeeNumber;

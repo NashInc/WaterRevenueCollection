@@ -96,7 +96,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationDbContextInitializer.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -109,7 +108,7 @@
     <Compile Include="Models\Meter.cs" />
     <Compile Include="Models\Reading.cs" />
     <Compile Include="Models\Seeds.cs" />
-    <Compile Include="Models\SimpleRevCollectionRoles.cs" />
+    <Compile Include="Models\SysWaterRevRoles.cs" />
     <Compile Include="Models\SystemSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ApplicationUserCustomerViewModel.cs" />

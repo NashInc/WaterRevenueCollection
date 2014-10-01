@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -13,8 +12,8 @@ namespace SysWaterRev.BusinessLayer.Models
         {
             var manager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(databaseContext));
             foreach (
-                string role in
-                    from role in SimpleRevCollectionRoles.AllRoles
+                var role in
+                    from role in SysWaterRevRoles.AllRoles
                     let result = manager.RoleExists(role)
                     where !result
                     select role)
@@ -33,13 +32,13 @@ namespace SysWaterRev.BusinessLayer.Models
             const string name = "admin@example.com";
             const string password = "Admin@123456";
             //Create Role Admin if it does not exist
-            IdentityRole role = roleManager.FindByName(SimpleRevCollectionRoles.Administrators);
+            var role = roleManager.FindByName(SysWaterRevRoles.Administrators);
             if (role == null)
             {
-                role = new ApplicationRole(SimpleRevCollectionRoles.Administrators);
-                IdentityResult roleresult = roleManager.Create(role);
+                role = new ApplicationRole(SysWaterRevRoles.Administrators);
+                var roleresult = roleManager.Create(role);
             }
-            ApplicationUser user = userManager.FindByName(name);
+            var user = userManager.FindByName(name);
             if (user == null)
             {
                 user = new ApplicationUser
@@ -63,14 +62,14 @@ namespace SysWaterRev.BusinessLayer.Models
                         EmployeeId = IdentityGenerator.NewSequentialGuid()
                     }
                 };
-                IdentityResult result = userManager.Create(user, password);
+                var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }
             // Add user admin to Role Admin if not already added
-            IList<string> rolesForUser = userManager.GetRoles(user.Id);
+            var rolesForUser = userManager.GetRoles(user.Id);
             if (!rolesForUser.Contains(role.Name))
             {
-                IdentityResult result = userManager.AddToRole(user.Id, SimpleRevCollectionRoles.Administrators);
+                var result = userManager.AddToRole(user.Id, SysWaterRevRoles.Administrators);
             }
         }
     }

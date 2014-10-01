@@ -1,6 +1,6 @@
 ﻿namespace SysWaterRev.BusinessLayer.Models
 {
-    public class SimpleRevCollectionRoles
+    public class SysWaterRevRoles
     {
         public const string Customers = "Customers";
         public const string Administrators = "Administrators";

@@ -37,7 +37,7 @@
         <h4>Reading</h4>
         <hr />
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        @if (User.IsInRole(SimpleRevCollectionRoles.Administrators))
+        @if (User.IsInRole(SysWaterRevRoles.Administrators))
         {
             <div class="form-group">
                 Employees

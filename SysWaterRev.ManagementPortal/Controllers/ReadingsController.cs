@@ -101,7 +101,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             [Bind(Include = "Latitude,Longitude,ReadingValue,EmployeeId,CustomerId,MeterId")] ReadingViewModel reading)
         {
             var employee = new Employee();
-            if (User.IsInRole(SimpleRevCollectionRoles.Administrators))
+            if (User.IsInRole(SysWaterRevRoles.Administrators))
             {
                 employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == reading.EmployeeId);
             }
@@ -151,7 +151,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             [Bind(Include = "Latitude,Longitude,ReadingValue,MeterId,Accuracy,Altitude,Speed,Heading,AltitudeAccuracy")] ReadingViewModel reading)
         {
             var employee = new Employee();
-            if (User.IsInRole(SimpleRevCollectionRoles.Administrators))
+            if (User.IsInRole(SysWaterRevRoles.Administrators))
             {
                 employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == reading.EmployeeId);
             }
@@ -252,7 +252,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         }
 
         // GET: Readings/Delete/5
-        [Authorize(Roles = SimpleRevCollectionRoles.Administrators)]
+        [Authorize(Roles = SysWaterRevRoles.Administrators)]
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -267,7 +267,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             return View(reading);
         }
 
-        [Authorize(Roles = SimpleRevCollectionRoles.Administrators)]
+        [Authorize(Roles = SysWaterRevRoles.Administrators)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
