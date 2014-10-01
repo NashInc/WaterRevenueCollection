@@ -198,12 +198,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var employee = await db.Employees.FirstOrDefaultAsync(z => z.EmployeeId == id);
-            if (employee == null)
+            var applicationUser = await db.Users.Include(x => x.EmployeeDetails).FirstOrDefaultAsync(z => z.EmployeeDetails.EmployeeId == id);
+            if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            var employeeModel = Map<Employee, EmployeeViewModel>(employee);
+            var employeeModel = Map<Employee, EmployeeViewModel>(applicationUser.EmployeeDetails);
             return View(employeeModel);
         }
 
@@ -212,8 +212,8 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Employee employee = await db.Employees.FindAsync(id);
-            db.Employees.Remove(employee);
+            var applicationUser = await db.Users.Include(x => x.EmployeeDetails).FirstOrDefaultAsync(z => z.EmployeeDetails.EmployeeId == id);
+            db.Users.Remove(applicationUser);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
