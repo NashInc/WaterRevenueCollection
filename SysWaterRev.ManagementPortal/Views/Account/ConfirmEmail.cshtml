@@ -1,10 +1,29 @@
-﻿{
-ViewBag.Title = "Confirm Email";
+﻿@{
+    ViewBag.Title = "Confirm Email";
+    Layout = null;
 }
-
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", null, new {id = "loginLink"})
-    </p>
-</div>
+<!DOCTYPE html>
+<html class="bg-black">
+<head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <title>Water Rev | Confirm Email</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body class="bg-black">
+    <div class="form-box" id="login-box">
+        <div class="header">Confirm Email</div>
+        <div class="body bg-gray">
+            <p>
+                Thank you for Confirming your Email.
+            </p>
+        </div>
+        <div class="footer">
+            @Html.ActionLink("Click here to Log in", "Login", "Account", null, new { id = "loginLink",@class="btn bg-olive btn-block" })   
+        </div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -130,7 +129,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         //
         // POST: /Manage/EnableTwoFactorAuthentication
-        [HttpPost]
+        [HttpPost,ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
@@ -144,7 +143,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         //
         // POST: /Manage/DisableTwoFactorAuthentication
-        [HttpPost]
+        [HttpPost,ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
@@ -181,7 +180,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
-                ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
                     await SignInAsync(user, false);
@@ -189,7 +188,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 return RedirectToAction("Index", new {Message = ManageMessageId.AddPhoneSuccess});
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", "Failed to verify Your Phone Number");
             return View(model);
         }
 

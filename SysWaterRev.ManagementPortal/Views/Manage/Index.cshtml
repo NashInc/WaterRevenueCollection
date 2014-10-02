@@ -15,31 +15,31 @@
             <li class="active">Manage Account</li>
         </ol>
     </section>
-}        
+}
 <section class="content">
     <div class="row"></div>
     <div class="row">
         <div class="col-md-6">
             <p class="text-success">@ViewBag.StatusMessage</p>
-            <div>               
+            <div>
                 <dl class="dl-horizontal">
                     <dt>Password:</dt>
                     <dd>
                         [
-                        @if (Model.HasPassword)
-                        {
-                            @Html.ActionLink("Change your password", "ChangePassword")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Create", "SetPassword")
-                        }
+                        @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword") : Html.ActionLink("Create", "SetPassword"))
                         ]
                     </dd>
                     <dt>External Logins:</dt>
                     <dd>
-                        @Model.Logins.Count [
-                        @Html.ActionLink("Manage", "ManageLogins") ]
+                        @if (Model.Logins.Count == 0)
+                        {
+                            <text>None</text>
+                        }
+                        else
+                        {
+                            <text>@Model.Logins.Count</text>
+                        }
+                        [ @Html.ActionLink("Manage", "ManageLogins") ]
                     </dd>
                     <dt>Phone Number:</dt>
                     <dd>
@@ -61,17 +61,25 @@
                     <dd>
                         @if (Model.TwoFactor)
                         {
-                            <form method="post" action="/Manage/DisableTwoFactorAuthentication">
-                                Enabled
-                                <input type="submit" value="Disable" class="btn btn-link" />
-                            </form>
+                            using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <text>
+                                    Enabled
+                                    <input type="submit" value="Disable" class="btn btn-link" />
+                                </text>
+                            }
                         }
                         else
                         {
-                            <form method="post" action="/Manage/EnableTwoFactorAuthentication">
-                                Disabled
-                                <input type="submit" value="Enable" class="btn btn-link" />
-                            </form>
+                            using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <text>
+                                    Disabled
+                                    <input type="submit" value="Enable" class="btn btn-link" />
+                                </text>
+                            }
                         }
                     </dd>
                 </dl>

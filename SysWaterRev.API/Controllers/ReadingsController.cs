@@ -34,7 +34,6 @@ namespace SysWaterRev.API.Controllers
         }
 
         private ApplicationUserManager userManager;
-
         public ApplicationUserManager UserManager
         {
             get
@@ -48,7 +47,7 @@ namespace SysWaterRev.API.Controllers
         [ResponseType(typeof(Reading))]
         public async Task<IHttpActionResult> GetReading(Guid id)
         {
-            Reading reading = await db.Readings.FindAsync(id);
+            var reading = await db.Readings.FindAsync(id);
             if (reading == null)
             {
                 return NotFound();

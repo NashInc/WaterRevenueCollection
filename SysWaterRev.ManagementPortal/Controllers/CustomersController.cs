@@ -21,24 +21,17 @@ namespace SysWaterRev.ManagementPortal.Controllers
     public class CustomersController : AbstractController
     {
         private readonly ApplicationDbContext db;
-        private ApplicationUserManager userManager;
 
         public CustomersController()
         {
             db = new ApplicationDbContext();
         }
 
-        public ApplicationUserManager UserManager
-        {
-            get { return userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-            set { userManager = value; }
-        }
-
         // GET: Customers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            List<CustomerViewModel> customerViewModels = Map<List<Customer>, List<
+            var customerViewModels = Map<List<Customer>, List<
                 CustomerViewModel>>(await db.Customers.ToListAsync());
             return View(customerViewModels);
         }
@@ -120,15 +113,15 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<JsonResult> GetCascadeCustomers()
         {
-            List<CustomerViewModel> customersViewModel = Map<List<Customer>, List<
+            var customersViewModel = Map<List<Customer>, List<
                 CustomerViewModel>>(await db.Customers.ToListAsync());
             return Json(customersViewModel, "application/json", JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpPost, ChildActionOnly]
         public JsonResult GetMetersForCustomer([DataSourceRequest] DataSourceRequest request, Guid? CustomerId)
         {
-            DataSourceResult customerWithMeters = db.Meters.Where(x => x.CustomerId == CustomerId)
+            var customerWithMeters = db.Meters.Where(x => x.CustomerId == CustomerId)
                 .Select(x => new MeterViewModel
                 {
                     MeterId = x.MeterId,
@@ -137,7 +130,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     ReadingsForMeter = x.MeterReadings.Count,
                     DateCreated = x.DateCreated
                 }).ToDataSourceResult(request);
-            return Json(customerWithMeters, "application/json");
+            return Json(customerWithMeters);
         }
 
         // GET: Customers/Create
@@ -150,10 +143,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(
-                Include =
-                    "FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")] CustomerViewModel customer)
+        public async Task<ActionResult> Create(CustomerViewModel customer)
         {
             var appUser = new ApplicationUser
             {
@@ -176,20 +166,22 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     MiddleName = customer.MiddleName
                 }
             };
-            IdentityResult createResult = await UserManager.CreateAsync(appUser);
+            var createResult = await UserManager.CreateAsync(appUser);
             if (createResult.Succeeded)
             {
-                IdentityResult addToRoleResult =
+                var addToRoleResult =
                     await UserManager.AddToRoleAsync(appUser.Id, SysWaterRevRoles.Customers);
                 if (addToRoleResult.Succeeded)
                 {
+                    TempData.Clear();
                     TempData.Add("CustomerId", appUser.CustomerDetails.CustomerId);
+                    await SendEmailConfirmationTokenAsync(appUser.Id, "Confirm Your Account");
                     return RedirectToAction("Index", "Customers");
                 }
-                ModelState.AddModelError("*", "Could Not Add Customer to Role");
+                ModelState.AddModelError("", "Could Not Add Customer to Role");
                 return View(customer);
             }
-            ModelState.AddModelError("*", "Could Not Create Customer");
+            ModelState.AddModelError("", "Could Not Create Customer");
             return View(customer);
         }
 
@@ -201,12 +193,15 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = await db.Customers.FindAsync(id);
-            if (customer == null)
+            var appUser =
+                await
+                    db.Users.Include(x => x.CustomerDetails)
+                        .SingleOrDefaultAsync(x => x.CustomerDetails.CustomerId == id);
+            if (appUser == null)
             {
                 return HttpNotFound();
             }
-            CustomerViewModel customerViewModel = Map<Customer, CustomerViewModel>(customer);
+            var customerViewModel = Map<Customer, CustomerViewModel>(appUser.CustomerDetails);
             return View(customerViewModel);
         }
 
@@ -215,29 +210,27 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(
-                Include =
-                    "CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber"
-                )] CustomerViewModel customer)
+        public async Task<ActionResult> Edit(CustomerViewModel customer)
         {
-            Customer customerModel = await db.Customers.FindAsync(customer.CustomerId);
-            if (customerModel != null)
+            var appUser = await db.Users.Include(x=>x.CustomerDetails).SingleOrDefaultAsync(x=>x.CustomerDetails.CustomerId==customer.CustomerId);
+            if (appUser != null)
             {
-                customerModel.FirstName = customer.FirstName;
-                customerModel.MiddleName = customer.MiddleName;
-                customerModel.Surname = customer.Surname;
-                customerModel.PhoneNumber = customer.PhoneNumber;
-                customerModel.Identification = customer.Identification;
-                customerModel.EmailAddress = customer.EmailAddress;
-                customerModel.UserGender = customer.UserGender;
-                customerModel.CustomerNumber = customer.CustomerNumber;
-                db.Entry(customerModel).State = EntityState.Modified;
+                appUser.CustomerDetails.FirstName = customer.FirstName;
+                appUser.CustomerDetails.MiddleName = customer.MiddleName;
+                appUser.CustomerDetails.Surname = customer.Surname;
+                appUser.CustomerDetails.PhoneNumber = customer.PhoneNumber;
+                appUser.CustomerDetails.Identification = customer.Identification;
+                appUser.CustomerDetails.EmailAddress = customer.EmailAddress;
+                appUser.CustomerDetails.UserGender = customer.UserGender;
+                appUser.CustomerDetails.CustomerNumber = customer.CustomerNumber;
+                db.Entry(appUser).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                TempData.Add("CustomerId", customerModel.CustomerId);
+                TempData.Clear();
+                TempData.Add("CustomerId", appUser.CustomerDetails.CustomerId);
+                await SendEmailConfirmationTokenAsync(appUser.Id, "Please Confirm Your Account Edit");
                 return RedirectToAction("Index", "Customers");
             }
-            ModelState.AddModelError("*", "Entity with the stated ID Could not be found!");
+            ModelState.AddModelError("", "Entity with the stated ID Could not be found!");
             return View(customer);
         }
 
@@ -248,7 +241,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = await db.Customers.FindAsync(id);
+            var customer = await db.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -261,7 +254,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Customer customer = await db.Customers.FindAsync(id);
+            var customer = await db.Customers.FindAsync(id);
             db.Customers.Remove(customer);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
