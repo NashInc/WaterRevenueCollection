@@ -228,30 +228,25 @@
                     <div class="panel-heading">Reading Location Map</div>
                     <div class="panel-body">
                         @(Html.Kendo().Map()
-                          .Name("map")
-                          .Center(Model.Latitude, Model.Longitude)
-                          .Zoom(14)
-                          .Pannable(true)
-                          .Zoomable(true)
-                          .Wraparound(true)
-                          .Layers(layers =>
-                          {
-                              //layers.Add()
-                              //    .Type(MapLayerType.Tile)
-                              //    .UrlTemplateId("http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
-                              //    .Subdomains("a", "b", "c")
-                              //    .Attribution("&copy; <a href='http://osm.org/copyright'>OpenStreetMap contributors</a>");
-                              layers.Add()
-                                  .Type(MapLayerType.Bing)
-                                  .Key("Aiqg9nb49TEfGuZRGfRs3e0fc0xAVnygvXArDkbI6bfYDXxpdKK-yzml5gFMaQyW")
-                                  .Shape(MapMarkersShape.PinTarget)
-                                  .ImagerySet(MapLayersImagerySet.Road)
-                                  .AutoBind(true);
-                          })
-                          .Markers(markers => markers.Add()
-                              .Location(Model.Latitude, Model.Longitude)
-                              .Shape(MapMarkersShape.Pin)
-                              .Tooltip(tooltip => tooltip.Content(Model.EmployeeFullName)))                            
+                              .Name("map")
+                              .Center(Model.Latitude, Model.Longitude)                           
+                              .Zoom(14)
+                              .Pannable(true)
+                              .Zoomable(true)
+                              .Wraparound(true)
+                              .Layers(layers =>
+                              {
+                                  layers.Add()
+                                      .Type(MapLayerType.Bing)
+                                      .Key("Aiqg9nb49TEfGuZRGfRs3e0fc0xAVnygvXArDkbI6bfYDXxpdKK-yzml5gFMaQyW")
+                                      .Shape(MapMarkersShape.PinTarget)
+                                      .ImagerySet(MapLayersImagerySet.Road)
+                                      .AutoBind(true);
+                              })
+                              .Markers(markers => markers.Add()
+                                  .Location(Model.Latitude, Model.Longitude)
+                                  .Shape(MapMarkersShape.Pin)
+                                  .Tooltip(tooltip => tooltip.Content(string.Format("Meter No.: {0}<br/> Reading: {1}<br/>Units: {2} <br/> Read By: {3}",Model.MeterNumber, Model.ReadingValue,Model.UnitsConsumedWithNoCorrection, Model.EmployeeFullName))))
                         )
                     </div>
                     <div class="panel-footer"></div>
