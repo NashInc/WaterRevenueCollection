@@ -42,19 +42,19 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Meter meter = await db.Meters.FindAsync(id);
+            var meter = await db.Meters.FindAsync(id);
 
             if (meter == null)
             {
                 return HttpNotFound();
             }
-            MeterViewModel meterViewModel = Map<Meter, MeterViewModel>(meter);
+            var meterViewModel = Map<Meter, MeterViewModel>(meter);
             return View(meterViewModel);
         }
-
+        [HttpPost]
         public JsonResult GetReadingsForMeter([DataSourceRequest] DataSourceRequest request, Guid? meterId)
         {
-            DataSourceResult readingsWithEmployee = db.Readings.Where(x => x.MeterId == meterId)
+            var readingsWithEmployee = db.Readings.Where(x => x.MeterId == meterId)
                 .Select(x => new ReadingViewModel
                 {
                     MeterId = x.MeterId,
@@ -71,13 +71,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     EmployeeMiddleName = x.ReadBy.MiddleName,
                     EmployeeSurname = x.ReadBy.Surname,
                 }).ToDataSourceResult(request);
-            return Json(readingsWithEmployee, "application/json", JsonRequestBehavior.AllowGet);
+            return Json(readingsWithEmployee);
         }
 
         public async Task<ActionResult> GetCascadeMeters(Guid? CustomerId)
         {
             if (CustomerId == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            List<MeterViewModel> meterViewModel =
+            var meterViewModel =
                 Map<List<Meter>, List<MeterViewModel>>(
                     await db.Meters.Where(x => x.CustomerId == CustomerId).ToListAsync());
             return Json(meterViewModel, JsonRequestBehavior.AllowGet);
@@ -95,10 +95,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(Include = "MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
+        public async Task<ActionResult> Create([Bind(Include = "MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
         {
-            Customer customer = await db.Customers.FindAsync(meter.CustomerId);
+            var customer = await db.Customers.FindAsync(meter.CustomerId);
             if (customer != null)
             {
                 try
@@ -107,9 +106,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     meter.CreatedBy = User.Identity.Name;
                     meter.DateCreated = DateTime.Now;
                     meter.MeterId = IdentityGenerator.NewSequentialGuid();
-                    Meter meterModel = Map<MeterViewModel, Meter>(meter);
+                    var meterModel = Map<MeterViewModel, Meter>(meter);
                     db.Meters.Add(meterModel);
                     await db.SaveChangesAsync();
+                    TempData.Clear();
                     TempData.Add("MeterId", meterModel.MeterId);
                     return RedirectToAction("Index", "Meters");
                 }
@@ -130,12 +130,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Meter meter = await db.Meters.FindAsync(id);
-            MeterViewModel meterViewModel = Map<Meter, MeterViewModel>(meter);
-            if (meter == null && meterViewModel == null)
+            var meter = await db.Meters.FindAsync(id);           
+            if (meter == null)
             {
                 return HttpNotFound();
             }
+            var meterViewModel = Map<Meter, MeterViewModel>(meter);
             return View(meterViewModel);
         }
 
@@ -144,13 +144,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(Include = "MeterId,MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
+        public async Task<ActionResult> Edit([Bind(Include = "MeterId,MeterSerialNumber,MeterNumber,CustomerId")] MeterViewModel meter)
         {
-            Meter existingMeter = await db.Meters.FindAsync(meter.MeterId);
+            var existingMeter = await db.Meters.FindAsync(meter.MeterId);
             if (existingMeter != null)
             {
-                Customer existingCustomer = await db.Customers.FindAsync(meter.CustomerId);
+                var existingCustomer = await db.Customers.FindAsync(meter.CustomerId);
                 if (existingCustomer != null)
                 {
                     existingMeter.CustomerId = existingCustomer.CustomerId;
@@ -183,12 +182,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Meter meter = await db.Meters.FindAsync(id);
-            MeterViewModel meterViewModel = Map<Meter, MeterViewModel>(meter);
+            var meter = await db.Meters.FindAsync(id);
+          
             if (meter == null)
             {
                 return HttpNotFound();
             }
+            var meterViewModel = Map<Meter, MeterViewModel>(meter);
             return View(meterViewModel);
         }
 
@@ -197,7 +197,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Meter meter = await db.Meters.FindAsync(id);
+            var meter = await db.Meters.FindAsync(id);
             db.Meters.Remove(meter);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

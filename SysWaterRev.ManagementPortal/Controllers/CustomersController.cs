@@ -4,12 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
@@ -210,7 +207,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(CustomerViewModel customer)
+        public async Task<ActionResult> Edit([Bind(Include ="CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")]CustomerViewModel customer)
         {
             var appUser = await db.Users.Include(x=>x.CustomerDetails).SingleOrDefaultAsync(x=>x.CustomerDetails.CustomerId==customer.CustomerId);
             if (appUser != null)
@@ -223,6 +220,8 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 appUser.CustomerDetails.EmailAddress = customer.EmailAddress;
                 appUser.CustomerDetails.UserGender = customer.UserGender;
                 appUser.CustomerDetails.CustomerNumber = customer.CustomerNumber;
+                appUser.CustomerDetails.LastEditDate = DateTime.Now;
+                appUser.CustomerDetails.LastEditedBy = User.Identity.Name;
                 db.Entry(appUser).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 TempData.Clear();
