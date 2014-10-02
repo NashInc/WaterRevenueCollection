@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'> 
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Water Rev Collection Management System" />
     <title>Water Rev | Dashboard</title>
-
-    @Styles.Render("~/Content/css")     
-    @Styles.Render("~/Content/kendo")
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.common.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.mobile.all.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.dataviz.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.bootstrap.min.css")" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
-    
-	<link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2014.2.903/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.903/jquery.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.903/kendo.all.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2014.2.903/kendo.aspnetmvc.min.js")"></script>
 </head>
 <body class="skin-blue">
     <!-- header logo: style can be found in header.less -->
@@ -302,19 +296,18 @@
             <!-- /.sidebar -->
         </aside>
         <!-- Right side column. Contains the navbar and content of the page -->
-        <aside class="right-side">         
-            @RenderSection("ContentHeader", false)           
+        <aside class="right-side">
+            @RenderSection("ContentHeader", false)
             @RenderBody()
         </aside><!-- /.right-side -->
     </div><!-- ./wrapper -->
     <footer class="footer">
-        <hr/>
+        <hr />
         <p><span class="fa fa-copyright">@DateTime.Now.Year Water Rev</span></p>
     </footer>
     @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jqueryplugins")    
-    @Scripts.Render("~/bundles/template")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/template")
     @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", false)
 </body>
