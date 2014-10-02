@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
-using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
+using SysWaterRev.ManagementPortal.Framework;
 
 namespace SysWaterRev.ManagementPortal.Controllers
 {

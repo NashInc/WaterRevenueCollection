@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -64,7 +63,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            SignInStatus result =
+            var result =
                 await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             switch (result)
             {
@@ -89,11 +88,11 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> MobileLogin([Bind(Include = "Email,Password,RememberMe")] LoginViewModel model)
         {
             var loginResult = new LoginResult();
-            SignInStatus result =
+            var result =
                 await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.HasFlag(SignInStatus.Success))
             {
-                ApplicationUser details = await UserManager.FindAsync(model.Email, model.Password);
+                var details = await UserManager.FindAsync(model.Email, model.Password);
                 //var role = (await UserManager.IsInRole(details.Id));
                 if (details != null && UserManager.IsInRole(details.Id, SysWaterRevRoles.Employees))
                 {
@@ -124,10 +123,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return View("Error");
             }
-            ApplicationUser user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
+            var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
             if (user != null)
             {
-                string code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
+                var code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
             }
             return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
         }
@@ -148,7 +147,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account
             // will be locked out for a specified amount of time.
             // You can configure the account lockout settings in IdentityConfig
-            SignInStatus result =
+            var result =
                 await
                     SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe,
                         model.RememberBrowser);
@@ -185,7 +184,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, false, false);
@@ -214,7 +213,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return View("Error");
             }
-            IdentityResult result = await UserManager.ConfirmEmailAsync(userId, code);
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -323,13 +322,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            string userId = await SignInManager.GetVerifiedUserIdAsync();
+            var userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
                 return View("Error");
             }
-            IList<string> userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-            List<SelectListItem> factorOptions =
+            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+            var factorOptions =
                 userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose}).ToList();
             return
                 View(new SendCodeViewModel {Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe});
@@ -361,14 +360,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            ExternalLoginInfo loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
             }
 
             // Sign in the user with this external login provider if the user already has a login
-            SignInStatus result = await SignInManager.ExternalSignInAsync(loginInfo, false);
+            var result = await SignInManager.ExternalSignInAsync(loginInfo, false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -406,13 +405,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
-                ExternalLoginInfo info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
                     return View("ExternalLoginFailure");
                 }
                 var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
-                IdentityResult result = await UserManager.CreateAsync(user);
+                var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);

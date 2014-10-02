@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
+using SysWaterRev.ManagementPortal.Framework;
 
 namespace SysWaterRev.ManagementPortal.Controllers
 {

@@ -12,10 +12,10 @@ using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
+using SysWaterRev.ManagementPortal.Framework;
 
 namespace SysWaterRev.ManagementPortal.Controllers
 {

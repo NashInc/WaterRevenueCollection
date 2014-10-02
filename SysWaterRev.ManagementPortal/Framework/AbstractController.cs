@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
 
-namespace SimpleRevCollection.Management.Framework
+namespace SysWaterRev.ManagementPortal.Framework
 {
     public abstract class AbstractController : Controller
     {

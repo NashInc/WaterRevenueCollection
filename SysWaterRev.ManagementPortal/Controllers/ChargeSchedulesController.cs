@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
+using SysWaterRev.ManagementPortal.Framework;
 
 namespace SysWaterRev.ManagementPortal.Controllers
 {
@@ -28,14 +28,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            List<ChargeScheduleViewModel> chargesSchedulesViewModel =
+            var chargesSchedulesViewModel =
                 Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(await db.ChargeSchedules.ToListAsync());
             return View(chargesSchedulesViewModel);
         }
 
         public async Task<ActionResult> ReadChargeSchedules()
         {
-            List<ChargeScheduleViewModel> chargeSchedule =
+            var chargeSchedule =
                 Map<List<ChargeSchedule>, List<ChargeScheduleViewModel>>(await db.ChargeSchedules.ToListAsync());
             return Json(chargeSchedule, JsonRequestBehavior.AllowGet);
         }
@@ -44,7 +44,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ActivateChargeSchedule(Guid? ChargeScheduleId)
         {
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 chargeSchedule.IsActive = true;
@@ -53,7 +53,8 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 chargeSchedule.LastEditedBy = User.Identity.Name;
                 db.Entry(chargeSchedule).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                //  TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
+                TempData.Clear();
+                TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
                 return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
             }
             return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
@@ -62,7 +63,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpPost]
         public JsonResult GetChargesForSchedule([DataSourceRequest] DataSourceRequest request, Guid? ChargeScheduleId)
         {
-            DataSourceResult chargesViewModel = db.Charges.Include(x => x.ChargeSchedule)
+            var chargesViewModel = db.Charges.Include(x => x.ChargeSchedule)
                 .Where(x => x.ChargeScheduleId == ChargeScheduleId)
                 .Select(x => new ChargeViewModel
                 {
@@ -88,13 +89,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
-            ChargeScheduleViewModel chargeScheduleViewModel =
-                Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
-            if (chargeScheduleViewModel == null)
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            if (chargeSchedule == null)
             {
                 return HttpNotFound();
             }
+            var chargeScheduleViewModel =
+                Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             return View(chargeScheduleViewModel);
         }
 
@@ -119,9 +120,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
             try
             {
                 chargeScheduleModel.ChargeScheduleId = IdentityGenerator.NewSequentialGuid();
-                ChargeSchedule chargeSchedule = Map<ChargeScheduleViewModel, ChargeSchedule>(chargeScheduleModel);
+                var chargeSchedule = Map<ChargeScheduleViewModel, ChargeSchedule>(chargeScheduleModel);
                 db.ChargeSchedules.Add(chargeSchedule);
                 await db.SaveChangesAsync();
+                TempData.Clear();
                 TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
                 return RedirectToAction("Index");
             }
@@ -140,12 +142,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
             if (chargeSchedule == null)
             {
                 return HttpNotFound();
             }
-            ChargeScheduleViewModel chargeScheduleViewModel =
+            var chargeScheduleViewModel =
                 Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             return View(chargeScheduleViewModel);
         }
@@ -171,6 +173,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 {
                     db.Entry(dbChargeSchedule).State = EntityState.Modified;
                     await db.SaveChangesAsync();
+                    TempData.Clear();
                     TempData.Add("ChargeScheduleId", dbChargeSchedule.ChargeScheduleId);
                     return RedirectToAction("Index", "ChargeSchedules");
                 }

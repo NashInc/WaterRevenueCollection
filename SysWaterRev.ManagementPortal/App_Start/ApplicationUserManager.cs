@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.DataProtection;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.ManagementPortal.Services;
 
@@ -55,7 +54,7 @@ namespace SysWaterRev.ManagementPortal
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
-            IDataProtectionProvider dataProtectionProvider = options.DataProtectionProvider;
+            var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =

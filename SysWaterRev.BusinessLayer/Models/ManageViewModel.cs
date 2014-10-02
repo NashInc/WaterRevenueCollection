@@ -71,6 +71,7 @@ namespace SysWaterRev.BusinessLayer.Models
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
         public string Number { get; set; }
     }
 

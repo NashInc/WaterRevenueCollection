@@ -5,10 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using SimpleRevCollection.Management.Framework;
 using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
+using SysWaterRev.ManagementPortal.Framework;
 
 namespace SysWaterRev.ManagementPortal.Controllers
 {

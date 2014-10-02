@@ -13,7 +13,7 @@
     <h4>Registered Logins</h4>
     <table class="table">
         <tbody>
-            @foreach (UserLoginInfo account in Model.CurrentLogins)
+            @foreach (var account in Model.CurrentLogins)
             {
                 <tr>
                     <td>@account.LoginProvider</td>

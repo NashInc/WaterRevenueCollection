@@ -65,7 +65,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // GET: /Manage/RemoveLogin
         public ActionResult RemoveLogin()
         {
-            IList<UserLoginInfo> linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
+            var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return View(linkedAccounts);
         }
@@ -77,13 +77,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
             ManageMessageId? message;
-            IdentityResult result =
+            var result =
                 await
                     UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
                         new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
                     await SignInAsync(user, false);
@@ -115,7 +115,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 return View(model);
             }
             // Generate the token and send it
-            string code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
+            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
             if (UserManager.SmsService != null)
             {
                 var message = new IdentityMessage
@@ -134,7 +134,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
-            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 await SignInAsync(user, false);
@@ -148,7 +148,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
-            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 await SignInAsync(user, false);
@@ -160,7 +160,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            string code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
+            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null
                 ? View("Error")
@@ -177,7 +177,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return View(model);
             }
-            IdentityResult result =
+            var result =
                 await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
@@ -197,12 +197,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // GET: /Manage/RemovePhoneNumber
         public async Task<ActionResult> RemovePhoneNumber()
         {
-            IdentityResult result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
+            var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
             if (!result.Succeeded)
             {
                 return RedirectToAction("Index", new {Message = ManageMessageId.Error});
             }
-            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
                 await SignInAsync(user, false);
@@ -227,11 +227,11 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return View(model);
             }
-            IdentityResult result =
+            var result =
                 await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
                     await SignInAsync(user, false);
@@ -257,10 +257,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+                var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
                 if (result.Succeeded)
                 {
-                    ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                     if (user != null)
                     {
                         await SignInAsync(user, false);
@@ -284,13 +284,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     : message == ManageMessageId.Error
                         ? "An error has occurred."
                         : "";
-            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
             {
                 return View("Error");
             }
-            IList<UserLoginInfo> userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-            List<AuthenticationDescription> otherLogins =
+            var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
+            var otherLogins =
                 AuthenticationManager.GetExternalAuthenticationTypes()
                     .Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider))
                     .ToList();
@@ -317,13 +317,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
-            ExternalLoginInfo loginInfo =
+            var loginInfo =
                 await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
             if (loginInfo == null)
             {
                 return RedirectToAction("ManageLogins", new {Message = ManageMessageId.Error});
             }
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded
                 ? RedirectToAction("ManageLogins")
                 : RedirectToAction("ManageLogins", new {Message = ManageMessageId.Error});
@@ -368,7 +368,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         private bool HasPassword()
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            var user = UserManager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PasswordHash != null;
@@ -378,7 +378,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         private bool HasPhoneNumber()
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            var user = UserManager.FindById(User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PhoneNumber != null;
