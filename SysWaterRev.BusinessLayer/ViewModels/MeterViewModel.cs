@@ -58,5 +58,6 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         public string CustomerNumber { get; set; }
 
         public int ReadingsForMeter { get; set; }
+        public decimal TotalBill { get; set; }
     }
 }

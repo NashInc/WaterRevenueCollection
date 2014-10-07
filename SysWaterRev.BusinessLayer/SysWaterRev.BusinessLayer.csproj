@@ -120,6 +120,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ChargeScheduleViewModel.cs" />
     <Compile Include="ViewModels\ChargeViewModel.cs" />
+    <Compile Include="ViewModels\BillingViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\LoginResult.cs" />

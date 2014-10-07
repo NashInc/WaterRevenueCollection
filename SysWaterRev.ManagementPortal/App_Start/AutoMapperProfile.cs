@@ -32,6 +32,7 @@ namespace SysWaterRev.ManagementPortal
                     expr => expr.MapFrom(z => z.CurrentChargeSchedule.EffectiveDate))
                 .ForMember(x => x.SystemSettingId, expr => expr.MapFrom(z => z.SystemSettingId));
             Mapper.CreateMap<Customer, CustomerViewModel>()
+                .ForMember(x => x.TotalBill, expr => expr.Ignore())
                 .ForMember(x => x.MetersOwned, expr => expr.MapFrom(z => z.Meters.Count))
                 .ForMember(x => x.CreatedBy, expr => expr.MapFrom(z => z.CreatedBy))
                 .ForMember(x => x.CustomerId, expr => expr.MapFrom(z => z.CustomerId))
@@ -102,6 +103,7 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.PreviousReadingValue, expr => expr.MapFrom(z => z.PreviousReading.ReadingValue))
                 .ForMember(x => x.PreviousCorrectedReadingValue,
                     expr => expr.MapFrom(z => z.PreviousReading.CorrectionValue))
+                .ForMember(x => x.TotalBill, expr => expr.Ignore())
                 .ForMember(x => x.UnitsConsumedWithCorrection, expr => expr.Ignore())
                 .ForMember(x => x.UnitsConsumedWithNoCorrection, expr => expr.Ignore())
                 .ForMember(x => x.PreviousReadingId, expr => expr.MapFrom(z => z.PreviousReading.ReadingId))
@@ -121,6 +123,7 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.ReadingsForMeter, expr => expr.MapFrom(z => z.MeterReadings.Count))
                 .ForMember(x => x.CustomerId, expr => expr.MapFrom(z => z.CustomerId))
                 .ForMember(x => x.MeterSerialNumber, expr => expr.MapFrom(z => z.MeterSerialNumber))
+                .ForMember(x => x.TotalBill, expr => expr.Ignore())
                 .ForMember(x => x.MeterNumberWithOwner, expr => expr.Ignore())
                 .ForMember(x => x.CustomerName, expr => expr.Ignore())
                 .ForMember(x => x.CustomerNumber, expr => expr.MapFrom(z => z.OwnerCustomer.CustomerNumber))
@@ -169,10 +172,12 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.RowVersion, expr => expr.Ignore())
                 .ForMember(x => x.Charges, expr => expr.Ignore());
             Mapper.CreateMap<MeterViewModel, Meter>()
+
                 .ForMember(x => x.RowVersion, expr => expr.Ignore())
                 .ForMember(x => x.MeterReadings, expr => expr.Ignore())
                 .ForMember(x => x.OwnerCustomer, expr => expr.Ignore());
             Mapper.CreateMap<ChargeViewModel, Charge>()
+
                 .ForMember(x => x.ChargeId, expr => expr.Ignore())
                 .ForMember(x => x.UnitPrice, expr => expr.MapFrom(z => z.UnitPrice))
                 .ForMember(x => x.StartRange, expr => expr.MapFrom(z => z.StartRange))

@@ -136,5 +136,7 @@ namespace SysWaterRev.BusinessLayer.ViewModels
 
         [DisplayName("Previous Reading ID")]
         public Guid? PreviousReadingId { get; set; }
+
+        public decimal TotalBill { get; set; }
     }
 }

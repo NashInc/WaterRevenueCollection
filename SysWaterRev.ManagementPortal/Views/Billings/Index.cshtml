@@ -1,0 +1,130 @@
+﻿@model BillingViewModel
+@(Html.Kendo().Grid<CustomerViewModel>()
+    .Name("billingGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(e => e.CustomerId).Hidden(true);
+        columns.Bound(e => e.FirstName).Width(120);
+        columns.Bound(e => e.MiddleName).Width(120);
+        columns.Bound(e => e.Surname).Width(120);
+        columns.Bound(e => e.Identification).Width(120);
+        columns.Bound(e => e.EmailAddress).Width(120);
+        columns.Bound(e => e.PhoneNumber).Width(120);
+        columns.Bound(e => e.UserGender).Width(120);
+        columns.Bound(e => e.MetersOwned).Width(120);
+        columns.Bound(e => e.TotalBill).Width(120);
+    })
+    .Sortable()
+    .Pageable()
+    .Scrollable()
+        .ClientDetailTemplateId("metersTemplate")
+    .HtmlAttributes(new { style = "height:430px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+            .Read(read => read.Action("GetBillingCustomers", "Billings"))
+    )
+    .Events(events => events.DataBound("dataBound"))
+)
+
+<script id="metersTemplate" type="text/kendo-tmpl">
+    @(Html.Kendo().TabStrip()
+            .Name("tabStrip_#=CustomerId#")
+            .SelectedIndex(0)
+            .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In)))
+            .Items(items =>
+            {
+                items.Add().Text("Meters").Content(@<text>
+                    @(Html.Kendo().Grid<MeterViewModel>()
+                          .Name("grid_#=CustomerId#")
+                          .Columns(columns =>
+                          {
+                              columns.Bound(o => o.CustomerId).Hidden(true);
+                              columns.Bound(o => o.MeterId).Hidden(true);
+                              columns.Bound(o => o.MeterNumber);
+                              columns.Bound(o => o.MeterSerialNumber);
+                              columns.Bound(o => o.ReadingsForMeter);
+                              columns.Bound(o => o.TotalBill);
+                          })
+                          .ClientDetailTemplateId("readingsTemplate")
+                          .DataSource(dataSource => dataSource
+                              .Ajax()
+                              .PageSize(5)
+                              .Read(read => read.Action("GetBillingMeters", "Billings", new {CustomerId = "#=CustomerId#"}))
+                          )
+                          .Pageable()
+                          .Sortable()
+                          .ToClientTemplate())
+                </text>
+                    );
+            })
+                                                            .ToClientTemplate())
+</script>
+<script id="readingsTemplate" type="text/kendo-tmpl">
+    @(Html.Kendo().TabStrip()
+            .Name("tabStrip_#=MeterId#")
+            .SelectedIndex(0)
+            .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In)))
+            .Items(items =>
+            {
+                items.Add().Text("Readings").Content(@<text>
+                    @(Html.Kendo().Grid<ReadingViewModel>()
+                        .Name("grid_#=MeterId#")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(o => o.MeterId).Hidden(true);
+                            columns.Bound(o => o.ReadingId).Hidden(true);
+                            columns.Bound(o => o.Latitude);
+                            columns.Bound(o => o.Longitude);
+                            columns.Bound(o => o.DateCreated);
+                            columns.Bound(o => o.EmployeeFullName);
+                            columns.Bound(o => o.PreviousReadingValue);
+                            columns.Bound(o => o.ReadingValue);
+                            columns.Bound(o => o.UnitsConsumedWithNoCorrection);
+                            columns.Bound(o => o.TotalBill);
+                        })
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(5)
+                                    .Read(read => read.Action("GetBillingReadings", "Billings", new { MeterId = "#=MeterId#" }))
+                        )
+                        .Pageable()
+                        .Sortable()
+                        .ToClientTemplate())
+                </text>
+                );
+            })
+                                                                                                            .ToClientTemplate())
+</script>
+<script>
+    function dataBound() {
+        this.expandRow(this.tbody.find("tr.k-master-row").first());
+    }
+</script>
+
+<style scoped="scoped">
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+    }
+
+    .employee-details ul {
+        list-style: none;
+        font-style: italic;
+        margin: 15px;
+        padding: 0;
+    }
+
+        .employee-details ul li {
+            margin: 0;
+            line-height: 1.7em;
+        }
+
+    .employee-details label {
+        display: inline-block;
+        width: 90px;
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+</style>

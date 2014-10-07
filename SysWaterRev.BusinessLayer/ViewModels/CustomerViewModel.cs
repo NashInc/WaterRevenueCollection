@@ -93,5 +93,6 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         public double TotalCostCorrectedAndConfirmed { get; set; }
 
         public double TotalCorrectedAndConfirmed { get; set; }
+        public decimal TotalBill { get; set; }
     }
 }
