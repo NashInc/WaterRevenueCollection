@@ -76,13 +76,15 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     ChargeId = x.ChargeId,
                     LastEditDate = x.LastEditDate,
                     LastEditedBy = x.LastEditedBy,
+                    ChargeScheduleEffectiveDate = x.ChargeSchedule.EffectiveDate,
                     ChargeScheduleName = x.ChargeSchedule.ChargeScheduleName
                 }).ToDataSourceResult(request);
             return Json(chargesViewModel, "application/json");
         }
-
+        //JUst Update the Charge and forget about it.
         [HttpPost]
-        public async Task<JsonResult> UpdateChargesForSchedule([DataSourceRequest] DataSourceRequest request,ChargeViewModel model)
+        public async Task<JsonResult> UpdateChargesForSchedule([DataSourceRequest] DataSourceRequest request,
+            ChargeViewModel model)
         {
             var chargeSchedule =
                 await
@@ -90,102 +92,21 @@ namespace SysWaterRev.ManagementPortal.Controllers
                         .SingleOrDefaultAsync(x => x.ChargeScheduleId == model.ChargeScheduleId);
             if (chargeSchedule != null)
             {
-                var charge = chargeSchedule.Charges.SingleOrDefault(x => x.ChargeId == model.ChargeId);
+                var charge = chargeSchedule.Charges.FirstOrDefault(x => x.ChargeId ==model.ChargeId);
                 if (charge != null)
                 {
-                    var newUnitPrice = decimal.Parse(model.UnitPrice);
-                    var previousCharge = new Charge();
-                    var nextCharge = new Charge();
-                    if (charge.PreviousCharge != null)
-                    {
-                        previousCharge = charge.PreviousCharge;
-                        if (model.EndRange < model.StartRange)
-                        {
-                            if (model.StartRange > previousCharge.EndRange)
-                            {
-                                if (newUnitPrice > previousCharge.UnitPrice)
-                                {
-                                    if (charge.NextCharge != null)
-                                    {
-                                        nextCharge = charge.NextCharge;
-                                        if (model.EndRange < nextCharge.StartRange)
-                                        {
-                                            if (newUnitPrice < nextCharge.UnitPrice)
-                                            {
-                                                charge.UnitPrice = newUnitPrice;
-                                                charge.StartRange = model.StartRange;
-                                                charge.EndRange = model.EndRange;
-                                                charge.LastEditDate = DateTime.Now;
-                                                charge.LastEditedBy = User.Identity.Name;
-                                            }
-                                            else
-                                            {
-                                                var errorMessage =
-                                                    string.Format(
-                                                        "New Unit Price {0} is Greater than Next charge Unit Price {1}",
-                                                        newUnitPrice, nextCharge.UnitPrice);
-                                                return Json(errorMessage, "application/json");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            var errorMessage =
-                                                string.Format(
-                                                    "New End Range {0} is greater than Next Start Range {1}",
-                                                    model.EndRange, nextCharge.StartRange);
-                                            return Json(errorMessage, "application/json");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        charge.UnitPrice = newUnitPrice;
-                                        charge.StartRange = model.StartRange;
-                                        charge.EndRange = model.EndRange;
-                                        charge.LastEditDate = DateTime.Now;
-                                        charge.LastEditedBy = User.Identity.Name;
-                                    }
-                                }
-                                else
-                                {
-                                    var errorMessage =
-                                        string.Format(
-                                            "New Unit Price {0} is less than Previous charge Unit Price {1}",
-                                            newUnitPrice, previousCharge.UnitPrice);
-                                    return Json(errorMessage, "application/json");
-                                }
-                            }
-                            else
-                            {
-                                var errorMessage =
-                                    string.Format(
-                                        "Start Range {0} is less than Previous End Range {1}",
-                                        newUnitPrice, previousCharge.UnitPrice);
-                                return Json(errorMessage, "application/json");
-                            }
-                        }
-                        else
-                        {
-                            charge.UnitPrice = newUnitPrice;
-                            charge.StartRange = model.StartRange;
-                            charge.EndRange = model.EndRange;
-                            charge.LastEditDate = DateTime.Now;
-                            charge.LastEditedBy = User.Identity.Name;
-                        }
-                    }
-                    else
-                    {
-                        charge.UnitPrice = newUnitPrice;
-                        charge.StartRange = model.StartRange;
-                        charge.EndRange = model.EndRange;
-                        charge.LastEditDate = DateTime.Now;
-                        charge.LastEditedBy = User.Identity.Name;
-                    }
+                    charge.LastEditDate = DateTime.Now;
+                    charge.LastEditedBy = User.Identity.Name;
+                    charge.StartRange = model.StartRange;
+                    charge.EndRange = model.EndRange;
+                    charge.UnitPrice =decimal.Parse(model.UnitPrice);
+                    db.Entry(charge).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    ModelState.Clear();   
                 }
-                db.Entry(charge).State=EntityState.Modified;
-                await db.SaveChangesAsync();
-                return Json(new[] { model }.ToDataSourceResult(request, ModelState));
             }
             return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+            
         }
 
         // GET: ChargeSchedules/Details/5

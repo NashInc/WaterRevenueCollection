@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201410011534327_DatabaseReboot.Designer.cs">
       <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410072156241_AnonEdit.cs" />
+    <Compile Include="Migrations\201410072156241_AnonEdit.Designer.cs">
+      <DependentUpon>201410072156241_AnonEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -131,6 +135,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410011534327_DatabaseReboot.resx">
       <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410072156241_AnonEdit.resx">
+      <DependentUpon>201410072156241_AnonEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

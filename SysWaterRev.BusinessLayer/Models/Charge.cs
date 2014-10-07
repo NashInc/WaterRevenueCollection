@@ -26,8 +26,6 @@ namespace SysWaterRev.BusinessLayer.Models
         [ForeignKey("ChargeScheduleId")]
         public virtual ChargeSchedule ChargeSchedule { get; set; }
 
-        public virtual Charge PreviousCharge { get; set; }
-
-        public virtual Charge NextCharge { get; set; }      
+        public virtual Charge PreviousCharge { get; set; }   
     }
 }

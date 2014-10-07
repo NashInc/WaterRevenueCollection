@@ -26,24 +26,24 @@
               .Name("charges")
               .Selectable(z => z.Enabled(true).Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
               .Scrollable(z => z.Enabled(true).Virtual(true))
-              .Sortable(z => z.AllowUnsort(true).Enabled(true).SortMode(GridSortMode.MultipleColumn))            
+              .Sortable(z => z.AllowUnsort(true).Enabled(true).SortMode(GridSortMode.MultipleColumn))
+              .Editable(editable=>editable.Mode(GridEditMode.InLine))
               .Columns(columns =>
               {
                   columns.Bound(column => column.ChargeId).Hidden(true);
                   columns.Bound(column => column.ChargeScheduleId).Hidden(true);
                   columns.Bound(column => column.StartRange);
                   columns.Bound(column => column.EndRange);
-                  columns.Bound(column => column.UnitPrice);
-                  columns.Bound(column => column.DateCreated);
-                  columns.Bound(column => column.CreatedBy);
-                  columns.Bound(column => column.ChargeScheduleName);
+                  columns.Bound(column => column.UnitPrice);               
                   columns.Command(column => column.Edit().UpdateText("Edit Charge"));
               })
               .DataSource(dataSource => dataSource
                   .Ajax()
+                  .Events(events => events.Error("error_handler"))
                   .Model(z => z.Id(x => x.ChargeId))
-                  .Read(actionName: "GetChargesForSchedule", controllerName: "ChargeSchedules", routeValues: new {ChargeScheduleId = currentChargeScheduleId})
-                  .Update(actionName: "UpdateChargesForSchedule", controllerName: "ChargesSchedule", routeValues: new {ChargeScheduleId = currentChargeScheduleId}))
+                  .Read(actionName: "GetChargesForSchedule", controllerName: "ChargeSchedules", routeValues: new { ChargeScheduleId = currentChargeScheduleId })
+                  .Update(actionName: "UpdateChargesForSchedule", controllerName: "ChargeSchedules"))
+                  
             )
         </div>
     </div>
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.UnitPrice, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.Kendo().TextBoxFor(model => model.UnitPrice)                          
+                            @Html.Kendo().TextBoxFor(model => model.UnitPrice)
                             @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -89,8 +89,23 @@
 
             @Html.ActionLink("Back to List", "Index", htmlAttributes: new { @class = "btn btn-default fa fa-arrow-left" }, routeValues: new { })
         </div>
-        </div>
+    </div>
 </section>
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
