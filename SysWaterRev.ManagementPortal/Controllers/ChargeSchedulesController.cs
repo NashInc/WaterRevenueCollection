@@ -55,9 +55,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
                 await db.SaveChangesAsync();
                 TempData.Clear();
                 TempData.Add("ChargeScheduleId", chargeSchedule.ChargeScheduleId);
-                return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
+                return RedirectToAction("Details", "ChargeSchedules", new { id = ChargeScheduleId });
             }
-            return RedirectToAction("Details", "ChargeSchedules", new {id = ChargeScheduleId});
+            return RedirectToAction("Details", "ChargeSchedules", new { id = ChargeScheduleId });
         }
 
         [HttpPost]
@@ -79,6 +79,113 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     ChargeScheduleName = x.ChargeSchedule.ChargeScheduleName
                 }).ToDataSourceResult(request);
             return Json(chargesViewModel, "application/json");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateChargesForSchedule([DataSourceRequest] DataSourceRequest request,ChargeViewModel model)
+        {
+            var chargeSchedule =
+                await
+                    db.ChargeSchedules.Include(x => x.Charges)
+                        .SingleOrDefaultAsync(x => x.ChargeScheduleId == model.ChargeScheduleId);
+            if (chargeSchedule != null)
+            {
+                var charge = chargeSchedule.Charges.SingleOrDefault(x => x.ChargeId == model.ChargeId);
+                if (charge != null)
+                {
+                    var newUnitPrice = decimal.Parse(model.UnitPrice);
+                    var previousCharge = new Charge();
+                    var nextCharge = new Charge();
+                    if (charge.PreviousCharge != null)
+                    {
+                        previousCharge = charge.PreviousCharge;
+                        if (model.EndRange < model.StartRange)
+                        {
+                            if (model.StartRange > previousCharge.EndRange)
+                            {
+                                if (newUnitPrice > previousCharge.UnitPrice)
+                                {
+                                    if (charge.NextCharge != null)
+                                    {
+                                        nextCharge = charge.NextCharge;
+                                        if (model.EndRange < nextCharge.StartRange)
+                                        {
+                                            if (newUnitPrice < nextCharge.UnitPrice)
+                                            {
+                                                charge.UnitPrice = newUnitPrice;
+                                                charge.StartRange = model.StartRange;
+                                                charge.EndRange = model.EndRange;
+                                                charge.LastEditDate = DateTime.Now;
+                                                charge.LastEditedBy = User.Identity.Name;
+                                            }
+                                            else
+                                            {
+                                                var errorMessage =
+                                                    string.Format(
+                                                        "New Unit Price {0} is Greater than Next charge Unit Price {1}",
+                                                        newUnitPrice, nextCharge.UnitPrice);
+                                                return Json(errorMessage, "application/json");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var errorMessage =
+                                                string.Format(
+                                                    "New End Range {0} is greater than Next Start Range {1}",
+                                                    model.EndRange, nextCharge.StartRange);
+                                            return Json(errorMessage, "application/json");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        charge.UnitPrice = newUnitPrice;
+                                        charge.StartRange = model.StartRange;
+                                        charge.EndRange = model.EndRange;
+                                        charge.LastEditDate = DateTime.Now;
+                                        charge.LastEditedBy = User.Identity.Name;
+                                    }
+                                }
+                                else
+                                {
+                                    var errorMessage =
+                                        string.Format(
+                                            "New Unit Price {0} is less than Previous charge Unit Price {1}",
+                                            newUnitPrice, previousCharge.UnitPrice);
+                                    return Json(errorMessage, "application/json");
+                                }
+                            }
+                            else
+                            {
+                                var errorMessage =
+                                    string.Format(
+                                        "Start Range {0} is less than Previous End Range {1}",
+                                        newUnitPrice, previousCharge.UnitPrice);
+                                return Json(errorMessage, "application/json");
+                            }
+                        }
+                        else
+                        {
+                            charge.UnitPrice = newUnitPrice;
+                            charge.StartRange = model.StartRange;
+                            charge.EndRange = model.EndRange;
+                            charge.LastEditDate = DateTime.Now;
+                            charge.LastEditedBy = User.Identity.Name;
+                        }
+                    }
+                    else
+                    {
+                        charge.UnitPrice = newUnitPrice;
+                        charge.StartRange = model.StartRange;
+                        charge.EndRange = model.EndRange;
+                        charge.LastEditDate = DateTime.Now;
+                        charge.LastEditedBy = User.Identity.Name;
+                    }
+                }
+                db.Entry(charge).State=EntityState.Modified;
+                await db.SaveChangesAsync();
+                return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+            }
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
         }
 
         // GET: ChargeSchedules/Details/5
@@ -111,8 +218,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(Include = "ChargeScheduleName,Description,EffectiveDate")] ChargeScheduleViewModel chargeScheduleModel)
+        public async Task<ActionResult> Create([Bind(Include = "ChargeScheduleName,Description,EffectiveDate")] ChargeScheduleViewModel chargeScheduleModel)
         {
             chargeScheduleModel.IsActive = false;
             chargeScheduleModel.CreatedBy = User.Identity.Name;
@@ -157,11 +263,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(Include = "ChargeScheduleId,ChargeScheduleName,Description,EffectiveDate")] ChargeScheduleViewModel
+        public async Task<ActionResult> Edit([Bind(Include = "ChargeScheduleId,ChargeScheduleName,Description,EffectiveDate")] ChargeScheduleViewModel
                 chargeSchedule)
         {
-            ChargeSchedule dbChargeSchedule = await db.ChargeSchedules.FindAsync(chargeSchedule.ChargeScheduleId);
+            var dbChargeSchedule = await db.ChargeSchedules.FindAsync(chargeSchedule.ChargeScheduleId);
             if (dbChargeSchedule != null)
             {
                 dbChargeSchedule.ChargeScheduleName = chargeSchedule.ChargeScheduleName;
@@ -195,13 +300,13 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
 
             if (chargeSchedule == null)
             {
                 return HttpNotFound();
             }
-            ChargeScheduleViewModel chargeScheduleViewModel =
+            var chargeScheduleViewModel =
                 Map<ChargeSchedule, ChargeScheduleViewModel>(chargeSchedule);
             return View(chargeScheduleViewModel);
         }
@@ -211,7 +316,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(id);
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(id);
             db.ChargeSchedules.Remove(chargeSchedule);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -231,7 +336,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         [HttpGet]
         public async Task<ActionResult> AddChargesToSchedule(Guid? ChargeScheduleId)
         {
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
+            var chargeSchedule = await db.ChargeSchedules.FindAsync(ChargeScheduleId);
             if (chargeSchedule != null)
             {
                 ViewBag.ChargeScheduleId = chargeSchedule.ChargeScheduleId;
@@ -243,12 +348,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddChargesToSchedule(
-            [Bind(Include = "StartRange,EndRange,ChargeScheduleId,UnitPrice")] ChargeViewModel chargeVm)
+        public async Task<ActionResult> AddChargesToSchedule([Bind(Include = "StartRange,EndRange,ChargeScheduleId,UnitPrice")]ChargeViewModel chargeVm)
         {
-            ChargeSchedule chargeSchedule = await db.ChargeSchedules.FindAsync(chargeVm.ChargeScheduleId);
+            var chargeSchedule = await db.ChargeSchedules.Include(x => x.Charges).SingleOrDefaultAsync(x => x.ChargeScheduleId == chargeVm.ChargeScheduleId);
             if (chargeSchedule != null)
             {
+
                 try
                 {
                     var charge = new Charge
@@ -259,11 +364,16 @@ namespace SysWaterRev.ManagementPortal.Controllers
                         CreatedBy = User.Identity.Name,
                         ChargeId = IdentityGenerator.NewSequentialGuid(),
                         ChargeScheduleId = chargeSchedule.ChargeScheduleId,
-                        UnitPrice = decimal.Parse(chargeVm.UnitPrice)
+                        UnitPrice = decimal.Parse(chargeVm.UnitPrice),
                     };
+                    var previousCharge = chargeSchedule.Charges.OrderByDescending(x => x.DateCreated).FirstOrDefault();
+                    if (previousCharge != null)
+                    {
+                        charge.PreviousCharge = charge;
+                    }
                     db.Charges.Add(charge);
                     await db.SaveChangesAsync();
-                    return RedirectToAction("AddChargesToSchedule", "ChargeSchedules", new {charge.ChargeScheduleId});
+                    return RedirectToAction("AddChargesToSchedule", "ChargeSchedules", new { charge.ChargeScheduleId });
                 }
                 catch (Exception ex)
                 {
@@ -278,10 +388,10 @@ namespace SysWaterRev.ManagementPortal.Controllers
         public async Task<JsonResult> ChargeStartRangeValidation(string StartRange, Guid? ChargeScheduleId)
         {
             int startRange;
-            bool startResult = int.TryParse(StartRange, out startRange);
+            var startResult = int.TryParse(StartRange, out startRange);
             if (startResult && (ChargeScheduleId != null))
             {
-                Charge previousCharge =
+                var previousCharge =
                     await db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                         .OrderByDescending(x => x.DateCreated)
                         .FirstOrDefaultAsync();
@@ -291,30 +401,29 @@ namespace SysWaterRev.ManagementPortal.Controllers
                     {
                         return Json(true, "application/json");
                     }
-                    string errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
+                    var errorMessage = string.Format("Start Range {0} is less than previous charge End Range {1}",
                         startRange, previousCharge.EndRange);
                     return Json(errorMessage, "application/json");
                 }
                 return Json(true, "application/json");
             }
-            string dataErrorMessage = string.Format("Please Select a Schedule and Enter a Start Range");
+            var dataErrorMessage = string.Format("Please Select a Schedule and Enter a Start Range");
             return Json(dataErrorMessage, "application/json");
         }
 
         [HttpPost]
-        public async Task<JsonResult> ChargeEndRangeValidation(string EndRange, string StartRange,
-            Guid? ChargeScheduleId)
+        public async Task<JsonResult> ChargeEndRangeValidation(string EndRange, string StartRange, Guid? ChargeScheduleId)
         {
             int startRange;
             int endRange;
-            bool startResult = int.TryParse(StartRange, out startRange);
-            bool endResult = int.TryParse(EndRange, out endRange);
+            var startResult = int.TryParse(StartRange, out startRange);
+            var endResult = int.TryParse(EndRange, out endRange);
 
             if (startResult && endResult && (ChargeScheduleId != null))
             {
                 if (endRange > startRange)
                 {
-                    Charge previousCharge =
+                    var previousCharge =
                         await
                             db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                                 .OrderByDescending(x => x.DateCreated)
@@ -325,36 +434,35 @@ namespace SysWaterRev.ManagementPortal.Controllers
                         {
                             return Json(true, "application/json");
                         }
-                        string errorMessage = string.Format(
+                        var errorMessage = string.Format(
                             "Start Range {0} is less than previous charge End Range {1}",
                             startRange, previousCharge.EndRange);
                         return Json(errorMessage, "application/json");
                     }
                     return Json(true, "application/json");
                 }
-                string rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+                var rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
                 return Json(rangeError, "application/json");
             }
-            string errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+            var errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
             return Json(errorValues, "application/json");
         }
 
         [HttpPost]
-        public async Task<JsonResult> ChargeUnitValidation(string StartRange, string EndRange, string UnitPrice,
-            Guid? ChargeScheduleId)
+        public async Task<JsonResult> ChargeUnitValidation(string StartRange, string EndRange, string UnitPrice, Guid? ChargeScheduleId)
         {
             int startRange;
             int endRange;
             decimal unitPrice;
-            bool startResult = int.TryParse(StartRange, out startRange);
-            bool endResult = int.TryParse(EndRange, out endRange);
-            bool unitPriceResult = decimal.TryParse(UnitPrice, out unitPrice);
+            var startResult = int.TryParse(StartRange, out startRange);
+            var endResult = int.TryParse(EndRange, out endRange);
+            var unitPriceResult = decimal.TryParse(UnitPrice, out unitPrice);
 
             if (startResult && endResult && unitPriceResult && (ChargeScheduleId != null))
             {
                 if (endRange > startRange)
                 {
-                    Charge previousCharge =
+                    var previousCharge =
                         await
                             db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                                 .OrderByDescending(x => x.DateCreated)
@@ -372,24 +480,24 @@ namespace SysWaterRev.ManagementPortal.Controllers
                                     unitPrice, previousCharge.UnitPrice);
                             return Json(unitPriceErrorMessage, "application/json");
                         }
-                        string errorMessage = string.Format(
+                        var errorMessage = string.Format(
                             "Start Range {0} is less than previous charge End Range {1}",
                             startRange, previousCharge.EndRange);
                         return Json(errorMessage, "application/json");
                     }
                     return Json(true, "application/json");
                 }
-                string rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+                var rangeError = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
                 return Json(rangeError, "application/json");
             }
-            string errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
+            var errorValues = string.Format("End Range {0} is less than Start Range {1}", EndRange, StartRange);
             return Json(errorValues, "application/json");
         }
 
         [HttpPost]
         public async Task<JsonResult> ChargeScheduleValidation(Guid? ChargeScheduleId)
         {
-            Charge previousCharge =
+            var previousCharge =
                 await
                     db.Charges.Where(x => x.ChargeScheduleId == ChargeScheduleId)
                         .OrderByDescending(x => x.DateCreated)

@@ -116,9 +116,10 @@ namespace SysWaterRev.API.Controllers
                     Heading = reading.Heading,
                     LocationDateTime = DateTime.Now,
                     IsConfirmed = false,
+                    
                 };
-                var previousReading = await db.Readings.OrderByDescending(x => x.DateCreated).FirstOrDefaultAsync();
-
+                //Fix Meter Issue 
+                var previousReading = await db.Readings.Where(x=>x.MeterId==reading.MeterId).OrderByDescending(x => x.DateCreated).FirstOrDefaultAsync();
                 if (previousReading != null)
                 {
                     if (readingModel.ReadingValue >= previousReading.ReadingValue)

@@ -180,6 +180,8 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.DateCreated, expr => expr.MapFrom(z => z.DateCreated))
                 .ForMember(x => x.CreatedBy, expr => expr.MapFrom(z => z.CreatedBy))
                 .ForMember(x => x.LastEditDate, expr => expr.MapFrom(z => z.LastEditDate))
+                .ForMember(x => x.NextCharge, expr => expr.Ignore())
+                .ForMember(x => x.PreviousCharge, expr => expr.Ignore())
                 .ForMember(x => x.ChargeSchedule, expr => expr.Ignore())
                 .ForMember(x => x.RowVersion, expr => expr.Ignore())
                 .ForMember(x => x.LastEditedBy, expr => expr.MapFrom(z => z.LastEditedBy));

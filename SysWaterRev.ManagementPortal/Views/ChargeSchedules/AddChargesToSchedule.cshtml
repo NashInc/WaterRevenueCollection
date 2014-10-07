@@ -26,22 +26,24 @@
               .Name("charges")
               .Selectable(z => z.Enabled(true).Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
               .Scrollable(z => z.Enabled(true).Virtual(true))
-              .Sortable(z => z.AllowUnsort(true).Enabled(true).SortMode(GridSortMode.MultipleColumn))
+              .Sortable(z => z.AllowUnsort(true).Enabled(true).SortMode(GridSortMode.MultipleColumn))            
               .Columns(columns =>
               {
                   columns.Bound(column => column.ChargeId).Hidden(true);
+                  columns.Bound(column => column.ChargeScheduleId).Hidden(true);
                   columns.Bound(column => column.StartRange);
                   columns.Bound(column => column.EndRange);
                   columns.Bound(column => column.UnitPrice);
                   columns.Bound(column => column.DateCreated);
                   columns.Bound(column => column.CreatedBy);
                   columns.Bound(column => column.ChargeScheduleName);
+                  columns.Command(column => column.Edit().UpdateText("Edit Charge"));
               })
               .DataSource(dataSource => dataSource
                   .Ajax()
                   .Model(z => z.Id(x => x.ChargeId))
-                  .Read(actionName: "GetChargesForSchedule", controllerName: "ChargeSchedules", routeValues: new { ChargeScheduleId = currentChargeScheduleId })
-              )
+                  .Read(actionName: "GetChargesForSchedule", controllerName: "ChargeSchedules", routeValues: new {ChargeScheduleId = currentChargeScheduleId})
+                  .Update(actionName: "UpdateChargesForSchedule", controllerName: "ChargesSchedule", routeValues: new {ChargeScheduleId = currentChargeScheduleId}))
             )
         </div>
     </div>

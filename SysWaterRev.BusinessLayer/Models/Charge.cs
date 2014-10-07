@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SysWaterRev.BusinessLayer.ViewModels;
 
 namespace SysWaterRev.BusinessLayer.Models
 {
@@ -22,6 +24,10 @@ namespace SysWaterRev.BusinessLayer.Models
         public Guid ChargeScheduleId { get; set; }
 
         [ForeignKey("ChargeScheduleId")]
-        public ChargeSchedule ChargeSchedule { get; set; }
+        public virtual ChargeSchedule ChargeSchedule { get; set; }
+
+        public virtual Charge PreviousCharge { get; set; }
+
+        public virtual Charge NextCharge { get; set; }      
     }
 }

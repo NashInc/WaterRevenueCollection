@@ -58,8 +58,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(Include = "StartRange,EndRange,ChargeScheduleId,UnitPrice")] ChargeViewModel chargeVm)
+        public async Task<ActionResult> Create([Bind(Include = "StartRange,EndRange,ChargeScheduleId,UnitPrice")] ChargeViewModel chargeVm)
         {
             var chargeSchedule = await db.ChargeSchedules.FindAsync(chargeVm.ChargeScheduleId);
             if (chargeSchedule != null)
@@ -111,8 +110,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(Include = "ChargeId,StartRange,EndRange,ChargeScheduleId")] ChargeViewModel chargeVmModel)
+        public async Task<ActionResult> Edit([Bind(Include = "ChargeId,StartRange,EndRange,ChargeScheduleId")] ChargeViewModel chargeVmModel)
         {
             var charge = await db.Charges.FindAsync(chargeVmModel.ChargeId);
             if (charge != null)

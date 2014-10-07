@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 using SysWaterRev.BusinessLayer.ViewModels;
 using SysWaterRev.ManagementPortal.Framework;
@@ -81,6 +77,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
             return Json(customersViewModel, "application/json", JsonRequestBehavior.AllowGet);
         }
         // GET: Readings/Correction/5
+        [HttpGet]
         public async Task<ActionResult> Correction(Guid? id)
         {
             if (id == null)
@@ -98,11 +95,7 @@ namespace SysWaterRev.ManagementPortal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Correction(
-            [Bind(
-                Include =
-                    "ReadingId,ReadingValue,CorrectionValue"
-                )] ReadingViewModel reading)
+        public async Task<ActionResult> Correction([Bind(Include = "ReadingId,ReadingValue,CorrectionValue")] ReadingViewModel reading)
         {
             var readingModel = await db.Readings.FindAsync(reading.ReadingId);
             if (readingModel != null)
