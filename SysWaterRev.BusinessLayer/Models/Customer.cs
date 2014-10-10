@@ -39,6 +39,11 @@ namespace SysWaterRev.BusinessLayer.Models
         [Required]
         public string CustomerNumber { get; set; }
 
+        //Navigation Properties  
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
+        public virtual Account CustomerAccount { get; set; }
+
         public virtual ICollection<Meter> Meters { get; set; }
     }
 }

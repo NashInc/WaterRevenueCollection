@@ -48,5 +48,12 @@ namespace SysWaterRev.BusinessLayer.Framework
             string employeeNumber = string.Format("EMP{0}", rand.Next(1000, 100000));
             return employeeNumber;
         }
+
+        public static string GenerateAccountNumber()
+        {
+            var rand = new Random();
+            string accountNumber = string.Format("ACC{0}", rand.Next(1000, 1000));
+            return accountNumber;
+        }
     }
 }

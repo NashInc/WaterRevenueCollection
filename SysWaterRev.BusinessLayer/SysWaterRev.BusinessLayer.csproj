@@ -89,15 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\IdentityGenerator.cs" />
-    <Compile Include="Migrations\201410011534327_DatabaseReboot.cs" />
-    <Compile Include="Migrations\201410011534327_DatabaseReboot.Designer.cs">
-      <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410072156241_AnonEdit.cs" />
-    <Compile Include="Migrations\201410072156241_AnonEdit.Designer.cs">
-      <DependentUpon>201410072156241_AnonEdit.cs</DependentUpon>
+    <Compile Include="Migrations\201410100931276_DbRecreate.cs" />
+    <Compile Include="Migrations\201410100931276_DbRecreate.Designer.cs">
+      <DependentUpon>201410100931276_DbRecreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
@@ -105,22 +102,31 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Charge.cs" />
     <Compile Include="Models\ChargeSchedule.cs" />
+    <Compile Include="Models\EmailInvoiceMessage.cs" />
+    <Compile Include="Models\InvoiceLineItem.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\InvoiceMessage.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
     <Compile Include="Models\Meter.cs" />
     <Compile Include="Models\Reading.cs" />
     <Compile Include="Models\Seeds.cs" />
+    <Compile Include="Models\SmsInvoiceMessage.cs" />
     <Compile Include="Models\SysWaterRevRoles.cs" />
     <Compile Include="Models\SystemSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CustomerService\CreateCustomerRequest.cs" />
+    <Compile Include="Services\CustomerService\CreateCustomerResult.cs" />
+    <Compile Include="Services\CustomerService\CustomerService.cs" />
     <Compile Include="ViewModels\ApplicationUserCustomerViewModel.cs" />
     <Compile Include="ViewModels\ApplicationUserEmployeeViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ChargeScheduleViewModel.cs" />
     <Compile Include="ViewModels\ChargeViewModel.cs" />
     <Compile Include="ViewModels\BillingViewModel.cs" />
+    <Compile Include="ViewModels\CreateCustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\LoginResult.cs" />
@@ -134,11 +140,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410011534327_DatabaseReboot.resx">
-      <DependentUpon>201410011534327_DatabaseReboot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410072156241_AnonEdit.resx">
-      <DependentUpon>201410072156241_AnonEdit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410100931276_DbRecreate.resx">
+      <DependentUpon>201410100931276_DbRecreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

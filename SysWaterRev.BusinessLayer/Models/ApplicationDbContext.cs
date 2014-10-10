@@ -28,10 +28,26 @@ namespace SysWaterRev.BusinessLayer.Models
         public DbSet<SystemSetting> SystemSettings { get; set; }
 
         public DbSet<ChargeSchedule> ChargeSchedules { get; set; }
-
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceLineItem> InvoiceLineItems { get; set; }
+        public DbSet<InvoiceMessage> InvoiceMessages { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>()
+                .HasKey(k => k.CustomerId)
+                .HasRequired(t => t.CustomerAccount)
+                .WithRequiredPrincipal(t => t.OwnerCustomer);
+            modelBuilder.Entity<Account>()
+                .HasKey(k => k.AccountId)
+                .HasRequired(t => t.OwnerCustomer)
+                .WithRequiredDependent(t => t.CustomerAccount);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

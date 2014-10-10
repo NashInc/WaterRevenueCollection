@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
+using SysWaterRev.BusinessLayer.Services.CustomerService;
 using SysWaterRev.BusinessLayer.ViewModels;
 using SysWaterRev.ManagementPortal.Framework;
 
@@ -41,31 +41,18 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerViewModel customerViewModel = await ComputeTotalUnits(id);
-            if (customerViewModel == null)
+            var customer = await db.Customers.SingleOrDefaultAsync(x => x.CustomerId == id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
+            var customerViewModel = Map<Customer, CustomerViewModel>(customer);
             return View(customerViewModel);
-        }
-
-        //private async Task<CustomerViewModel> ComputeTotalUnitCosts(CustomerViewModel customerViewModel)
-        //{
-        //    var charge =
-        //        await
-        //            db.SystemSettings.Include(x => x.CurrentChargeSchedule)
-        //                .OrderByDescending(x => x.DateCreated)
-        //                .FirstOrDefaultAsync();
-        //    if (charge != null)
-        //    {
-        //        charge.CurrentChargeSchedule.Charges.
-        //    }
-        //}
-
+        }       
         private async Task<CustomerViewModel> ComputeTotalUnits(Guid? id)
         {
             CustomerViewModel customerViewModel;
-            Customer customer =
+            var customer =
                 await
                     db.Customers.Include(x => x.Meters)
                         .Include(x => x.Meters.Select(z => z.MeterReadings))
@@ -140,46 +127,29 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CustomerViewModel customer)
+        public async Task<ActionResult> Create(CreateCustomerViewModel customer)
         {
-            var appUser = new ApplicationUser
+            if (ModelState.IsValid)
             {
-                IsActive = false,
-                PhoneNumber = customer.PhoneNumber,
-                UserName = customer.EmailAddress,
-                Email = customer.EmailAddress,
-                CustomerDetails = new Customer
+                using (var customerService = new CustomerService(UserManager))
                 {
-                    CreatedBy = User.Identity.Name,
-                    CustomerId = IdentityGenerator.NewSequentialGuid(),
-                    CustomerNumber = IdentityGenerator.GenerateCustomerNumber(),
-                    DateCreated = DateTime.Now,
-                    EmailAddress = customer.EmailAddress,
-                    FirstName = customer.FirstName,
-                    UserGender = customer.UserGender,
-                    Surname = customer.Surname,
-                    PhoneNumber = customer.PhoneNumber,
-                    Identification = customer.Identification,
-                    MiddleName = customer.MiddleName
+                    customer.CreatedBy = User.Identity.Name;
+                    var createCustomerRequest = new CreateCustomerRequest(customer);
+                    var result = customerService.CreateCustomerTaskAsync(createCustomerRequest);
+                    if (result.IsSuccess)
+                    {
+                        await SendEmailConfirmationTokenAsync(result.ApplicationUser.Id, "Confirm Your Account");
+                        TempData.Clear();
+                        TempData.Add("CustomerId", result.ApplicationUser.CustomerDetails.CustomerId);
+                        return RedirectToAction("Index", "Customers");
+                    }
+                    ModelState.AddModelError("", result.Exception.Message);
+                    return View(customer);
                 }
-            };
-            var createResult = await UserManager.CreateAsync(appUser);
-            if (createResult.Succeeded)
-            {
-                var addToRoleResult =
-                    await UserManager.AddToRoleAsync(appUser.Id, SysWaterRevRoles.Customers);
-                if (addToRoleResult.Succeeded)
-                {
-                    TempData.Clear();
-                    TempData.Add("CustomerId", appUser.CustomerDetails.CustomerId);
-                    await SendEmailConfirmationTokenAsync(appUser.Id, "Confirm Your Account");
-                    return RedirectToAction("Index", "Customers");
-                }
-                ModelState.AddModelError("", "Could Not Add Customer to Role");
-                return View(customer);
             }
-            ModelState.AddModelError("", "Could Not Create Customer");
+            ModelState.AddModelError("","Please Correct the Highlighted Errors!");
             return View(customer);
+
         }
 
         // GET: Customers/Edit/5
@@ -207,9 +177,9 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include ="CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")]CustomerViewModel customer)
+        public async Task<ActionResult> Edit([Bind(Include = "CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")]CustomerViewModel customer)
         {
-            var appUser = await db.Users.Include(x=>x.CustomerDetails).SingleOrDefaultAsync(x=>x.CustomerDetails.CustomerId==customer.CustomerId);
+            var appUser = await db.Users.Include(x => x.CustomerDetails).SingleOrDefaultAsync(x => x.CustomerDetails.CustomerId == customer.CustomerId);
             if (appUser != null)
             {
                 appUser.CustomerDetails.FirstName = customer.FirstName;

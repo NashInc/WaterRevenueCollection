@@ -59,7 +59,10 @@ namespace SysWaterRev.ManagementPortal
                 .ForMember(x => x.TotalCostCorrectedReadings, expr => expr.Ignore())
                 .ForMember(x => x.TotalConfirmedReadings, expr => expr.Ignore())
                 .ForMember(x => x.TotalConfirmedReadingsCost, expr => expr.Ignore())
-                .ForMember(x => x.PhoneNumber, expr => expr.MapFrom(z => z.PhoneNumber));
+                .ForMember(x => x.PhoneNumber, expr => expr.MapFrom(z => z.PhoneNumber))
+                .ForMember(x => x.InvoiceCount, expr => expr.MapFrom(z => z.CustomerAccount.Invoices.Count))
+                .ForMember(x => x.AccountNumber, expr => expr.MapFrom(z => z.CustomerAccount.AccountNumber))
+                .ForMember(x => x.AccountId, expr => expr.MapFrom(z => z.CustomerAccount.AccountId));
             Mapper.CreateMap<Employee, EmployeeViewModel>()
                 .ForMember(x => x.ReadingsCount, expr => expr.MapFrom(z => z.ReadingsMade.Count))
                 .ForMember(x => x.EmployeeId, expr => expr.MapFrom(z => z.EmployeeId))

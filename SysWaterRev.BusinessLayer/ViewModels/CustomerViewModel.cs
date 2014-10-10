@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using SysWaterRev.BusinessLayer.Framework;
 using SysWaterRev.BusinessLayer.Models;
 
 namespace SysWaterRev.BusinessLayer.ViewModels
@@ -53,11 +54,8 @@ namespace SysWaterRev.BusinessLayer.ViewModels
         [Required]
         [Display(Name = "Gender")]
         [DataType(DataType.Text)]
-        [Phone]
         public Gender UserGender { get; set; }
 
-        [Required]
-        [Phone]
         [Display(Name = "Customer No.")]
         [DataType(DataType.Text)]
         public string CustomerNumber { get; set; }
@@ -94,5 +92,11 @@ namespace SysWaterRev.BusinessLayer.ViewModels
 
         public double TotalCorrectedAndConfirmed { get; set; }
         public decimal TotalBill { get; set; }
+
+        //Account Details
+        public Guid AccountId { get; set; }
+        public string  AccountNumber { get; set; }
+        public int  InvoiceCount { get; set; }
+
     }
 }

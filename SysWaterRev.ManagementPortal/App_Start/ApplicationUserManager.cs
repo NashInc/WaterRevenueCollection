@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Security.Policy;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

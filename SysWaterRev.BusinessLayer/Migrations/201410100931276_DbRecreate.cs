@@ -3,28 +3,75 @@ namespace SysWaterRev.BusinessLayer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DatabaseReboot : DbMigration
+    public partial class DbRecreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Charges",
+                "dbo.Accounts",
                 c => new
                     {
-                        ChargeId = c.Guid(nullable: false),
-                        StartRange = c.Double(nullable: false),
-                        EndRange = c.Double(nullable: false),
-                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        ChargeScheduleId = c.Guid(nullable: false),
+                        AccountId = c.Guid(nullable: false),
+                        AccountNumber = c.String(),
+                        CustomerId = c.Guid(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         CreatedBy = c.String(nullable: false),
                         LastEditedBy = c.String(),
                         LastEditDate = c.DateTime(),
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
-                .PrimaryKey(t => t.ChargeId)
+                .PrimaryKey(t => t.AccountId)
+                .ForeignKey("dbo.Customers", t => t.AccountId)
+                .Index(t => t.AccountId);
+            
+            CreateTable(
+                "dbo.Invoices",
+                c => new
+                    {
+                        InvoiceId = c.Guid(nullable: false),
+                        InvoiceNumber = c.String(),
+                        GrossAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        TaxAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        NetAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DueDate = c.DateTime(nullable: false),
+                        IsSent = c.Boolean(nullable: false),
+                        SentBy = c.String(),
+                        DateSent = c.DateTime(),
+                        AccountId = c.Guid(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        CreatedBy = c.String(nullable: false),
+                        LastEditedBy = c.String(),
+                        LastEditDate = c.DateTime(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.InvoiceId)
+                .ForeignKey("dbo.Accounts", t => t.AccountId, cascadeDelete: true)
+                .Index(t => t.AccountId);
+            
+            CreateTable(
+                "dbo.InvoiceLineItems",
+                c => new
+                    {
+                        InvoiceLineItemId = c.Guid(nullable: false),
+                        Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UnitsConsumed = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ChargeScheduleId = c.Guid(nullable: false),
+                        ReadingId = c.Guid(nullable: false),
+                        InvoiceId = c.Guid(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        CreatedBy = c.String(nullable: false),
+                        LastEditedBy = c.String(),
+                        LastEditDate = c.DateTime(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.InvoiceLineItemId)
                 .ForeignKey("dbo.ChargeSchedules", t => t.ChargeScheduleId, cascadeDelete: true)
-                .Index(t => t.ChargeScheduleId);
+                .ForeignKey("dbo.Invoices", t => t.InvoiceId, cascadeDelete: true)
+                .ForeignKey("dbo.Readings", t => t.ReadingId, cascadeDelete: true)
+                .Index(t => t.ChargeScheduleId)
+                .Index(t => t.ReadingId)
+                .Index(t => t.InvoiceId);
             
             CreateTable(
                 "dbo.ChargeSchedules",
@@ -46,43 +93,26 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .PrimaryKey(t => t.ChargeScheduleId);
             
             CreateTable(
-                "dbo.Customers",
+                "dbo.Charges",
                 c => new
                     {
-                        CustomerId = c.Guid(nullable: false),
-                        FirstName = c.String(nullable: false, maxLength: 20),
-                        MiddleName = c.String(nullable: false, maxLength: 20),
-                        Surname = c.String(nullable: false, maxLength: 20),
-                        PhoneNumber = c.String(nullable: false, maxLength: 20),
-                        Identification = c.String(nullable: false),
-                        EmailAddress = c.String(nullable: false),
-                        UserGender = c.Int(nullable: false),
-                        CustomerNumber = c.String(nullable: false),
+                        ChargeId = c.Guid(nullable: false),
+                        StartRange = c.Double(nullable: false),
+                        EndRange = c.Double(nullable: false),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ChargeScheduleId = c.Guid(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         CreatedBy = c.String(nullable: false),
                         LastEditedBy = c.String(),
                         LastEditDate = c.DateTime(),
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        PreviousCharge_ChargeId = c.Guid(),
                     })
-                .PrimaryKey(t => t.CustomerId);
-            
-            CreateTable(
-                "dbo.Meters",
-                c => new
-                    {
-                        MeterId = c.Guid(nullable: false),
-                        MeterSerialNumber = c.String(nullable: false),
-                        MeterNumber = c.String(nullable: false),
-                        CustomerId = c.Guid(),
-                        DateCreated = c.DateTime(nullable: false),
-                        CreatedBy = c.String(nullable: false),
-                        LastEditedBy = c.String(),
-                        LastEditDate = c.DateTime(),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                    })
-                .PrimaryKey(t => t.MeterId)
-                .ForeignKey("dbo.Customers", t => t.CustomerId)
-                .Index(t => t.CustomerId);
+                .PrimaryKey(t => t.ChargeId)
+                .ForeignKey("dbo.ChargeSchedules", t => t.ChargeScheduleId, cascadeDelete: true)
+                .ForeignKey("dbo.Charges", t => t.PreviousCharge_ChargeId)
+                .Index(t => t.ChargeScheduleId)
+                .Index(t => t.PreviousCharge_ChargeId);
             
             CreateTable(
                 "dbo.Readings",
@@ -120,6 +150,46 @@ namespace SysWaterRev.BusinessLayer.Migrations
                 .Index(t => t.PreviousReading_ReadingId);
             
             CreateTable(
+                "dbo.Meters",
+                c => new
+                    {
+                        MeterId = c.Guid(nullable: false),
+                        MeterSerialNumber = c.String(nullable: false),
+                        MeterNumber = c.String(nullable: false),
+                        CustomerId = c.Guid(),
+                        DateCreated = c.DateTime(nullable: false),
+                        CreatedBy = c.String(nullable: false),
+                        LastEditedBy = c.String(),
+                        LastEditDate = c.DateTime(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.MeterId)
+                .ForeignKey("dbo.Customers", t => t.CustomerId)
+                .Index(t => t.CustomerId);
+            
+            CreateTable(
+                "dbo.Customers",
+                c => new
+                    {
+                        CustomerId = c.Guid(nullable: false),
+                        FirstName = c.String(nullable: false, maxLength: 20),
+                        MiddleName = c.String(nullable: false, maxLength: 20),
+                        Surname = c.String(nullable: false, maxLength: 20),
+                        PhoneNumber = c.String(nullable: false, maxLength: 20),
+                        Identification = c.String(nullable: false),
+                        EmailAddress = c.String(nullable: false),
+                        UserGender = c.Int(nullable: false),
+                        CustomerNumber = c.String(nullable: false),
+                        AccountId = c.Guid(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        CreatedBy = c.String(nullable: false),
+                        LastEditedBy = c.String(),
+                        LastEditDate = c.DateTime(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => t.CustomerId);
+            
+            CreateTable(
                 "dbo.Employees",
                 c => new
                     {
@@ -139,6 +209,29 @@ namespace SysWaterRev.BusinessLayer.Migrations
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.EmployeeId);
+            
+            CreateTable(
+                "dbo.InvoiceMessages",
+                c => new
+                    {
+                        InvoiceMessageId = c.Guid(nullable: false),
+                        MessageReferenceNumber = c.String(),
+                        Discriminator = c.String(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        CreatedBy = c.String(nullable: false),
+                        LastEditedBy = c.String(),
+                        LastEditDate = c.DateTime(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        EmailMessage = c.String(),
+                        EmailAddress = c.String(),
+                        SmsMessage = c.String(),
+                        PhoneNumber = c.String(),
+                        Discriminator1 = c.String(nullable: false, maxLength: 128),
+                        Invoice_InvoiceId = c.Guid(),
+                    })
+                .PrimaryKey(t => t.InvoiceMessageId)
+                .ForeignKey("dbo.Invoices", t => t.Invoice_InvoiceId)
+                .Index(t => t.Invoice_InvoiceId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -245,11 +338,18 @@ namespace SysWaterRev.BusinessLayer.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.SystemSettings", "ChargeScheduleId", "dbo.ChargeSchedules");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Meters", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.Accounts", "AccountId", "dbo.Customers");
+            DropForeignKey("dbo.InvoiceMessages", "Invoice_InvoiceId", "dbo.Invoices");
+            DropForeignKey("dbo.InvoiceLineItems", "ReadingId", "dbo.Readings");
             DropForeignKey("dbo.Readings", "EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.Readings", "PreviousReading_ReadingId", "dbo.Readings");
+            DropForeignKey("dbo.Meters", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.Readings", "MeterId", "dbo.Meters");
+            DropForeignKey("dbo.InvoiceLineItems", "InvoiceId", "dbo.Invoices");
+            DropForeignKey("dbo.InvoiceLineItems", "ChargeScheduleId", "dbo.ChargeSchedules");
+            DropForeignKey("dbo.Charges", "PreviousCharge_ChargeId", "dbo.Charges");
             DropForeignKey("dbo.Charges", "ChargeScheduleId", "dbo.ChargeSchedules");
+            DropForeignKey("dbo.Invoices", "AccountId", "dbo.Accounts");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", new[] { "EmployeeDetails_EmployeeId" });
@@ -259,23 +359,34 @@ namespace SysWaterRev.BusinessLayer.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.InvoiceMessages", new[] { "Invoice_InvoiceId" });
+            DropIndex("dbo.Meters", new[] { "CustomerId" });
             DropIndex("dbo.Readings", new[] { "PreviousReading_ReadingId" });
             DropIndex("dbo.Readings", new[] { "MeterId" });
             DropIndex("dbo.Readings", new[] { "EmployeeId" });
-            DropIndex("dbo.Meters", new[] { "CustomerId" });
+            DropIndex("dbo.Charges", new[] { "PreviousCharge_ChargeId" });
             DropIndex("dbo.Charges", new[] { "ChargeScheduleId" });
+            DropIndex("dbo.InvoiceLineItems", new[] { "InvoiceId" });
+            DropIndex("dbo.InvoiceLineItems", new[] { "ReadingId" });
+            DropIndex("dbo.InvoiceLineItems", new[] { "ChargeScheduleId" });
+            DropIndex("dbo.Invoices", new[] { "AccountId" });
+            DropIndex("dbo.Accounts", new[] { "AccountId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.SystemSettings");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.InvoiceMessages");
             DropTable("dbo.Employees");
-            DropTable("dbo.Readings");
-            DropTable("dbo.Meters");
             DropTable("dbo.Customers");
-            DropTable("dbo.ChargeSchedules");
+            DropTable("dbo.Meters");
+            DropTable("dbo.Readings");
             DropTable("dbo.Charges");
+            DropTable("dbo.ChargeSchedules");
+            DropTable("dbo.InvoiceLineItems");
+            DropTable("dbo.Invoices");
+            DropTable("dbo.Accounts");
         }
     }
 }

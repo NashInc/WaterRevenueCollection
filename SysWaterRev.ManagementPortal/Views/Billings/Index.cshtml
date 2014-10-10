@@ -31,6 +31,8 @@
                       columns.Bound(e => e.UserGender).Width(120);
                       columns.Bound(e => e.MetersOwned).Width(120);
                       columns.Bound(e => e.TotalBill).Width(120);
+                      columns.Command(c => c.Custom("printInvoice").Click("printCommand"));
+
                   })
                   .Sortable()
                   .Pageable()
@@ -117,6 +119,11 @@
             <script>
                 function dataBound() {
                     this.expandRow(this.tbody.find("tr.k-master-row").first());
+                }
+                function printInvoice(e) {
+                    e.preventDefault();
+                    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                    window.location.href = '/Billings/Invoice/' + dataItem.CustomerId;
                 }
             </script>          
         </div>

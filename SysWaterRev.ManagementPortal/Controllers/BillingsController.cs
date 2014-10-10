@@ -25,6 +25,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Invoice(Guid? CustomerId)
+        {
+            return View();
+        }
+
         private async Task<List<Tuple<double, double, decimal>>> GenerateChargeTree()
         {
             var chargeSchedule =
