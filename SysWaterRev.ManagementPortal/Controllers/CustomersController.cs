@@ -18,10 +18,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
     public class CustomersController : AbstractController
     {
         private readonly ApplicationDbContext db;
+        private readonly CustomerService customerService;
 
         public CustomersController()
         {
             db = new ApplicationDbContext();
+            customerService = new CustomerService(UserManager, db);
         }
 
         // GET: Customers
@@ -41,59 +43,14 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var customer = await db.Customers.SingleOrDefaultAsync(x => x.CustomerId == id);
-            if (customer == null)
+            var customerResult = await customerService.GetCustomer(new GetCustomerRequest { CustomerId = id });
+            if (!customerResult.IsSuccess)
             {
                 return HttpNotFound();
             }
-            var customerViewModel = Map<Customer, CustomerViewModel>(customer);
+            var customerViewModel = Map<Customer, CustomerViewModel>(customerResult.ApplicationUser.CustomerDetails);
             return View(customerViewModel);
-        }       
-        private async Task<CustomerViewModel> ComputeTotalUnits(Guid? id)
-        {
-            CustomerViewModel customerViewModel;
-            var customer =
-                await
-                    db.Customers.Include(x => x.Meters)
-                        .Include(x => x.Meters.Select(z => z.MeterReadings))
-                        .FirstOrDefaultAsync(y => y.CustomerId == id);
-            if (customer != null)
-            {
-                customerViewModel = Map<Customer, CustomerViewModel>(customer);
-                ICollection<Meter> metersForCustomer = customer.Meters;
-                foreach (Meter meter in metersForCustomer)
-                {
-                    double totalReadings = 0.0d;
-                    double totalConfirmedReadings = 0.0d;
-                    double totalCorrectedReadings = 0.0d;
-                    double totalCorrectedAndConfirmed = 0.0d;
-                    ICollection<Reading> readingsForMeter = meter.MeterReadings;
-                    foreach (Reading reading in readingsForMeter)
-                    {
-                        totalReadings += reading.ReadingValue;
-                        if (reading.IsConfirmed != null && reading.IsConfirmed.Value)
-                        {
-                            totalConfirmedReadings += reading.ReadingValue;
-                        }
-                        if (reading.CorrectedBy != null)
-                        {
-                            totalCorrectedReadings += reading.CorrectionValue;
-                        }
-                        if (reading.IsConfirmed != null && (reading.CorrectedBy != null && reading.IsConfirmed.Value))
-                        {
-                            totalCorrectedAndConfirmed += reading.CorrectionValue;
-                        }
-                    }
-                    customerViewModel.TotalReadings += totalReadings;
-                    customerViewModel.TotalConfirmedReadings += totalConfirmedReadings;
-                    customerViewModel.TotalCorrectedAndConfirmed += totalCorrectedAndConfirmed;
-                    customerViewModel.TotalCorrectedReadings += totalCorrectedReadings;
-                }
-                return customerViewModel;
-            }
-            return null;
         }
-
         [HttpGet]
         public async Task<JsonResult> GetCascadeCustomers()
         {
@@ -131,23 +88,20 @@ namespace SysWaterRev.ManagementPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var customerService = new CustomerService(UserManager))
+                customer.CreatedBy = User.Identity.Name;
+                var createCustomerRequest = new CreateCustomerRequest(customer);
+                var result = customerService.CreateCustomerTaskAsync(createCustomerRequest);
+                if (result.IsSuccess)
                 {
-                    customer.CreatedBy = User.Identity.Name;
-                    var createCustomerRequest = new CreateCustomerRequest(customer);
-                    var result = customerService.CreateCustomerTaskAsync(createCustomerRequest);
-                    if (result.IsSuccess)
-                    {
-                        await SendEmailConfirmationTokenAsync(result.ApplicationUser.Id, "Confirm Your Account");
-                        TempData.Clear();
-                        TempData.Add("CustomerId", result.ApplicationUser.CustomerDetails.CustomerId);
-                        return RedirectToAction("Index", "Customers");
-                    }
-                    ModelState.AddModelError("", result.Exception.Message);
-                    return View(customer);
+                    await SendEmailConfirmationTokenAsync(result.ApplicationUser.Id, "Confirm Your Account");
+                    TempData.Clear();
+                    TempData.Add("CustomerId", result.ApplicationUser.CustomerDetails.CustomerId);
+                    return RedirectToAction("Index", "Customers");
                 }
+                ModelState.AddModelError("", result.Exception.Message);
+                return View(customer);
             }
-            ModelState.AddModelError("","Please Correct the Highlighted Errors!");
+            ModelState.AddModelError("", "Please Correct the Highlighted Errors!");
             return View(customer);
 
         }
@@ -160,15 +114,12 @@ namespace SysWaterRev.ManagementPortal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var appUser =
-                await
-                    db.Users.Include(x => x.CustomerDetails)
-                        .SingleOrDefaultAsync(x => x.CustomerDetails.CustomerId == id);
-            if (appUser == null)
+            var appUser = await customerService.GetCustomer(new GetCustomerRequest { CustomerId = id });
+            if (appUser.IsSuccess == false)
             {
-                return HttpNotFound();
+                return HttpNotFound(appUser.Exception.Message);
             }
-            var customerViewModel = Map<Customer, CustomerViewModel>(appUser.CustomerDetails);
+            var customerViewModel = Map<Customer, CreateCustomerViewModel>(appUser.ApplicationUser.CustomerDetails);
             return View(customerViewModel);
         }
 
@@ -177,29 +128,22 @@ namespace SysWaterRev.ManagementPortal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender,CustomerNumber")]CustomerViewModel customer)
+        public async Task<ActionResult> Edit([Bind(Include = "CustomerId,FirstName,MiddleName,Surname,PhoneNumber,Identification,EmailAddress,UserGender")]CreateCustomerViewModel customer)
         {
-            var appUser = await db.Users.Include(x => x.CustomerDetails).SingleOrDefaultAsync(x => x.CustomerDetails.CustomerId == customer.CustomerId);
-            if (appUser != null)
+            var updateCustomerResponse = new UpdateCustomerResponse();
+            if (ModelState.IsValid)
             {
-                appUser.CustomerDetails.FirstName = customer.FirstName;
-                appUser.CustomerDetails.MiddleName = customer.MiddleName;
-                appUser.CustomerDetails.Surname = customer.Surname;
-                appUser.CustomerDetails.PhoneNumber = customer.PhoneNumber;
-                appUser.CustomerDetails.Identification = customer.Identification;
-                appUser.CustomerDetails.EmailAddress = customer.EmailAddress;
-                appUser.CustomerDetails.UserGender = customer.UserGender;
-                appUser.CustomerDetails.CustomerNumber = customer.CustomerNumber;
-                appUser.CustomerDetails.LastEditDate = DateTime.Now;
-                appUser.CustomerDetails.LastEditedBy = User.Identity.Name;
-                db.Entry(appUser).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                TempData.Clear();
-                TempData.Add("CustomerId", appUser.CustomerDetails.CustomerId);
-                await SendEmailConfirmationTokenAsync(appUser.Id, "Please Confirm Your Account Edit");
-                return RedirectToAction("Index", "Customers");
+                updateCustomerResponse = await customerService.UpdateCustomerTaskAsync(new UpdateCustomerRequest{CreateCustomerViewModel = customer});
+                if (updateCustomerResponse.IsSuccess)
+                {
+                    TempData.Clear();
+                    TempData.Add("CustomerId", updateCustomerResponse.ApplicationUser.CustomerDetails.CustomerId);
+                    return RedirectToAction("Index", "Customers");
+                }
+                ModelState.AddModelError("", updateCustomerResponse.Exception.Message);
+                return View(customer);
             }
-            ModelState.AddModelError("", "Entity with the stated ID Could not be found!");
+            ModelState.AddModelError("", "Please Correct the highlighted Errors");
             return View(customer);
         }
 
